@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
@@ -22,15 +22,19 @@
     ============================================ */
     :root {
       /* Colors */
-      --fc-black:       #0A0A0A;
-      --fc-white:       #F8F7F5;
+      --fc-black:       #0C1210;
+      --fc-white:       #FAF9F6;
       --fc-gray-100:    #F2F1EF;
       --fc-gray-200:    #E5E3DF;
       --fc-gray-400:    #9E9A94;
       --fc-gray-600:    #6B6762;
       --fc-gray-800:    #2C2B29;
-      --fc-accent:      #C8A96E;
-      --fc-accent-dark: #A8893E;
+      --fc-accent:      #C28453;
+      --fc-accent-light: #DFA26E;
+      --fc-accent-dark: #985B2E;
+      --fc-primary:     #0A382C;
+      --fc-primary-hover: #0F4C3C;
+      --fc-accent-dark: #985B2E;
       --fc-error:       #CC3333;
       --fc-success:     #2D7A4F;
       --fc-overlay:     rgba(10,10,10,0.6);
@@ -1205,6 +1209,61 @@
       .fc-footer__brand { grid-column: span 1; }
       .fc-social-grid { grid-template-columns: repeat(3, 1fr); }
     }
+      /* --- BRAND IDENTITY ENHANCEMENTS --- */
+    .fc-logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; user-select: none; }
+    .fc-logo-emblem-wrap {
+      width: 44px; height: 44px; border-radius: 50%; overflow: hidden;
+      border: 1.5px solid var(--fc-accent);
+      box-shadow: 0 2px 10px rgba(194, 132, 83, 0.25);
+      flex-shrink: 0; background: var(--fc-white);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform var(--fc-transition);
+    }
+    .fc-logo:hover .fc-logo-emblem-wrap { transform: scale(1.05) rotate(2deg); }
+    .fc-logo-emblem { width: 100%; height: 100%; object-fit: cover; }
+    .fc-logo-text-group { display: flex; flex-direction: column; align-items: flex-start; }
+    .fc-logo-name {
+      font-family: var(--fc-font-display); font-size: 20px; font-weight: 800;
+      letter-spacing: 0.12em; color: var(--fc-black); line-height: 1.1;
+    }
+    .fc-logo-accent {
+      color: var(--fc-accent);
+      background: linear-gradient(135deg, #dfa26e 0%, #c28453 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .fc-logo-motto {
+      font-size: 8px; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--fc-accent); opacity: 0.95;
+      margin-top: 1px;
+    }
+    .fc-btn--primary {
+      background: #0a382c; color: #faf9f6; border-color: #0a382c;
+    }
+    .fc-btn--primary:hover {
+      background: #0f4c3c; border-color: #0f4c3c;
+    }
+    .fc-btn--secondary {
+      background: linear-gradient(135deg, #dfa26e 0%, #c28453 100%);
+      color: #0c1210; border-color: #c28453;
+      box-shadow: 0 4px 15px rgba(194, 132, 83, 0.25);
+    }
+    .fc-btn--secondary:hover {
+      background: linear-gradient(135deg, #c28453 0%, #985b2e 100%);
+      color: #ffffff;
+    }
+    .fc-announcement {
+      background: linear-gradient(90deg, #06241c 0%, #0a382c 50%, #06241c 100%);
+      border-bottom: 1px solid rgba(194,132,83,0.3);
+    }
+    .fc-badge--new {
+      background: #0a382c; color: #faf9f6;
+    }
+    .fc-badge--sale {
+      background: #c28453; color: #0c1210; font-weight: 800;
+    }
+    .fc-discount-badge {
+      background: rgba(194, 132, 83, 0.15); color: #985b2e; font-weight: 700;
+    }
   </style>
 </head>
 <body>
@@ -1247,7 +1306,15 @@
 ============================================ -->
 <nav class="fc-drawer" id="fc-mobile-drawer" aria-label="Main navigation">
   <div class="fc-drawer__header">
-    <span class="fc-drawer__logo">FOLDCUT</span>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div style="width:36px;height:36px;border-radius:50%;overflow:hidden;border:1.5px solid #C28453;flex-shrink:0;background:#FAF9F6;">
+        <img src="/assets/images/logo.jpg" alt="FOLDCUT" style="width:100%;height:100%;object-fit:cover;" />
+      </div>
+      <div>
+        <span class="fc-drawer__logo" style="display:block;line-height:1.1;">FOLD<span style="color:#C28453;">CUT</span></span>
+        <span style="font-size:7.5px;color:#C28453;letter-spacing:0.12em;text-transform:uppercase;display:block;">Quality â€¢ Comfort â€¢ Confidence</span>
+      </div>
+    </div>
     <button class="fc-drawer__close" id="fc-drawer-close" aria-label="Close menu">✕</button>
   </div>
   <div class="fc-drawer__nav">
@@ -1378,7 +1445,15 @@
       </button>
     </div>
     <div class="fc-header__center">
-      <a href="index.html" class="fc-logo" aria-label="FOLDCUT home">FOLD<span>CUT</span></a>
+      <a href="index.html" class="fc-logo" aria-label="FOLDCUT home">
+        <div class="fc-logo-emblem-wrap">
+          <img src="/assets/images/logo.jpg" alt="FOLDCUT Emblem" class="fc-logo-emblem" />
+        </div>
+        <div class="fc-logo-text-group">
+          <span class="fc-logo-name">FOLD<span class="fc-logo-accent">CUT</span></span>
+          <span class="fc-logo-motto">Quality â€¢ Comfort â€¢ Confidence</span>
+        </div>
+      </a>
     </div>
     <div class="fc-header__right">
       <button class="fc-icon-btn" id="fc-search-btn" aria-label="Search" data-action="search">
@@ -1630,7 +1705,7 @@
               <span class="fc-rating-count">(67)</span>
             </div>
             <div class="fc-color-dots">
-              <span class="fc-color-dot is-selected" style="background:#C8A96E;" title="Beige"></span>
+              <span class="fc-color-dot is-selected" style="background:#C28453;" title="Beige"></span>
               <span class="fc-color-dot" style="background:#0A0A0A;" title="Black"></span>
             </div>
           </div>
