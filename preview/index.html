@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>FOLDCUT â€” Quality &bull; Comfort &bull; Confidence | Contemporary Fashion Bangladesh</title>
   <meta name="description" content="FOLDCUT brings contemporary luxury fashion for men and women. 220+ GSM combed compact cotton. Fast delivery across 64 districts in Bangladesh. 5% instant discount on online payments." />
+  
+  <!-- GOOGLE FONTS with Bengali & International Fallbacks -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Hind+Siliguri:wght@500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -34,8 +36,10 @@
       --fc-header-bg:      rgba(255, 255, 255, 0.95);
       --fc-nav-bar-bg:     #FFFFFF;
       --fc-input-bg:       #FFFFFF;
-      --fc-font-display:   'Plus Jakarta Sans', sans-serif;
-      --fc-font-body:      'Inter', sans-serif;
+      
+      --fc-font-display:   'Plus Jakarta Sans', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --fc-font-body:      'Inter', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      
       --fc-radius-sm:      4px;
       --fc-radius-md:      8px;
       --fc-radius-lg:      16px;
@@ -126,8 +130,12 @@
       background: var(--fc-bg);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
       transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    h1, h2, h3, h4, h5, h6, .fc-logo-name, .fc-btn {
+      font-family: var(--fc-font-display);
     }
     img { display: block; max-width: 100%; height: auto; }
     a { color: inherit; text-decoration: none; }
@@ -135,6 +143,12 @@
     ul, ol { list-style: none; }
     .container { width: 100%; max-width: 1360px; margin: 0 auto; padding: 0 1.5rem; }
 
+    .fc-taka {
+      font-family: 'Hind Siliguri', 'Inter', sans-serif;
+      font-weight: 700;
+    }
+
+    /* Theme Toggle */
     .fc-theme-toggle-btn {
       width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
       border-radius: 50%; color: var(--fc-text-main); border: 1px solid var(--fc-border);
@@ -142,6 +156,7 @@
     }
     .fc-theme-toggle-btn:hover { background: var(--fc-surface-hover); transform: rotate(15deg); }
 
+    /* Top Slidebar */
     .fc-promo-slidebar {
       background: #0A382C;
       color: #FFFFFF;
@@ -172,6 +187,7 @@
     .fc-promo-arrow { background: none; border: none; color: rgba(255,255,255,0.7); font-size: 16px; cursor: pointer; padding: 2px 6px; }
     .fc-promo-arrow:hover { color: #FFFFFF; }
 
+    /* Header */
     .fc-header {
       position: sticky; top: 0; z-index: 200;
       background: var(--fc-header-bg);
@@ -199,7 +215,7 @@
     .fc-logo:hover .fc-logo-emblem-wrap { transform: scale(1.06) rotate(2deg); }
     .fc-logo-emblem { width: 100%; height: 100%; object-fit: cover; }
     .fc-logo-name {
-      font-family: var(--fc-font-display); font-size: 20px; font-weight: 800;
+      font-size: 20px; font-weight: 800;
       letter-spacing: 0.12em; color: var(--fc-text-main); line-height: 1.1;
     }
     .fc-logo-accent { color: var(--fc-accent); }
@@ -233,9 +249,10 @@
       border-radius: 99px; display: flex; align-items: center; justify-content: center;
     }
 
+    /* Buttons */
     .fc-btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      font-family: var(--fc-font-display); font-size: 13px; font-weight: 700;
+      font-size: 13px; font-weight: 700;
       letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 28px;
       border-radius: var(--fc-radius-sm); border: 2px solid transparent;
       cursor: pointer; transition: all 0.2s ease; text-decoration: none; white-space: nowrap;
@@ -263,7 +280,7 @@
       color: var(--fc-accent); letter-spacing: 0.08em; text-transform: uppercase;
     }
     .fc-hero-h1 {
-      font-family: var(--fc-font-display); font-size: clamp(2.5rem, 5vw, 4.2rem);
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
       font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; color: var(--fc-text-main);
       margin-bottom: 1rem;
     }
@@ -278,7 +295,6 @@
     .fc-hero-stat-num { font-size: 1.3rem; font-weight: 800; color: var(--fc-accent); }
     .fc-hero-stat-lbl { font-size: 11px; font-weight: 600; color: var(--fc-text-subtle); text-transform: uppercase; }
 
-    .fc-hero-visual { position: relative; }
     .fc-hero-visual-card {
       border-radius: var(--fc-radius-lg); overflow: hidden;
       box-shadow: var(--fc-card-shadow); border: 1px solid var(--fc-border);
@@ -309,7 +325,7 @@
       width: 54px; height: 54px; border-radius: 50%; background: rgba(255,255,255,0.12);
       border: 1.5px solid var(--fc-accent); display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;
     }
-    .fc-promo-strip-title { font-size: 1.2rem; font-weight: 800; font-family: var(--fc-font-display); }
+    .fc-promo-strip-title { font-size: 1.2rem; font-weight: 800; }
     .fc-promo-strip-subtitle { font-size: 0.875rem; opacity: 0.85; margin-top: 2px; }
     .fc-gateways { display: flex; gap: 8px; align-items: center; }
     .fc-gw-badge {
@@ -328,10 +344,64 @@
       color: var(--fc-accent); margin-bottom: 4px; display: block;
     }
     .fc-section-title {
-      font-family: var(--fc-font-display); font-size: 1.875rem; font-weight: 800;
+      font-size: 1.875rem; font-weight: 800;
       letter-spacing: -0.02em; color: var(--fc-text-main);
     }
     .fc-product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+
+    /* Product Card */
+    .fc-product-card {
+      display: flex; flex-direction: column; background: var(--fc-surface-card);
+      border: 1px solid var(--fc-border); border-radius: var(--fc-radius-md);
+      overflow: hidden; transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      position: relative;
+    }
+    .fc-product-card:hover {
+      transform: translateY(-4px); box-shadow: var(--fc-card-shadow); border-color: var(--fc-border-hover);
+    }
+    .fc-product-card__image-wrap { position: relative; aspect-ratio: 3/4; overflow: hidden; background: var(--fc-surface); }
+    .fc-product-card__image, .fc-product-card__image--hover {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      transition: opacity 0.35s, transform 0.4s;
+    }
+    .fc-product-card__image--hover { opacity: 0; }
+    .fc-product-card:hover .fc-product-card__image--hover { opacity: 1; transform: scale(1.04); }
+    .fc-product-card:hover .fc-product-card__image { transform: scale(1.04); }
+    .fc-product-card__badge { position: absolute; top: 10px; left: 10px; z-index: 2; display: flex; flex-direction: column; gap: 4px; }
+    .fc-badge { display: inline-flex; align-items: center; padding: 3px 8px; font-size: 10px; font-weight: 800; letter-spacing: 0.05em; border-radius: 4px; }
+    .fc-badge--new { background: var(--fc-primary); color: #FFFFFF; }
+    .fc-badge--sale { background: var(--fc-accent); color: #FFFFFF; }
+    .fc-badge--discount { background: var(--fc-discount); color: #FFFFFF; }
+
+    .fc-wishlist-btn {
+      position: absolute; top: 10px; right: 10px; z-index: 2; width: 34px; height: 34px;
+      background: var(--fc-surface-card); border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+    }
+    .fc-wishlist-btn:hover { transform: scale(1.1); }
+    .fc-wishlist-btn svg { width: 16px; height: 16px; stroke: var(--fc-text-main); fill: none; stroke-width: 2; }
+    .fc-wishlist-btn.is-active svg { fill: var(--fc-error); stroke: var(--fc-error); }
+
+    .fc-quick-add-btn {
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+      background: var(--fc-primary); color: #FFFFFF; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; padding: 10px; text-align: center;
+      transform: translateY(100%); transition: transform 0.25s;
+    }
+    .fc-product-card:hover .fc-quick-add-btn { transform: translateY(0); }
+
+    .fc-product-card__info { padding: 1rem; display: flex; flex-direction: column; flex: 1; }
+    .fc-product-card__category { font-size: 11px; font-weight: 600; color: var(--fc-text-subtle); text-transform: uppercase; margin-bottom: 2px; }
+    .fc-product-card__name { font-size: 0.925rem; font-weight: 700; color: var(--fc-text-main); margin-bottom: 6px; line-height: 1.35; }
+    .fc-product-card__name a:hover { color: var(--fc-accent); }
+    .fc-product-card__price-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
+    .fc-price-main { font-size: 1rem; font-weight: 800; color: var(--fc-text-main); }
+    .fc-price-orig { font-size: 0.85rem; color: var(--fc-text-subtle); text-decoration: line-through; }
+    .fc-online-pay-pill {
+      display: inline-flex; align-items: center; gap: 4px; font-size: 10.5px;
+      font-weight: 700; color: var(--fc-discount); background: var(--fc-discount-bg);
+      padding: 2px 6px; border-radius: 4px; width: fit-content;
+    }
 
     /* Category Discovery */
     .fc-category-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
@@ -345,7 +415,7 @@
       position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,56,44,0.85) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
     }
     .fc-cat-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; color: #FFFFFF; }
-    .fc-cat-name { font-size: 1.3rem; font-weight: 800; font-family: var(--fc-font-display); margin-bottom: 4px; }
+    .fc-cat-name { font-size: 1.3rem; font-weight: 800; margin-bottom: 4px; }
     .fc-cat-link { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #DFA26E; }
 
     /* Brand Pillars */
@@ -355,7 +425,7 @@
       padding: 2rem; box-shadow: var(--fc-card-shadow); position: relative; overflow: hidden;
     }
     .fc-pillar-bar { position: absolute; top: 0; left: 0; width: 4px; height: 100%; }
-    .fc-pillar-title { font-size: 1.15rem; font-weight: 800; margin: 8px 0 6px; font-family: var(--fc-font-display); text-transform: uppercase; }
+    .fc-pillar-title { font-size: 1.15rem; font-weight: 800; margin: 8px 0 6px; text-transform: uppercase; }
     .fc-pillar-desc { font-size: 0.875rem; color: var(--fc-text-muted); line-height: 1.6; }
 
     /* Footer */
@@ -366,7 +436,7 @@
     .fc-footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem; }
     .fc-footer-col-title {
       font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--fc-accent); margin-bottom: 1.25rem; font-family: var(--fc-font-display);
+      color: var(--fc-accent); margin-bottom: 1.25rem;
     }
     .fc-footer-link { display: block; font-size: 0.875rem; color: var(--fc-text-muted); margin-bottom: 8px; transition: color 0.2s; }
     .fc-footer-link:hover { color: var(--fc-accent); }
@@ -376,6 +446,55 @@
       font-size: 12px; color: var(--fc-text-subtle);
     }
 
+    /* Floating WhatsApp Button */
+    .fc-whatsapp-float {
+      position: fixed; bottom: 24px; right: 24px; z-index: 290;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #25D366; color: #FFFFFF; padding: 8px 16px 8px 10px;
+      border-radius: 99px; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      text-decoration: none; font-size: 13px; font-weight: 700;
+      transition: transform 0.25s;
+    }
+    .fc-whatsapp-float:hover { transform: translateY(-3px); }
+
+    /* Mobile Bottom Dock */
+    .fc-mobile-bottom-nav {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 190;
+      background: var(--fc-surface-card); border-top: 1px solid var(--fc-border);
+      height: 58px; padding: 0 1rem; align-items: stretch;
+    }
+    .fc-mobile-bottom-link {
+      flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 3px; font-size: 10px; font-weight: 600; color: var(--fc-text-muted); transition: color 0.2s; cursor: pointer;
+    }
+    .fc-mobile-bottom-link svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.75; }
+    .fc-mobile-bottom-link.is-active, .fc-mobile-bottom-link:hover { color: var(--fc-accent); }
+    .fc-mobile-cart-badge {
+      position: absolute; top: -4px; right: -4px; min-width: 14px; height: 14px;
+      padding: 0 3px; background: var(--fc-primary); color: #FFFFFF; font-size: 8px;
+      font-weight: 800; border-radius: 99px; display: flex; align-items: center; justify-content: center;
+    }
+
+    /* Cart Drawer */
+    .fc-overlay {
+      position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.6);
+      opacity: 0; visibility: hidden; transition: all 0.3s ease;
+    }
+    .fc-overlay.is-visible { opacity: 1; visibility: visible; }
+    .fc-cart-drawer {
+      position: fixed; top: 0; right: 0; bottom: 0; width: min(420px, 92vw);
+      background: var(--fc-surface-card); color: var(--fc-text-main); z-index: 400; transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex; flex-direction: column; box-shadow: -10px 0 30px rgba(0,0,0,0.25);
+    }
+    .fc-cart-drawer.is-open { transform: translateX(0); }
+    .fc-cart-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--fc-border);
+    }
+    .fc-cart-body { flex: 1; overflow-y: auto; padding: 1.25rem 1.5rem; }
+    .fc-cart-footer { padding: 1.5rem; border-top: 1px solid var(--fc-border); background: var(--fc-surface); }
+
     @media (max-width: 1024px) {
       .fc-hero-grid { grid-template-columns: 1fr; }
       .fc-product-grid { grid-template-columns: repeat(3, 1fr); }
@@ -383,10 +502,15 @@
       .fc-footer-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
+      body { padding-bottom: 60px; }
+      .fc-nav-bar { display: none; }
+      .fc-mobile-bottom-nav { display: flex; }
       .fc-product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
       .fc-pillars-grid { grid-template-columns: 1fr; }
       .fc-payment-promo-strip { flex-direction: column; align-items: flex-start; padding: 1.5rem; }
       .fc-footer-grid { grid-template-columns: 1fr; }
+      .fc-whatsapp-float { bottom: 70px; right: 16px; padding: 8px; border-radius: 50%; }
+      .fc-whatsapp-text { display: none; }
     }
   </style>
 </head>
@@ -401,7 +525,7 @@
       <button class="fc-promo-copy-btn" onclick="copyPromoCode('ONLINE5')">Copy Code</button>
     </div>
     <div class="fc-promo-slide">
-      <span>ðŸšš <strong>FREE NATIONWIDE DELIVERY</strong> on all orders above à§³2,000 across 64 districts</span>
+      <span>ðŸšš <strong>FREE NATIONWIDE DELIVERY</strong> on all orders above <span class="fc-taka">à§³</span>2,000 across 64 districts</span>
     </div>
     <div class="fc-promo-slide">
       <span>âœ¨ <strong>220+ GSM Heavyweight Combed Cotton</strong> &bull; 7-Day Hassle-Free Exchange</span>
@@ -421,7 +545,7 @@
         <div class="fc-logo-emblem-wrap">
           <img src="/assets/images/logo.jpg" alt="FOLDCUT Emblem" class="fc-logo-emblem" />
         </div>
-        <div class="fc-logo-text-group">
+        <div>
           <span class="fc-logo-name">FOLD<span class="fc-logo-accent">CUT</span></span>
           <span class="fc-logo-motto">Quality &bull; Comfort &bull; Confidence</span>
         </div>
@@ -442,8 +566,8 @@
   </div>
   <nav class="fc-nav-bar" aria-label="Main Navigation">
     <div class="fc-nav-bar__inner">
-      <a href="index.html" class="fc-nav-link is-active">Home</a>
-      <a href="shop.html" class="fc-nav-link">All Products</a>
+      <a href="index.html" class="fc-nav-link">Home</a>
+      <a href="shop.html" class="fc-nav-link is-active">All Products</a>
       <a href="shop.html?cat=men" class="fc-nav-link">Men</a>
       <a href="shop.html?cat=women" class="fc-nav-link">Women</a>
       <a href="shop.html?cat=accessories" class="fc-nav-link">Accessories</a>
@@ -462,7 +586,7 @@
           <span>â˜… Quality &bull; Comfort &bull; Confidence</span>
         </div>
         <h1 class="fc-hero-h1">CUT DIFFERENT.<br>WEAR <span>DIFFERENT.</span></h1>
-        <p class="fc-hero-desc">Contemporary luxury apparel engineered with 220+ GSM combed compact cotton. Designed in Dhaka for unmatched all-day comfort and undeniable confidence.</p>
+        <p class="fc-hero-desc">Contemporary luxury fashion engineered with 220+ GSM combed compact cotton. Designed in Dhaka for unmatched all-day comfort and undeniable confidence.</p>
         <div class="fc-hero-actions">
           <a href="shop.html" class="fc-btn fc-btn--primary">EXPLORE COLLECTION</a>
           <a href="shop.html" class="fc-btn fc-btn--secondary">CLAIM 5% ONLINE DISCOUNT</a>
@@ -538,10 +662,10 @@
           <div class="fc-product-card__category">Men &bull; 220 GSM Cotton</div>
           <div class="fc-product-card__name"><a href="product.html">Oversized Heavyweight Essential Tee</a></div>
           <div class="fc-product-card__price-row">
-            <span class="fc-price-main">à§³1,199</span>
-            <span class="fc-price-orig">à§³1,499</span>
+            <span class="fc-price-main"><span class="fc-taka">à§³</span>1,199</span>
+            <span class="fc-price-orig"><span class="fc-taka">à§³</span>1,499</span>
           </div>
-          <div class="fc-online-pay-pill">ðŸ’³ à§³1,139 with 5% online pay</div>
+          <div class="fc-online-pay-pill">ðŸ’³ <span class="fc-taka">à§³</span>1,139 with 5% online pay</div>
         </div>
       </article>
 
@@ -560,10 +684,10 @@
           <div class="fc-product-card__category">Men &bull; Polos</div>
           <div class="fc-product-card__name"><a href="product.html">Executive Pique Cotton Polo</a></div>
           <div class="fc-product-card__price-row">
-            <span class="fc-price-main">à§³1,799</span>
-            <span class="fc-price-orig">à§³2,199</span>
+            <span class="fc-price-main"><span class="fc-taka">à§³</span>1,799</span>
+            <span class="fc-price-orig"><span class="fc-taka">à§³</span>2,199</span>
           </div>
-          <div class="fc-online-pay-pill">ðŸ’³ à§³1,709 with 5% online pay</div>
+          <div class="fc-online-pay-pill">ðŸ’³ <span class="fc-taka">à§³</span>1,709 with 5% online pay</div>
         </div>
       </article>
 
@@ -582,10 +706,10 @@
           <div class="fc-product-card__category">Women &bull; Co-Ords</div>
           <div class="fc-product-card__name"><a href="product.html">Minimalist Linen Co-Ord Set</a></div>
           <div class="fc-product-card__price-row">
-            <span class="fc-price-main">à§³2,499</span>
-            <span class="fc-price-orig">à§³2,999</span>
+            <span class="fc-price-main"><span class="fc-taka">à§³</span>2,499</span>
+            <span class="fc-price-orig"><span class="fc-taka">à§³</span>2,999</span>
           </div>
-          <div class="fc-online-pay-pill">ðŸ’³ à§³2,374 with 5% online pay</div>
+          <div class="fc-online-pay-pill">ðŸ’³ <span class="fc-taka">à§³</span>2,374 with 5% online pay</div>
         </div>
       </article>
 
@@ -604,10 +728,10 @@
           <div class="fc-product-card__category">Women &bull; Ethnic</div>
           <div class="fc-product-card__name"><a href="product.html">Contemporary Everyday Kurti</a></div>
           <div class="fc-product-card__price-row">
-            <span class="fc-price-main">à§³1,450</span>
-            <span class="fc-price-orig">à§³1,899</span>
+            <span class="fc-price-main"><span class="fc-taka">à§³</span>1,450</span>
+            <span class="fc-price-orig"><span class="fc-taka">à§³</span>1,899</span>
           </div>
-          <div class="fc-online-pay-pill">ðŸ’³ à§³1,377 with 5% online pay</div>
+          <div class="fc-online-pay-pill">ðŸ’³ <span class="fc-taka">à§³</span>1,377 with 5% online pay</div>
         </div>
       </article>
     </div>
@@ -701,7 +825,7 @@
           <div style="width:40px;height:40px;border-radius:50%;overflow:hidden;border:1.5px solid #C28453;background:#FFFFFF;">
             <img src="/assets/images/logo.jpg" alt="FOLDCUT" style="width:100%;height:100%;object-fit:cover;" />
           </div>
-          <span style="font-family:var(--fc-font-display);font-size:18px;font-weight:800;color:var(--fc-text-main);">FOLD<span style="color:var(--fc-accent);">CUT</span></span>
+          <span class="fc-logo-name" style="font-size:18px;">FOLD<span style="color:var(--fc-accent);">CUT</span></span>
         </div>
         <p style="font-size:0.875rem;color:var(--fc-text-muted);line-height:1.6;margin-bottom:1rem;">Contemporary luxury apparel engineered for quality, comfort, and confidence. Proudly crafted in Dhaka, Bangladesh.</p>
         <p style="font-size:0.875rem;color:var(--fc-accent);font-weight:700;">ðŸ“ž Helpline: +880 1700-000000</p>
@@ -802,7 +926,6 @@
 </div>
 
 <script>
-  // Theme Detection & Toggle
   function initTheme() {
     const saved = localStorage.getItem('fc_theme');
     if (saved === 'dark' || saved === 'light') {
@@ -897,15 +1020,15 @@
 
       const subElem = document.getElementById('fc-cart-subtotal');
       const discElem = document.getElementById('fc-cart-discount');
-      if (subElem) subElem.textContent = 'à§³' + subtotal.toLocaleString();
-      if (discElem) discElem.textContent = '-à§³' + discount.toLocaleString();
+      if (subElem) subElem.innerHTML = '<span class="fc-taka">à§³</span>' + subtotal.toLocaleString();
+      if (discElem) discElem.innerHTML = '-<span class="fc-taka">à§³</span>' + discount.toLocaleString();
 
       if (items) {
         items.innerHTML = cart.map((item, idx) => `
           <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--fc-border);align-items:center;">
             <div style="flex:1;">
               <div style="font-weight:700;font-size:13px;color:var(--fc-text-main);">${item.name}</div>
-              <div style="font-size:12px;color:var(--fc-text-muted);">à§³${item.price.toLocaleString()} &times; ${item.qty || 1}</div>
+              <div style="font-size:12px;color:var(--fc-text-muted);"><span class="fc-taka">à§³</span>${item.price.toLocaleString()} &times; ${item.qty || 1}</div>
             </div>
             <button onclick="removeFromCart(${idx})" style="color:var(--fc-error);font-size:12px;font-weight:600;">Remove</button>
           </div>
