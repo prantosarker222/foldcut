@@ -1,0 +1,2414 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0A0A0A" />
+  <title>FOLDCUT — Cut Different. Wear Different. | Contemporary Fashion Bangladesh</title>
+  <meta name="description" content="FOLDCUT brings contemporary fashion for men, women and kids. Shop the latest arrivals, best sellers and exclusive collections. Fast delivery across Bangladesh." />
+  <meta property="og:title" content="FOLDCUT — Cut Different. Wear Different." />
+  <meta property="og:description" content="Contemporary fashion for those who choose to stand apart. Shop FOLDCUT — men, women, kids, accessories. Bangladesh delivery." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://foldcut.online" />
+  <meta property="og:image" content="https://foldcut.online/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================
+       FOLDCUT — DESIGN TOKENS
+    ============================================ */
+    :root {
+      /* Colors */
+      --fc-black:       #0A0A0A;
+      --fc-white:       #F8F7F5;
+      --fc-gray-100:    #F2F1EF;
+      --fc-gray-200:    #E5E3DF;
+      --fc-gray-400:    #9E9A94;
+      --fc-gray-600:    #6B6762;
+      --fc-gray-800:    #2C2B29;
+      --fc-accent:      #C8A96E;
+      --fc-accent-dark: #A8893E;
+      --fc-error:       #CC3333;
+      --fc-success:     #2D7A4F;
+      --fc-overlay:     rgba(10,10,10,0.6);
+      --fc-overlay-dark: rgba(10,10,10,0.85);
+
+      /* Typography */
+      --fc-font-display: 'Plus Jakarta Sans', sans-serif;
+      --fc-font-body:    'Inter', sans-serif;
+      --fc-font-bengali: 'Noto Sans Bengali', sans-serif;
+
+      /* Sizes */
+      --fc-text-xs:   0.75rem;
+      --fc-text-sm:   0.875rem;
+      --fc-text-base: 1rem;
+      --fc-text-lg:   1.125rem;
+      --fc-text-xl:   1.25rem;
+      --fc-text-2xl:  1.5rem;
+      --fc-text-3xl:  1.875rem;
+      --fc-text-4xl:  2.25rem;
+      --fc-text-5xl:  3rem;
+      --fc-text-6xl:  3.75rem;
+      --fc-text-7xl:  4.5rem;
+      --fc-text-8xl:  6rem;
+
+      /* Spacing */
+      --fc-space-1:  0.25rem;
+      --fc-space-2:  0.5rem;
+      --fc-space-3:  0.75rem;
+      --fc-space-4:  1rem;
+      --fc-space-5:  1.25rem;
+      --fc-space-6:  1.5rem;
+      --fc-space-8:  2rem;
+      --fc-space-10: 2.5rem;
+      --fc-space-12: 3rem;
+      --fc-space-16: 4rem;
+      --fc-space-20: 5rem;
+      --fc-space-24: 6rem;
+      --fc-space-32: 8rem;
+
+      /* Radii */
+      --fc-radius-sm: 2px;
+      --fc-radius:    4px;
+      --fc-radius-md: 8px;
+      --fc-radius-lg: 16px;
+      --fc-radius-full: 9999px;
+
+      /* Transitions */
+      --fc-transition-fast: 150ms ease;
+      --fc-transition:      250ms ease;
+      --fc-transition-slow: 400ms ease;
+
+      /* Shadows */
+      --fc-shadow-sm: 0 1px 3px rgba(10,10,10,0.08);
+      --fc-shadow:    0 4px 16px rgba(10,10,10,0.12);
+      --fc-shadow-lg: 0 8px 32px rgba(10,10,10,0.18);
+      --fc-shadow-xl: 0 16px 48px rgba(10,10,10,0.24);
+
+      /* Z-index */
+      --fc-z-dropdown: 100;
+      --fc-z-sticky:   200;
+      --fc-z-overlay:  300;
+      --fc-z-modal:    400;
+      --fc-z-toast:    500;
+
+      /* Header heights */
+      --fc-header-height: 116px;
+    }
+
+    /* ============================================
+       BASE RESET
+    ============================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--fc-font-body);
+      color: var(--fc-black);
+      background: var(--fc-white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+    img, video { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    ul, ol { list-style: none; }
+    input, select, textarea { font-family: inherit; }
+    :focus-visible { outline: 2px solid var(--fc-accent); outline-offset: 3px; }
+    ::selection { background: var(--fc-accent); color: var(--fc-black); }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--fc-gray-100); }
+    ::-webkit-scrollbar-thumb { background: var(--fc-gray-400); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--fc-gray-600); }
+
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .container { width: 100%; max-width: 1440px; margin: 0 auto; padding: 0 var(--fc-space-8); }
+
+    /* ============================================
+       ANIMATIONS
+    ============================================ */
+    @keyframes fc-fade-in  { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fc-fade-up  { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+    @keyframes fc-slide-right { from { transform: translateX(100%); } to { transform: translateX(0); } }
+    @keyframes fc-slide-left  { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+    @keyframes fc-scale-in { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+    @keyframes fc-shimmer { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+    @keyframes fc-spin { to { transform: rotate(360deg); } }
+    @keyframes fc-bounce-in { 0%{transform:scale(0.3);opacity:0} 60%{transform:scale(1.1)} 80%{transform:scale(0.95)} 100%{transform:scale(1);opacity:1} }
+    @keyframes fc-marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    .fc-reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fc-reveal.is-visible { opacity: 1; transform: none; }
+    .fc-reveal-delay-1 { transition-delay: 0.1s; }
+    .fc-reveal-delay-2 { transition-delay: 0.2s; }
+    .fc-reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ============================================
+       TYPOGRAPHY
+    ============================================ */
+    h1,h2,h3,h4,h5,h6 { font-family: var(--fc-font-display); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+    h1 { font-size: clamp(2.5rem, 6vw, 5rem); }
+    h2 { font-size: clamp(1.75rem, 3.5vw, 2.75rem); }
+    h3 { font-size: clamp(1.25rem, 2.5vw, 1.875rem); }
+    h4 { font-size: var(--fc-text-xl); }
+    p  { font-size: var(--fc-text-base); color: var(--fc-gray-600); line-height: 1.7; }
+
+    .fc-eyebrow {
+      display: inline-block;
+      font-family: var(--fc-font-body);
+      font-size: var(--fc-text-xs);
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--fc-accent);
+    }
+
+    .fc-section-title {
+      font-family: var(--fc-font-display);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--fc-black);
+    }
+    .fc-section-subtitle {
+      font-size: var(--fc-text-sm);
+      color: var(--fc-gray-400);
+      margin-top: var(--fc-space-2);
+      letter-spacing: 0.01em;
+    }
+
+    /* Price */
+    .fc-price { font-weight: 700; color: var(--fc-black); font-family: var(--fc-font-display); }
+    .fc-price-original { text-decoration: line-through; color: var(--fc-gray-400); font-weight: 400; font-size: 0.9em; }
+    .fc-price-sale { color: var(--fc-error); font-weight: 700; }
+    .fc-discount-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--fc-error); color: #fff;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.04em;
+      padding: 2px 6px; border-radius: var(--fc-radius-sm);
+    }
+
+    /* ============================================
+       BUTTONS
+    ============================================ */
+    .fc-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: var(--fc-space-2);
+      font-family: var(--fc-font-display);
+      font-size: var(--fc-text-sm); font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: var(--fc-space-4) var(--fc-space-8);
+      border: 2px solid transparent;
+      border-radius: var(--fc-radius-sm);
+      cursor: pointer;
+      transition: all var(--fc-transition);
+      white-space: nowrap;
+      text-decoration: none;
+    }
+    .fc-btn--primary {
+      background: var(--fc-black); color: var(--fc-white); border-color: var(--fc-black);
+    }
+    .fc-btn--primary:hover { background: var(--fc-gray-800); border-color: var(--fc-gray-800); }
+    .fc-btn--secondary {
+      background: var(--fc-accent); color: var(--fc-black); border-color: var(--fc-accent);
+    }
+    .fc-btn--secondary:hover { background: var(--fc-accent-dark); border-color: var(--fc-accent-dark); }
+    .fc-btn--ghost {
+      background: transparent; color: var(--fc-white); border-color: rgba(248,247,245,0.5);
+    }
+    .fc-btn--ghost:hover { background: rgba(248,247,245,0.1); border-color: var(--fc-white); }
+    .fc-btn--outline {
+      background: transparent; color: var(--fc-black); border-color: var(--fc-gray-200);
+    }
+    .fc-btn--outline:hover { border-color: var(--fc-black); }
+    .fc-btn--sm { font-size: 11px; padding: var(--fc-space-3) var(--fc-space-6); }
+    .fc-btn--lg { font-size: var(--fc-text-base); padding: var(--fc-space-5) var(--fc-space-10); }
+    .fc-btn--full { width: 100%; }
+    .fc-btn--accent { background: var(--fc-accent); color: var(--fc-black); border-color: var(--fc-accent); }
+    .fc-btn--accent:hover { background: var(--fc-accent-dark); border-color: var(--fc-accent-dark); }
+
+    /* ============================================
+       HEADER
+    ============================================ */
+    .fc-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: var(--fc-z-sticky);
+      background: var(--fc-white);
+      border-bottom: 1px solid var(--fc-gray-200);
+      transition: all var(--fc-transition);
+    }
+    .fc-header--scrolled { box-shadow: var(--fc-shadow); }
+    .fc-header__bar {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px; padding: 0 var(--fc-space-8);
+      max-width: 1440px; margin: 0 auto;
+    }
+    .fc-header__left, .fc-header__right {
+      display: flex; align-items: center; gap: var(--fc-space-2);
+      flex: 1;
+    }
+    .fc-header__right { justify-content: flex-end; }
+    .fc-header__center { display: flex; justify-content: center; }
+
+    .fc-logo {
+      font-family: var(--fc-font-display);
+      font-size: 22px; font-weight: 800;
+      letter-spacing: 0.12em;
+      color: var(--fc-black);
+      text-decoration: none;
+      text-transform: uppercase;
+      user-select: none;
+    }
+    .fc-logo span { color: var(--fc-accent); }
+
+    .fc-hamburger {
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      width: 40px; height: 40px; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 8px;
+      border-radius: var(--fc-radius-sm);
+      transition: background var(--fc-transition-fast);
+    }
+    .fc-hamburger:hover { background: var(--fc-gray-100); }
+    .fc-hamburger__line {
+      display: block; width: 22px; height: 1.5px;
+      background: var(--fc-black);
+      transition: all var(--fc-transition);
+      transform-origin: center;
+    }
+    .fc-hamburger.is-open .fc-hamburger__line:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .fc-hamburger.is-open .fc-hamburger__line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .fc-hamburger.is-open .fc-hamburger__line:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .fc-icon-btn {
+      position: relative; display: flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px;
+      background: none; border: none; cursor: pointer;
+      border-radius: var(--fc-radius-sm);
+      transition: background var(--fc-transition-fast);
+      color: var(--fc-black);
+    }
+    .fc-icon-btn:hover { background: var(--fc-gray-100); }
+    .fc-icon-btn svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.75; }
+
+    .fc-cart-count {
+      position: absolute; top: 4px; right: 4px;
+      min-width: 16px; height: 16px; padding: 0 4px;
+      background: var(--fc-black); color: var(--fc-white);
+      font-size: 9px; font-weight: 700; letter-spacing: 0;
+      border-radius: var(--fc-radius-full);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform var(--fc-transition);
+    }
+    .fc-cart-count.is-bump { animation: fc-bounce-in 0.4s ease; }
+
+    /* Nav bar */
+    .fc-nav-bar {
+      border-top: 1px solid var(--fc-gray-200);
+      background: var(--fc-white);
+    }
+    .fc-nav-bar__inner {
+      display: flex; align-items: center; justify-content: center;
+      height: 44px; gap: var(--fc-space-8);
+      max-width: 1440px; margin: 0 auto; padding: 0 var(--fc-space-8);
+    }
+    .fc-nav-link {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.10em; text-transform: uppercase;
+      color: var(--fc-black);
+      text-decoration: none;
+      padding: var(--fc-space-1) 0;
+      position: relative;
+      transition: color var(--fc-transition-fast);
+      white-space: nowrap;
+    }
+    .fc-nav-link::after {
+      content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
+      height: 1.5px; background: var(--fc-accent);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform var(--fc-transition);
+    }
+    .fc-nav-link:hover { color: var(--fc-accent); }
+    .fc-nav-link:hover::after { transform: scaleX(1); }
+    .fc-nav-link--sale { color: var(--fc-error); }
+    .fc-nav-link--sale:hover { color: var(--fc-error); }
+    .fc-nav-link--sale::after { background: var(--fc-error); }
+
+    /* Announcement bar */
+    .fc-announcement {
+      background: var(--fc-black); color: var(--fc-white);
+      text-align: center; padding: var(--fc-space-2) var(--fc-space-4);
+      font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
+      display: flex; align-items: center; justify-content: center; gap: var(--fc-space-4);
+      overflow: hidden;
+    }
+    .fc-announcement__text { white-space: nowrap; }
+
+    /* ============================================
+       MOBILE DRAWER
+    ============================================ */
+    .fc-drawer {
+      position: fixed; top: 0; left: 0; bottom: 0;
+      width: min(340px, 85vw);
+      background: var(--fc-black); color: var(--fc-white);
+      z-index: var(--fc-z-modal);
+      transform: translateX(-100%);
+      transition: transform var(--fc-transition-slow);
+      display: flex; flex-direction: column;
+      overflow-y: auto;
+    }
+    .fc-drawer.is-open { transform: translateX(0); }
+    .fc-drawer__header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: var(--fc-space-6) var(--fc-space-6);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .fc-drawer__logo { font-family: var(--fc-font-display); font-size: 18px; font-weight: 800; letter-spacing: 0.12em; }
+    .fc-drawer__close {
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(255,255,255,0.15); border-radius: var(--fc-radius-sm);
+      color: var(--fc-white); font-size: 18px; cursor: pointer;
+      transition: all var(--fc-transition-fast);
+    }
+    .fc-drawer__close:hover { background: rgba(255,255,255,0.08); }
+    .fc-drawer__nav { padding: var(--fc-space-4) 0; flex: 1; }
+    .fc-drawer__nav-item a {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: var(--fc-space-4) var(--fc-space-6);
+      font-family: var(--fc-font-display); font-size: var(--fc-text-lg); font-weight: 600;
+      color: var(--fc-white); text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: color var(--fc-transition-fast);
+    }
+    .fc-drawer__nav-item a:hover { color: var(--fc-accent); }
+    .fc-drawer__nav-item--sale a { color: #ff6b6b; }
+    .fc-drawer__footer {
+      padding: var(--fc-space-6);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex; flex-direction: column; gap: var(--fc-space-4);
+    }
+    .fc-drawer__social { display: flex; gap: var(--fc-space-4); }
+    .fc-drawer__social a {
+      font-size: var(--fc-text-sm); color: var(--fc-gray-400);
+      transition: color var(--fc-transition-fast);
+    }
+    .fc-drawer__social a:hover { color: var(--fc-accent); }
+
+    /* ============================================
+       OVERLAY
+    ============================================ */
+    .fc-overlay {
+      position: fixed; inset: 0; z-index: var(--fc-z-overlay);
+      background: var(--fc-overlay-dark);
+      opacity: 0; visibility: hidden;
+      transition: all var(--fc-transition);
+    }
+    .fc-overlay.is-visible { opacity: 1; visibility: visible; }
+
+    /* ============================================
+       SEARCH OVERLAY
+    ============================================ */
+    .fc-search-overlay {
+      position: fixed; inset: 0; z-index: var(--fc-z-modal);
+      background: var(--fc-white);
+      display: flex; flex-direction: column;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: all var(--fc-transition);
+    }
+    .fc-search-overlay.is-open { opacity: 1; visibility: visible; pointer-events: all; }
+    .fc-search-overlay__header {
+      display: flex; align-items: center; gap: var(--fc-space-4);
+      padding: var(--fc-space-6) var(--fc-space-8);
+      border-bottom: 1px solid var(--fc-gray-200);
+    }
+    .fc-search-input-wrap { flex: 1; display: flex; align-items: center; gap: var(--fc-space-3); }
+    .fc-search-input-wrap svg { width: 20px; height: 20px; stroke: var(--fc-gray-400); flex-shrink: 0; }
+    .fc-search-input {
+      flex: 1; border: none; outline: none;
+      font-family: var(--fc-font-display); font-size: var(--fc-text-2xl); font-weight: 500;
+      color: var(--fc-black); background: transparent;
+      placeholder-shown: true;
+    }
+    .fc-search-input::placeholder { color: var(--fc-gray-200); }
+    .fc-search-close {
+      font-size: var(--fc-text-sm); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--fc-gray-600); cursor: pointer; padding: var(--fc-space-2) var(--fc-space-4);
+      border: 1px solid var(--fc-gray-200); border-radius: var(--fc-radius-sm);
+      transition: all var(--fc-transition-fast);
+    }
+    .fc-search-close:hover { border-color: var(--fc-black); color: var(--fc-black); }
+    .fc-search-overlay__body { flex: 1; overflow-y: auto; padding: var(--fc-space-8); }
+    .fc-search-popular { margin-bottom: var(--fc-space-8); }
+    .fc-search-popular__label {
+      font-size: var(--fc-text-xs); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--fc-gray-400); margin-bottom: var(--fc-space-4);
+    }
+    .fc-search-tags { display: flex; flex-wrap: wrap; gap: var(--fc-space-2); }
+    .fc-search-tag {
+      padding: var(--fc-space-2) var(--fc-space-4);
+      border: 1px solid var(--fc-gray-200); border-radius: var(--fc-radius-full);
+      font-size: var(--fc-text-sm); color: var(--fc-gray-600);
+      cursor: pointer; transition: all var(--fc-transition-fast);
+    }
+    .fc-search-tag:hover { border-color: var(--fc-black); color: var(--fc-black); }
+    .fc-search-results { display: flex; flex-direction: column; gap: var(--fc-space-3); }
+    .fc-search-result-item {
+      display: flex; align-items: center; gap: var(--fc-space-4);
+      padding: var(--fc-space-3) var(--fc-space-4); border-radius: var(--fc-radius-md);
+      cursor: pointer; transition: background var(--fc-transition-fast);
+    }
+    .fc-search-result-item:hover { background: var(--fc-gray-100); }
+    .fc-search-result-item__img {
+      width: 56px; height: 72px; object-fit: cover;
+      border-radius: var(--fc-radius-sm); background: var(--fc-gray-200); flex-shrink: 0;
+    }
+    .fc-search-result-item__info { flex: 1; }
+    .fc-search-result-item__name { font-weight: 600; font-size: var(--fc-text-sm); color: var(--fc-black); }
+    .fc-search-result-item__category { font-size: var(--fc-text-xs); color: var(--fc-gray-400); margin-bottom: 2px; }
+    .fc-search-result-item__price { font-weight: 700; font-size: var(--fc-text-sm); font-family: var(--fc-font-display); }
+
+    /* ============================================
+       CART DRAWER
+    ============================================ */
+    .fc-cart-drawer {
+      position: fixed; top: 0; right: 0; bottom: 0;
+      width: min(420px, 100vw);
+      background: var(--fc-white);
+      z-index: var(--fc-z-modal);
+      transform: translateX(100%);
+      transition: transform var(--fc-transition-slow);
+      display: flex; flex-direction: column;
+      box-shadow: var(--fc-shadow-xl);
+    }
+    .fc-cart-drawer.is-open { transform: translateX(0); }
+    .fc-cart-drawer__header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: var(--fc-space-6);
+      border-bottom: 1px solid var(--fc-gray-200);
+    }
+    .fc-cart-drawer__title {
+      font-family: var(--fc-font-display); font-size: var(--fc-text-lg); font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .fc-cart-drawer__count {
+      font-size: var(--fc-text-xs); color: var(--fc-gray-400); font-weight: 400; margin-left: var(--fc-space-2);
+    }
+    .fc-cart-drawer__close {
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--fc-gray-200); border-radius: var(--fc-radius-sm);
+      cursor: pointer; transition: all var(--fc-transition-fast);
+    }
+    .fc-cart-drawer__close:hover { background: var(--fc-gray-100); }
+    .fc-cart-drawer__close svg { width: 16px; height: 16px; stroke: var(--fc-black); stroke-width: 2; }
+
+    /* Free delivery progress */
+    .fc-delivery-progress {
+      padding: var(--fc-space-4) var(--fc-space-6);
+      border-bottom: 1px solid var(--fc-gray-200);
+      background: var(--fc-gray-100);
+    }
+    .fc-delivery-progress__text {
+      font-size: var(--fc-text-xs); font-weight: 600; color: var(--fc-gray-600); margin-bottom: var(--fc-space-2);
+    }
+    .fc-delivery-progress__bar {
+      height: 3px; background: var(--fc-gray-200); border-radius: var(--fc-radius-full); overflow: hidden;
+    }
+    .fc-delivery-progress__fill {
+      height: 100%; background: var(--fc-success); border-radius: var(--fc-radius-full);
+      transition: width 0.5s ease;
+    }
+
+    .fc-cart-drawer__body { flex: 1; overflow-y: auto; padding: var(--fc-space-4) var(--fc-space-6); }
+
+    /* Cart item */
+    .fc-cart-item {
+      display: flex; gap: var(--fc-space-4);
+      padding: var(--fc-space-4) 0;
+      border-bottom: 1px solid var(--fc-gray-200);
+      animation: fc-fade-in 0.3s ease;
+    }
+    .fc-cart-item__img {
+      width: 80px; height: 100px; object-fit: cover;
+      border-radius: var(--fc-radius-sm); background: var(--fc-gray-200); flex-shrink: 0;
+    }
+    .fc-cart-item__details { flex: 1; display: flex; flex-direction: column; gap: var(--fc-space-1); }
+    .fc-cart-item__name { font-size: var(--fc-text-sm); font-weight: 600; line-height: 1.3; }
+    .fc-cart-item__meta { font-size: var(--fc-text-xs); color: var(--fc-gray-400); }
+    .fc-cart-item__price-row { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+    .fc-cart-item__qty {
+      display: flex; align-items: center; gap: 0;
+      border: 1px solid var(--fc-gray-200); border-radius: var(--fc-radius-sm); overflow: hidden;
+    }
+    .fc-qty-btn {
+      width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
+      background: none; border: none; cursor: pointer; font-size: var(--fc-text-base);
+      color: var(--fc-black); transition: background var(--fc-transition-fast);
+    }
+    .fc-qty-btn:hover { background: var(--fc-gray-100); }
+    .fc-qty-val { width: 36px; text-align: center; font-size: var(--fc-text-sm); font-weight: 600; }
+    .fc-cart-item__remove {
+      font-size: var(--fc-text-xs); color: var(--fc-gray-400); text-decoration: underline;
+      cursor: pointer; background: none; border: none; padding: 0;
+      transition: color var(--fc-transition-fast);
+    }
+    .fc-cart-item__remove:hover { color: var(--fc-error); }
+
+    /* Cart footer */
+    .fc-cart-drawer__footer {
+      padding: var(--fc-space-6);
+      border-top: 1px solid var(--fc-gray-200);
+      background: var(--fc-white);
+    }
+    .fc-cart-summary { display: flex; flex-direction: column; gap: var(--fc-space-2); margin-bottom: var(--fc-space-6); }
+    .fc-cart-summary-row { display: flex; justify-content: space-between; font-size: var(--fc-text-sm); }
+    .fc-cart-summary-row--total { font-weight: 700; font-size: var(--fc-text-base); border-top: 1px solid var(--fc-gray-200); padding-top: var(--fc-space-3); margin-top: var(--fc-space-1); }
+    .fc-cart-summary-row--delivery { color: var(--fc-gray-600); }
+    .fc-cart-ctas { display: flex; flex-direction: column; gap: var(--fc-space-3); }
+
+    /* Empty cart */
+    .fc-cart-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; gap: var(--fc-space-4); padding: var(--fc-space-12) var(--fc-space-8); text-align: center; }
+    .fc-cart-empty__icon { font-size: 48px; opacity: 0.2; }
+    .fc-cart-empty__title { font-family: var(--fc-font-display); font-size: var(--fc-text-xl); font-weight: 700; }
+    .fc-cart-empty__text { font-size: var(--fc-text-sm); color: var(--fc-gray-400); }
+
+    /* ============================================
+       TOAST NOTIFICATIONS
+    ============================================ */
+    .fc-toast-container {
+      position: fixed; bottom: var(--fc-space-6); left: 50%;
+      transform: translateX(-50%);
+      z-index: var(--fc-z-toast);
+      display: flex; flex-direction: column; gap: var(--fc-space-2);
+      pointer-events: none;
+    }
+    .fc-toast {
+      display: flex; align-items: center; gap: var(--fc-space-3);
+      padding: var(--fc-space-3) var(--fc-space-5);
+      background: var(--fc-black); color: var(--fc-white);
+      border-radius: var(--fc-radius-md); box-shadow: var(--fc-shadow-lg);
+      font-size: var(--fc-text-sm); font-weight: 500;
+      animation: fc-bounce-in 0.4s ease;
+      white-space: nowrap; pointer-events: all;
+    }
+    .fc-toast--success { border-left: 3px solid var(--fc-success); }
+    .fc-toast--error { border-left: 3px solid var(--fc-error); }
+
+    /* ============================================
+       QUICK ADD MODAL
+    ============================================ */
+    .fc-quick-add-modal {
+      position: fixed; inset: 0; z-index: var(--fc-z-modal);
+      display: flex; align-items: flex-end; justify-content: center;
+      opacity: 0; visibility: hidden; pointer-events: none;
+      transition: all var(--fc-transition);
+    }
+    .fc-quick-add-modal.is-open { opacity: 1; visibility: visible; pointer-events: all; }
+    .fc-quick-add-modal__panel {
+      width: min(520px, 100vw);
+      background: var(--fc-white);
+      border-radius: var(--fc-radius-lg) var(--fc-radius-lg) 0 0;
+      padding: var(--fc-space-8) var(--fc-space-6) var(--fc-space-8);
+      transform: translateY(100%); transition: transform var(--fc-transition-slow);
+      box-shadow: var(--fc-shadow-xl);
+    }
+    .fc-quick-add-modal.is-open .fc-quick-add-modal__panel { transform: translateY(0); }
+    .fc-modal-header {
+      display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: var(--fc-space-6);
+    }
+    .fc-modal-product-name { font-family: var(--fc-font-display); font-size: var(--fc-text-lg); font-weight: 700; }
+    .fc-modal-product-price { font-size: var(--fc-text-sm); color: var(--fc-gray-600); margin-top: var(--fc-space-1); }
+    .fc-modal-close {
+      width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--fc-gray-200); border-radius: var(--fc-radius-sm); cursor: pointer;
+      flex-shrink: 0;
+    }
+    .fc-modal-close:hover { background: var(--fc-gray-100); }
+    .fc-variant-section { margin-bottom: var(--fc-space-6); }
+    .fc-variant-label {
+      font-size: var(--fc-text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--fc-gray-600); margin-bottom: var(--fc-space-3);
+    }
+    .fc-size-btns { display: flex; flex-wrap: wrap; gap: var(--fc-space-2); }
+    .fc-size-btn {
+      min-width: 48px; height: 40px; padding: 0 var(--fc-space-3);
+      border: 1.5px solid var(--fc-gray-200); border-radius: var(--fc-radius-sm);
+      font-size: var(--fc-text-sm); font-weight: 600; cursor: pointer;
+      transition: all var(--fc-transition-fast); background: var(--fc-white); color: var(--fc-black);
+    }
+    .fc-size-btn:hover { border-color: var(--fc-black); }
+    .fc-size-btn.is-selected { background: var(--fc-black); color: var(--fc-white); border-color: var(--fc-black); }
+    .fc-size-btn.is-disabled { opacity: 0.3; text-decoration: line-through; cursor: not-allowed; }
+    .fc-color-btns { display: flex; gap: var(--fc-space-3); flex-wrap: wrap; }
+    .fc-color-btn {
+      width: 32px; height: 32px; border-radius: var(--fc-radius-full);
+      border: 2px solid transparent; cursor: pointer;
+      transition: all var(--fc-transition-fast); position: relative;
+    }
+    .fc-color-btn.is-selected { outline: 2px solid var(--fc-black); outline-offset: 3px; }
+
+    /* ============================================
+       MAIN CONTENT OFFSET
+    ============================================ */
+    .fc-page-body { padding-top: var(--fc-header-height); }
+
+    /* ============================================
+       HERO SECTION
+    ============================================ */
+    .fc-hero {
+      position: relative; height: calc(100vh - var(--fc-header-height));
+      min-height: 600px; overflow: hidden;
+      display: flex; align-items: flex-end;
+    }
+    .fc-hero__media {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2b29 50%, #0a0a0a 100%);
+    }
+    .fc-hero__media img {
+      width: 100%; height: 100%; object-fit: cover; opacity: 0.75;
+    }
+    .fc-hero__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.4) 40%, rgba(10,10,10,0.1) 70%, transparent 100%);
+    }
+    .fc-hero__content {
+      position: relative; z-index: 2;
+      padding: var(--fc-space-16) var(--fc-space-8) var(--fc-space-16);
+      max-width: 720px;
+    }
+    .fc-hero__eyebrow {
+      display: inline-block;
+      font-size: var(--fc-text-xs); font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--fc-accent); margin-bottom: var(--fc-space-6);
+    }
+    .fc-hero__title {
+      font-family: var(--fc-font-display);
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 800; line-height: 1; letter-spacing: -0.03em;
+      color: var(--fc-white);
+      margin-bottom: var(--fc-space-6);
+    }
+    .fc-hero__subtitle {
+      font-size: clamp(1rem, 1.5vw, 1.125rem);
+      color: rgba(248,247,245,0.75);
+      line-height: 1.65; font-weight: 400;
+      max-width: 480px;
+      margin-bottom: var(--fc-space-10);
+    }
+    .fc-hero__ctas { display: flex; gap: var(--fc-space-4); flex-wrap: wrap; }
+
+    /* Hero scroll indicator */
+    .fc-hero__scroll {
+      position: absolute; bottom: var(--fc-space-8); right: var(--fc-space-8);
+      display: flex; flex-direction: column; align-items: center; gap: var(--fc-space-2);
+      color: rgba(248,247,245,0.5); font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .fc-hero__scroll-line {
+      width: 1px; height: 48px; background: rgba(248,247,245,0.2);
+      animation: fc-scroll-line 2s ease-in-out infinite;
+    }
+    @keyframes fc-scroll-line { 0%,100%{transform:scaleY(1);opacity:0.3} 50%{transform:scaleY(0.5);opacity:0.8} }
+
+    /* Hero split stats */
+    .fc-hero__stats {
+      position: absolute; bottom: var(--fc-space-8); left: var(--fc-space-8);
+      display: flex; gap: var(--fc-space-10); z-index: 2;
+    }
+    .fc-hero__stat { display: flex; flex-direction: column; }
+    .fc-hero__stat-number { font-family: var(--fc-font-display); font-size: var(--fc-text-2xl); font-weight: 800; color: var(--fc-white); line-height: 1; }
+    .fc-hero__stat-label { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(248,247,245,0.5); margin-top: 4px; }
+
+    /* ============================================
+       MARQUEE / TICKER
+    ============================================ */
+    .fc-ticker {
+      background: var(--fc-accent); overflow: hidden; padding: var(--fc-space-3) 0;
+      border-top: 1px solid var(--fc-gray-200);
+    }
+    .fc-ticker__track {
+      display: flex; width: fit-content;
+      animation: fc-marquee 20s linear infinite;
+    }
+    .fc-ticker__item {
+      display: flex; align-items: center; gap: var(--fc-space-3);
+      padding: 0 var(--fc-space-8); white-space: nowrap;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--fc-black);
+    }
+    .fc-ticker__dot { width: 4px; height: 4px; background: var(--fc-black); border-radius: 50%; opacity: 0.4; }
+
+    /* ============================================
+       SECTION HEADERS
+    ============================================ */
+    .fc-section { padding: var(--fc-space-20) 0; }
+    .fc-section--dark { background: var(--fc-black); }
+    .fc-section--gray { background: var(--fc-gray-100); }
+
+    .fc-section-header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      margin-bottom: var(--fc-space-10);
+      gap: var(--fc-space-6);
+    }
+    .fc-section-header__left { display: flex; flex-direction: column; gap: var(--fc-space-2); }
+    .fc-section-header__right { flex-shrink: 0; }
+
+    /* ============================================
+       CATEGORY CARDS
+    ============================================ */
+    .fc-categories {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--fc-space-3);
+    }
+    .fc-category-card {
+      position: relative; overflow: hidden;
+      aspect-ratio: 3/4;
+      border-radius: var(--fc-radius-md);
+      cursor: pointer;
+      display: block; text-decoration: none;
+    }
+    .fc-category-card__media {
+      position: absolute; inset: 0;
+      background: var(--fc-gray-800);
+      transition: transform var(--fc-transition-slow);
+    }
+    .fc-category-card:hover .fc-category-card__media { transform: scale(1.06); }
+    .fc-category-card__media img {
+      width: 100%; height: 100%; object-fit: cover; opacity: 0.8;
+    }
+    .fc-category-card__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 60%, transparent 100%);
+      transition: all var(--fc-transition);
+    }
+    .fc-category-card:hover .fc-category-card__overlay { background: linear-gradient(to top, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.4) 60%, transparent 100%); }
+    .fc-category-card__content {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: var(--fc-space-6); display: flex; flex-direction: column; gap: var(--fc-space-3);
+    }
+    .fc-category-card__name {
+      font-family: var(--fc-font-display); font-size: var(--fc-text-2xl); font-weight: 800;
+      color: var(--fc-white); line-height: 1; letter-spacing: -0.02em;
+    }
+    .fc-category-card__cta {
+      display: inline-flex; align-items: center; gap: var(--fc-space-2);
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--fc-white);
+      transform: translateY(8px); opacity: 0;
+      transition: all var(--fc-transition);
+    }
+    .fc-category-card:hover .fc-category-card__cta { transform: translateY(0); opacity: 1; }
+    .fc-category-card__cta-line {
+      flex: 1; max-width: 32px; height: 1px; background: var(--fc-white);
+    }
+
+    /* ============================================
+       PRODUCT CARDS
+    ============================================ */
+    .fc-product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--fc-space-4) var(--fc-space-4);
+    }
+    .fc-product-grid--3col { grid-template-columns: repeat(3, 1fr); }
+
+    .fc-product-card {
+      display: flex; flex-direction: column;
+    }
+    .fc-product-card__image-wrap {
+      position: relative; overflow: hidden;
+      aspect-ratio: 3/4; border-radius: var(--fc-radius-sm);
+      background: var(--fc-gray-100); cursor: pointer;
+    }
+    .fc-product-card__image, .fc-product-card__image--hover {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+      transition: opacity var(--fc-transition-slow);
+    }
+    .fc-product-card__image--hover { opacity: 0; }
+    .fc-product-card:hover .fc-product-card__image { opacity: 0; }
+    .fc-product-card:hover .fc-product-card__image--hover { opacity: 1; }
+
+    /* Badge */
+    .fc-product-card__badge {
+      position: absolute; top: var(--fc-space-3); left: var(--fc-space-3); z-index: 1;
+      display: flex; flex-direction: column; gap: var(--fc-space-1);
+    }
+    .fc-badge {
+      display: inline-flex; align-items: center;
+      padding: 3px 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.05em;
+      border-radius: var(--fc-radius-sm);
+    }
+    .fc-badge--new { background: var(--fc-black); color: var(--fc-white); }
+    .fc-badge--sale { background: var(--fc-error); color: #fff; }
+
+    /* Wishlist btn */
+    .fc-wishlist-btn {
+      position: absolute; top: var(--fc-space-3); right: var(--fc-space-3); z-index: 1;
+      width: 34px; height: 34px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--fc-white); border-radius: var(--fc-radius-full);
+      border: none; cursor: pointer; box-shadow: var(--fc-shadow-sm);
+      transition: all var(--fc-transition-fast);
+      opacity: 0; transform: scale(0.8);
+    }
+    .fc-product-card:hover .fc-wishlist-btn, .fc-wishlist-btn.is-active { opacity: 1; transform: scale(1); }
+    .fc-wishlist-btn svg { width: 16px; height: 16px; stroke: var(--fc-black); stroke-width: 1.75; fill: none; transition: all var(--fc-transition-fast); }
+    .fc-wishlist-btn.is-active svg { fill: #e0463e; stroke: #e0463e; }
+    .fc-wishlist-btn:hover { background: var(--fc-black); }
+    .fc-wishlist-btn:hover svg { stroke: var(--fc-white); }
+
+    /* Quick add */
+    .fc-quick-add-btn {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: var(--fc-black); color: var(--fc-white);
+      font-family: var(--fc-font-display); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: var(--fc-space-3); border: none; cursor: pointer;
+      transform: translateY(100%); transition: transform var(--fc-transition);
+    }
+    .fc-product-card:hover .fc-quick-add-btn { transform: translateY(0); }
+
+    /* Card info */
+    .fc-product-card__info { padding: var(--fc-space-3) 0 0; flex: 1; }
+    .fc-product-card__category { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fc-gray-400); margin-bottom: var(--fc-space-1); }
+    .fc-product-card__name { font-family: var(--fc-font-display); font-size: var(--fc-text-sm); font-weight: 600; color: var(--fc-black); line-height: 1.3; margin-bottom: var(--fc-space-2); }
+    .fc-product-card__price-row { display: flex; align-items: center; gap: var(--fc-space-2); flex-wrap: wrap; }
+    .fc-product-card__rating { display: flex; align-items: center; gap: var(--fc-space-1); margin-top: var(--fc-space-1); }
+    .fc-stars { display: flex; gap: 2px; }
+    .fc-star { color: var(--fc-accent); font-size: 12px; }
+    .fc-star--empty { color: var(--fc-gray-200); }
+    .fc-rating-count { font-size: 11px; color: var(--fc-gray-400); }
+
+    /* Color dots */
+    .fc-color-dots { display: flex; gap: 5px; margin-top: var(--fc-space-2); }
+    .fc-color-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      border: 1.5px solid var(--fc-gray-200);
+      cursor: pointer; transition: transform var(--fc-transition-fast);
+    }
+    .fc-color-dot:hover { transform: scale(1.2); }
+    .fc-color-dot.is-selected { outline: 2px solid var(--fc-black); outline-offset: 2px; }
+
+    /* Demo image placeholders */
+    .fc-img-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: var(--fc-text-4xl); background: linear-gradient(135deg, var(--fc-gray-100), var(--fc-gray-200));
+    }
+
+    /* ============================================
+       PRODUCT CAROUSEL (horizontal scroll)
+    ============================================ */
+    .fc-carousel-wrap { position: relative; }
+    .fc-product-carousel {
+      display: grid; grid-auto-flow: column; grid-auto-columns: 260px;
+      gap: var(--fc-space-4); overflow-x: auto; padding-bottom: var(--fc-space-4);
+      scrollbar-width: none; -ms-overflow-style: none;
+      scroll-snap-type: x mandatory;
+    }
+    .fc-product-carousel::-webkit-scrollbar { display: none; }
+    .fc-product-carousel .fc-product-card { scroll-snap-align: start; }
+
+    /* ============================================
+       EDITORIAL BANNER
+    ============================================ */
+    .fc-editorial {
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 600px; overflow: hidden;
+    }
+    .fc-editorial__media {
+      position: relative; overflow: hidden;
+      background: var(--fc-gray-800);
+    }
+    .fc-editorial__media img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform var(--fc-transition-slow);
+    }
+    .fc-editorial:hover .fc-editorial__media img { transform: scale(1.04); }
+    .fc-editorial__content {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: var(--fc-space-16) var(--fc-space-20);
+      background: var(--fc-black); color: var(--fc-white);
+    }
+    .fc-editorial__label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--fc-accent); margin-bottom: var(--fc-space-6);
+    }
+    .fc-editorial__title {
+      font-family: var(--fc-font-display); font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 800; line-height: 1.05; letter-spacing: -0.03em;
+      color: var(--fc-white); margin-bottom: var(--fc-space-6);
+    }
+    .fc-editorial__text {
+      font-size: var(--fc-text-base); line-height: 1.7;
+      color: rgba(248,247,245,0.65); margin-bottom: var(--fc-space-10);
+      max-width: 380px;
+    }
+
+    /* ============================================
+       LIMITED DROP
+    ============================================ */
+    .fc-limited-drop {
+      position: relative; overflow: hidden;
+      background: var(--fc-black); padding: var(--fc-space-24) 0;
+      text-align: center;
+    }
+    .fc-limited-drop__bg-text {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      font-family: var(--fc-font-display); font-size: clamp(6rem, 20vw, 18rem); font-weight: 800;
+      color: rgba(255,255,255,0.03); white-space: nowrap; letter-spacing: -0.05em;
+      pointer-events: none; user-select: none;
+    }
+    .fc-limited-drop__content { position: relative; z-index: 1; }
+    .fc-limited-drop__label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--fc-accent); margin-bottom: var(--fc-space-4);
+    }
+    .fc-limited-drop__title {
+      font-family: var(--fc-font-display); font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 800; letter-spacing: -0.03em;
+      color: var(--fc-white); line-height: 1; margin-bottom: var(--fc-space-6);
+    }
+    .fc-limited-drop__text {
+      font-size: var(--fc-text-base); color: rgba(248,247,245,0.55);
+      max-width: 440px; margin: 0 auto var(--fc-space-10);
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       BRAND STORY
+    ============================================ */
+    .fc-brand-story {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: var(--fc-space-24); align-items: center;
+    }
+    .fc-brand-story__label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--fc-accent); margin-bottom: var(--fc-space-6);
+    }
+    .fc-brand-story__title {
+      font-family: var(--fc-font-display); font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: var(--fc-space-6);
+    }
+    .fc-brand-story__text { font-size: var(--fc-text-base); color: var(--fc-gray-600); line-height: 1.75; margin-bottom: var(--fc-space-8); }
+    .fc-brand-story__visual {
+      position: relative;
+    }
+    .fc-brand-story__image-main {
+      width: 100%; aspect-ratio: 4/5; object-fit: cover;
+      border-radius: var(--fc-radius-lg); background: var(--fc-gray-200);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 80px; overflow: hidden;
+    }
+    .fc-brand-story__image-accent {
+      position: absolute; bottom: -var(--fc-space-8); right: -var(--fc-space-8);
+      width: 45%; aspect-ratio: 1; background: var(--fc-accent);
+      border-radius: var(--fc-radius-lg);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--fc-font-display); font-size: var(--fc-text-sm); font-weight: 800;
+      letter-spacing: 0.06em; color: var(--fc-black);
+      padding: var(--fc-space-4);
+    }
+
+    /* ============================================
+       TRUST BAR
+    ============================================ */
+    .fc-trust-bar { border-top: 1px solid var(--fc-gray-200); border-bottom: 1px solid var(--fc-gray-200); }
+    .fc-trust-bar__inner {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+    }
+    .fc-trust-item {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: var(--fc-space-3); padding: var(--fc-space-8) var(--fc-space-4);
+      border-right: 1px solid var(--fc-gray-200); text-align: center;
+    }
+    .fc-trust-item:last-child { border-right: none; }
+    .fc-trust-item__icon { font-size: 28px; }
+    .fc-trust-item__title { font-family: var(--fc-font-display); font-size: var(--fc-text-sm); font-weight: 700; color: var(--fc-black); }
+    .fc-trust-item__text { font-size: var(--fc-text-xs); color: var(--fc-gray-400); line-height: 1.4; }
+
+    /* ============================================
+       SOCIAL / INSTAGRAM GRID
+    ============================================ */
+    .fc-social-header { text-align: center; margin-bottom: var(--fc-space-10); }
+    .fc-social-handle {
+      display: inline-flex; align-items: center; gap: var(--fc-space-2);
+      font-size: var(--fc-text-xl); font-weight: 700; color: var(--fc-black);
+      margin-top: var(--fc-space-3);
+    }
+    .fc-social-grid {
+      display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--fc-space-2);
+    }
+    .fc-social-item {
+      position: relative; overflow: hidden;
+      aspect-ratio: 1; border-radius: var(--fc-radius-sm);
+      background: var(--fc-gray-100); cursor: pointer;
+    }
+    .fc-social-item img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--fc-transition-slow); }
+    .fc-social-item:hover img { transform: scale(1.08); }
+    .fc-social-item__overlay {
+      position: absolute; inset: 0;
+      background: rgba(10,10,10,0); display: flex; align-items: center; justify-content: center;
+      transition: all var(--fc-transition);
+    }
+    .fc-social-item:hover .fc-social-item__overlay { background: rgba(10,10,10,0.4); }
+    .fc-social-item__icon { color: var(--fc-white); font-size: 24px; opacity: 0; transition: opacity var(--fc-transition); }
+    .fc-social-item:hover .fc-social-item__icon { opacity: 1; }
+
+    /* ============================================
+       NEWSLETTER
+    ============================================ */
+    .fc-newsletter {
+      background: var(--fc-black); padding: var(--fc-space-24) 0;
+      text-align: center;
+    }
+    .fc-newsletter__eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--fc-accent); margin-bottom: var(--fc-space-4);
+    }
+    .fc-newsletter__title {
+      font-family: var(--fc-font-display); font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 800; letter-spacing: -0.03em; color: var(--fc-white); line-height: 1; margin-bottom: var(--fc-space-4);
+    }
+    .fc-newsletter__text { font-size: var(--fc-text-base); color: rgba(248,247,245,0.55); margin-bottom: var(--fc-space-10); max-width: 480px; margin-left: auto; margin-right: auto; }
+    .fc-newsletter__form {
+      display: flex; gap: 0;
+      max-width: 480px; margin: 0 auto;
+      border: 1px solid rgba(255,255,255,0.15); border-radius: var(--fc-radius-sm); overflow: hidden;
+    }
+    .fc-newsletter__input {
+      flex: 1; background: transparent; border: none; outline: none;
+      padding: var(--fc-space-4) var(--fc-space-5);
+      font-size: var(--fc-text-sm); color: var(--fc-white);
+      font-family: var(--fc-font-body);
+    }
+    .fc-newsletter__input::placeholder { color: rgba(248,247,245,0.3); }
+    .fc-newsletter__btn {
+      background: var(--fc-accent); color: var(--fc-black); border: none; cursor: pointer;
+      padding: var(--fc-space-4) var(--fc-space-6);
+      font-family: var(--fc-font-display); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      white-space: nowrap; transition: background var(--fc-transition-fast);
+      flex-shrink: 0;
+    }
+    .fc-newsletter__btn:hover { background: var(--fc-accent-dark); }
+    .fc-newsletter__disclaimer { font-size: 11px; color: rgba(248,247,245,0.3); margin-top: var(--fc-space-4); }
+
+    /* ============================================
+       FOOTER
+    ============================================ */
+    .fc-footer { background: var(--fc-black); color: var(--fc-white); }
+    .fc-footer__top { padding: var(--fc-space-20) 0 var(--fc-space-16); }
+    .fc-footer__grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+      gap: var(--fc-space-10);
+    }
+    .fc-footer__brand-logo {
+      font-family: var(--fc-font-display); font-size: 20px; font-weight: 800;
+      letter-spacing: 0.12em; color: var(--fc-white); margin-bottom: var(--fc-space-4);
+    }
+    .fc-footer__tagline { font-size: var(--fc-text-sm); color: var(--fc-gray-400); line-height: 1.7; margin-bottom: var(--fc-space-6); }
+    .fc-footer__contact-item {
+      display: flex; align-items: center; gap: var(--fc-space-2);
+      font-size: var(--fc-text-sm); color: var(--fc-gray-400); margin-bottom: var(--fc-space-2);
+    }
+    .fc-footer__col-title {
+      font-family: var(--fc-font-display); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--fc-accent); margin-bottom: var(--fc-space-5);
+    }
+    .fc-footer__links { display: flex; flex-direction: column; gap: var(--fc-space-3); }
+    .fc-footer__link {
+      font-size: var(--fc-text-sm); color: var(--fc-gray-400);
+      text-decoration: none; transition: color var(--fc-transition-fast);
+    }
+    .fc-footer__link:hover { color: var(--fc-white); }
+    .fc-footer__social { display: flex; flex-direction: column; gap: var(--fc-space-3); margin-top: var(--fc-space-2); }
+    .fc-footer__social-link {
+      display: flex; align-items: center; gap: var(--fc-space-3);
+      font-size: var(--fc-text-sm); color: var(--fc-gray-400);
+      text-decoration: none; transition: color var(--fc-transition-fast);
+    }
+    .fc-footer__social-link:hover { color: var(--fc-white); }
+    .fc-footer__social-icon {
+      width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--fc-radius-sm); display: flex; align-items: center; justify-content: center;
+      font-size: 14px; flex-shrink: 0; transition: all var(--fc-transition-fast);
+    }
+    .fc-footer__social-link:hover .fc-footer__social-icon { border-color: var(--fc-accent); color: var(--fc-accent); }
+
+    .fc-footer__bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: var(--fc-space-6) 0;
+    }
+    .fc-footer__bottom-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: var(--fc-space-4);
+    }
+    .fc-footer__copyright { font-size: var(--fc-text-xs); color: rgba(255,255,255,0.35); }
+    .fc-footer__payment { display: flex; gap: var(--fc-space-3); align-items: center; }
+    .fc-payment-icon {
+      padding: 4px 8px; border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ============================================
+       RESPONSIVE
+    ============================================ */
+    @media (max-width: 1280px) {
+      .fc-categories { grid-template-columns: repeat(4, 1fr); gap: var(--fc-space-2); }
+      .fc-product-grid { grid-template-columns: repeat(3, 1fr); }
+      .fc-social-grid { grid-template-columns: repeat(4, 1fr); }
+      .fc-footer__grid { grid-template-columns: 1fr 1fr 1fr; gap: var(--fc-space-8); }
+      .fc-trust-bar__inner { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 1024px) {
+      :root { --fc-header-height: 116px; }
+      .fc-editorial { grid-template-columns: 1fr; }
+      .fc-editorial__content { padding: var(--fc-space-12) var(--fc-space-10); }
+      .fc-brand-story { grid-template-columns: 1fr; gap: var(--fc-space-10); }
+      .fc-brand-story__visual { display: none; }
+    }
+    @media (max-width: 768px) {
+      :root { --fc-header-height: 60px; }
+      .fc-nav-bar { display: none; }
+      .fc-header__bar { height: 60px; padding: 0 var(--fc-space-4); }
+      .fc-hero__content { padding: var(--fc-space-8) var(--fc-space-5); }
+      .fc-hero__stats { display: none; }
+      .fc-categories { grid-template-columns: repeat(2, 1fr); }
+      .fc-product-grid { grid-template-columns: repeat(2, 1fr); gap: var(--fc-space-3); }
+      .fc-product-carousel { grid-auto-columns: 185px; }
+      .fc-editorial__content { padding: var(--fc-space-10) var(--fc-space-5); }
+      .fc-trust-bar__inner { grid-template-columns: repeat(2, 1fr); }
+      .fc-trust-item:nth-child(5) { grid-column: span 2; border-right: none; }
+      .fc-social-grid { grid-template-columns: repeat(3, 1fr); }
+      .fc-footer__grid { grid-template-columns: 1fr 1fr; gap: var(--fc-space-8); }
+      .fc-footer__brand { grid-column: span 2; }
+      .fc-newsletter__form { flex-direction: column; border: none; gap: var(--fc-space-3); }
+      .fc-newsletter__input { border: 1px solid rgba(255,255,255,0.15); border-radius: var(--fc-radius-sm); }
+      .fc-newsletter__btn { border-radius: var(--fc-radius-sm); }
+      .fc-section { padding: var(--fc-space-12) 0; }
+      .container { padding: 0 var(--fc-space-4); }
+    }
+    @media (max-width: 480px) {
+      .fc-hero__title { font-size: 2.5rem; }
+      .fc-hero__ctas { flex-direction: column; }
+      .fc-hero__ctas .fc-btn { width: 100%; justify-content: center; }
+      .fc-categories { gap: var(--fc-space-2); }
+      .fc-category-card__name { font-size: var(--fc-text-xl); }
+      .fc-footer__grid { grid-template-columns: 1fr; }
+      .fc-footer__brand { grid-column: span 1; }
+      .fc-social-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================
+     TOAST CONTAINER
+============================================ -->
+<div class="fc-toast-container" id="fc-toast-container" aria-live="polite"></div>
+
+<!-- ============================================
+     SEARCH OVERLAY
+============================================ -->
+<div class="fc-search-overlay" id="fc-search-overlay" role="dialog" aria-label="Search" aria-modal="true">
+  <div class="fc-search-overlay__header">
+    <div class="fc-search-input-wrap">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input class="fc-search-input" id="fc-search-input" type="text" placeholder="Search products…" autocomplete="off" aria-label="Search products" />
+    </div>
+    <button class="fc-search-close" id="fc-search-close" aria-label="Close search">ESC</button>
+  </div>
+  <div class="fc-search-overlay__body">
+    <div class="fc-search-popular" id="fc-search-popular">
+      <p class="fc-search-popular__label">Popular searches</p>
+      <div class="fc-search-tags">
+        <span class="fc-search-tag" tabindex="0">Oversized Tee</span>
+        <span class="fc-search-tag" tabindex="0">Kurti</span>
+        <span class="fc-search-tag" tabindex="0">Cargo Pants</span>
+        <span class="fc-search-tag" tabindex="0">Bag</span>
+        <span class="fc-search-tag" tabindex="0">Accessories</span>
+        <span class="fc-search-tag" tabindex="0">Jewelry</span>
+        <span class="fc-search-tag" tabindex="0">New Arrivals</span>
+      </div>
+    </div>
+    <div class="fc-search-results" id="fc-search-results"></div>
+  </div>
+</div>
+
+<!-- ============================================
+     MOBILE DRAWER
+============================================ -->
+<nav class="fc-drawer" id="fc-mobile-drawer" aria-label="Main navigation">
+  <div class="fc-drawer__header">
+    <span class="fc-drawer__logo">FOLDCUT</span>
+    <button class="fc-drawer__close" id="fc-drawer-close" aria-label="Close menu">✕</button>
+  </div>
+  <div class="fc-drawer__nav">
+    <ul>
+      <li class="fc-drawer__nav-item"><a href="shop.html">Men <span>→</span></a></li>
+      <li class="fc-drawer__nav-item"><a href="shop.html">Women <span>→</span></a></li>
+      <li class="fc-drawer__nav-item"><a href="shop.html">Kids <span>→</span></a></li>
+      <li class="fc-drawer__nav-item"><a href="shop.html">Accessories <span>→</span></a></li>
+      <li class="fc-drawer__nav-item"><a href="shop.html">Jewelry <span>→</span></a></li>
+      <li class="fc-drawer__nav-item"><a href="shop.html">New Arrivals <span>→</span></a></li>
+      <li class="fc-drawer__nav-item"><a href="shop.html">Best Sellers <span>→</span></a></li>
+      <li class="fc-drawer__nav-item fc-drawer__nav-item--sale"><a href="shop.html">Sale <span>→</span></a></li>
+    </ul>
+  </div>
+  <div class="fc-drawer__footer">
+    <p style="font-size:11px;color:var(--fc-gray-400);letter-spacing:0.08em;text-transform:uppercase;font-weight:600;">Follow Us</p>
+    <div class="fc-drawer__social">
+      <a href="#">Facebook</a>
+      <a href="#">Instagram</a>
+      <a href="#">TikTok</a>
+    </div>
+    <p style="font-size:11px;color:var(--fc-gray-600);">📞 +880 1XXX-XXXXXX</p>
+  </div>
+</nav>
+
+<!-- ============================================
+     CART DRAWER
+============================================ -->
+<div class="fc-cart-drawer" id="fc-cart-drawer" role="dialog" aria-label="Shopping cart" aria-modal="true">
+  <div class="fc-cart-drawer__header">
+    <div>
+      <span class="fc-cart-drawer__title">Your Cart</span>
+      <span class="fc-cart-drawer__count" id="fc-cart-drawer-count">(0 items)</span>
+    </div>
+    <button class="fc-cart-drawer__close" id="fc-cart-close" aria-label="Close cart">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="fc-delivery-progress" id="fc-delivery-progress">
+    <p class="fc-delivery-progress__text">Add <strong id="fc-progress-amount">৳2,000</strong> more for free delivery!</p>
+    <div class="fc-delivery-progress__bar"><div class="fc-delivery-progress__fill" id="fc-progress-fill" style="width:0%"></div></div>
+  </div>
+  <div class="fc-cart-drawer__body" id="fc-cart-body">
+    <div class="fc-cart-empty" id="fc-cart-empty">
+      <div class="fc-cart-empty__icon">🛍️</div>
+      <p class="fc-cart-empty__title">Your cart is empty</p>
+      <p class="fc-cart-empty__text">Add something you love to get started.</p>
+      <a href="shop.html" class="fc-btn fc-btn--primary fc-btn--sm" onclick="closeCart()">SHOP NOW</a>
+    </div>
+    <div id="fc-cart-items"></div>
+  </div>
+  <div class="fc-cart-drawer__footer" id="fc-cart-footer" style="display:none;">
+    <div class="fc-cart-summary">
+      <div class="fc-cart-summary-row"><span>Subtotal</span><span id="fc-cart-subtotal">৳0</span></div>
+      <div class="fc-cart-summary-row fc-cart-summary-row--delivery"><span>Delivery</span><span id="fc-cart-delivery">Calculated at checkout</span></div>
+      <div class="fc-cart-summary-row fc-cart-summary-row--total"><span>Total</span><span id="fc-cart-total">৳0</span></div>
+    </div>
+    <div class="fc-cart-ctas">
+      <a href="checkout.html" class="fc-btn fc-btn--primary fc-btn--full">CHECKOUT</a>
+      <button class="fc-btn fc-btn--outline fc-btn--full" onclick="closeCart()">CONTINUE SHOPPING</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     QUICK ADD MODAL
+============================================ -->
+<div class="fc-quick-add-modal" id="fc-quick-add-modal" role="dialog" aria-label="Quick add to cart" aria-modal="true">
+  <div class="fc-quick-add-modal__panel">
+    <div class="fc-modal-header">
+      <div>
+        <p class="fc-modal-product-name" id="fc-modal-name">Product Name</p>
+        <p class="fc-modal-product-price" id="fc-modal-price">৳0</p>
+      </div>
+      <button class="fc-modal-close" id="fc-modal-close" aria-label="Close">✕</button>
+    </div>
+    <div class="fc-variant-section">
+      <p class="fc-variant-label">Color</p>
+      <div class="fc-color-btns" id="fc-modal-colors">
+        <button class="fc-color-btn is-selected" style="background:#0A0A0A;" title="Black" aria-label="Black"></button>
+        <button class="fc-color-btn" style="background:#E5E3DF;" title="Off White" aria-label="Off White"></button>
+        <button class="fc-color-btn" style="background:#8B7355;" title="Camel" aria-label="Camel"></button>
+      </div>
+    </div>
+    <div class="fc-variant-section">
+      <p class="fc-variant-label">Size <a href="#" style="font-size:11px;color:var(--fc-accent);margin-left:8px;font-weight:400;letter-spacing:0;">Size Guide</a></p>
+      <div class="fc-size-btns" id="fc-modal-sizes">
+        <button class="fc-size-btn">XS</button>
+        <button class="fc-size-btn is-selected">S</button>
+        <button class="fc-size-btn">M</button>
+        <button class="fc-size-btn">L</button>
+        <button class="fc-size-btn">XL</button>
+        <button class="fc-size-btn is-disabled">XXL</button>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+      <p class="fc-variant-label" style="margin-bottom:0;">Qty</p>
+      <div class="fc-cart-item__qty" style="margin-left:auto;">
+        <button class="fc-qty-btn" onclick="changeModalQty(-1)">−</button>
+        <span class="fc-qty-val" id="fc-modal-qty">1</span>
+        <button class="fc-qty-btn" onclick="changeModalQty(1)">+</button>
+      </div>
+    </div>
+    <button class="fc-btn fc-btn--primary fc-btn--full" id="fc-modal-add-btn" onclick="addToCartFromModal()">ADD TO CART</button>
+  </div>
+</div>
+
+<!-- ============================================
+     GLOBAL OVERLAY
+============================================ -->
+<div class="fc-overlay" id="fc-overlay" aria-hidden="true"></div>
+
+<!-- ============================================
+     HEADER
+============================================ -->
+<header class="fc-header" id="fc-header">
+  <div class="fc-announcement" role="banner">
+    <span class="fc-announcement__text">🚚 Free delivery inside Dhaka on orders above ৳2,000 — Cash on Delivery available nationwide</span>
+    <span style="opacity:0.3;">|</span>
+    <span class="fc-announcement__text">Use code <strong>FOLD10</strong> for 10% off your first order</span>
+  </div>
+  <div class="fc-header__bar">
+    <div class="fc-header__left">
+      <button class="fc-hamburger" id="fc-hamburger" aria-label="Open menu" aria-expanded="false">
+        <span class="fc-hamburger__line"></span>
+        <span class="fc-hamburger__line"></span>
+        <span class="fc-hamburger__line"></span>
+      </button>
+    </div>
+    <div class="fc-header__center">
+      <a href="index.html" class="fc-logo" aria-label="FOLDCUT home">FOLD<span>CUT</span></a>
+    </div>
+    <div class="fc-header__right">
+      <button class="fc-icon-btn" id="fc-search-btn" aria-label="Search" data-action="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <a href="#" class="fc-icon-btn" aria-label="Wishlist" id="fc-wishlist-btn">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </a>
+      <button class="fc-icon-btn" id="fc-cart-btn" aria-label="Cart" data-action="cart">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="fc-cart-count" id="fc-cart-count" aria-live="polite" aria-label="Cart items">0</span>
+      </button>
+    </div>
+  </div>
+  <nav class="fc-nav-bar" aria-label="Main navigation">
+    <div class="fc-nav-bar__inner">
+      <a href="shop.html" class="fc-nav-link">Men</a>
+      <a href="shop.html" class="fc-nav-link">Women</a>
+      <a href="shop.html" class="fc-nav-link">Kids</a>
+      <a href="shop.html" class="fc-nav-link">Accessories</a>
+      <a href="shop.html" class="fc-nav-link">Jewelry</a>
+      <a href="shop.html" class="fc-nav-link">New Arrivals</a>
+      <a href="shop.html" class="fc-nav-link">Best Sellers</a>
+      <a href="shop.html" class="fc-nav-link fc-nav-link--sale">Sale</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ============================================
+     MAIN PAGE CONTENT
+============================================ -->
+<main class="fc-page-body">
+
+  <!-- SECTION 01: HERO -->
+  <section class="fc-hero" aria-label="Hero banner">
+    <div class="fc-hero__media">
+      <!-- Using a gradient + emoji as placeholder — swap with real hero image -->
+      <div style="width:100%;height:100%;background:linear-gradient(135deg,#1c1c1c 0%,#2d2b29 40%,#0f0f0f 100%);display:flex;align-items:center;justify-content:flex-end;overflow:hidden;">
+        <div style="width:55%;height:100%;background:linear-gradient(160deg,#2d2b29,#1a1a1a);display:flex;align-items:center;justify-content:center;font-size:160px;opacity:0.2;letter-spacing:-0.05em;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;color:#fff;padding-right:80px;">FC</div>
+      </div>
+    </div>
+    <div class="fc-hero__overlay" aria-hidden="true"></div>
+    <div class="fc-hero__content">
+      <span class="fc-hero__eyebrow">New Season — Bangladesh 2025</span>
+      <h1 class="fc-hero__title">CUT<br>DIFFERENT.<br>WEAR<br>DIFFERENT.</h1>
+      <p class="fc-hero__subtitle">Discover contemporary fashion designed for your everyday statement. Made for those who choose to stand apart.</p>
+      <div class="fc-hero__ctas">
+        <a href="shop.html" class="fc-btn fc-btn--secondary fc-btn--lg">SHOP NEW ARRIVALS</a>
+        <a href="shop.html" class="fc-btn fc-btn--ghost fc-btn--lg">EXPLORE COLLECTION</a>
+      </div>
+    </div>
+    <div class="fc-hero__scroll" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="fc-hero__scroll-line"></div>
+    </div>
+    <div class="fc-hero__stats" aria-hidden="true">
+      <div class="fc-hero__stat">
+        <span class="fc-hero__stat-number">500+</span>
+        <span class="fc-hero__stat-label">Products</span>
+      </div>
+      <div class="fc-hero__stat">
+        <span class="fc-hero__stat-number">64</span>
+        <span class="fc-hero__stat-label">Districts</span>
+      </div>
+      <div class="fc-hero__stat">
+        <span class="fc-hero__stat-number">10K+</span>
+        <span class="fc-hero__stat-label">Customers</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="fc-ticker" aria-hidden="true">
+    <div class="fc-ticker__track">
+      <span class="fc-ticker__item">Free Delivery Inside Dhaka <span class="fc-ticker__dot"></span></span>
+      <span class="fc-ticker__item">Cash on Delivery Available <span class="fc-ticker__dot"></span></span>
+      <span class="fc-ticker__item">New Arrivals Every Week <span class="fc-ticker__dot"></span></span>
+      <span class="fc-ticker__item">Easy 7-Day Returns <span class="fc-ticker__dot"></span></span>
+      <span class="fc-ticker__item">Free Delivery Inside Dhaka <span class="fc-ticker__dot"></span></span>
+      <span class="fc-ticker__item">Cash on Delivery Available <span class="fc-ticker__dot"></span></span>
+      <span class="fc-ticker__item">New Arrivals Every Week <span class="fc-ticker__dot"></span></span>
+      <span class="fc-ticker__item">Easy 7-Day Returns <span class="fc-ticker__dot"></span></span>
+    </div>
+  </div>
+
+  <!-- SECTION 02: CATEGORY DISCOVERY -->
+  <section class="fc-section" aria-labelledby="cat-title">
+    <div class="container">
+      <div class="fc-section-header">
+        <div class="fc-section-header__left">
+          <span class="fc-eyebrow">Shop by Category</span>
+          <h2 class="fc-section-title" id="cat-title">Find Your Style</h2>
+        </div>
+      </div>
+      <div class="fc-categories">
+        <!-- Men -->
+        <a href="shop.html" class="fc-category-card fc-reveal" aria-label="Shop Men">
+          <div class="fc-category-card__media">
+            <div class="fc-img-placeholder" style="background:linear-gradient(145deg,#1c1a18,#2d2b29);">👔</div>
+          </div>
+          <div class="fc-category-card__overlay"></div>
+          <div class="fc-category-card__content">
+            <span class="fc-category-card__name">Men</span>
+            <span class="fc-category-card__cta"><span class="fc-category-card__cta-line"></span>SHOP NOW</span>
+          </div>
+        </a>
+        <!-- Women -->
+        <a href="shop.html" class="fc-category-card fc-reveal fc-reveal-delay-1" aria-label="Shop Women">
+          <div class="fc-category-card__media">
+            <div class="fc-img-placeholder" style="background:linear-gradient(145deg,#2a2420,#1e1a16);">👗</div>
+          </div>
+          <div class="fc-category-card__overlay"></div>
+          <div class="fc-category-card__content">
+            <span class="fc-category-card__name">Women</span>
+            <span class="fc-category-card__cta"><span class="fc-category-card__cta-line"></span>SHOP NOW</span>
+          </div>
+        </a>
+        <!-- Kids -->
+        <a href="shop.html" class="fc-category-card fc-reveal fc-reveal-delay-2" aria-label="Shop Kids">
+          <div class="fc-category-card__media">
+            <div class="fc-img-placeholder" style="background:linear-gradient(145deg,#1e1e1e,#2a2a2a);">🧒</div>
+          </div>
+          <div class="fc-category-card__overlay"></div>
+          <div class="fc-category-card__content">
+            <span class="fc-category-card__name">Kids</span>
+            <span class="fc-category-card__cta"><span class="fc-category-card__cta-line"></span>SHOP NOW</span>
+          </div>
+        </a>
+        <!-- Accessories -->
+        <a href="shop.html" class="fc-category-card fc-reveal fc-reveal-delay-3" aria-label="Shop Accessories">
+          <div class="fc-category-card__media">
+            <div class="fc-img-placeholder" style="background:linear-gradient(145deg,#2b2820,#1a1814);">👜</div>
+          </div>
+          <div class="fc-category-card__overlay"></div>
+          <div class="fc-category-card__content">
+            <span class="fc-category-card__name">Accessories</span>
+            <span class="fc-category-card__cta"><span class="fc-category-card__cta-line"></span>SHOP NOW</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 03: NEW ARRIVALS -->
+  <section class="fc-section fc-section--gray" aria-labelledby="new-title">
+    <div class="container">
+      <div class="fc-section-header">
+        <div class="fc-section-header__left">
+          <span class="fc-eyebrow">Just Dropped</span>
+          <h2 class="fc-section-title" id="new-title">New Arrivals</h2>
+          <p class="fc-section-subtitle">Fresh drops. New moods. Your next favorite piece.</p>
+        </div>
+        <div class="fc-section-header__right">
+          <a href="shop.html" class="fc-btn fc-btn--outline fc-btn--sm">VIEW ALL</a>
+        </div>
+      </div>
+      <div class="fc-product-carousel" role="list" aria-label="New arrivals">
+
+        <!-- Product 1 -->
+        <article class="fc-product-card" role="listitem">
+          <div class="fc-product-card__image-wrap">
+            <div class="fc-product-card__image fc-img-placeholder" style="background:linear-gradient(135deg,#2d2b29,#1c1a18);">🧥</div>
+            <div class="fc-product-card__image--hover fc-img-placeholder" style="background:linear-gradient(135deg,#3d3b39,#2c2a28);">🧥</div>
+            <div class="fc-product-card__badge">
+              <span class="fc-badge fc-badge--new">NEW</span>
+            </div>
+            <button class="fc-wishlist-btn" aria-label="Add to wishlist" data-id="1" onclick="toggleWishlist(this,1)">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <button class="fc-quick-add-btn" onclick="openQuickAdd(1,'Oversized Essential Tee','৳1,199')" aria-label="Quick add Oversized Essential Tee">+ QUICK ADD</button>
+          </div>
+          <div class="fc-product-card__info">
+            <p class="fc-product-card__category">Men · Tops</p>
+            <h3 class="fc-product-card__name"><a href="product.html">Oversized Essential Tee</a></h3>
+            <div class="fc-product-card__price-row">
+              <span class="fc-price fc-price-sale">৳1,199</span>
+              <span class="fc-price fc-price-original">৳1,499</span>
+              <span class="fc-discount-badge">-20%</span>
+            </div>
+            <div class="fc-product-card__rating">
+              <div class="fc-stars" aria-label="4.5 out of 5 stars">
+                <span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star fc-star--empty">★</span>
+              </div>
+              <span class="fc-rating-count">(128)</span>
+            </div>
+            <div class="fc-color-dots" aria-label="Available colors">
+              <span class="fc-color-dot is-selected" style="background:#0A0A0A;" title="Black"></span>
+              <span class="fc-color-dot" style="background:#E5E3DF;border-color:#ccc;" title="Off White"></span>
+              <span class="fc-color-dot" style="background:#5C4B3A;" title="Brown"></span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 2 -->
+        <article class="fc-product-card" role="listitem">
+          <div class="fc-product-card__image-wrap">
+            <div class="fc-product-card__image fc-img-placeholder" style="background:linear-gradient(135deg,#3d2b1a,#2a1f12);">👕</div>
+            <div class="fc-product-card__image--hover fc-img-placeholder" style="background:linear-gradient(135deg,#4d3b2a,#3a2f22);">👕</div>
+            <div class="fc-product-card__badge">
+              <span class="fc-badge fc-badge--new">NEW</span>
+            </div>
+            <button class="fc-wishlist-btn" aria-label="Add to wishlist" data-id="2" onclick="toggleWishlist(this,2)">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <button class="fc-quick-add-btn" onclick="openQuickAdd(2,'Premium Casual Shirt','৳1,799')" aria-label="Quick add">+ QUICK ADD</button>
+          </div>
+          <div class="fc-product-card__info">
+            <p class="fc-product-card__category">Men · Shirts</p>
+            <h3 class="fc-product-card__name"><a href="product.html">Premium Casual Shirt</a></h3>
+            <div class="fc-product-card__price-row">
+              <span class="fc-price">৳1,799</span>
+            </div>
+            <div class="fc-product-card__rating">
+              <div class="fc-stars" aria-label="5 out of 5 stars">
+                <span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star">★</span>
+              </div>
+              <span class="fc-rating-count">(84)</span>
+            </div>
+            <div class="fc-color-dots">
+              <span class="fc-color-dot is-selected" style="background:#8B7355;" title="Camel"></span>
+              <span class="fc-color-dot" style="background:#2C4A3E;" title="Forest Green"></span>
+              <span class="fc-color-dot" style="background:#0A0A0A;" title="Black"></span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 3 -->
+        <article class="fc-product-card" role="listitem">
+          <div class="fc-product-card__image-wrap">
+            <div class="fc-product-card__image fc-img-placeholder" style="background:linear-gradient(135deg,#1a2a1a,#0f1f0f);">👗</div>
+            <div class="fc-product-card__image--hover fc-img-placeholder" style="background:linear-gradient(135deg,#2a3a2a,#1f2f1f);">👗</div>
+            <button class="fc-wishlist-btn" aria-label="Add to wishlist" data-id="3" onclick="toggleWishlist(this,3)">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <button class="fc-quick-add-btn" onclick="openQuickAdd(3,'Minimal Co-Ord Set','৳2,499')" aria-label="Quick add">+ QUICK ADD</button>
+          </div>
+          <div class="fc-product-card__info">
+            <p class="fc-product-card__category">Women · Co-Ords</p>
+            <h3 class="fc-product-card__name"><a href="product.html">Minimal Co-Ord Set</a></h3>
+            <div class="fc-product-card__price-row">
+              <span class="fc-price fc-price-sale">৳2,499</span>
+              <span class="fc-price fc-price-original">৳2,999</span>
+              <span class="fc-discount-badge">-17%</span>
+            </div>
+            <div class="fc-product-card__rating">
+              <div class="fc-stars" aria-label="4 out of 5 stars">
+                <span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star fc-star--empty">★</span>
+              </div>
+              <span class="fc-rating-count">(67)</span>
+            </div>
+            <div class="fc-color-dots">
+              <span class="fc-color-dot is-selected" style="background:#C8A96E;" title="Beige"></span>
+              <span class="fc-color-dot" style="background:#0A0A0A;" title="Black"></span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 4 -->
+        <article class="fc-product-card" role="listitem">
+          <div class="fc-product-card__image-wrap">
+            <div class="fc-product-card__image fc-img-placeholder" style="background:linear-gradient(135deg,#2a1a1a,#1f0f0f);">🩱</div>
+            <div class="fc-product-card__image--hover fc-img-placeholder" style="background:linear-gradient(135deg,#3a2a2a,#2f1f1f);">🩱</div>
+            <div class="fc-product-card__badge">
+              <span class="fc-badge fc-badge--new">NEW</span>
+              <span class="fc-badge fc-badge--sale">SALE</span>
+            </div>
+            <button class="fc-wishlist-btn" aria-label="Add to wishlist" data-id="4" onclick="toggleWishlist(this,4)">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <button class="fc-quick-add-btn" onclick="openQuickAdd(4,'Everyday Kurti','৳1,349')" aria-label="Quick add">+ QUICK ADD</button>
+          </div>
+          <div class="fc-product-card__info">
+            <p class="fc-product-card__category">Women · Kurtis</p>
+            <h3 class="fc-product-card__name"><a href="product.html">Everyday Kurti</a></h3>
+            <div class="fc-product-card__price-row">
+              <span class="fc-price fc-price-sale">৳1,349</span>
+              <span class="fc-price fc-price-original">৳1,799</span>
+              <span class="fc-discount-badge">-25%</span>
+            </div>
+            <div class="fc-product-card__rating">
+              <div class="fc-stars" aria-label="4.5 out of 5 stars">
+                <span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star fc-star--empty">★</span>
+              </div>
+              <span class="fc-rating-count">(156)</span>
+            </div>
+            <div class="fc-color-dots">
+              <span class="fc-color-dot is-selected" style="background:#8B3A3A;" title="Maroon"></span>
+              <span class="fc-color-dot" style="background:#2C4A6A;" title="Navy"></span>
+              <span class="fc-color-dot" style="background:#E5E3DF;border-color:#ccc;" title="White"></span>
+              <span class="fc-color-dot" style="background:#3A5A3A;" title="Olive"></span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 5 -->
+        <article class="fc-product-card" role="listitem">
+          <div class="fc-product-card__image-wrap">
+            <div class="fc-product-card__image fc-img-placeholder" style="background:linear-gradient(135deg,#1a1a2a,#0f0f1f);">👖</div>
+            <div class="fc-product-card__image--hover fc-img-placeholder" style="background:linear-gradient(135deg,#2a2a3a,#1f1f2f);">👖</div>
+            <button class="fc-wishlist-btn" aria-label="Add to wishlist" data-id="5" onclick="toggleWishlist(this,5)">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <button class="fc-quick-add-btn" onclick="openQuickAdd(5,'Relaxed Fit Cargo','৳2,199')" aria-label="Quick add">+ QUICK ADD</button>
+          </div>
+          <div class="fc-product-card__info">
+            <p class="fc-product-card__category">Men · Bottoms</p>
+            <h3 class="fc-product-card__name"><a href="product.html">Relaxed Fit Cargo</a></h3>
+            <div class="fc-product-card__price-row">
+              <span class="fc-price">৳2,199</span>
+            </div>
+            <div class="fc-product-card__rating">
+              <div class="fc-stars" aria-label="4 out of 5 stars">
+                <span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star fc-star--empty">★</span>
+              </div>
+              <span class="fc-rating-count">(92)</span>
+            </div>
+            <div class="fc-color-dots">
+              <span class="fc-color-dot is-selected" style="background:#3A3A2A;" title="Olive"></span>
+              <span class="fc-color-dot" style="background:#0A0A0A;" title="Black"></span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 6 -->
+        <article class="fc-product-card" role="listitem">
+          <div class="fc-product-card__image-wrap">
+            <div class="fc-product-card__image fc-img-placeholder" style="background:linear-gradient(135deg,#2a2a1a,#1f1f0f);">💍</div>
+            <div class="fc-product-card__image--hover fc-img-placeholder" style="background:linear-gradient(135deg,#3a3a2a,#2f2f1f);">💍</div>
+            <div class="fc-product-card__badge"><span class="fc-badge fc-badge--new">NEW</span></div>
+            <button class="fc-wishlist-btn" aria-label="Add to wishlist" data-id="6" onclick="toggleWishlist(this,6)">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <button class="fc-quick-add-btn" onclick="openQuickAdd(6,'Minimal Gold Necklace','৳899')" aria-label="Quick add">+ QUICK ADD</button>
+          </div>
+          <div class="fc-product-card__info">
+            <p class="fc-product-card__category">Jewelry · Necklaces</p>
+            <h3 class="fc-product-card__name"><a href="product.html">Minimal Gold Necklace</a></h3>
+            <div class="fc-product-card__price-row">
+              <span class="fc-price">৳899</span>
+            </div>
+            <div class="fc-product-card__rating">
+              <div class="fc-stars" aria-label="5 out of 5 stars">
+                <span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star">★</span>
+              </div>
+              <span class="fc-rating-count">(203)</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 04: EDITORIAL BANNER -->
+  <section class="fc-section" style="padding:0;" aria-labelledby="editorial-title">
+    <div class="fc-editorial">
+      <div class="fc-editorial__media">
+        <div class="fc-img-placeholder" style="height:100%;min-height:500px;background:linear-gradient(160deg,#1a1a1a,#2d2b29);font-size:100px;">👔</div>
+      </div>
+      <div class="fc-editorial__content">
+        <p class="fc-editorial__label">The FOLDCUT Edit</p>
+        <h2 class="fc-editorial__title" id="editorial-title">YOUR STYLE.<br>YOUR STATEMENT.</h2>
+        <p class="fc-editorial__text">Fashion is a language without words. At FOLDCUT, every piece is designed to let you speak without saying a thing. Contemporary cuts, premium materials, made for the streets of Bangladesh.</p>
+        <a href="shop.html" class="fc-btn fc-btn--secondary">EXPLORE THE COLLECTION</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 05: BEST SELLERS -->
+  <section class="fc-section" aria-labelledby="best-title">
+    <div class="container">
+      <div class="fc-section-header">
+        <div class="fc-section-header__left">
+          <span class="fc-eyebrow">Fan Favorites</span>
+          <h2 class="fc-section-title" id="best-title">Most Wanted</h2>
+          <p class="fc-section-subtitle">Our top-rated pieces — loved by thousands across Bangladesh.</p>
+        </div>
+        <div class="fc-section-header__right">
+          <a href="shop.html" class="fc-btn fc-btn--outline fc-btn--sm">VIEW ALL</a>
+        </div>
+      </div>
+      <div class="fc-product-grid">
+        <!-- Best Seller 1 -->
+        <article class="fc-product-card fc-reveal">
+          <div class="fc-product-card__image-wrap">
+            <div class="fc-product-card__image fc-img-placeholder" style="background:linear-gradient(135deg,#2a2a2a,#1a1a1a);">🥾</div>
+            <div class="fc-product-card__image--hover fc-img-placeholder" style="background:linear-gradient(135deg,#3a3a3a,#2a2a2a);">🥾</div>
+            <button class="fc-wishlist-btn" aria-label="Add to wishlist" data-id="10" onclick="toggleWishlist(this,10)">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <button class="fc-quick-add-btn" onclick="openQuickAdd(10,'Classic Polo Shirt','৳1,399')" aria-label="Quick add">+ QUICK ADD</button>
+          </div>
+          <div class="fc-product-card__info">
+            <p class="fc-product-card__category">Men · Tops</p>
+            <h3 class="fc-product-card__name"><a href="product.html">Classic Polo Shirt</a></h3>
+            <div class="fc-product-card__price-row">
+              <span class="fc-price">৳1,399</span>
+            </div>
+            <div class="fc-product-card__rating">
+              <div class="fc-stars" aria-label="4.5 out of 5 stars">
+                <span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star fc-star--empty">★</span>
+              </div>
+              <span class="fc-rating-count">(341)</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Best Seller 2 -->
+        <article class="fc-product-card fc-reveal fc-reveal-delay-1">
+          <div class="fc-product-card__image-wrap">
+            <div class="fc-product-card__image fc-img-placeholder" style="background:linear-gradient(135deg,#1a2a3a,#0f1f2f);">👜</div>
+            <div class="fc-product-card__image--hover fc-img-placeholder" style="background:linear-gradient(135deg,#2a3a4a,#1f2f3f);">👜</div>
+            <button class="fc-wishlist-btn" aria-label="Add to wishlist" data-id="11" onclick="toggleWishlist(this,11)">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <button class="fc-quick-add-btn" onclick="openQuickAdd(11,'Everyday Tote Bag','৳2,299')" aria-label="Quick add">+ QUICK ADD</button>
+          </div>
+          <div class="fc-product-card__info">
+            <p class="fc-product-card__category">Accessories · Bags</p>
+            <h3 class="fc-product-card__name"><a href="product.html">Everyday Tote Bag</a></h3>
+            <div class="fc-product-card__price-row">
+              <span class="fc-price fc-price-sale">৳2,299</span>
+              <span class="fc-price fc-price-original">৳2,799</span>
+              <span class="fc-discount-badge">-18%</span>
+            </div>
+            <div class="fc-product-card__rating">
+              <div class="fc-stars" aria-label="5 out of 5 stars">
+                <span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star">★</span>
+              </div>
+              <span class="fc-rating-count">(278)</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Best Seller 3 -->
+        <article class="fc-product-card fc-reveal fc-reveal-delay-2">
+          <div class="fc-product-card__image-wrap">
+            <div class="fc-product-card__image fc-img-placeholder" style="background:linear-gradient(135deg,#3a2a1a,#2f1f0f);">👒</div>
+            <div class="fc-product-card__image--hover fc-img-placeholder" style="background:linear-gradient(135deg,#4a3a2a,#3f2f1f);">👒</div>
+            <button class="fc-wishlist-btn" aria-label="Add to wishlist" data-id="12" onclick="toggleWishlist(this,12)">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <button class="fc-quick-add-btn" onclick="openQuickAdd(12,'Statement Earrings','৳699')" aria-label="Quick add">+ QUICK ADD</button>
+          </div>
+          <div class="fc-product-card__info">
+            <p class="fc-product-card__category">Jewelry · Earrings</p>
+            <h3 class="fc-product-card__name"><a href="product.html">Statement Earrings</a></h3>
+            <div class="fc-product-card__price-row">
+              <span class="fc-price">৳699</span>
+            </div>
+            <div class="fc-product-card__rating">
+              <div class="fc-stars" aria-label="4.5 out of 5 stars">
+                <span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star fc-star--empty">★</span>
+              </div>
+              <span class="fc-rating-count">(189)</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Best Seller 4 -->
+        <article class="fc-product-card fc-reveal fc-reveal-delay-3">
+          <div class="fc-product-card__image-wrap">
+            <div class="fc-product-card__image fc-img-placeholder" style="background:linear-gradient(135deg,#1a3a2a,#0f2f1f);">🧦</div>
+            <div class="fc-product-card__image--hover fc-img-placeholder" style="background:linear-gradient(135deg,#2a4a3a,#1f3f2f);">🧦</div>
+            <button class="fc-wishlist-btn" aria-label="Add to wishlist" data-id="13" onclick="toggleWishlist(this,13)">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+            <button class="fc-quick-add-btn" onclick="openQuickAdd(13,'Premium Leather Belt','৳1,099')" aria-label="Quick add">+ QUICK ADD</button>
+          </div>
+          <div class="fc-product-card__info">
+            <p class="fc-product-card__category">Accessories · Belts</p>
+            <h3 class="fc-product-card__name"><a href="product.html">Premium Leather Belt</a></h3>
+            <div class="fc-product-card__price-row">
+              <span class="fc-price">৳1,099</span>
+            </div>
+            <div class="fc-product-card__rating">
+              <div class="fc-stars" aria-label="4 out of 5 stars">
+                <span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star">★</span><span class="fc-star fc-star--empty">★</span>
+              </div>
+              <span class="fc-rating-count">(145)</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 06: LIMITED DROP -->
+  <section class="fc-limited-drop" aria-labelledby="drop-title">
+    <div class="fc-limited-drop__bg-text" aria-hidden="true">DROP</div>
+    <div class="fc-limited-drop__content container">
+      <p class="fc-limited-drop__label">Limited Collection</p>
+      <h2 class="fc-limited-drop__title" id="drop-title">THE FOLD<br>COLLECTION</h2>
+      <p class="fc-limited-drop__text">Designed to stand out. Curated for those who lead, not follow. The FOLD Collection — FOLDCUT's most intentional pieces, available while they last.</p>
+      <a href="shop.html" class="fc-btn fc-btn--secondary fc-btn--lg">SHOP THE DROP</a>
+    </div>
+  </section>
+
+  <!-- SECTION 07: BRAND STORY -->
+  <section class="fc-section" aria-labelledby="story-title">
+    <div class="container">
+      <div class="fc-brand-story">
+        <div class="fc-brand-story__left fc-reveal">
+          <p class="fc-brand-story__label">Our Philosophy</p>
+          <h2 class="fc-brand-story__title" id="story-title">Why FOLDCUT?</h2>
+          <p class="fc-brand-story__text">Fashion is more than what you wear. It's how you define yourself.</p>
+          <p class="fc-brand-story__text">FOLDCUT brings together contemporary design, everyday comfort and expressive style — made for people who choose to stand apart. Born in Bangladesh, built for the modern wardrobe.</p>
+          <p class="fc-brand-story__text" style="font-family:var(--fc-font-display);font-weight:700;font-size:var(--fc-text-lg);color:var(--fc-black);">"Style without the noise."</p>
+          <a href="about.html" class="fc-btn fc-btn--outline" style="margin-top:var(--fc-space-4);">OUR STORY</a>
+        </div>
+        <div class="fc-brand-story__visual fc-reveal fc-reveal-delay-2">
+          <div class="fc-brand-story__image-main fc-img-placeholder" style="background:linear-gradient(145deg,#2d2b29,#1c1a18);">🧵</div>
+          <div class="fc-brand-story__image-accent" style="bottom:-32px;right:-32px;position:absolute;width:180px;height:180px;background:var(--fc-accent);border-radius:var(--fc-radius-lg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;text-align:center;padding:16px;">
+            <span style="font-family:var(--fc-font-display);font-size:32px;font-weight:800;color:var(--fc-black);line-height:1;">FC</span>
+            <span style="font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(10,10,10,0.6);">Since 2024</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 08: TRUST BAR -->
+  <section class="fc-trust-bar" aria-label="Our services">
+    <div class="container">
+      <div class="fc-trust-bar__inner">
+        <div class="fc-trust-item">
+          <span class="fc-trust-item__icon" aria-hidden="true">🚚</span>
+          <p class="fc-trust-item__title">Nationwide Delivery</p>
+          <p class="fc-trust-item__text">Delivered to all 64 districts</p>
+        </div>
+        <div class="fc-trust-item">
+          <span class="fc-trust-item__icon" aria-hidden="true">💳</span>
+          <p class="fc-trust-item__title">Cash on Delivery</p>
+          <p class="fc-trust-item__text">Pay when you receive</p>
+        </div>
+        <div class="fc-trust-item">
+          <span class="fc-trust-item__icon" aria-hidden="true">🔄</span>
+          <p class="fc-trust-item__title">Easy Returns</p>
+          <p class="fc-trust-item__text">7-day hassle-free returns</p>
+        </div>
+        <div class="fc-trust-item">
+          <span class="fc-trust-item__icon" aria-hidden="true">🔒</span>
+          <p class="fc-trust-item__title">Secure Checkout</p>
+          <p class="fc-trust-item__text">SSL encrypted, always safe</p>
+        </div>
+        <div class="fc-trust-item">
+          <span class="fc-trust-item__icon" aria-hidden="true">💬</span>
+          <p class="fc-trust-item__title">Customer Support</p>
+          <p class="fc-trust-item__text">WhatsApp & call support</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 09: INSTAGRAM / SOCIAL -->
+  <section class="fc-section" aria-labelledby="social-title">
+    <div class="container">
+      <div class="fc-social-header">
+        <span class="fc-eyebrow">Community</span>
+        <h2 class="fc-section-title" id="social-title">Follow The Fold</h2>
+        <a href="https://instagram.com/foldcut" class="fc-social-handle" target="_blank" rel="noopener">
+          <span style="font-size:20px;">📷</span> @FOLDCUT
+        </a>
+      </div>
+      <div class="fc-social-grid" aria-label="Instagram posts">
+        <div class="fc-social-item"><div class="fc-img-placeholder" style="height:100%;background:linear-gradient(135deg,#2a1a1a,#1a0f0f);font-size:32px;">👗</div><div class="fc-social-item__overlay"><span class="fc-social-item__icon" aria-hidden="true">♡</span></div></div>
+        <div class="fc-social-item"><div class="fc-img-placeholder" style="height:100%;background:linear-gradient(135deg,#1a2a1a,#0f1a0f);font-size:32px;">👕</div><div class="fc-social-item__overlay"><span class="fc-social-item__icon" aria-hidden="true">♡</span></div></div>
+        <div class="fc-social-item"><div class="fc-img-placeholder" style="height:100%;background:linear-gradient(135deg,#1a1a2a,#0f0f1a);font-size:32px;">💍</div><div class="fc-social-item__overlay"><span class="fc-social-item__icon" aria-hidden="true">♡</span></div></div>
+        <div class="fc-social-item"><div class="fc-img-placeholder" style="height:100%;background:linear-gradient(135deg,#2a2a1a,#1a1a0f);font-size:32px;">👜</div><div class="fc-social-item__overlay"><span class="fc-social-item__icon" aria-hidden="true">♡</span></div></div>
+        <div class="fc-social-item"><div class="fc-img-placeholder" style="height:100%;background:linear-gradient(135deg,#2a1a2a,#1a0f1a);font-size:32px;">🧥</div><div class="fc-social-item__overlay"><span class="fc-social-item__icon" aria-hidden="true">♡</span></div></div>
+        <div class="fc-social-item"><div class="fc-img-placeholder" style="height:100%;background:linear-gradient(135deg,#1a2a2a,#0f1a1a);font-size:32px;">👒</div><div class="fc-social-item__overlay"><span class="fc-social-item__icon" aria-hidden="true">♡</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 10: NEWSLETTER -->
+  <section class="fc-newsletter" aria-labelledby="newsletter-title">
+    <div class="container">
+      <p class="fc-newsletter__eyebrow">Exclusive Access</p>
+      <h2 class="fc-newsletter__title" id="newsletter-title">STAY IN THE LOOP.</h2>
+      <p class="fc-newsletter__text">Get first access to new drops, exclusive offers and style updates. No spam. Unsubscribe anytime.</p>
+      <form class="fc-newsletter__form" onsubmit="handleNewsletter(event)" novalidate>
+        <input class="fc-newsletter__input" type="email" placeholder="Enter your email" aria-label="Email address" required />
+        <button type="submit" class="fc-newsletter__btn">JOIN US</button>
+      </form>
+      <p class="fc-newsletter__disclaimer">By subscribing, you agree to our Privacy Policy. We respect your inbox.</p>
+    </div>
+  </section>
+</main>
+
+<!-- ============================================
+     FOOTER
+============================================ -->
+<footer class="fc-footer" role="contentinfo">
+  <div class="fc-footer__top">
+    <div class="container">
+      <div class="fc-footer__grid">
+        <!-- Brand Col -->
+        <div class="fc-footer__brand">
+          <div class="fc-footer__brand-logo">FOLDCUT</div>
+          <p class="fc-footer__tagline">Cut Different. Wear Different.<br>Contemporary fashion for those who choose to stand apart.</p>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">
+            <div class="fc-footer__contact-item"><span>📞</span><a href="tel:+8801XXXXXXXXX" style="color:var(--fc-gray-400);transition:color var(--fc-transition-fast);">+880 1XXX-XXXXXX</a></div>
+            <div class="fc-footer__contact-item"><span>✉️</span><a href="mailto:hello@foldcut.online" style="color:var(--fc-gray-400);">hello@foldcut.online</a></div>
+            <div class="fc-footer__contact-item"><span>📍</span><span>Dhaka, Bangladesh</span></div>
+          </div>
+        </div>
+        <!-- Shop Col -->
+        <div>
+          <p class="fc-footer__col-title">Shop</p>
+          <nav class="fc-footer__links" aria-label="Shop navigation">
+            <a href="shop.html" class="fc-footer__link">Men</a>
+            <a href="shop.html" class="fc-footer__link">Women</a>
+            <a href="shop.html" class="fc-footer__link">Kids</a>
+            <a href="shop.html" class="fc-footer__link">Accessories</a>
+            <a href="shop.html" class="fc-footer__link">Jewelry</a>
+            <a href="shop.html" class="fc-footer__link">New Arrivals</a>
+            <a href="shop.html" class="fc-footer__link">Sale</a>
+          </nav>
+        </div>
+        <!-- Help Col -->
+        <div>
+          <p class="fc-footer__col-title">Help</p>
+          <nav class="fc-footer__links" aria-label="Help navigation">
+            <a href="#" class="fc-footer__link">Contact Us</a>
+            <a href="#" class="fc-footer__link">FAQ</a>
+            <a href="#" class="fc-footer__link">Shipping & Delivery</a>
+            <a href="#" class="fc-footer__link">Return & Refund</a>
+            <a href="#" class="fc-footer__link">Size Guide</a>
+            <a href="#" class="fc-footer__link">Track Order</a>
+          </nav>
+        </div>
+        <!-- About Col -->
+        <div>
+          <p class="fc-footer__col-title">About</p>
+          <nav class="fc-footer__links" aria-label="About navigation">
+            <a href="about.html" class="fc-footer__link">Our Story</a>
+            <a href="#" class="fc-footer__link">Privacy Policy</a>
+            <a href="#" class="fc-footer__link">Terms & Conditions</a>
+            <a href="#" class="fc-footer__link">Careers</a>
+          </nav>
+        </div>
+        <!-- Follow Col -->
+        <div>
+          <p class="fc-footer__col-title">Follow</p>
+          <div class="fc-footer__social">
+            <a href="https://facebook.com/foldcut" class="fc-footer__social-link" target="_blank" rel="noopener" aria-label="FOLDCUT on Facebook">
+              <span class="fc-footer__social-icon">f</span> Facebook
+            </a>
+            <a href="https://instagram.com/foldcut" class="fc-footer__social-link" target="_blank" rel="noopener" aria-label="FOLDCUT on Instagram">
+              <span class="fc-footer__social-icon">📷</span> Instagram
+            </a>
+            <a href="https://tiktok.com/@foldcut" class="fc-footer__social-link" target="_blank" rel="noopener" aria-label="FOLDCUT on TikTok">
+              <span class="fc-footer__social-icon">♪</span> TikTok
+            </a>
+            <a href="https://wa.me/8801XXXXXXXXX" class="fc-footer__social-link" target="_blank" rel="noopener" aria-label="FOLDCUT on WhatsApp">
+              <span class="fc-footer__social-icon">💬</span> WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="fc-footer__bottom">
+    <div class="container">
+      <div class="fc-footer__bottom-inner">
+        <p class="fc-footer__copyright">© 2025 FOLDCUT. All rights reserved. Dhaka, Bangladesh.</p>
+        <div class="fc-footer__payment" aria-label="Accepted payment methods">
+          <span class="fc-payment-icon">CASH</span>
+          <span class="fc-payment-icon">bKash</span>
+          <span class="fc-payment-icon">Nagad</span>
+          <span class="fc-payment-icon">CARD</span>
+          <span class="fc-payment-icon">SSL</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Schema.org Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "FOLDCUT",
+    "url": "https://foldcut.online",
+    "logo": "https://foldcut.online/logo.png",
+    "description": "Contemporary fashion brand from Bangladesh. Men, Women, Kids clothing and accessories.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "BD",
+      "addressLocality": "Dhaka"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "telephone": "+880-1XXX-XXXXXX",
+      "email": "hello@foldcut.online"
+    },
+    "sameAs": [
+      "https://facebook.com/foldcut",
+      "https://instagram.com/foldcut",
+      "https://tiktok.com/@foldcut"
+    ]
+  }
+  </script>
+</footer>
+
+<!-- ============================================
+     JAVASCRIPT
+============================================ -->
+<script>
+  /* ============================================
+     FOLDCUT — CORE JAVASCRIPT
+  ============================================ */
+  'use strict';
+
+  // — Config
+  const fcConfig = {
+    currency: '৳',
+    freeShippingThreshold: 2000,
+    insideDhaka: 60,
+    outsideDhaka: 120,
+    cartUrl: 'cart.html',
+    checkoutUrl: 'checkout.html',
+    siteUrl: 'https://foldcut.online'
+  };
+
+  // — State
+  let cartItems = JSON.parse(localStorage.getItem('fc_cart') || '[]');
+  let wishlistItems = JSON.parse(localStorage.getItem('fc_wishlist') || '[]');
+  let quickAddProductId = null;
+  let modalQty = 1;
+
+  /* ==================== UTILS ==================== */
+  function formatPrice(n) {
+    return fcConfig.currency + n.toLocaleString('en-BD');
+  }
+
+  function saveCart() {
+    localStorage.setItem('fc_cart', JSON.stringify(cartItems));
+    updateCartUI();
+  }
+
+  function saveWishlist() {
+    localStorage.setItem('fc_wishlist', JSON.stringify(wishlistItems));
+  }
+
+  function showToast(msg, type = 'success') {
+    const container = document.getElementById('fc-toast-container');
+    const toast = document.createElement('div');
+    toast.className = 'fc-toast fc-toast--' + type;
+    toast.innerHTML = (type === 'success' ? '✓ ' : '✕ ') + msg;
+    container.appendChild(toast);
+    setTimeout(() => toast.remove(), 3500);
+  }
+
+  /* ==================== SCROLL REVEAL ==================== */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); revealObserver.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fc-reveal').forEach(el => revealObserver.observe(el));
+
+  /* ==================== HEADER SCROLL ==================== */
+  const header = document.getElementById('fc-header');
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const s = window.scrollY;
+    if (s > 80) header.classList.add('fc-header--scrolled');
+    else header.classList.remove('fc-header--scrolled');
+    lastScroll = s;
+  }, { passive: true });
+
+  /* ==================== MOBILE DRAWER ==================== */
+  const drawer = document.getElementById('fc-mobile-drawer');
+  const overlay = document.getElementById('fc-overlay');
+  const hamburger = document.getElementById('fc-hamburger');
+
+  function openDrawer() {
+    drawer.classList.add('is-open');
+    overlay.classList.add('is-visible');
+    hamburger.classList.add('is-open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    overlay.onclick = closeAll;
+  }
+  function closeAll() {
+    drawer.classList.remove('is-open');
+    overlay.classList.remove('is-visible');
+    hamburger.classList.remove('is-open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.getElementById('fc-cart-drawer').classList.remove('is-open');
+    document.getElementById('fc-search-overlay').classList.remove('is-open');
+    document.getElementById('fc-quick-add-modal').classList.remove('is-open');
+    document.body.style.overflow = '';
+    overlay.onclick = null;
+  }
+  hamburger.addEventListener('click', () => drawer.classList.contains('is-open') ? closeAll() : openDrawer());
+  document.getElementById('fc-drawer-close').addEventListener('click', closeAll);
+
+  /* ==================== SEARCH ==================== */
+  const searchOverlay = document.getElementById('fc-search-overlay');
+  const searchInput = document.getElementById('fc-search-input');
+
+  const products = [
+    { id:1, name:'Oversized Essential Tee', cat:'Men', price:1199, emoji:'🧥' },
+    { id:2, name:'Premium Casual Shirt', cat:'Men', price:1799, emoji:'👕' },
+    { id:3, name:'Minimal Co-Ord Set', cat:'Women', price:2499, emoji:'👗' },
+    { id:4, name:'Everyday Kurti', cat:'Women', price:1349, emoji:'🩱' },
+    { id:5, name:'Relaxed Fit Cargo', cat:'Men', price:2199, emoji:'👖' },
+    { id:6, name:'Minimal Gold Necklace', cat:'Jewelry', price:899, emoji:'💍' },
+    { id:7, name:'Classic Polo Shirt', cat:'Men', price:1399, emoji:'👔' },
+    { id:8, name:'Everyday Tote Bag', cat:'Accessories', price:2299, emoji:'👜' },
+    { id:9, name:'Statement Earrings', cat:'Jewelry', price:699, emoji:'💎' },
+    { id:10, name:'Premium Leather Belt', cat:'Accessories', price:1099, emoji:'👝' },
+    { id:11, name:'Oversized Shirt', cat:'Women', price:1599, emoji:'🧣' },
+    { id:12, name:'Kids Essential Tee', cat:'Kids', price:749, emoji:'🎽' },
+    { id:13, name:'Oxidized Earrings', cat:'Jewelry', price:549, emoji:'✨' },
+    { id:14, name:'Fashion Sunglasses', cat:'Accessories', price:1299, emoji:'🕶️' },
+    { id:15, name:'Essential Kids Set', cat:'Kids', price:1499, emoji:'🧒' }
+  ];
+
+  document.getElementById('fc-search-btn').addEventListener('click', () => {
+    searchOverlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => searchInput.focus(), 100);
+  });
+  document.getElementById('fc-search-close').addEventListener('click', () => {
+    searchOverlay.classList.remove('is-open');
+    document.body.style.overflow = '';
+    searchInput.value = '';
+    document.getElementById('fc-search-results').innerHTML = '';
+    document.getElementById('fc-search-popular').style.display = '';
+  });
+
+  let searchTimer;
+  searchInput.addEventListener('input', () => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+      const q = searchInput.value.trim().toLowerCase();
+      const resultsEl = document.getElementById('fc-search-results');
+      const popularEl = document.getElementById('fc-search-popular');
+      if (!q) { resultsEl.innerHTML = ''; popularEl.style.display = ''; return; }
+      popularEl.style.display = 'none';
+      const results = products.filter(p => p.name.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q));
+      if (!results.length) {
+        resultsEl.innerHTML = '<p style="color:var(--fc-gray-400);text-align:center;padding:32px 0;">No products found for "' + q + '"</p>';
+        return;
+      }
+      resultsEl.innerHTML = results.map(p => `
+        <a href="product.html" class="fc-search-result-item">
+          <div class="fc-search-result-item__img" style="display:flex;align-items:center;justify-content:center;font-size:28px;">${p.emoji}</div>
+          <div class="fc-search-result-item__info">
+            <p class="fc-search-result-item__category">${p.cat}</p>
+            <p class="fc-search-result-item__name">${p.name}</p>
+          </div>
+          <span class="fc-search-result-item__price">${formatPrice(p.price)}</span>
+        </a>`).join('');
+    }, 280);
+  });
+
+  document.querySelectorAll('.fc-search-tag').forEach(tag => {
+    tag.addEventListener('click', () => { searchInput.value = tag.textContent; searchInput.dispatchEvent(new Event('input')); });
+  });
+
+  // ESC key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeAll();
+  });
+
+  /* ==================== CART DRAWER ==================== */
+  function openCart() {
+    document.getElementById('fc-cart-drawer').classList.add('is-open');
+    overlay.classList.add('is-visible');
+    document.body.style.overflow = 'hidden';
+    overlay.onclick = closeAll;
+  }
+  function closeCart() {
+    document.getElementById('fc-cart-drawer').classList.remove('is-open');
+    if (!drawer.classList.contains('is-open')) {
+      overlay.classList.remove('is-visible');
+      document.body.style.overflow = '';
+    }
+  }
+
+  document.getElementById('fc-cart-btn').addEventListener('click', openCart);
+  document.getElementById('fc-cart-close').addEventListener('click', closeAll);
+
+  function updateCartUI() {
+    const count = cartItems.reduce((s, i) => s + i.qty, 0);
+    const countEl = document.getElementById('fc-cart-count');
+    countEl.textContent = count;
+    countEl.classList.toggle('is-bump', count > 0);
+    setTimeout(() => countEl.classList.remove('is-bump'), 500);
+    document.getElementById('fc-cart-drawer-count').textContent = `(${count} item${count !== 1 ? 's' : ''})`;
+
+    const subtotal = cartItems.reduce((s, i) => s + i.price * i.qty, 0);
+    document.getElementById('fc-cart-subtotal').textContent = formatPrice(subtotal);
+    document.getElementById('fc-cart-total').textContent = formatPrice(subtotal);
+
+    const threshold = fcConfig.freeShippingThreshold;
+    const pct = Math.min((subtotal / threshold) * 100, 100);
+    document.getElementById('fc-progress-fill').style.width = pct + '%';
+    const remaining = Math.max(threshold - subtotal, 0);
+    document.getElementById('fc-progress-amount').textContent = remaining > 0 ? formatPrice(remaining) : '0';
+    if (remaining <= 0) document.querySelector('.fc-delivery-progress__text').innerHTML = '🎉 <strong>Free delivery unlocked!</strong>';
+
+    // Render items
+    const bodyEl = document.getElementById('fc-cart-items');
+    const emptyEl = document.getElementById('fc-cart-empty');
+    const footerEl = document.getElementById('fc-cart-footer');
+
+    if (!cartItems.length) {
+      emptyEl.style.display = 'flex'; bodyEl.innerHTML = ''; footerEl.style.display = 'none';
+    } else {
+      emptyEl.style.display = 'none'; footerEl.style.display = 'block';
+      bodyEl.innerHTML = cartItems.map(item => `
+        <div class="fc-cart-item" data-id="${item.id}">
+          <div class="fc-cart-item__img" style="display:flex;align-items:center;justify-content:center;font-size:36px;background:var(--fc-gray-100);">${item.emoji || '🧥'}</div>
+          <div class="fc-cart-item__details">
+            <p class="fc-cart-item__name">${item.name}</p>
+            <p class="fc-cart-item__meta">${item.size ? 'Size: ' + item.size : ''} ${item.color ? '· ' + item.color : ''}</p>
+            <div class="fc-cart-item__price-row">
+              <div class="fc-cart-item__qty">
+                <button class="fc-qty-btn" onclick="changeItemQty('${item.id}', -1)" aria-label="Decrease quantity">−</button>
+                <span class="fc-qty-val">${item.qty}</span>
+                <button class="fc-qty-btn" onclick="changeItemQty('${item.id}', 1)" aria-label="Increase quantity">+</button>
+              </div>
+              <span class="fc-price">${formatPrice(item.price * item.qty)}</span>
+            </div>
+            <button class="fc-cart-item__remove" onclick="removeCartItem('${item.id}')">Remove</button>
+          </div>
+        </div>`).join('');
+    }
+  }
+
+  function changeItemQty(id, delta) {
+    const item = cartItems.find(i => i.id === id);
+    if (!item) return;
+    item.qty = Math.max(1, item.qty + delta);
+    saveCart();
+  }
+
+  function removeCartItem(id) {
+    cartItems = cartItems.filter(i => i.id !== id);
+    saveCart();
+  }
+
+  /* ==================== QUICK ADD ==================== */
+  function openQuickAdd(id, name, price) {
+    quickAddProductId = id;
+    modalQty = 1;
+    document.getElementById('fc-modal-name').textContent = name;
+    document.getElementById('fc-modal-price').textContent = price;
+    document.getElementById('fc-modal-qty').textContent = modalQty;
+    // Reset selections
+    document.querySelectorAll('.fc-size-btn').forEach(b => b.classList.remove('is-selected'));
+    document.querySelectorAll('#fc-modal-colors .fc-color-btn').forEach((b,i) => b.classList.toggle('is-selected', i === 0));
+    const modal = document.getElementById('fc-quick-add-modal');
+    modal.classList.add('is-open');
+    overlay.classList.add('is-visible');
+    document.body.style.overflow = 'hidden';
+    overlay.onclick = closeAll;
+  }
+
+  document.getElementById('fc-modal-close').addEventListener('click', closeAll);
+
+  // Size btn selection
+  document.querySelectorAll('.fc-size-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (btn.classList.contains('is-disabled')) return;
+      document.querySelectorAll('.fc-size-btn').forEach(b => b.classList.remove('is-selected'));
+      btn.classList.add('is-selected');
+    });
+  });
+
+  // Color btn selection
+  document.querySelectorAll('#fc-modal-colors .fc-color-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#fc-modal-colors .fc-color-btn').forEach(b => b.classList.remove('is-selected'));
+      btn.classList.add('is-selected');
+    });
+  });
+
+  function changeModalQty(delta) {
+    modalQty = Math.max(1, modalQty + delta);
+    document.getElementById('fc-modal-qty').textContent = modalQty;
+  }
+
+  function addToCartFromModal() {
+    const sizeBtn = document.querySelector('.fc-size-btn.is-selected');
+    const colorBtn = document.querySelector('#fc-modal-colors .fc-color-btn.is-selected');
+    if (!sizeBtn) { showToast('Please select a size', 'error'); return; }
+    const size = sizeBtn.textContent;
+    const color = colorBtn ? colorBtn.getAttribute('title') : '';
+    const product = products.find(p => p.id === quickAddProductId) || { name: document.getElementById('fc-modal-name').textContent, price: 1199, emoji: '🧥' };
+    const id = String(quickAddProductId) + '-' + size + '-' + color;
+    const existing = cartItems.find(i => i.id === id);
+    if (existing) existing.qty += modalQty;
+    else cartItems.push({ id, name: product.name, price: product.price, qty: modalQty, size, color, emoji: product.emoji || '🧥' });
+    saveCart();
+    closeAll();
+    showToast(product.name + ' added to cart!');
+    openCart();
+  }
+
+  /* ==================== WISHLIST ==================== */
+  function toggleWishlist(btn, id) {
+    const idx = wishlistItems.indexOf(id);
+    if (idx > -1) { wishlistItems.splice(idx, 1); btn.classList.remove('is-active'); showToast('Removed from wishlist'); }
+    else { wishlistItems.push(id); btn.classList.add('is-active'); showToast('Added to wishlist ♥'); }
+    saveWishlist();
+  }
+
+  // Init wishlist state
+  wishlistItems.forEach(id => {
+    const btn = document.querySelector(`.fc-wishlist-btn[data-id="${id}"]`);
+    if (btn) btn.classList.add('is-active');
+  });
+
+  /* ==================== NEWSLETTER ==================== */
+  function handleNewsletter(e) {
+    e.preventDefault();
+    const input = e.target.querySelector('input');
+    if (!input.value || !input.value.includes('@')) { showToast('Please enter a valid email', 'error'); return; }
+    showToast('Thank you! You\'re now in the loop. 🎉');
+    input.value = '';
+    // WC_INTEGRATION: POST to /wp-json/fc/v1/newsletter with { email }
+  }
+
+  /* ==================== INIT ==================== */
+  updateCartUI();
+</script>
+</body>
+</html>
