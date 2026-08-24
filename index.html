@@ -2,71 +2,114 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <meta http-equiv="refresh" content="0; url=/preview/index.html"/>
-  <meta name="viewport" content="width=device-width"/>
-  <title>FOLDCUT — Cut Different. Wear Different.</title>
-  <style>body{margin:0;font-family:sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;background:#0A0A0A;color:#F8F7F5;}    /* --- BRAND IDENTITY ENHANCEMENTS --- */
-    .fc-logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; user-select: none; }
-    .fc-logo-emblem-wrap {
-      width: 44px; height: 44px; border-radius: 50%; overflow: hidden;
-      border: 1.5px solid var(--fc-accent);
-      box-shadow: 0 2px 10px rgba(194, 132, 83, 0.25);
-      flex-shrink: 0; background: var(--fc-white);
-      display: flex; align-items: center; justify-content: center;
-      transition: transform var(--fc-transition);
+  <meta http-equiv="refresh" content="1; url=/preview/index.html"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FOLDCUT â€” Quality &bull; Comfort &bull; Confidence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      margin: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #FFFFFF;
+      color: #111827;
+      overflow: hidden;
     }
-    .fc-logo:hover .fc-logo-emblem-wrap { transform: scale(1.05) rotate(2deg); }
-    .fc-logo-emblem { width: 100%; height: 100%; object-fit: cover; }
-    .fc-logo-text-group { display: flex; flex-direction: column; align-items: flex-start; }
-    .fc-logo-name {
-      font-family: var(--fc-font-display); font-size: 20px; font-weight: 800;
-      letter-spacing: 0.12em; color: var(--fc-black); line-height: 1.1;
+    .splash-card {
+      text-align: center;
+      padding: 2.5rem;
+      animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 440px;
     }
-    .fc-logo-accent {
-      color: var(--fc-accent);
-      background: linear-gradient(135deg, #dfa26e 0%, #c28453 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    .logo-frame {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08), 0 0 25px rgba(194, 132, 83, 0.25);
+      border: 3px solid #C28453;
+      animation: pulseGlow 3s infinite alternate ease-in-out;
+      background: #FFFFFF;
     }
-    .fc-logo-motto {
-      font-size: 8px; font-weight: 700; letter-spacing: 0.16em;
-      text-transform: uppercase; color: var(--fc-accent); opacity: 0.95;
-      margin-top: 1px;
+    .logo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-    .fc-btn--primary {
-      background: #0a382c; color: #faf9f6; border-color: #0a382c;
+    .brand-title {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      color: #111827;
     }
-    .fc-btn--primary:hover {
-      background: #0f4c3c; border-color: #0f4c3c;
+    .brand-title span {
+      color: #C28453;
     }
-    .fc-btn--secondary {
-      background: linear-gradient(135deg, #dfa26e 0%, #c28453 100%);
-      color: #0c1210; border-color: #c28453;
-      box-shadow: 0 4px 15px rgba(194, 132, 83, 0.25);
+    .brand-tagline {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: #0A382C;
+      opacity: 0.9;
+      margin-bottom: 1.75rem;
     }
-    .fc-btn--secondary:hover {
-      background: linear-gradient(135deg, #c28453 0%, #985b2e 100%);
-      color: #ffffff;
+    .loader-bar {
+      width: 160px;
+      height: 3px;
+      background: #F3F4F6;
+      border-radius: 99px;
+      overflow: hidden;
+      position: relative;
     }
-    .fc-announcement {
-      background: linear-gradient(90deg, #06241c 0%, #0a382c 50%, #06241c 100%);
-      border-bottom: 1px solid rgba(194,132,83,0.3);
+    .loader-progress {
+      position: absolute;
+      top: 0; left: 0; bottom: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #0A382C, #C28453, #0A382C);
+      animation: loading 1.2s ease-in-out infinite;
     }
-    .fc-badge--new {
-      background: #0a382c; color: #faf9f6;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px) scale(0.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
-    .fc-badge--sale {
-      background: #c28453; color: #0c1210; font-weight: 800;
+    @keyframes pulseGlow {
+      from { box-shadow: 0 10px 25px rgba(0,0,0,0.06), 0 0 15px rgba(194, 132, 83, 0.15); }
+      to { box-shadow: 0 10px 35px rgba(0,0,0,0.12), 0 0 30px rgba(194, 132, 83, 0.4); }
     }
-    .fc-discount-badge {
-      background: rgba(194, 132, 83, 0.15); color: #985b2e; font-weight: 700;
+    @keyframes loading {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
     }
   </style>
 </head>
 <body>
-  <div style="text-align:center;">
-    <p style="font-size:22px;font-weight:800;letter-spacing:.12em;">FOLD<span style="color:#C28453;">CUT</span></p>
-    <p style="font-size:.875rem;opacity:.5;margin-top:.5rem;">Redirecting…</p>
+  <div class="splash-card">
+    <div class="logo-frame">
+      <img src="/assets/images/logo.jpg" alt="FOLDCUT Emblem" />
+    </div>
+    <h1 class="brand-title">FOLD<span>CUT</span></h1>
+    <p class="brand-tagline">Quality &bull; Comfort &bull; Confidence</p>
+    <div class="loader-bar">
+      <div class="loader-progress"></div>
+    </div>
   </div>
-  <script>window.location.href='/preview/index.html';</script>
+  <script>
+    setTimeout(function() {
+      window.location.href = '/preview/index.html';
+    }, 600);
+  </script>
 </body>
 </html>
