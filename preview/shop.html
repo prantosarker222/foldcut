@@ -726,12 +726,13 @@ let filteredProducts=[...allProducts];
 
 function renderProducts(products){
   const grid=document.getElementById('fc-product-grid');
+  if(!grid) return;
   if(!products.length){grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:5rem 2rem;"><p style="font-size:1.125rem;font-weight:700;margin-bottom:.5rem;">No products found</p><p style="color:var(--fc-gray-400);">Try adjusting your filters</p></div>';return;}
   grid.innerHTML=products.map(p=>`
     <article class="fc-product-card" data-id="${p.id}">
       <div class="fc-product-card__image-wrap">
-        <div class="fc-product-card__image fc-img-placeholder" style="background:linear-gradient(135deg,#2d2b29,#1c1a18);">${p.emoji}</div>
-        <div class="fc-product-card__image--hover fc-img-placeholder" style="background:linear-gradient(135deg,#3d3b39,#2c2a28);">${p.emoji}</div>
+        <img class="fc-product-card__image" src="${p.img}" alt="${p.name}" loading="lazy" />
+        <img class="fc-product-card__image--hover" src="${p.imgHover || p.img}" alt="${p.name} Back View" loading="lazy" />
         <div class="fc-product-card__badge">${p.badge?`<span class="fc-badge fc-badge--new">${p.badge}</span>`:''}${p.sale?'<span class="fc-badge fc-badge--sale">SALE</span>':''}</div>
         <button class="fc-wishlist-btn ${wishlistItems.includes(p.id)?'is-active':''}" onclick="toggleWishlist(this,${p.id})" aria-label="Add to wishlist">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
