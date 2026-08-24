@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>FOLDCUT â€” Quality &bull; Comfort &bull; Confidence | Contemporary Fashion Bangladesh</title>
-  <meta name="description" content="FOLDCUT brings contemporary luxury fashion for men and women. 220+ GSM combed compact cotton. Fast delivery across 64 districts in Bangladesh. 5% instant discount on online payments." />
+  <title>FOLDCUT &mdash; Quality &bull; Comfort &bull; Confidence | Contemporary Fashion</title>
+  <meta name="description" content="FOLDCUT contemporary luxury apparel. 220+ GSM combed compact cotton. Fast delivery across Bangladesh. 5% instant discount on online payments." />
   
-  <!-- GOOGLE FONTS with Bengali & International Fallbacks -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Hind+Siliguri:wght@500;600;700&display=swap" rel="stylesheet" />
@@ -33,13 +32,11 @@
       --fc-discount-bg:    #ECFDF5;
       --fc-error:          #DC2626;
       --fc-card-shadow:    0 4px 20px rgba(0,0,0,0.06);
-      --fc-header-bg:      rgba(255, 255, 255, 0.95);
+      --fc-header-bg:      rgba(255, 255, 255, 0.96);
       --fc-nav-bar-bg:     #FFFFFF;
       --fc-input-bg:       #FFFFFF;
-      
       --fc-font-display:   'Plus Jakarta Sans', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       --fc-font-body:      'Inter', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      
       --fc-radius-sm:      4px;
       --fc-radius-md:      8px;
       --fc-radius-lg:      16px;
@@ -117,7 +114,7 @@
       --fc-discount:       #059669;
       --fc-discount-bg:    #ECFDF5;
       --fc-card-shadow:    0 4px 20px rgba(0,0,0,0.06);
-      --fc-header-bg:      rgba(255, 255, 255, 0.95);
+      --fc-header-bg:      rgba(255, 255, 255, 0.96);
       --fc-nav-bar-bg:     #FFFFFF;
       --fc-input-bg:       #FFFFFF;
     }
@@ -134,29 +131,21 @@
       overflow-x: hidden;
       transition: background-color 0.3s ease, color 0.3s ease;
     }
-    h1, h2, h3, h4, h5, h6, .fc-logo-name, .fc-btn {
-      font-family: var(--fc-font-display);
-    }
+    h1, h2, h3, h4, h5, h6, .fc-logo-name, .fc-btn { font-family: var(--fc-font-display); }
     img { display: block; max-width: 100%; height: auto; }
     a { color: inherit; text-decoration: none; }
     button { cursor: pointer; border: none; background: none; font-family: inherit; }
     ul, ol { list-style: none; }
     .container { width: 100%; max-width: 1360px; margin: 0 auto; padding: 0 1.5rem; }
+    .fc-taka { font-family: 'Hind Siliguri', 'Inter', sans-serif; font-weight: 700; }
 
-    .fc-taka {
-      font-family: 'Hind Siliguri', 'Inter', sans-serif;
-      font-weight: 700;
-    }
-
-    /* Theme Toggle */
     .fc-theme-toggle-btn {
-      width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
       border-radius: 50%; color: var(--fc-text-main); border: 1px solid var(--fc-border);
       background: var(--fc-surface); transition: all 0.2s ease; cursor: pointer;
     }
     .fc-theme-toggle-btn:hover { background: var(--fc-surface-hover); transform: rotate(15deg); }
 
-    /* Top Slidebar */
     .fc-promo-slidebar {
       background: #0A382C;
       color: #FFFFFF;
@@ -177,7 +166,7 @@
     .fc-promo-slide {
       position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
       gap: 10px; opacity: 0; transform: translateY(8px); transition: opacity 0.4s, transform 0.4s;
-      pointer-events: none; padding: 0 40px; text-align: center;
+      pointer-events: none; padding: 0 40px; text-align: center; font-size: 12px;
     }
     .fc-promo-slide.is-active { opacity: 1; transform: translateY(0); pointer-events: all; }
     .fc-promo-badge { background: #C28453; color: #FFFFFF; font-size: 10px; font-weight: 800; padding: 2px 6px; border-radius: 4px; }
@@ -187,7 +176,6 @@
     .fc-promo-arrow { background: none; border: none; color: rgba(255,255,255,0.7); font-size: 16px; cursor: pointer; padding: 2px 6px; }
     .fc-promo-arrow:hover { color: #FFFFFF; }
 
-    /* Header */
     .fc-header {
       position: sticky; top: 0; z-index: 200;
       background: var(--fc-header-bg);
@@ -238,7 +226,7 @@
     .fc-nav-link--sale { color: var(--fc-error); }
 
     .fc-icon-btn {
-      width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
       border-radius: 50%; transition: background 0.2s; color: var(--fc-text-main); position: relative;
     }
     .fc-icon-btn:hover { background: var(--fc-surface-hover); }
@@ -249,7 +237,6 @@
       border-radius: 99px; display: flex; align-items: center; justify-content: center;
     }
 
-    /* Buttons */
     .fc-btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       font-size: 13px; font-weight: 700;
@@ -266,7 +253,6 @@
     .fc-btn--sm { font-size: 11px; padding: 8px 16px; }
     .fc-btn--full { width: 100%; }
 
-    /* Hero Section */
     .fc-hero-section {
       background: linear-gradient(135deg, var(--fc-surface) 0%, var(--fc-bg) 100%);
       padding: 3.5rem 0 4rem;
@@ -280,7 +266,7 @@
       color: var(--fc-accent); letter-spacing: 0.08em; text-transform: uppercase;
     }
     .fc-hero-h1 {
-      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
       font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; color: var(--fc-text-main);
       margin-bottom: 1rem;
     }
@@ -312,7 +298,6 @@
       color: var(--fc-discount); display: flex; align-items: center; justify-content: center; font-size: 18px;
     }
 
-    /* 5% Promo Card */
     .fc-payment-promo-strip {
       background: linear-gradient(135deg, #0A382C 0%, #06241C 100%);
       color: #FFFFFF; border-radius: var(--fc-radius-md);
@@ -333,7 +318,6 @@
       padding: 4px 8px; border-radius: 4px; letter-spacing: 0.04em;
     }
 
-    /* Product Grid */
     .fc-section { padding: 4rem 0; }
     .fc-section-header {
       display: flex; align-items: flex-end; justify-content: space-between;
@@ -349,7 +333,6 @@
     }
     .fc-product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
 
-    /* Product Card */
     .fc-product-card {
       display: flex; flex-direction: column; background: var(--fc-surface-card);
       border: 1px solid var(--fc-border); border-radius: var(--fc-radius-md);
@@ -403,7 +386,6 @@
       padding: 2px 6px; border-radius: 4px; width: fit-content;
     }
 
-    /* Category Discovery */
     .fc-category-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
     .fc-cat-card {
       position: relative; border-radius: var(--fc-radius-md); overflow: hidden;
@@ -418,7 +400,6 @@
     .fc-cat-name { font-size: 1.3rem; font-weight: 800; margin-bottom: 4px; }
     .fc-cat-link { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #DFA26E; }
 
-    /* Brand Pillars */
     .fc-pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 3rem 0; }
     .fc-pillar-card {
       background: var(--fc-surface-card); border: 1px solid var(--fc-border); border-radius: var(--fc-radius-md);
@@ -428,7 +409,6 @@
     .fc-pillar-title { font-size: 1.15rem; font-weight: 800; margin: 8px 0 6px; text-transform: uppercase; }
     .fc-pillar-desc { font-size: 0.875rem; color: var(--fc-text-muted); line-height: 1.6; }
 
-    /* Footer */
     .fc-footer {
       background: var(--fc-surface); border-top: 1px solid var(--fc-border); color: var(--fc-text-main);
       padding: 4rem 0 2rem;
@@ -446,22 +426,21 @@
       font-size: 12px; color: var(--fc-text-subtle);
     }
 
-    /* Floating WhatsApp Button */
     .fc-whatsapp-float {
-      position: fixed; bottom: 24px; right: 24px; z-index: 290;
+      position: fixed; bottom: 24px; right: 24px; z-index: 250;
       display: inline-flex; align-items: center; gap: 8px;
-      background: #25D366; color: #FFFFFF; padding: 8px 16px 8px 10px;
+      background: #25D366; color: #FFFFFF; padding: 10px 18px 10px 12px;
       border-radius: 99px; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
       text-decoration: none; font-size: 13px; font-weight: 700;
-      transition: transform 0.25s;
+      transition: transform 0.25s, box-shadow 0.25s;
     }
-    .fc-whatsapp-float:hover { transform: translateY(-3px); }
+    .fc-whatsapp-float:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 6px 25px rgba(37, 211, 102, 0.55); }
 
-    /* Mobile Bottom Dock */
     .fc-mobile-bottom-nav {
       display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 190;
       background: var(--fc-surface-card); border-top: 1px solid var(--fc-border);
-      height: 58px; padding: 0 1rem; align-items: stretch;
+      height: 60px; padding: 0 1rem; align-items: stretch;
+      padding-bottom: env(safe-area-inset-bottom);
     }
     .fc-mobile-bottom-link {
       flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -475,7 +454,6 @@
       font-weight: 800; border-radius: 99px; display: flex; align-items: center; justify-content: center;
     }
 
-    /* Cart Drawer */
     .fc-overlay {
       position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.6);
       opacity: 0; visibility: hidden; transition: all 0.3s ease;
@@ -496,39 +474,46 @@
     .fc-cart-footer { padding: 1.5rem; border-top: 1px solid var(--fc-border); background: var(--fc-surface); }
 
     @media (max-width: 1024px) {
-      .fc-hero-grid { grid-template-columns: 1fr; }
+      .fc-hero-grid { grid-template-columns: 1fr; gap: 2rem; }
       .fc-product-grid { grid-template-columns: repeat(3, 1fr); }
       .fc-category-grid { grid-template-columns: repeat(2, 1fr); }
       .fc-footer-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 768px) {
-      body { padding-bottom: 60px; }
+      body { padding-bottom: 65px; }
       .fc-nav-bar { display: none; }
       .fc-mobile-bottom-nav { display: flex; }
       .fc-product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
       .fc-pillars-grid { grid-template-columns: 1fr; }
-      .fc-payment-promo-strip { flex-direction: column; align-items: flex-start; padding: 1.5rem; }
+      .fc-payment-promo-strip { flex-direction: column; align-items: flex-start; padding: 1.5rem; gap: 1rem; }
       .fc-footer-grid { grid-template-columns: 1fr; }
-      .fc-whatsapp-float { bottom: 70px; right: 16px; padding: 8px; border-radius: 50%; }
+      .fc-whatsapp-float { bottom: 74px; right: 16px; padding: 10px; border-radius: 50%; }
       .fc-whatsapp-text { display: none; }
+      .fc-hero-stats { gap: 1.25rem; }
+      .fc-hero-stat-num { font-size: 1.1rem; }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0 1rem; }
+      .fc-header__main { height: 64px; padding: 0 1rem; }
+      .fc-logo-name { font-size: 17px; }
+      .fc-hero-actions .fc-btn { width: 100%; }
     }
   </style>
 </head>
 <body>
 
-<!-- SLIDEBAR -->
 <div class="fc-promo-slidebar" role="region" aria-label="Announcement">
   <div class="fc-promo-track">
     <div class="fc-promo-slide is-active">
       <span class="fc-promo-badge">5% OFF</span>
-      <span>ðŸ’³ Pay Online (bKash / Nagad / Cards) & Get <strong>5% Instant Discount</strong> with code <code class="fc-promo-code" onclick="copyPromoCode('ONLINE5')">ONLINE5</code></span>
+      <span>&#128179; Pay Online (bKash / Nagad / Cards) & Get <strong>5% Instant Discount</strong> with code <code class="fc-promo-code" onclick="copyPromoCode('ONLINE5')">ONLINE5</code></span>
       <button class="fc-promo-copy-btn" onclick="copyPromoCode('ONLINE5')">Copy Code</button>
     </div>
     <div class="fc-promo-slide">
-      <span>ðŸšš <strong>FREE NATIONWIDE DELIVERY</strong> on all orders above <span class="fc-taka">à§³</span>2,000 across 64 districts</span>
+      <span>&#128666; <strong>FREE NATIONWIDE DELIVERY</strong> on all orders above <span class="fc-taka">&#2547;</span>2,000 across 64 districts</span>
     </div>
     <div class="fc-promo-slide">
-      <span>âœ¨ <strong>220+ GSM Heavyweight Combed Cotton</strong> &bull; 7-Day Hassle-Free Exchange</span>
+      <span>&#10024; <strong>220+ GSM Heavyweight Combed Cotton</strong> &bull; 7-Day Hassle-Free Exchange</span>
     </div>
   </div>
   <div class="fc-promo-controls">
@@ -537,7 +522,6 @@
   </div>
 </div>
 
-<!-- HEADER -->
 <header class="fc-header" id="fc-header">
   <div class="fc-header__main">
     <div class="fc-header__left">
@@ -566,30 +550,29 @@
   </div>
   <nav class="fc-nav-bar" aria-label="Main Navigation">
     <div class="fc-nav-bar__inner">
-      <a href="index.html" class="fc-nav-link">Home</a>
-      <a href="shop.html" class="fc-nav-link is-active">All Products</a>
+      <a href="index.html" class="fc-nav-link is-active">Home</a>
+      <a href="shop.html" class="fc-nav-link">All Products</a>
       <a href="shop.html?cat=men" class="fc-nav-link">Men</a>
       <a href="shop.html?cat=women" class="fc-nav-link">Women</a>
       <a href="shop.html?cat=accessories" class="fc-nav-link">Accessories</a>
-      <a href="shop.html" class="fc-nav-link fc-nav-link--discount">5% Online Pay âš¡</a>
+      <a href="shop.html?discount=true" class="fc-nav-link fc-nav-link--discount">5% Online Pay &#9889;</a>
       <a href="shop.html" class="fc-nav-link fc-nav-link--sale">Sale</a>
     </div>
   </nav>
 </header>
 
-<!-- HERO SECTION -->
 <section class="fc-hero-section">
   <div class="container">
     <div class="fc-hero-grid">
       <div class="fc-hero-text">
         <div class="fc-hero-tag-badge">
-          <span>â˜… Quality &bull; Comfort &bull; Confidence</span>
+          <span>&#9733; Quality &bull; Comfort &bull; Confidence</span>
         </div>
         <h1 class="fc-hero-h1">CUT DIFFERENT.<br>WEAR <span>DIFFERENT.</span></h1>
         <p class="fc-hero-desc">Contemporary luxury fashion engineered with 220+ GSM combed compact cotton. Designed in Dhaka for unmatched all-day comfort and undeniable confidence.</p>
         <div class="fc-hero-actions">
           <a href="shop.html" class="fc-btn fc-btn--primary">EXPLORE COLLECTION</a>
-          <a href="shop.html" class="fc-btn fc-btn--secondary">CLAIM 5% ONLINE DISCOUNT</a>
+          <a href="shop.html?discount=true" class="fc-btn fc-btn--secondary">CLAIM 5% ONLINE DISCOUNT</a>
         </div>
         <div class="fc-hero-stats">
           <div><div class="fc-hero-stat-num">220+ GSM</div><div class="fc-hero-stat-lbl">Premium Cotton</div></div>
@@ -601,7 +584,7 @@
         <div class="fc-hero-visual-card">
           <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1000&q=85" alt="FOLDCUT Streetwear Fashion" />
           <div class="fc-hero-float-badge">
-            <div class="fc-hero-float-icon">ðŸ’³</div>
+            <div class="fc-hero-float-icon">&#128179;</div>
             <div>
               <div style="font-size:12px;font-weight:800;color:var(--fc-accent);">5% Instant Off</div>
               <div style="font-size:11px;color:var(--fc-text-muted);">bKash / Nagad / Online Cards</div>
@@ -613,11 +596,10 @@
   </div>
 </section>
 
-<!-- 5% ONLINE PAYMENT SPOTLIGHT -->
 <div class="container">
   <div class="fc-payment-promo-strip">
     <div class="fc-promo-strip-left">
-      <div class="fc-promo-strip-icon">âš¡</div>
+      <div class="fc-promo-strip-icon">&#9889;</div>
       <div>
         <div class="fc-promo-strip-title">Pay Online & Get Instant 5% Discount</div>
         <div class="fc-promo-strip-subtitle">Save automatically when you pay via bKash, Nagad or Visa/Mastercard at checkout. Use code <strong>ONLINE5</strong>.</div>
@@ -633,7 +615,6 @@
   </div>
 </div>
 
-<!-- SECTION: NEW ARRIVALS -->
 <section class="fc-section">
   <div class="container">
     <div class="fc-section-header">
@@ -647,8 +628,10 @@
       <!-- Product 1 -->
       <article class="fc-product-card">
         <div class="fc-product-card__image-wrap">
-          <img class="fc-product-card__image" src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80" alt="Oversized Heavyweight Essential Tee" loading="lazy" />
-          <img class="fc-product-card__image--hover" src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=800&q=80" alt="Oversized Essential Tee Back" loading="lazy" />
+          <a href="product.html">
+            <img class="fc-product-card__image" src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80" alt="Oversized Heavyweight Essential Tee" loading="lazy" />
+            <img class="fc-product-card__image--hover" src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=800&q=80" alt="Oversized Essential Tee Back" loading="lazy" />
+          </a>
           <div class="fc-product-card__badge">
             <span class="fc-badge fc-badge--new">BESTSELLER</span>
             <span class="fc-badge fc-badge--discount">5% OFF ONLINE</span>
@@ -662,18 +645,20 @@
           <div class="fc-product-card__category">Men &bull; 220 GSM Cotton</div>
           <div class="fc-product-card__name"><a href="product.html">Oversized Heavyweight Essential Tee</a></div>
           <div class="fc-product-card__price-row">
-            <span class="fc-price-main"><span class="fc-taka">à§³</span>1,199</span>
-            <span class="fc-price-orig"><span class="fc-taka">à§³</span>1,499</span>
+            <span class="fc-price-main"><span class="fc-taka">&#2547;</span>1,199</span>
+            <span class="fc-price-orig"><span class="fc-taka">&#2547;</span>1,499</span>
           </div>
-          <div class="fc-online-pay-pill">ðŸ’³ <span class="fc-taka">à§³</span>1,139 with 5% online pay</div>
+          <div class="fc-online-pay-pill">&#128179; <span class="fc-taka">&#2547;</span>1,139 with 5% online pay</div>
         </div>
       </article>
 
       <!-- Product 2 -->
       <article class="fc-product-card">
         <div class="fc-product-card__image-wrap">
-          <img class="fc-product-card__image" src="https://images.unsplash.com/photo-1625910513413-5bc6754b2d56?auto=format&fit=crop&w=800&q=80" alt="Executive Pique Cotton Polo" loading="lazy" />
-          <img class="fc-product-card__image--hover" src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=800&q=80" alt="Executive Polo Back" loading="lazy" />
+          <a href="product.html">
+            <img class="fc-product-card__image" src="https://images.unsplash.com/photo-1625910513413-5bc6754b2d56?auto=format&fit=crop&w=800&q=80" alt="Executive Pique Cotton Polo" loading="lazy" />
+            <img class="fc-product-card__image--hover" src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=800&q=80" alt="Executive Polo Back" loading="lazy" />
+          </a>
           <div class="fc-product-card__badge"><span class="fc-badge fc-badge--new">NEW DROP</span></div>
           <button class="fc-wishlist-btn" onclick="toggleWishlist(this,2)" aria-label="Add to wishlist">
             <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
@@ -684,18 +669,20 @@
           <div class="fc-product-card__category">Men &bull; Polos</div>
           <div class="fc-product-card__name"><a href="product.html">Executive Pique Cotton Polo</a></div>
           <div class="fc-product-card__price-row">
-            <span class="fc-price-main"><span class="fc-taka">à§³</span>1,799</span>
-            <span class="fc-price-orig"><span class="fc-taka">à§³</span>2,199</span>
+            <span class="fc-price-main"><span class="fc-taka">&#2547;</span>1,799</span>
+            <span class="fc-price-orig"><span class="fc-taka">&#2547;</span>2,199</span>
           </div>
-          <div class="fc-online-pay-pill">ðŸ’³ <span class="fc-taka">à§³</span>1,709 with 5% online pay</div>
+          <div class="fc-online-pay-pill">&#128179; <span class="fc-taka">&#2547;</span>1,709 with 5% online pay</div>
         </div>
       </article>
 
       <!-- Product 3 -->
       <article class="fc-product-card">
         <div class="fc-product-card__image-wrap">
-          <img class="fc-product-card__image" src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80" alt="Minimalist Linen Co-Ord Set" loading="lazy" />
-          <img class="fc-product-card__image--hover" src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80" alt="Minimalist Co-Ord Set Back" loading="lazy" />
+          <a href="product.html">
+            <img class="fc-product-card__image" src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80" alt="Minimalist Linen Co-Ord Set" loading="lazy" />
+            <img class="fc-product-card__image--hover" src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80" alt="Minimalist Co-Ord Set Back" loading="lazy" />
+          </a>
           <div class="fc-product-card__badge"><span class="fc-badge fc-badge--sale">LIMITED</span></div>
           <button class="fc-wishlist-btn" onclick="toggleWishlist(this,3)" aria-label="Add to wishlist">
             <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
@@ -706,18 +693,20 @@
           <div class="fc-product-card__category">Women &bull; Co-Ords</div>
           <div class="fc-product-card__name"><a href="product.html">Minimalist Linen Co-Ord Set</a></div>
           <div class="fc-product-card__price-row">
-            <span class="fc-price-main"><span class="fc-taka">à§³</span>2,499</span>
-            <span class="fc-price-orig"><span class="fc-taka">à§³</span>2,999</span>
+            <span class="fc-price-main"><span class="fc-taka">&#2547;</span>2,499</span>
+            <span class="fc-price-orig"><span class="fc-taka">&#2547;</span>2,999</span>
           </div>
-          <div class="fc-online-pay-pill">ðŸ’³ <span class="fc-taka">à§³</span>2,374 with 5% online pay</div>
+          <div class="fc-online-pay-pill">&#128179; <span class="fc-taka">&#2547;</span>2,374 with 5% online pay</div>
         </div>
       </article>
 
       <!-- Product 4 -->
       <article class="fc-product-card">
         <div class="fc-product-card__image-wrap">
-          <img class="fc-product-card__image" src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=80" alt="Contemporary Everyday Kurti" loading="lazy" />
-          <img class="fc-product-card__image--hover" src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80" alt="Everyday Kurti Back" loading="lazy" />
+          <a href="product.html">
+            <img class="fc-product-card__image" src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=80" alt="Contemporary Everyday Kurti" loading="lazy" />
+            <img class="fc-product-card__image--hover" src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80" alt="Everyday Kurti Back" loading="lazy" />
+          </a>
           <div class="fc-product-card__badge"><span class="fc-badge fc-badge--sale">-24% OFF</span></div>
           <button class="fc-wishlist-btn" onclick="toggleWishlist(this,4)" aria-label="Add to wishlist">
             <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
@@ -728,17 +717,16 @@
           <div class="fc-product-card__category">Women &bull; Ethnic</div>
           <div class="fc-product-card__name"><a href="product.html">Contemporary Everyday Kurti</a></div>
           <div class="fc-product-card__price-row">
-            <span class="fc-price-main"><span class="fc-taka">à§³</span>1,450</span>
-            <span class="fc-price-orig"><span class="fc-taka">à§³</span>1,899</span>
+            <span class="fc-price-main"><span class="fc-taka">&#2547;</span>1,450</span>
+            <span class="fc-price-orig"><span class="fc-taka">&#2547;</span>1,899</span>
           </div>
-          <div class="fc-online-pay-pill">ðŸ’³ <span class="fc-taka">à§³</span>1,377 with 5% online pay</div>
+          <div class="fc-online-pay-pill">&#128179; <span class="fc-taka">&#2547;</span>1,377 with 5% online pay</div>
         </div>
       </article>
     </div>
   </div>
 </section>
 
-<!-- CATEGORY DISCOVERY -->
 <section class="fc-section" style="background:var(--fc-surface);">
   <div class="container">
     <div class="fc-section-header">
@@ -784,7 +772,6 @@
   </div>
 </section>
 
-<!-- BRAND PILLARS -->
 <section class="fc-section">
   <div class="container">
     <div class="fc-section-header">
@@ -796,19 +783,19 @@
     <div class="fc-pillars-grid">
       <div class="fc-pillar-card">
         <div class="fc-pillar-bar" style="background:#0A382C;"></div>
-        <div style="font-size:24px;">ðŸ’Ž</div>
+        <div style="font-size:24px;">&#128142;</div>
         <div class="fc-pillar-title" style="color:var(--fc-accent);">01. Quality</div>
         <p class="fc-pillar-desc">Heavyweight 220+ GSM combed compact cotton, anti-pilling wash, and twin-needle lock stitching designed to retain shape and color wash after wash.</p>
       </div>
       <div class="fc-pillar-card">
         <div class="fc-pillar-bar" style="background:#C28453;"></div>
-        <div style="font-size:24px;">ðŸ•Šï¸</div>
+        <div style="font-size:24px;">&#128330;</div>
         <div class="fc-pillar-title" style="color:var(--fc-accent);">02. Comfort</div>
         <p class="fc-pillar-desc">Ergonomic tailoring engineered specifically for breathable ease in any climate. Ultra-soft touch, tagless necklines, and non-restrictive comfort.</p>
       </div>
       <div class="fc-pillar-card">
         <div class="fc-pillar-bar" style="background:#0A382C;"></div>
-        <div style="font-size:24px;">ðŸ¦…</div>
+        <div style="font-size:24px;">&#129413;</div>
         <div class="fc-pillar-title" style="color:var(--fc-accent);">03. Confidence</div>
         <p class="fc-pillar-desc">Bold contemporary silhouettes and refined minimal palettes crafted to make a statement effortlessly wherever you step.</p>
       </div>
@@ -816,7 +803,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="fc-footer">
   <div class="container">
     <div class="fc-footer-grid">
@@ -828,19 +814,19 @@
           <span class="fc-logo-name" style="font-size:18px;">FOLD<span style="color:var(--fc-accent);">CUT</span></span>
         </div>
         <p style="font-size:0.875rem;color:var(--fc-text-muted);line-height:1.6;margin-bottom:1rem;">Contemporary luxury apparel engineered for quality, comfort, and confidence. Proudly crafted in Dhaka, Bangladesh.</p>
-        <p style="font-size:0.875rem;color:var(--fc-accent);font-weight:700;">ðŸ“ž Helpline: +880 1700-000000</p>
+        <p style="font-size:0.875rem;color:var(--fc-accent);font-weight:700;">&#128222; Helpline: +880 1700-000000</p>
       </div>
       <div>
         <div class="fc-footer-col-title">Shop</div>
-        <a href="shop.html" class="fc-footer-link">Men Collection</a>
-        <a href="shop.html" class="fc-footer-link">Women Collection</a>
+        <a href="shop.html?cat=men" class="fc-footer-link">Men Collection</a>
+        <a href="shop.html?cat=women" class="fc-footer-link">Women Collection</a>
         <a href="shop.html" class="fc-footer-link">Oversized Tees</a>
         <a href="shop.html" class="fc-footer-link">Polo Shirts</a>
-        <a href="shop.html" class="fc-footer-link">Accessories</a>
+        <a href="shop.html?cat=accessories" class="fc-footer-link">Accessories</a>
       </div>
       <div>
         <div class="fc-footer-col-title">Customer Care</div>
-        <a href="#" class="fc-footer-link">Track Order</a>
+        <a href="https://wa.me/8801700000000?text=Hello%20FOLDCUT!%20I%20want%20to%20track%20my%20order." target="_blank" class="fc-footer-link">Track Order</a>
         <a href="#" class="fc-footer-link">7-Day Return Policy</a>
         <a href="#" class="fc-footer-link">Shipping & Delivery</a>
         <a href="#" class="fc-footer-link">Payment Methods</a>
@@ -863,24 +849,20 @@
   </div>
 </footer>
 
-<!-- WHATSAPP FLOATING BUTTON -->
-<a href="https://wa.me/8801700000000?text=Hello%20FOLDCUT!%20I%20want%20to%20know%20more%20about%20your%20products." target="_blank" rel="noopener" class="fc-whatsapp-float" aria-label="Chat on WhatsApp">
-  <div class="fc-whatsapp-icon">
-    <svg viewBox="0 0 32 32" width="26" height="26" fill="#FFFFFF">
-      <path d="M16 2C8.28 2 2 8.28 2 16c0 2.62.72 5.08 1.98 7.18L2 30l7.02-1.92C11.06 29.3 13.48 30 16 30c7.72 0 14-6.28 14-14S23.72 2 16 2zm0 25.64c-2.28 0-4.42-.64-6.26-1.76l-.44-.26-4.64 1.28 1.28-4.52-.3-.48C4.5 19.98 3.86 18.04 3.86 16 3.86S28.14 9.3 28.14 16 22.7 27.64 16 27.64zm7.34-8.88c-.4-.2-2.38-1.18-2.76-1.32-.36-.14-.62-.2-.88.2-.26.4-1 1.32-1.24 1.6-.22.26-.46.3-.86.1-.4-.2-1.7-.62-3.24-2-.42-1.24-1.24-2.08-1.46-2.46-.22-.38-.02-.58.18-.78.18-.18.4-.46.6-.7.2-.24.26-.4.4-.66.14-.26.06-.5-.04-.7-.1-.2-.88-2.12-1.2-2.9-.32-.78-.64-.68-.88-.68h-.76c-.26 0-.68.1-1.04.5-.36.4-1.38 1.36-1.38 3.3 0 1.96 1.42 3.84 1.62 4.12.2.26 2.8 4.28 6.78 6 .94.42 1.68.66 2.26.84.96.3 1.82.26 2.5.16.76-.12 2.38-.98 2.72-1.92.34-.94.34-1.74.24-1.92-.1-.18-.36-.3-.76-.5z"/>
-    </svg>
-  </div>
+<a href="https://wa.me/8801700000000?text=Hello%20FOLDCUT!%20I%20want%20to%20know%20more%20about%20your%20products." target="_blank" rel="noopener" class="fc-whatsapp-float" aria-label="Order on WhatsApp">
+  <svg viewBox="0 0 32 32" width="24" height="24" fill="#FFFFFF">
+    <path d="M16 2C8.28 2 2 8.28 2 16c0 2.62.72 5.08 1.98 7.18L2 30l7.02-1.92C11.06 29.3 13.48 30 16 30c7.72 0 14-6.28 14-14S23.72 2 16 2zm0 25.64c-2.28 0-4.42-.64-6.26-1.76l-.44-.26-4.64 1.28 1.28-4.52-.3-.48C4.5 19.98 3.86 18.04 3.86 16 3.86S28.14 9.3 28.14 16 22.7 27.64 16 27.64zm7.34-8.88c-.4-.2-2.38-1.18-2.76-1.32-.36-.14-.62-.2-.88.2-.26.4-1 1.32-1.24 1.6-.22.26-.46.3-.86.1-.4-.2-1.7-.62-3.24-2-.42-1.24-1.24-2.08-1.46-2.46-.22-.38-.02-.58.18-.78.18-.18.4-.46.6-.7.2-.24.26-.4.4-.66.14-.26.06-.5-.04-.7-.1-.2-.88-2.12-1.2-2.9-.32-.78-.64-.68-.88-.68h-.76c-.26 0-.68.1-1.04.5-.36.4-1.38 1.36-1.38 3.3 0 1.96 1.42 3.84 1.62 4.12.2.26 2.8 4.28 6.78 6 .94.42 1.68.66 2.26.84.96.3 1.82.26 2.5.16.76-.12 2.38-.98 2.72-1.92.34-.94.34-1.74.24-1.92-.1-.18-.36-.3-.76-.5z"/>
+  </svg>
   <span class="fc-whatsapp-text">Order on WhatsApp</span>
 </a>
 
-<!-- MOBILE BOTTOM DOCK -->
-<nav class="fc-mobile-bottom-nav" aria-label="Mobile quick actions">
+<nav class="fc-mobile-bottom-nav" aria-label="Mobile Navigation">
   <a href="index.html" class="fc-mobile-bottom-link is-active">
     <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
     <span>Home</span>
   </a>
   <a href="shop.html" class="fc-mobile-bottom-link">
-    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
     <span>Shop</span>
   </a>
   <button class="fc-mobile-bottom-link" onclick="openSearchModal()">
@@ -896,7 +878,6 @@
   </button>
 </nav>
 
-<!-- CART DRAWER -->
 <div class="fc-overlay" id="fc-overlay"></div>
 <div class="fc-cart-drawer" id="fc-cart-drawer">
   <div class="fc-cart-header">
@@ -905,7 +886,7 @@
   </div>
   <div class="fc-cart-body" id="fc-cart-body">
     <div id="fc-cart-empty" style="text-align:center;padding:3rem 1rem;">
-      <div style="font-size:40px;margin-bottom:1rem;">ðŸ›ï¸</div>
+      <div style="font-size:40px;margin-bottom:1rem;">&#128717;&#65039;</div>
       <p style="font-weight:700;font-size:1.1rem;">Your bag is empty</p>
       <p style="color:var(--fc-text-muted);font-size:0.875rem;margin-bottom:1.5rem;">Add some pieces you love.</p>
       <a href="shop.html" class="fc-btn fc-btn--primary fc-btn--sm">DISCOVER SHOP</a>
@@ -915,11 +896,11 @@
   <div class="fc-cart-footer" id="fc-cart-footer" style="display:none;">
     <div style="display:flex;justify-content:space-between;font-weight:700;margin-bottom:0.5rem;">
       <span>Subtotal</span>
-      <span id="fc-cart-subtotal">à§³0</span>
+      <span id="fc-cart-subtotal"><span class="fc-taka">&#2547;</span>0</span>
     </div>
     <div style="display:flex;justify-content:space-between;color:var(--fc-discount);font-size:12px;font-weight:700;margin-bottom:1rem;">
       <span>5% Online Pay Savings</span>
-      <span id="fc-cart-discount">-à§³0</span>
+      <span id="fc-cart-discount">-<span class="fc-taka">&#2547;</span>0</span>
     </div>
     <a href="checkout.html" class="fc-btn fc-btn--primary fc-btn--full" style="margin-bottom:8px;">CHECKOUT &bull; PAY ONLINE 5% OFF</a>
   </div>
@@ -928,11 +909,8 @@
 <script>
   function initTheme() {
     const saved = localStorage.getItem('fc_theme');
-    if (saved === 'dark' || saved === 'light') {
-      document.documentElement.setAttribute('data-theme', saved);
-    } else {
-      document.documentElement.removeAttribute('data-theme');
-    }
+    if (saved === 'dark' || saved === 'light') { document.documentElement.setAttribute('data-theme', saved); }
+    else { document.documentElement.removeAttribute('data-theme'); }
     updateThemeIcon();
   }
 
@@ -941,13 +919,9 @@
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     let nextTheme = '';
     
-    if (!current) {
-      nextTheme = prefersDark ? 'light' : 'dark';
-    } else if (current === 'dark') {
-      nextTheme = 'light';
-    } else {
-      nextTheme = 'dark';
-    }
+    if (!current) { nextTheme = prefersDark ? 'light' : 'dark'; }
+    else if (current === 'dark') { nextTheme = 'light'; }
+    else { nextTheme = 'dark'; }
     
     document.documentElement.setAttribute('data-theme', nextTheme);
     localStorage.setItem('fc_theme', nextTheme);
@@ -967,12 +941,9 @@
 
   initTheme();
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-    if (!localStorage.getItem('fc_theme')) {
-      updateThemeIcon();
-    }
+    if (!localStorage.getItem('fc_theme')) updateThemeIcon();
   });
 
-  // Slidebar
   let currentSlide = 0;
   function showSlide(index) {
     const slides = document.querySelectorAll('.fc-promo-slide');
@@ -992,7 +963,6 @@
     }
   }
 
-  // Cart & Wishlist
   let cart = JSON.parse(localStorage.getItem('fc_cart') || '[]');
   let wishlist = JSON.parse(localStorage.getItem('fc_wishlist') || '[]');
 
@@ -1020,15 +990,15 @@
 
       const subElem = document.getElementById('fc-cart-subtotal');
       const discElem = document.getElementById('fc-cart-discount');
-      if (subElem) subElem.innerHTML = '<span class="fc-taka">à§³</span>' + subtotal.toLocaleString();
-      if (discElem) discElem.innerHTML = '-<span class="fc-taka">à§³</span>' + discount.toLocaleString();
+      if (subElem) subElem.innerHTML = '<span class="fc-taka">&#2547;</span>' + subtotal.toLocaleString();
+      if (discElem) discElem.innerHTML = '-<span class="fc-taka">&#2547;</span>' + discount.toLocaleString();
 
       if (items) {
         items.innerHTML = cart.map((item, idx) => `
           <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--fc-border);align-items:center;">
             <div style="flex:1;">
               <div style="font-weight:700;font-size:13px;color:var(--fc-text-main);">${item.name}</div>
-              <div style="font-size:12px;color:var(--fc-text-muted);"><span class="fc-taka">à§³</span>${item.price.toLocaleString()} &times; ${item.qty || 1}</div>
+              <div style="font-size:12px;color:var(--fc-text-muted);"><span class="fc-taka">&#2547;</span>${item.price.toLocaleString()} &times; ${item.qty || 1}</div>
             </div>
             <button onclick="removeFromCart(${idx})" style="color:var(--fc-error);font-size:12px;font-weight:600;">Remove</button>
           </div>
