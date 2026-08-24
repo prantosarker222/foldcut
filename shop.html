@@ -1,184 +1,376 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-  <title>Shop All | FOLDCUT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Shop All Collection | FOLDCUT</title>
+  <meta name="description" content="Explore FOLDCUT's collection of oversized tees, pique polos, linen co-ords, kurtis, and accessories. 5% instant discount on online payments."/>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Hind+Siliguri:wght@500;600;700&display=swap" rel="stylesheet"/>
+  
   <style>
-    :root{
-      --fc-bg:#FFFFFF;--fc-surface:#F9FAFB;--fc-border:#E5E7EB;--fc-border-dark:#D1D5DB;
-      --fc-text:#111827;--fc-muted:#4B5563;--fc-subtle:#9CA3AF;
-      --fc-primary:#0A382C;--fc-primary-light:#E8F5F1;
-      --fc-accent:#C28453;--fc-accent-light:#DFA26E;--fc-accent-dark:#985B2E;
-      --fc-discount:#059669;--fc-discount-bg:#ECFDF5;--fc-error:#DC2626;
-      --fc-font-d:'Plus Jakarta Sans',sans-serif;--fc-font-b:'Inter',sans-serif;
-      --fc-radius:8px;--fc-shadow:0 4px 20px rgba(0,0,0,0.06);
+    :root {
+      --fc-bg:             #FFFFFF;
+      --fc-surface:        #F9FAFB;
+      --fc-surface-card:   #FFFFFF;
+      --fc-surface-hover:  #F3F4F6;
+      --fc-border:         #E5E7EB;
+      --fc-border-hover:   #D1D5DB;
+      --fc-text-main:      #111827;
+      --fc-text-muted:     #4B5563;
+      --fc-text-subtle:    #9CA3AF;
+      --fc-primary:        #0A382C;
+      --fc-primary-hover:  #06241C;
+      --fc-primary-light:  #E8F5F1;
+      --fc-accent:         #C28453;
+      --fc-accent-light:   #DFA26E;
+      --fc-accent-dark:    #985B2E;
+      --fc-accent-bg:      #FDF8F4;
+      --fc-discount:       #059669;
+      --fc-discount-bg:    #ECFDF5;
+      --fc-error:          #DC2626;
+      --fc-card-shadow:    0 4px 20px rgba(0,0,0,0.06);
+      --fc-header-bg:      rgba(255, 255, 255, 0.95);
+      --fc-nav-bar-bg:     #FFFFFF;
+      --fc-input-bg:       #FFFFFF;
+      
+      --fc-font-display:   'Plus Jakarta Sans', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --fc-font-body:      'Inter', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      
+      --fc-radius-sm:      4px;
+      --fc-radius-md:      8px;
+      --fc-radius-lg:      16px;
     }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{font-size:16px;scroll-behavior:smooth}
-    body{font-family:var(--fc-font-b);color:var(--fc-text);background:#FFFFFF;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:60px}
-    img{display:block;max-width:100%;height:auto}
-    a{color:inherit;text-decoration:none}
-    button{cursor:pointer;border:none;background:none;font-family:inherit}
-    ul{list-style:none}
 
-        @media (prefers-color-scheme: dark) {
+    @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) {
-        --fc-bg:#0B110F;--fc-surface:#121A17;--fc-border:#243730;--fc-border-dark:#344F45;
-        --fc-text:#F9FAFB;--fc-muted:#9CA3AF;--fc-subtle:#6B7280;
-        --fc-primary:#105946;--fc-primary-light:rgba(16,89,70,0.28);
-        --fc-accent:#DFA26E;--fc-accent-light:#E8B991;--fc-accent-dark:#C28453;
-        --fc-discount:#10B981;--fc-discount-bg:rgba(16,185,129,0.15);
+        --fc-bg:             #0B110F;
+        --fc-surface:        #121A17;
+        --fc-surface-card:   #16221E;
+        --fc-surface-hover:  #1E2E28;
+        --fc-border:         #243730;
+        --fc-border-hover:   #344F45;
+        --fc-text-main:      #F9FAFB;
+        --fc-text-muted:     #9CA3AF;
+        --fc-text-subtle:    #6B7280;
+        --fc-primary:        #105946;
+        --fc-primary-hover:  #146D55;
+        --fc-primary-light:  rgba(16, 89, 70, 0.28);
+        --fc-accent:         #DFA26E;
+        --fc-accent-light:   #E8B991;
+        --fc-accent-dark:    #C28453;
+        --fc-accent-bg:      rgba(223, 162, 110, 0.12);
+        --fc-discount:       #10B981;
+        --fc-discount-bg:    rgba(16, 185, 129, 0.15);
+        --fc-card-shadow:    0 6px 24px rgba(0,0,0,0.45);
+        --fc-header-bg:      rgba(11, 17, 15, 0.94);
+        --fc-nav-bar-bg:     #121A17;
+        --fc-input-bg:       #16221E;
       }
     }
+
     [data-theme="dark"] {
-      --fc-bg:#0B110F;--fc-surface:#121A17;--fc-border:#243730;--fc-border-dark:#344F45;
-      --fc-text:#F9FAFB;--fc-muted:#9CA3AF;--fc-subtle:#6B7280;
-      --fc-primary:#105946;--fc-primary-light:rgba(16,89,70,0.28);
-      --fc-accent:#DFA26E;--fc-accent-light:#E8B991;--fc-accent-dark:#C28453;
-      --fc-discount:#10B981;--fc-discount-bg:rgba(16,185,129,0.15);
+      --fc-bg:             #0B110F;
+      --fc-surface:        #121A17;
+      --fc-surface-card:   #16221E;
+      --fc-surface-hover:  #1E2E28;
+      --fc-border:         #243730;
+      --fc-border-hover:   #344F45;
+      --fc-text-main:      #F9FAFB;
+      --fc-text-muted:     #9CA3AF;
+      --fc-text-subtle:    #6B7280;
+      --fc-primary:        #105946;
+      --fc-primary-hover:  #146D55;
+      --fc-primary-light:  rgba(16, 89, 70, 0.28);
+      --fc-accent:         #DFA26E;
+      --fc-accent-light:   #E8B991;
+      --fc-accent-dark:    #C28453;
+      --fc-accent-bg:      rgba(223, 162, 110, 0.12);
+      --fc-discount:       #10B981;
+      --fc-discount-bg:    rgba(16, 185, 129, 0.15);
+      --fc-card-shadow:    0 6px 24px rgba(0,0,0,0.45);
+      --fc-header-bg:      rgba(11, 17, 15, 0.94);
+      --fc-nav-bar-bg:     #121A17;
+      --fc-input-bg:       #16221E;
     }
-    .fc-theme-toggle-btn{width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:50%;color:var(--fc-text);border:1px solid var(--fc-border);background:var(--fc-surface);cursor:pointer;transition:all 0.2s}
-    .fc-theme-toggle-btn:hover{transform:rotate(15deg)}
-    .fc-sidebar-body{background:var(--fc-surface) !important;}
-    .fc-promo-code-box{background:var(--fc-bg) !important;}
-/* SLIDEBAR */
-    .fc-promo-slidebar{background:#0A382C;color:#FFF;height:38px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;position:relative;overflow:hidden;border-bottom:1px solid rgba(194,132,83,0.4)}
-    .fc-promo-track{width:100%;max-width:1360px;position:relative;height:100%;display:flex;align-items:center;justify-content:center}
-    .fc-promo-slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:10px;opacity:0;transform:translateY(8px);transition:opacity 0.4s,transform 0.4s;pointer-events:none;padding:0 40px;text-align:center}
-    .fc-promo-slide.is-active{opacity:1;transform:translateY(0);pointer-events:all}
-    .fc-promo-badge{background:#C28453;color:#FFF;font-size:10px;font-weight:800;padding:2px 6px;border-radius:4px}
-    .fc-promo-code{background:rgba(255,255,255,0.15);border:1px dashed rgba(255,255,255,0.5);padding:1px 6px;border-radius:3px;font-weight:800;cursor:pointer;color:#DFA26E}
-    .fc-promo-copy-btn{background:#C28453;border:none;color:#FFF;font-size:10px;font-weight:700;padding:3px 8px;border-radius:3px;cursor:pointer}
-    .fc-promo-controls{position:absolute;right:16px;display:flex;align-items:center;gap:4px}
-    .fc-promo-arrow{background:none;border:none;color:rgba(255,255,255,0.7);font-size:16px;cursor:pointer;padding:2px 6px}
-    .fc-promo-arrow:hover{color:#FFF}
 
-    /* HEADER */
-    .fc-header{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--fc-border)}
-    .fc-header__main{display:flex;align-items:center;justify-content:space-between;height:72px;padding:0 1.5rem;max-width:1360px;margin:0 auto}
-    .fc-header__left,.fc-header__right{display:flex;align-items:center;gap:8px;flex:1}
-    .fc-header__right{justify-content:flex-end}
-    .fc-header__center{display:flex;justify-content:center}
-    .fc-logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none}
-    .fc-logo-emblem-wrap{width:44px;height:44px;border-radius:50%;overflow:hidden;border:1.5px solid #C28453;box-shadow:0 2px 8px rgba(194,132,83,0.25);background:#FFF}
-    .fc-logo-emblem{width:100%;height:100%;object-fit:cover}
-    .fc-logo-name{font-family:var(--fc-font-d);font-size:20px;font-weight:800;letter-spacing:0.12em;color:#111827;line-height:1.1}
-    .fc-logo-accent{color:#C28453}
-    .fc-logo-motto{font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#0A382C;margin-top:1px;display:block}
-    .fc-icon-btn{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:9999px;transition:background 0.2s;color:#111827;position:relative}
-    .fc-icon-btn:hover{background:#F3F4F6}
-    .fc-icon-btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.75}
-    .fc-cart-count{position:absolute;top:4px;right:4px;min-width:16px;height:16px;padding:0 4px;background:#0A382C;color:#FFF;font-size:9px;font-weight:800;border-radius:9999px;display:flex;align-items:center;justify-content:center}
-    .fc-nav-bar{border-top:1px solid var(--fc-border);background:#FFF}
-    .fc-nav-bar__inner{display:flex;align-items:center;justify-content:center;height:42px;gap:2rem;max-width:1360px;margin:0 auto;padding:0 1.5rem}
-    .fc-nav-link{font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#111827;padding:4px 0;position:relative;transition:color 0.2s}
-    .fc-nav-link:hover,.fc-nav-link.is-active{color:#0A382C}
-    .fc-nav-link::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:#0A382C;transform:scaleX(0);transition:transform 0.2s}
-    .fc-nav-link.is-active::after,.fc-nav-link:hover::after{transform:scaleX(1)}
-    .fc-nav-link--discount{color:#059669;font-weight:700}
-    .fc-nav-link--sale{color:#DC2626}
-
-    /* PAGE LAYOUT */
-    .fc-shop-page{max-width:1360px;margin:0 auto;padding:2rem 1.5rem;display:grid;grid-template-columns:260px 1fr;gap:2rem;align-items:start}
-
-    /* PAYMENT SIDEBAR */
-    .fc-payment-sidebar{
-      position:sticky;top:130px;
-      border:1px solid var(--fc-border);border-radius:var(--fc-radius);overflow:hidden;
-      box-shadow:var(--fc-shadow);
+    [data-theme="light"] {
+      --fc-bg:             #FFFFFF;
+      --fc-surface:        #F9FAFB;
+      --fc-surface-card:   #FFFFFF;
+      --fc-surface-hover:  #F3F4F6;
+      --fc-border:         #E5E7EB;
+      --fc-border-hover:   #D1D5DB;
+      --fc-text-main:      #111827;
+      --fc-text-muted:     #4B5563;
+      --fc-text-subtle:    #9CA3AF;
+      --fc-primary:        #0A382C;
+      --fc-primary-hover:  #06241C;
+      --fc-primary-light:  #E8F5F1;
+      --fc-accent:         #C28453;
+      --fc-accent-light:   #DFA26E;
+      --fc-accent-dark:    #985B2E;
+      --fc-accent-bg:      #FDF8F4;
+      --fc-discount:       #059669;
+      --fc-discount-bg:    #ECFDF5;
+      --fc-card-shadow:    0 4px 20px rgba(0,0,0,0.06);
+      --fc-header-bg:      rgba(255, 255, 255, 0.95);
+      --fc-nav-bar-bg:     #FFFFFF;
+      --fc-input-bg:       #FFFFFF;
     }
-    .fc-sidebar-header{background:#0A382C;color:#FFF;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:10px}
-    .fc-sidebar-header-icon{width:38px;height:38px;background:rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-    .fc-sidebar-header-title{font-family:var(--fc-font-d);font-size:14px;font-weight:800;line-height:1.3}
-    .fc-sidebar-header-sub{font-size:11px;opacity:0.8;margin-top:2px}
-    .fc-sidebar-body{background:#FFF;padding:1.25rem}
 
-    .fc-online-badge{display:inline-flex;align-items:center;gap:6px;background:#ECFDF5;color:#059669;font-size:11px;font-weight:800;padding:6px 12px;border-radius:99px;border:1px solid #A7F3D0;margin-bottom:1rem}
-    .fc-payment-method-list{display:flex;flex-direction:column;gap:8px;margin-bottom:1.25rem}
-    .fc-pm-row{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#F9FAFB;border:1.5px solid var(--fc-border);border-radius:6px;cursor:pointer;transition:all 0.2s}
-    .fc-pm-row:hover,.fc-pm-row.is-selected{border-color:#059669;background:#ECFDF5}
-    .fc-pm-row input{accent-color:#059669}
-    .fc-pm-icon{font-size:20px}
-    .fc-pm-name{font-weight:700;font-size:13px}
-    .fc-pm-badge{margin-left:auto;background:#059669;color:#FFF;font-size:10px;font-weight:800;padding:2px 6px;border-radius:3px}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: var(--fc-font-body);
+      color: var(--fc-text-main);
+      background: var(--fc-bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      padding-bottom: 60px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    h1, h2, h3, h4, h5, h6, .fc-logo-name, .fc-btn {
+      font-family: var(--fc-font-display);
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    ul { list-style: none; }
+    .fc-taka { font-family: 'Hind Siliguri', 'Inter', sans-serif; font-weight: 700; }
 
-    .fc-discount-calc{background:#F0FDF4;border:1px solid #A7F3D0;border-radius:6px;padding:1rem;margin-bottom:1.25rem}
-    .fc-discount-calc-title{font-size:11px;font-weight:700;color:#059669;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px}
-    .fc-dc-row{display:flex;justify-content:space-between;font-size:12px;font-weight:600;margin-bottom:4px}
-    .fc-dc-total{display:flex;justify-content:space-between;font-size:14px;font-weight:800;color:#059669;padding-top:6px;border-top:1px solid #A7F3D0;margin-top:6px}
+    /* Top Slidebar */
+    .fc-promo-slidebar {
+      background: #0A382C;
+      color: #FFFFFF;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 500;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(194, 132, 83, 0.4);
+    }
+    .fc-promo-track { width: 100%; max-width: 1360px; position: relative; height: 100%; display: flex; align-items: center; justify-content: center; }
+    .fc-promo-slide {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      gap: 10px; opacity: 0; transform: translateY(8px); transition: opacity 0.4s, transform 0.4s;
+      pointer-events: none; padding: 0 40px; text-align: center;
+    }
+    .fc-promo-slide.is-active { opacity: 1; transform: translateY(0); pointer-events: all; }
+    .fc-promo-badge { background: #C28453; color: #FFFFFF; font-size: 10px; font-weight: 800; padding: 2px 6px; border-radius: 4px; }
+    .fc-promo-code { background: rgba(255,255,255,0.18); border: 1px dashed rgba(255,255,255,0.5); padding: 1px 6px; border-radius: 3px; font-weight: 800; cursor: pointer; color: #DFA26E; }
+    .fc-promo-copy-btn { background: #C28453; border: none; color: #FFFFFF; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 3px; cursor: pointer; }
+    .fc-promo-controls { position: absolute; right: 16px; display: flex; align-items: center; gap: 4px; }
+    .fc-promo-arrow { background: none; border: none; color: rgba(255,255,255,0.7); font-size: 16px; cursor: pointer; padding: 2px 6px; }
+    .fc-promo-arrow:hover { color: #FFFFFF; }
 
-    .fc-promo-code-box{background:#FFF;border:1.5px dashed #C28453;border-radius:6px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer}
-    .fc-promo-code-label{font-size:12px;font-weight:700;color:#985B2E}
-    .fc-promo-code-val{font-size:13px;font-weight:900;color:#C28453;letter-spacing:0.06em}
-    .fc-copy-btn{background:#C28453;color:#FFF;font-size:10px;font-weight:700;padding:4px 8px;border-radius:4px}
-    .fc-sidebar-footer{font-size:11px;color:#6B7280;border-top:1px solid var(--fc-border);padding:12px 1.25rem}
+    /* Header */
+    .fc-header {
+      position: sticky; top: 0; z-index: 200;
+      background: var(--fc-header-bg);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--fc-border);
+      transition: background-color 0.3s ease;
+    }
+    .fc-header__main { display: flex; align-items: center; justify-content: space-between; height: 72px; padding: 0 1.5rem; max-width: 1360px; margin: 0 auto; }
+    .fc-header__left, .fc-header__right { display: flex; align-items: center; gap: 10px; flex: 1; }
+    .fc-header__right { justify-content: flex-end; }
+    .fc-header__center { display: flex; justify-content: center; }
 
-    /* FILTER BAR */
-    .fc-filter-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--fc-border)}
-    .fc-filter-chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border:1.5px solid var(--fc-border);border-radius:99px;cursor:pointer;transition:all 0.2s;color:var(--fc-text)}
-    .fc-filter-chip:hover,.fc-filter-chip.is-active{background:#0A382C;color:#FFF;border-color:#0A382C}
-    .fc-shop-count{margin-left:auto;font-size:12px;color:var(--fc-subtle);font-weight:500}
+    .fc-logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+    .fc-logo-emblem-wrap {
+      width: 44px; height: 44px; border-radius: 50%; overflow: hidden;
+      border: 1.5px solid var(--fc-accent); box-shadow: 0 2px 8px rgba(194, 132, 83, 0.25);
+      background: #FFFFFF; display: flex; align-items: center; justify-content: center;
+    }
+    .fc-logo-emblem { width: 100%; height: 100%; object-fit: cover; }
+    .fc-logo-name { font-size: 20px; font-weight: 800; letter-spacing: 0.12em; color: var(--fc-text-main); line-height: 1.1; }
+    .fc-logo-accent { color: var(--fc-accent); }
+    .fc-logo-motto { font-size: 8px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fc-primary); margin-top: 1px; display: block; }
 
-    /* PRODUCT GRID */
-    .fc-product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
-    .fc-product-card{display:flex;flex-direction:column;background:#FFF;border:1px solid var(--fc-border);border-radius:var(--fc-radius);overflow:hidden;transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;position:relative}
-    .fc-product-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.07);border-color:var(--fc-border-dark)}
-    .fc-product-card__image-wrap{position:relative;aspect-ratio:3/4;overflow:hidden;background:#F3F4F6}
-    .fc-product-card__image,.fc-product-card__image--hover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity 0.35s,transform 0.4s}
-    .fc-product-card__image--hover{opacity:0}
-    .fc-product-card:hover .fc-product-card__image--hover{opacity:1;transform:scale(1.04)}
-    .fc-product-card:hover .fc-product-card__image{transform:scale(1.04)}
-    .fc-product-card__badge{position:absolute;top:10px;left:10px;z-index:2;display:flex;flex-direction:column;gap:4px}
-    .fc-badge{display:inline-flex;align-items:center;padding:3px 8px;font-size:10px;font-weight:800;letter-spacing:0.05em;border-radius:4px}
-    .fc-badge--new{background:#0A382C;color:#FFF}
-    .fc-badge--sale{background:#C28453;color:#FFF}
-    .fc-badge--discount{background:#059669;color:#FFF}
-    .fc-wishlist-btn{position:absolute;top:10px;right:10px;z-index:2;width:34px;height:34px;background:rgba(255,255,255,0.9);border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.1);display:flex;align-items:center;justify-content:center;transition:all 0.2s}
-    .fc-wishlist-btn:hover{background:#FFF;transform:scale(1.1)}
-    .fc-wishlist-btn svg{width:16px;height:16px;stroke:#111827;fill:none;stroke-width:2}
-    .fc-wishlist-btn.is-active svg{fill:#DC2626;stroke:#DC2626}
-    .fc-quick-add-btn{position:absolute;bottom:0;left:0;right:0;z-index:2;background:#0A382C;color:#FFF;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:10px;text-align:center;transform:translateY(100%);transition:transform 0.25s}
-    .fc-product-card:hover .fc-quick-add-btn{transform:translateY(0)}
-    .fc-product-card__info{padding:0.875rem;display:flex;flex-direction:column}
-    .fc-product-card__category{font-size:11px;font-weight:600;color:var(--fc-subtle);text-transform:uppercase;margin-bottom:2px}
-    .fc-product-card__name{font-size:0.9rem;font-weight:700;color:var(--fc-text);margin-bottom:6px;line-height:1.35}
-    .fc-product-card__price-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:3px}
-    .fc-price-main{font-size:0.95rem;font-weight:800;color:var(--fc-text)}
-    .fc-price-orig{font-size:0.8rem;color:var(--fc-subtle);text-decoration:line-through}
-    .fc-online-pay-pill{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:700;color:#059669;background:#ECFDF5;padding:2px 6px;border-radius:4px;width:fit-content}
+    .fc-theme-toggle-btn {
+      width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; color: var(--fc-text-main); border: 1px solid var(--fc-border);
+      background: var(--fc-surface); cursor: pointer; transition: all 0.2s;
+    }
+    .fc-theme-toggle-btn:hover { transform: rotate(15deg); }
 
-    /* MOBILE NAV */
-    .fc-mobile-bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:190;background:#FFF;border-top:1px solid var(--fc-border);height:58px;padding:0 1rem;gap:0;align-items:stretch}
-    @media(max-width:768px){.fc-mobile-bottom-nav{display:flex}}
-    .fc-mobile-bottom-link{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:10px;font-weight:600;color:#6B7280;transition:color 0.2s;cursor:pointer}
-    .fc-mobile-bottom-link svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.75}
-    .fc-mobile-bottom-link.is-active,.fc-mobile-bottom-link:hover{color:#0A382C}
-    .fc-mobile-cart-badge{position:absolute;top:-4px;right:-4px;min-width:14px;height:14px;padding:0 3px;background:#0A382C;color:#FFF;font-size:8px;font-weight:800;border-radius:99px;display:flex;align-items:center;justify-content:center}
+    .fc-icon-btn {
+      width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; transition: background 0.2s; color: var(--fc-text-main); position: relative;
+    }
+    .fc-icon-btn:hover { background: var(--fc-surface-hover); }
+    .fc-icon-btn svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.75; }
+    .fc-cart-count {
+      position: absolute; top: 2px; right: 2px; min-width: 16px; height: 16px; padding: 0 4px;
+      background: var(--fc-primary); color: #FFFFFF; font-size: 9px; font-weight: 800;
+      border-radius: 99px; display: flex; align-items: center; justify-content: center;
+    }
 
-    /* WHATSAPP */
-    .fc-whatsapp-float{position:fixed;bottom:24px;right:24px;z-index:290;display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#FFF;padding:8px 16px 8px 10px;border-radius:99px;box-shadow:0 4px 20px rgba(37,211,102,0.4);text-decoration:none;font-size:13px;font-weight:700;font-family:var(--fc-font-d);transition:transform 0.25s,box-shadow 0.25s}
-    .fc-whatsapp-float:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(37,211,102,0.55)}
-    @media(max-width:768px){.fc-whatsapp-float{bottom:70px;right:16px;padding:8px;border-radius:50%}.fc-whatsapp-text{display:none}}
+    .fc-nav-bar { border-top: 1px solid var(--fc-border); background: var(--fc-nav-bar-bg); }
+    .fc-nav-bar__inner { display: flex; align-items: center; justify-content: center; height: 42px; gap: 2rem; max-width: 1360px; margin: 0 auto; padding: 0 1.5rem; }
+    .fc-nav-link { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fc-text-main); padding: 4px 0; transition: color 0.2s; }
+    .fc-nav-link:hover, .fc-nav-link.is-active { color: var(--fc-accent); }
+    .fc-nav-link--discount { color: var(--fc-discount); font-weight: 700; }
+    .fc-nav-link--sale { color: var(--fc-error); }
 
-    /* CART DRAWER */
-    .fc-overlay{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,0.5);opacity:0;visibility:hidden;transition:all 0.3s}
-    .fc-overlay.is-visible{opacity:1;visibility:visible}
-    .fc-cart-drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,92vw);background:#FFF;z-index:400;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1);display:flex;flex-direction:column;box-shadow:-10px 0 30px rgba(0,0,0,0.1)}
-    .fc-cart-drawer.is-open{transform:translateX(0)}
-    .fc-cart-header{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;border-bottom:1px solid var(--fc-border)}
-    .fc-cart-body{flex:1;overflow-y:auto;padding:1.25rem 1.5rem}
-    .fc-cart-footer{padding:1.5rem;border-top:1px solid var(--fc-border);background:#F9FAFB}
-    .fc-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--fc-font-d);font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:14px 24px;border-radius:4px;border:2px solid transparent;cursor:pointer;transition:all 0.2s}
-    .fc-btn--primary{background:#0A382C;color:#FFF;border-color:#0A382C}
-    .fc-btn--primary:hover{background:#06241C;transform:translateY(-1px)}
-    .fc-btn--sm{font-size:11px;padding:8px 14px}
-    .fc-btn--full{width:100%}
+    /* Page layout */
+    .fc-shop-page { max-width: 1360px; margin: 0 auto; padding: 2rem 1.5rem; display: grid; grid-template-columns: 280px 1fr; gap: 2rem; align-items: start; }
 
-    @media(max-width:1024px){.fc-shop-page{grid-template-columns:220px 1fr}}
-    @media(max-width:768px){.fc-shop-page{grid-template-columns:1fr}.fc-payment-sidebar{display:none}.fc-product-grid{grid-template-columns:repeat(2,1fr)}.fc-nav-bar{display:none}}
+    /* Payment Sidebar */
+    .fc-payment-sidebar {
+      position: sticky; top: 130px; border: 1px solid var(--fc-border);
+      border-radius: var(--fc-radius-md); overflow: hidden; box-shadow: var(--fc-card-shadow);
+      background: var(--fc-surface-card);
+    }
+    .fc-sidebar-header { background: #0A382C; color: #FFFFFF; padding: 1.25rem 1.5rem; display: flex; align-items: center; gap: 10px; }
+    .fc-sidebar-header-icon { width: 38px; height: 38px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+    .fc-sidebar-header-title { font-size: 14px; font-weight: 800; line-height: 1.3; }
+    .fc-sidebar-header-sub { font-size: 11px; opacity: 0.8; margin-top: 2px; }
+    .fc-sidebar-body { background: var(--fc-surface); padding: 1.25rem; }
+
+    .fc-online-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--fc-discount-bg); color: var(--fc-discount); font-size: 11px; font-weight: 800; padding: 6px 12px; border-radius: 99px; border: 1px solid var(--fc-discount); margin-bottom: 1rem; }
+    .fc-payment-method-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 1.25rem; }
+    .fc-pm-row { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: var(--fc-surface-card); border: 1.5px solid var(--fc-border); border-radius: 6px; cursor: pointer; transition: all 0.2s; }
+    .fc-pm-row:hover, .fc-pm-row.is-selected { border-color: var(--fc-discount); background: var(--fc-discount-bg); }
+    .fc-pm-row input { accent-color: var(--fc-discount); }
+    .fc-pm-name { font-weight: 700; font-size: 13px; color: var(--fc-text-main); }
+    .fc-pm-badge { margin-left: auto; background: var(--fc-discount); color: #FFFFFF; font-size: 10px; font-weight: 800; padding: 2px 6px; border-radius: 3px; }
+
+    .fc-discount-calc { background: var(--fc-discount-bg); border: 1px solid var(--fc-discount); border-radius: 6px; padding: 1rem; margin-bottom: 1.25rem; }
+    .fc-discount-calc-title { font-size: 11px; font-weight: 700; color: var(--fc-discount); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+    .fc-dc-row { display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; margin-bottom: 4px; color: var(--fc-text-main); }
+    .fc-dc-total { display: flex; justify-content: space-between; font-size: 14px; font-weight: 800; color: var(--fc-discount); padding-top: 6px; border-top: 1px solid rgba(5,150,105,0.3); margin-top: 6px; }
+
+    .fc-promo-code-box { background: var(--fc-surface-card); border: 1.5px dashed var(--fc-accent); border-radius: 6px; padding: 10px 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px; cursor: pointer; }
+    .fc-promo-code-label { font-size: 12px; font-weight: 700; color: var(--fc-accent-dark); }
+    .fc-promo-code-val { font-size: 13px; font-weight: 900; color: var(--fc-accent); letter-spacing: 0.06em; }
+    .fc-copy-btn { background: var(--fc-accent); color: #FFFFFF; font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: 4px; }
+    .fc-sidebar-footer { font-size: 11px; color: var(--fc-text-muted); border-top: 1px solid var(--fc-border); padding: 12px 1.25rem; background: var(--fc-surface-card); }
+
+    /* Filter Bar */
+    .fc-filter-bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--fc-border); }
+    .fc-filter-chip { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 6px 12px; border: 1.5px solid var(--fc-border); border-radius: 99px; cursor: pointer; transition: all 0.2s; color: var(--fc-text-main); background: var(--fc-surface-card); }
+    .fc-filter-chip:hover, .fc-filter-chip.is-active { background: var(--fc-primary); color: #FFFFFF; border-color: var(--fc-primary); }
+    .fc-shop-count { margin-left: auto; font-size: 12px; color: var(--fc-text-subtle); font-weight: 500; }
+
+    /* Product Grid */
+    .fc-product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .fc-product-card {
+      display: flex; flex-direction: column; background: var(--fc-surface-card);
+      border: 1px solid var(--fc-border); border-radius: var(--fc-radius-md);
+      overflow: hidden; transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s; position: relative;
+    }
+    .fc-product-card:hover { transform: translateY(-4px); box-shadow: var(--fc-card-shadow); border-color: var(--fc-border-hover); }
+    .fc-product-card__image-wrap { position: relative; aspect-ratio: 3/4; overflow: hidden; background: var(--fc-surface); }
+    .fc-product-card__image, .fc-product-card__image--hover {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      transition: opacity 0.35s, transform 0.4s;
+    }
+    .fc-product-card__image--hover { opacity: 0; }
+    .fc-product-card:hover .fc-product-card__image--hover { opacity: 1; transform: scale(1.04); }
+    .fc-product-card:hover .fc-product-card__image { transform: scale(1.04); }
+    .fc-product-card__badge { position: absolute; top: 10px; left: 10px; z-index: 2; display: flex; flex-direction: column; gap: 4px; }
+    .fc-badge { display: inline-flex; align-items: center; padding: 3px 8px; font-size: 10px; font-weight: 800; letter-spacing: 0.05em; border-radius: 4px; }
+    .fc-badge--new { background: var(--fc-primary); color: #FFFFFF; }
+    .fc-badge--sale { background: var(--fc-accent); color: #FFFFFF; }
+    .fc-badge--discount { background: var(--fc-discount); color: #FFFFFF; }
+    
+    .fc-wishlist-btn {
+      position: absolute; top: 10px; right: 10px; z-index: 2; width: 34px; height: 34px;
+      background: var(--fc-surface-card); border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+    }
+    .fc-wishlist-btn:hover { transform: scale(1.1); }
+    .fc-wishlist-btn svg { width: 16px; height: 16px; stroke: var(--fc-text-main); fill: none; stroke-width: 2; }
+    .fc-wishlist-btn.is-active svg { fill: var(--fc-error); stroke: var(--fc-error); }
+
+    .fc-quick-add-btn {
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+      background: var(--fc-primary); color: #FFFFFF; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; padding: 10px; text-align: center;
+      transform: translateY(100%); transition: transform 0.25s;
+    }
+    .fc-product-card:hover .fc-quick-add-btn { transform: translateY(0); }
+
+    .fc-product-card__info { padding: 0.875rem; display: flex; flex-direction: column; }
+    .fc-product-card__category { font-size: 11px; font-weight: 600; color: var(--fc-text-subtle); text-transform: uppercase; margin-bottom: 2px; }
+    .fc-product-card__name { font-size: 0.9rem; font-weight: 700; color: var(--fc-text-main); margin-bottom: 6px; line-height: 1.35; }
+    .fc-product-card__name a:hover { color: var(--fc-accent); }
+    .fc-product-card__price-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 3px; }
+    .fc-price-main { font-size: 0.95rem; font-weight: 800; color: var(--fc-text-main); }
+    .fc-price-orig { font-size: 0.8rem; color: var(--fc-text-subtle); text-decoration: line-through; }
+    .fc-online-pay-pill { display: inline-flex; align-items: center; gap: 4px; font-size: 10.5px; font-weight: 700; color: var(--fc-discount); background: var(--fc-discount-bg); padding: 2px 6px; border-radius: 4px; width: fit-content; }
+
+    /* Mobile Bottom Dock */
+    .fc-mobile-bottom-nav {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 190;
+      background: var(--fc-surface-card); border-top: 1px solid var(--fc-border);
+      height: 58px; padding: 0 1rem; align-items: stretch;
+    }
+    .fc-mobile-bottom-link {
+      flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 3px; font-size: 10px; font-weight: 600; color: var(--fc-text-muted); transition: color 0.2s; cursor: pointer;
+    }
+    .fc-mobile-bottom-link svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.75; }
+    .fc-mobile-bottom-link.is-active, .fc-mobile-bottom-link:hover { color: var(--fc-accent); }
+    .fc-mobile-cart-badge {
+      position: absolute; top: -4px; right: -4px; min-width: 14px; height: 14px;
+      padding: 0 3px; background: var(--fc-primary); color: #FFFFFF; font-size: 8px;
+      font-weight: 800; border-radius: 99px; display: flex; align-items: center; justify-content: center;
+    }
+
+    /* Floating WhatsApp Button */
+    .fc-whatsapp-float {
+      position: fixed; bottom: 24px; right: 24px; z-index: 290;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #25D366; color: #FFFFFF; padding: 8px 16px 8px 10px;
+      border-radius: 99px; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      text-decoration: none; font-size: 13px; font-weight: 700;
+      transition: transform 0.25s;
+    }
+    .fc-whatsapp-float:hover { transform: translateY(-3px); }
+
+    /* Cart Drawer */
+    .fc-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.6); opacity: 0; visibility: hidden; transition: all 0.3s; }
+    .fc-overlay.is-visible { opacity: 1; visibility: visible; }
+    .fc-cart-drawer {
+      position: fixed; top: 0; right: 0; bottom: 0; width: min(420px, 92vw);
+      background: var(--fc-surface-card); color: var(--fc-text-main); z-index: 400; transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16,1,0.3,1); display: flex; flex-direction: column; box-shadow: -10px 0 30px rgba(0,0,0,0.25);
+    }
+    .fc-cart-drawer.is-open { transform: translateX(0); }
+    .fc-cart-header { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--fc-border); }
+    .fc-cart-body { flex: 1; overflow-y: auto; padding: 1.25rem 1.5rem; }
+    .fc-cart-footer { padding: 1.5rem; border-top: 1px solid var(--fc-border); background: var(--fc-surface); }
+    
+    .fc-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 14px 24px; border-radius: 4px; border: 2px solid transparent; cursor: pointer; transition: all 0.2s;
+    }
+    .fc-btn--primary { background: var(--fc-primary); color: #FFFFFF; border-color: var(--fc-primary); }
+    .fc-btn--primary:hover { background: var(--fc-primary-hover); transform: translateY(-1px); }
+    .fc-btn--sm { font-size: 11px; padding: 8px 14px; }
+    .fc-btn--full { width: 100%; }
+
+    @media (max-width: 1024px) { .fc-shop-page { grid-template-columns: 240px 1fr; } }
+    @media (max-width: 768px) {
+      .fc-shop-page { grid-template-columns: 1fr; }
+      .fc-payment-sidebar { display: none; }
+      .fc-product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .fc-nav-bar { display: none; }
+      .fc-mobile-bottom-nav { display: flex; }
+      .fc-whatsapp-float { bottom: 70px; right: 16px; padding: 8px; border-radius: 50%; }
+      .fc-whatsapp-text { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -188,14 +380,14 @@
   <div class="fc-promo-track">
     <div class="fc-promo-slide is-active">
       <span class="fc-promo-badge">5% OFF</span>
-      <span>&#x1F4B3; Pay Online (bKash / Nagad / Cards) &amp; Get <strong>5% Instant Discount</strong> with code <code class="fc-promo-code" onclick="copyCode('ONLINE5')">ONLINE5</code></span>
+      <span>ðŸ’³ Pay Online (bKash / Nagad / Cards) & Get <strong>5% Instant Discount</strong> with code <code class="fc-promo-code" onclick="copyCode('ONLINE5')">ONLINE5</code></span>
       <button class="fc-promo-copy-btn" onclick="copyCode('ONLINE5')">Copy Code</button>
     </div>
     <div class="fc-promo-slide">
-      <span>&#x1F69A; <strong>FREE NATIONWIDE DELIVERY</strong> on all orders above &#x9F3;2,000</span>
+      <span>ðŸšš <strong>FREE NATIONWIDE DELIVERY</strong> on all orders above <span class="fc-taka">à§³</span>2,000</span>
     </div>
     <div class="fc-promo-slide">
-      <span>&#x2728; 220+ GSM Heavyweight Combed Cotton &bull; 7-Day Hassle-Free Exchange</span>
+      <span>âœ¨ 220+ GSM Heavyweight Combed Cotton &bull; 7-Day Hassle-Free Exchange</span>
     </div>
   </div>
   <div class="fc-promo-controls">
@@ -208,12 +400,7 @@
 <header class="fc-header">
   <div class="fc-header__main">
     <div class="fc-header__left">
-      <button class="fc-icon-btn" aria-label="Menu">
-        <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-    </div>
-    <div class="fc-header__center">
-      <a href="/preview/index.html" class="fc-logo">
+      <a href="index.html" class="fc-logo">
         <div class="fc-logo-emblem-wrap">
           <img src="/assets/images/logo.jpg" alt="FOLDCUT" class="fc-logo-emblem"/>
         </div>
@@ -223,8 +410,11 @@
         </div>
       </a>
     </div>
-    <div class="fc-header__right"><button class="fc-theme-toggle-btn" id="fc-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button>
-      <button class="fc-icon-btn" aria-label="Search">
+    <div class="fc-header__right">
+      <button class="fc-theme-toggle-btn" id="fc-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <button class="fc-icon-btn" onclick="openSearchModal()" aria-label="Search">
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       </button>
       <button class="fc-icon-btn" id="fc-cart-btn" aria-label="Cart">
@@ -235,13 +425,13 @@
   </div>
   <nav class="fc-nav-bar">
     <div class="fc-nav-bar__inner">
-      <a href="/preview/index.html" class="fc-nav-link">Home</a>
-      <a href="/preview/shop.html" class="fc-nav-link is-active">All Products</a>
-      <a href="/preview/shop.html?cat=men" class="fc-nav-link">Men</a>
-      <a href="/preview/shop.html?cat=women" class="fc-nav-link">Women</a>
-      <a href="/preview/shop.html?cat=accessories" class="fc-nav-link">Accessories</a>
-      <a href="/preview/shop.html" class="fc-nav-link fc-nav-link--discount">5% Online Pay &#x26A1;</a>
-      <a href="/preview/shop.html" class="fc-nav-link fc-nav-link--sale">Sale</a>
+      <a href="index.html" class="fc-nav-link">Home</a>
+      <a href="shop.html" class="fc-nav-link is-active">All Products</a>
+      <a href="shop.html?cat=men" class="fc-nav-link">Men</a>
+      <a href="shop.html?cat=women" class="fc-nav-link">Women</a>
+      <a href="shop.html?cat=accessories" class="fc-nav-link">Accessories</a>
+      <a href="shop.html" class="fc-nav-link fc-nav-link--discount">5% Online Pay âš¡</a>
+      <a href="shop.html" class="fc-nav-link fc-nav-link--sale">Sale</a>
     </div>
   </nav>
 </header>
@@ -252,47 +442,47 @@
   <!-- PAYMENT SIDEBAR -->
   <aside class="fc-payment-sidebar">
     <div class="fc-sidebar-header">
-      <div class="fc-sidebar-header-icon">&#x1F4B3;</div>
+      <div class="fc-sidebar-header-icon">ðŸ’³</div>
       <div>
         <div class="fc-sidebar-header-title">5% Online Payment Discount</div>
         <div class="fc-sidebar-header-sub">Apply instantly at checkout</div>
       </div>
     </div>
     <div class="fc-sidebar-body">
-      <div class="fc-online-badge">&#x2705; Auto 5% Savings Unlocked</div>
-      <p style="font-size:12px;color:#4B5563;margin-bottom:14px;">Choose any online payment method at checkout and receive your 5% discount automatically â€” no questions asked.</p>
+      <div class="fc-online-badge">âœ… Auto 5% Savings Unlocked</div>
+      <p style="font-size:12px;color:var(--fc-text-muted);margin-bottom:14px;">Choose any online payment method at checkout and receive your 5% discount automatically â€” no questions asked.</p>
 
       <div class="fc-payment-method-list">
         <label class="fc-pm-row is-selected">
           <input type="radio" name="fc-pm" value="bkash" checked/> 
-          <span class="fc-pm-icon">&#x1F4F1;</span>
-          <div><div class="fc-pm-name">bKash</div><div style="font-size:10px;color:#6B7280;">Mobile Banking</div></div>
+          <span style="font-size:18px;">ðŸ“±</span>
+          <div><div class="fc-pm-name">bKash</div><div style="font-size:10px;color:var(--fc-text-subtle);">Mobile Banking</div></div>
           <span class="fc-pm-badge">5% OFF</span>
         </label>
         <label class="fc-pm-row">
           <input type="radio" name="fc-pm" value="nagad"/>
-          <span class="fc-pm-icon">&#x1F4B0;</span>
-          <div><div class="fc-pm-name">Nagad</div><div style="font-size:10px;color:#6B7280;">Mobile Banking</div></div>
+          <span style="font-size:18px;">ðŸ’°</span>
+          <div><div class="fc-pm-name">Nagad</div><div style="font-size:10px;color:var(--fc-text-subtle);">Mobile Banking</div></div>
           <span class="fc-pm-badge">5% OFF</span>
         </label>
         <label class="fc-pm-row">
           <input type="radio" name="fc-pm" value="card"/>
-          <span class="fc-pm-icon">&#x1F4B3;</span>
-          <div><div class="fc-pm-name">Visa / Mastercard</div><div style="font-size:10px;color:#6B7280;">Debit &amp; Credit Cards</div></div>
+          <span style="font-size:18px;">ðŸ’³</span>
+          <div><div class="fc-pm-name">Visa / Mastercard</div><div style="font-size:10px;color:var(--fc-text-subtle);">Debit &amp; Credit Cards</div></div>
           <span class="fc-pm-badge">5% OFF</span>
         </label>
         <label class="fc-pm-row">
           <input type="radio" name="fc-pm" value="cod"/>
-          <span class="fc-pm-icon">&#x1F4E6;</span>
-          <div><div class="fc-pm-name">Cash on Delivery</div><div style="font-size:10px;color:#6B7280;">Standard Rate</div></div>
+          <span style="font-size:18px;">ðŸ“¦</span>
+          <div><div class="fc-pm-name">Cash on Delivery</div><div style="font-size:10px;color:var(--fc-text-subtle);">Standard Rate</div></div>
         </label>
       </div>
 
       <div class="fc-discount-calc" id="fc-discount-calc">
-        <div class="fc-discount-calc-title">&#x1F4CA; Live Savings Preview</div>
-        <div class="fc-dc-row"><span>Cart Total</span><span id="sidebar-subtotal">&#x9F3;2,999</span></div>
-        <div class="fc-dc-row" style="color:#059669;"><span>Online Pay Discount (5%)</span><span id="sidebar-discount" style="color:#059669;">-&#x9F3;150</span></div>
-        <div class="fc-dc-total"><span>You Pay</span><span id="sidebar-total">&#x9F3;2,849</span></div>
+        <div class="fc-discount-calc-title">ðŸ“Š Live Savings Preview</div>
+        <div class="fc-dc-row"><span>Cart Total</span><span id="sidebar-subtotal"><span class="fc-taka">à§³</span>2,999</span></div>
+        <div class="fc-dc-row" style="color:var(--fc-discount);"><span>Online Pay Discount (5%)</span><span id="sidebar-discount">-<span class="fc-taka">à§³</span>150</span></div>
+        <div class="fc-dc-total"><span>You Pay</span><span id="sidebar-total"><span class="fc-taka">à§³</span>2,849</span></div>
       </div>
 
       <div class="fc-promo-code-box" onclick="copyCode('ONLINE5')">
@@ -302,7 +492,7 @@
       </div>
     </div>
     <div class="fc-sidebar-footer">
-      &#x1F512; All transactions are 100% secure &amp; encrypted. SSL protected checkout.
+      ðŸ”’ All transactions are 100% secure &amp; encrypted. SSL protected checkout.
     </div>
   </aside>
 
@@ -325,28 +515,28 @@
 
 <!-- WHATSAPP BUTTON -->
 <a href="https://wa.me/8801700000000?text=Hello%20FOLDCUT!%20I'd%20like%20to%20order%20a%20product." target="_blank" rel="noopener" class="fc-whatsapp-float" aria-label="Order on WhatsApp">
-  <svg viewBox="0 0 32 32" width="26" height="26" fill="#FFF"><path d="M16 2C8.28 2 2 8.28 2 16c0 2.62.72 5.08 1.98 7.18L2 30l7.02-1.92C11.06 29.3 13.48 30 16 30c7.72 0 14-6.28 14-14S23.72 2 16 2zm0 25.64c-2.28 0-4.42-.64-6.26-1.76l-.44-.26-4.64 1.28 1.28-4.52-.3-.48C4.5 19.98 3.86 18.04 3.86 16 3.86 9.3 9.3 3.86 16 3.86S28.14 9.3 28.14 16 22.7 27.64 16 27.64zm7.34-8.88c-.4-.2-2.38-1.18-2.76-1.32-.36-.14-.62-.2-.88.2-.26.4-1 1.32-1.24 1.6-.22.26-.46.3-.86.1-.4-.2-1.7-.62-3.24-2-.42-1.24-1.24-2.08-1.46-2.46-.22-.38-.02-.58.18-.78.18-.18.4-.46.6-.7.2-.24.26-.4.4-.66.14-.26.06-.5-.04-.7-.1-.2-.88-2.12-1.2-2.9-.32-.78-.64-.68-.88-.68h-.76c-.26 0-.68.1-1.04.5-.36.4-1.38 1.36-1.38 3.3 0 1.96 1.42 3.84 1.62 4.12.2.26 2.8 4.28 6.78 6 .94.42 1.68.66 2.26.84.96.3 1.82.26 2.5.16.76-.12 2.38-.98 2.72-1.92.34-.94.34-1.74.24-1.92-.1-.18-.36-.3-.76-.5z"/></svg>
+  <svg viewBox="0 0 32 32" width="26" height="26" fill="#FFF"><path d="M16 2C8.28 2 2 8.28 2 16c0 2.62.72 5.08 1.98 7.18L2 30l7.02-1.92C11.06 29.3 13.48 30 16 30c7.72 0 14-6.28 14-14S23.72 2 16 2zm0 25.64c-2.28 0-4.42-.64-6.26-1.76l-.44-.26-4.64 1.28 1.28-4.52-.3-.48C4.5 19.98 3.86 18.04 3.86 16 3.86S28.14 9.3 28.14 16 22.7 27.64 16 27.64zm7.34-8.88c-.4-.2-2.38-1.18-2.76-1.32-.36-.14-.62-.2-.88.2-.26.4-1 1.32-1.24 1.6-.22.26-.46.3-.86.1-.4-.2-1.7-.62-3.24-2-.42-1.24-1.24-2.08-1.46-2.46-.22-.38-.02-.58.18-.78.18-.18.4-.46.6-.7.2-.24.26-.4.4-.66.14-.26.06-.5-.04-.7-.1-.2-.88-2.12-1.2-2.9-.32-.78-.64-.68-.88-.68h-.76c-.26 0-.68.1-1.04.5-.36.4-1.38 1.36-1.38 3.3 0 1.96 1.42 3.84 1.62 4.12.2.26 2.8 4.28 6.78 6 .94.42 1.68.66 2.26.84.96.3 1.82.26 2.5.16.76-.12 2.38-.98 2.72-1.92.34-.94.34-1.74.24-1.92-.1-.18-.36-.3-.76-.5z"/></svg>
   <span class="fc-whatsapp-text">Order on WhatsApp</span>
 </a>
 
 <!-- MOBILE BOTTOM NAV -->
 <nav class="fc-mobile-bottom-nav">
-  <a href="/preview/index.html" class="fc-mobile-bottom-link">
+  <a href="index.html" class="fc-mobile-bottom-link">
     <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
     <span>Home</span>
   </a>
-  <a href="/preview/shop.html" class="fc-mobile-bottom-link is-active">
+  <a href="shop.html" class="fc-mobile-bottom-link is-active">
     <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
     <span>Shop</span>
   </a>
-  <button class="fc-mobile-bottom-link">
+  <button class="fc-mobile-bottom-link" onclick="openSearchModal()">
     <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
     <span>Search</span>
   </button>
   <button class="fc-mobile-bottom-link" onclick="document.getElementById('fc-cart-btn').click()">
     <div style="position:relative;display:inline-block;">
       <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-      <span class="fc-mobile-cart-badge" id="fc-mobile-bottom-cart">0</span>
+      <span class="fc-mobile-cart-badge" id="fc-mobile-bottom-cart-count">0</span>
     </div>
     <span>Bag</span>
   </button>
@@ -356,22 +546,22 @@
 <div class="fc-overlay" id="fc-overlay"></div>
 <div class="fc-cart-drawer" id="fc-cart-drawer">
   <div class="fc-cart-header">
-    <div style="font-weight:800;font-size:1.1rem;font-family:var(--fc-font-d)">Your Bag (<span id="fc-cart-count-title">0</span>)</div>
-    <button id="fc-cart-close" style="font-size:24px;">&times;</button>
+    <div style="font-weight:800;font-size:1.1rem;font-family:var(--fc-font-display);">Your Bag (<span id="fc-cart-count-title">0</span>)</div>
+    <button id="fc-cart-close" style="font-size:24px;color:var(--fc-text-main);">&times;</button>
   </div>
   <div class="fc-cart-body" id="fc-cart-body">
     <div id="fc-cart-empty" style="text-align:center;padding:3rem 1rem;">
-      <div style="font-size:40px;margin-bottom:1rem;">&#x1F6CD;&#xFE0F;</div>
+      <div style="font-size:40px;margin-bottom:1rem;">ðŸ›ï¸</div>
       <p style="font-weight:700;margin-bottom:8px;">Your bag is empty</p>
-      <p style="color:#6B7280;font-size:13px;margin-bottom:1.5rem;">Add some styles you love!</p>
-      <a href="/preview/shop.html" class="fc-btn fc-btn--primary fc-btn--sm">DISCOVER SHOP</a>
+      <p style="color:var(--fc-text-muted);font-size:13px;margin-bottom:1.5rem;">Add some styles you love!</p>
+      <a href="shop.html" class="fc-btn fc-btn--primary fc-btn--sm">DISCOVER SHOP</a>
     </div>
     <div id="fc-cart-items"></div>
   </div>
   <div class="fc-cart-footer" id="fc-cart-footer" style="display:none">
-    <div style="display:flex;justify-content:space-between;font-weight:700;margin-bottom:4px;"><span>Subtotal</span><span id="fc-cart-subtotal">&#x9F3;0</span></div>
-    <div style="display:flex;justify-content:space-between;color:#059669;font-size:12px;font-weight:700;margin-bottom:1rem;"><span>&#x26A1; Online Pay 5% Off</span><span id="fc-cart-discount">-&#x9F3;0</span></div>
-    <a href="/preview/checkout.html" class="fc-btn fc-btn--primary fc-btn--full">CHECKOUT &bull; 5% OFF ONLINE</a>
+    <div style="display:flex;justify-content:space-between;font-weight:700;margin-bottom:4px;"><span>Subtotal</span><span id="fc-cart-subtotal"><span class="fc-taka">à§³</span>0</span></div>
+    <div style="display:flex;justify-content:space-between;color:var(--fc-discount);font-size:12px;font-weight:700;margin-bottom:1rem;"><span>âš¡ Online Pay 5% Off</span><span id="fc-cart-discount">-<span class="fc-taka">à§³</span>0</span></div>
+    <a href="checkout.html" class="fc-btn fc-btn--primary fc-btn--full">CHECKOUT &bull; 5% OFF ONLINE</a>
   </div>
 </div>
 
@@ -418,12 +608,12 @@ function renderProducts(products) {
       </div>
       <div class="fc-product-card__info">
         <div class="fc-product-card__category">${p.catLabel}</div>
-        <div class="fc-product-card__name"><a href="/preview/product.html">${p.name}</a></div>
+        <div class="fc-product-card__name"><a href="product.html">${p.name}</a></div>
         <div class="fc-product-card__price-row">
-          <span class="fc-price-main">&#x9F3;${p.price.toLocaleString()}</span>
-          ${p.origPrice?`<span class="fc-price-orig">&#x9F3;${p.origPrice.toLocaleString()}</span>`:''}
+          <span class="fc-price-main"><span class="fc-taka">à§³</span>${p.price.toLocaleString()}</span>
+          ${p.origPrice?`<span class="fc-price-orig"><span class="fc-taka">à§³</span>${p.origPrice.toLocaleString()}</span>`:''}
         </div>
-        <div class="fc-online-pay-pill">&#x1F4B3; &#x9F3;${disc.toLocaleString()} with 5% online pay</div>
+        <div class="fc-online-pay-pill">ðŸ’³ <span class="fc-taka">à§³</span>${disc.toLocaleString()} with 5% online pay</div>
       </div>
     </article>`;
   }).join('');
@@ -461,7 +651,7 @@ function toggleWishlist(btn, id) {
 
 function updateCartUI() {
   const total = cart.reduce((s,i)=>s+(i.qty||1),0);
-  ['fc-cart-count','fc-cart-count-title','fc-mobile-bottom-cart'].forEach(id=>{
+  ['fc-cart-count','fc-cart-count-title','fc-mobile-bottom-cart-count'].forEach(id=>{
     const el = document.getElementById(id); if(el) el.textContent = total;
   });
   const empty = document.getElementById('fc-cart-empty');
@@ -471,13 +661,13 @@ function updateCartUI() {
   if(empty)empty.style.display='none'; if(footer)footer.style.display='block';
   const subtotal = cart.reduce((s,i)=>s+(i.price*(i.qty||1)),0);
   const disc = Math.round(subtotal*0.05);
-  const sub=document.getElementById('fc-cart-subtotal'); if(sub) sub.textContent='à§³'+subtotal.toLocaleString();
-  const dsc=document.getElementById('fc-cart-discount'); if(dsc) dsc.textContent='-à§³'+disc.toLocaleString();
+  const sub=document.getElementById('fc-cart-subtotal'); if(sub) sub.innerHTML='<span class="fc-taka">à§³</span>'+subtotal.toLocaleString();
+  const dsc=document.getElementById('fc-cart-discount'); if(dsc) dsc.innerHTML='-<span class="fc-taka">à§³</span>'+disc.toLocaleString();
   if(items) items.innerHTML=cart.map((item,idx)=>`
-    <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #E5E7EB;align-items:center;">
-      <div style="flex:1;"><div style="font-weight:700;font-size:13px;">${item.name}</div>
-      <div style="font-size:12px;color:#6B7280;">à§³${item.price.toLocaleString()} &times; ${item.qty||1}</div></div>
-      <button onclick="removeFromCart(${idx})" style="color:#DC2626;font-size:12px;">Remove</button>
+    <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--fc-border);align-items:center;">
+      <div style="flex:1;"><div style="font-weight:700;font-size:13px;color:var(--fc-text-main);">${item.name}</div>
+      <div style="font-size:12px;color:var(--fc-text-muted);"><span class="fc-taka">à§³</span>${item.price.toLocaleString()} &times; ${item.qty||1}</div></div>
+      <button onclick="removeFromCart(${idx})" style="color:var(--fc-error);font-size:12px;font-weight:600;">Remove</button>
     </div>`).join('');
 }
 
@@ -485,9 +675,9 @@ function updateSidebar() {
   const subtotal = cart.reduce((s,i)=>s+(i.price*(i.qty||1)),0) || 2999;
   const disc = Math.round(subtotal*0.05);
   const net = subtotal - disc;
-  const s=document.getElementById('sidebar-subtotal'); if(s) s.textContent='à§³'+subtotal.toLocaleString();
-  const d=document.getElementById('sidebar-discount'); if(d) d.textContent='-à§³'+disc.toLocaleString();
-  const t=document.getElementById('sidebar-total'); if(t) t.textContent='à§³'+net.toLocaleString();
+  const s=document.getElementById('sidebar-subtotal'); if(s) s.innerHTML='<span class="fc-taka">à§³</span>'+subtotal.toLocaleString();
+  const d=document.getElementById('sidebar-discount'); if(d) d.innerHTML='-<span class="fc-taka">à§³</span>'+disc.toLocaleString();
+  const t=document.getElementById('sidebar-total'); if(t) t.innerHTML='<span class="fc-taka">à§³</span>'+net.toLocaleString();
 }
 
 function openCart() { document.getElementById('fc-cart-drawer').classList.add('is-open'); document.getElementById('fc-overlay').classList.add('is-visible'); }
@@ -512,36 +702,42 @@ setInterval(nextSlide,4500);
 
 function copyCode(code) { if(navigator.clipboard) navigator.clipboard.writeText(code); alert('Code ' + code + ' copied! Get 5% off with online payments.'); }
 
-  function initTheme() {
-    const saved = localStorage.getItem('fc_theme');
-    if (saved === 'dark' || saved === 'light') { document.documentElement.setAttribute('data-theme', saved); }
-    else { document.documentElement.removeAttribute('data-theme'); }
-    updateThemeIcon();
-  }
-  function toggleTheme() {
-    const current = document.documentElement.getAttribute('data-theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    let nextTheme = '';
-    if (!current) { nextTheme = prefersDark ? 'light' : 'dark'; }
-    else if (current === 'dark') { nextTheme = 'light'; }
-    else { nextTheme = 'dark'; }
-    document.documentElement.setAttribute('data-theme', nextTheme);
-    localStorage.setItem('fc_theme', nextTheme);
-    updateThemeIcon();
-  }
-  function updateThemeIcon() {
-    const btn = document.getElementById('fc-theme-toggle');
-    if (!btn) return;
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
-                   (!document.documentElement.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    btn.innerHTML = isDark ? 
-      '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>' : 
-      '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-  }
-  initTheme();
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-    if (!localStorage.getItem('fc_theme')) updateThemeIcon();
-  });
+function openSearchModal() {
+  const q = prompt('Search FOLDCUT Products:');
+  if (q) { filterProducts('all', null); const matched = allProducts.filter(p=>p.name.toLowerCase().includes(q.toLowerCase()) || p.cat.toLowerCase().includes(q.toLowerCase())); renderProducts(matched); }
+}
+
+function initTheme() {
+  const saved = localStorage.getItem('fc_theme');
+  if (saved === 'dark' || saved === 'light') { document.documentElement.setAttribute('data-theme', saved); }
+  else { document.documentElement.removeAttribute('data-theme'); }
+  updateThemeIcon();
+}
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  let nextTheme = '';
+  if (!current) { nextTheme = prefersDark ? 'light' : 'dark'; }
+  else if (current === 'dark') { nextTheme = 'light'; }
+  else { nextTheme = 'dark'; }
+  document.documentElement.setAttribute('data-theme', nextTheme);
+  localStorage.setItem('fc_theme', nextTheme);
+  updateThemeIcon();
+}
+function updateThemeIcon() {
+  const btn = document.getElementById('fc-theme-toggle');
+  if (!btn) return;
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+                 (!document.documentElement.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  btn.innerHTML = isDark ? 
+    '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>' : 
+    '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+}
+initTheme();
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+  if (!localStorage.getItem('fc_theme')) updateThemeIcon();
+});
+
 renderProducts(allProducts);
 updateCartUI();
 updateSidebar();
