@@ -1,115 +1,969 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8"/>
-  <meta http-equiv="refresh" content="1; url=/preview/index.html"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FOLDCUT â€” Quality &bull; Comfort &bull; Confidence</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>FOLDCUT â€” Quality &bull; Comfort &bull; Confidence | Contemporary Fashion Bangladesh</title>
+  <meta name="description" content="FOLDCUT brings contemporary luxury fashion for men and women. 220+ GSM combed compact cotton. Fast delivery across 64 districts in Bangladesh. 5% instant discount on online payments." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --fc-bg:             #FFFFFF;
+      --fc-surface:        #F9FAFB;
+      --fc-surface-card:   #FFFFFF;
+      --fc-surface-hover:  #F3F4F6;
+      --fc-border:         #E5E7EB;
+      --fc-border-hover:   #D1D5DB;
+      --fc-text-main:      #111827;
+      --fc-text-muted:     #4B5563;
+      --fc-text-subtle:    #9CA3AF;
+      --fc-primary:        #0A382C;
+      --fc-primary-hover:  #06241C;
+      --fc-primary-light:  #E8F5F1;
+      --fc-accent:         #C28453;
+      --fc-accent-light:   #DFA26E;
+      --fc-accent-dark:    #985B2E;
+      --fc-accent-bg:      #FDF8F4;
+      --fc-discount:       #059669;
+      --fc-discount-bg:    #ECFDF5;
+      --fc-error:          #DC2626;
+      --fc-card-shadow:    0 4px 20px rgba(0,0,0,0.06);
+      --fc-header-bg:      rgba(255, 255, 255, 0.95);
+      --fc-nav-bar-bg:     #FFFFFF;
+      --fc-input-bg:       #FFFFFF;
+      --fc-font-display:   'Plus Jakarta Sans', sans-serif;
+      --fc-font-body:      'Inter', sans-serif;
+      --fc-radius-sm:      4px;
+      --fc-radius-md:      8px;
+      --fc-radius-lg:      16px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --fc-bg:             #0B110F;
+        --fc-surface:        #121A17;
+        --fc-surface-card:   #16221E;
+        --fc-surface-hover:  #1E2E28;
+        --fc-border:         #243730;
+        --fc-border-hover:   #344F45;
+        --fc-text-main:      #F9FAFB;
+        --fc-text-muted:     #9CA3AF;
+        --fc-text-subtle:    #6B7280;
+        --fc-primary:        #105946;
+        --fc-primary-hover:  #146D55;
+        --fc-primary-light:  rgba(16, 89, 70, 0.28);
+        --fc-accent:         #DFA26E;
+        --fc-accent-light:   #E8B991;
+        --fc-accent-dark:    #C28453;
+        --fc-accent-bg:      rgba(223, 162, 110, 0.12);
+        --fc-discount:       #10B981;
+        --fc-discount-bg:    rgba(16, 185, 129, 0.15);
+        --fc-card-shadow:    0 6px 24px rgba(0,0,0,0.45);
+        --fc-header-bg:      rgba(11, 17, 15, 0.94);
+        --fc-nav-bar-bg:     #121A17;
+        --fc-input-bg:       #16221E;
+      }
+    }
+
+    [data-theme="dark"] {
+      --fc-bg:             #0B110F;
+      --fc-surface:        #121A17;
+      --fc-surface-card:   #16221E;
+      --fc-surface-hover:  #1E2E28;
+      --fc-border:         #243730;
+      --fc-border-hover:   #344F45;
+      --fc-text-main:      #F9FAFB;
+      --fc-text-muted:     #9CA3AF;
+      --fc-text-subtle:    #6B7280;
+      --fc-primary:        #105946;
+      --fc-primary-hover:  #146D55;
+      --fc-primary-light:  rgba(16, 89, 70, 0.28);
+      --fc-accent:         #DFA26E;
+      --fc-accent-light:   #E8B991;
+      --fc-accent-dark:    #C28453;
+      --fc-accent-bg:      rgba(223, 162, 110, 0.12);
+      --fc-discount:       #10B981;
+      --fc-discount-bg:    rgba(16, 185, 129, 0.15);
+      --fc-card-shadow:    0 6px 24px rgba(0,0,0,0.45);
+      --fc-header-bg:      rgba(11, 17, 15, 0.94);
+      --fc-nav-bar-bg:     #121A17;
+      --fc-input-bg:       #16221E;
+    }
+
+    [data-theme="light"] {
+      --fc-bg:             #FFFFFF;
+      --fc-surface:        #F9FAFB;
+      --fc-surface-card:   #FFFFFF;
+      --fc-surface-hover:  #F3F4F6;
+      --fc-border:         #E5E7EB;
+      --fc-border-hover:   #D1D5DB;
+      --fc-text-main:      #111827;
+      --fc-text-muted:     #4B5563;
+      --fc-text-subtle:    #9CA3AF;
+      --fc-primary:        #0A382C;
+      --fc-primary-hover:  #06241C;
+      --fc-primary-light:  #E8F5F1;
+      --fc-accent:         #C28453;
+      --fc-accent-light:   #DFA26E;
+      --fc-accent-dark:    #985B2E;
+      --fc-accent-bg:      #FDF8F4;
+      --fc-discount:       #059669;
+      --fc-discount-bg:    #ECFDF5;
+      --fc-card-shadow:    0 4px 20px rgba(0,0,0,0.06);
+      --fc-header-bg:      rgba(255, 255, 255, 0.95);
+      --fc-nav-bar-bg:     #FFFFFF;
+      --fc-input-bg:       #FFFFFF;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
     body {
-      margin: 0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: var(--fc-font-body);
+      color: var(--fc-text-main);
+      background: var(--fc-bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    ul, ol { list-style: none; }
+    .container { width: 100%; max-width: 1360px; margin: 0 auto; padding: 0 1.5rem; }
+
+    .fc-theme-toggle-btn {
+      width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; color: var(--fc-text-main); border: 1px solid var(--fc-border);
+      background: var(--fc-surface); transition: all 0.2s ease; cursor: pointer;
+    }
+    .fc-theme-toggle-btn:hover { background: var(--fc-surface-hover); transform: rotate(15deg); }
+
+    .fc-promo-slidebar {
+      background: #0A382C;
+      color: #FFFFFF;
+      position: relative;
+      overflow: hidden;
+      height: 38px;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      background: #FFFFFF;
-      color: #111827;
-      overflow: hidden;
+      font-size: 12px;
+      font-weight: 500;
+      border-bottom: 1px solid rgba(194, 132, 83, 0.4);
     }
-    .splash-card {
-      text-align: center;
-      padding: 2.5rem;
-      animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      max-width: 440px;
+    .fc-promo-track {
+      width: 100%; max-width: 1360px; position: relative; height: 100%;
+      display: flex; align-items: center; justify-content: center;
     }
-    .logo-frame {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08), 0 0 25px rgba(194, 132, 83, 0.25);
-      border: 3px solid #C28453;
-      animation: pulseGlow 3s infinite alternate ease-in-out;
-      background: #FFFFFF;
+    .fc-promo-slide {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      gap: 10px; opacity: 0; transform: translateY(8px); transition: opacity 0.4s, transform 0.4s;
+      pointer-events: none; padding: 0 40px; text-align: center;
     }
-    .logo-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .fc-promo-slide.is-active { opacity: 1; transform: translateY(0); pointer-events: all; }
+    .fc-promo-badge { background: #C28453; color: #FFFFFF; font-size: 10px; font-weight: 800; padding: 2px 6px; border-radius: 4px; }
+    .fc-promo-code { background: rgba(255,255,255,0.18); border: 1px dashed rgba(255,255,255,0.5); padding: 1px 6px; border-radius: 3px; font-weight: 800; cursor: pointer; color: #DFA26E; }
+    .fc-promo-copy-btn { background: #C28453; border: none; color: #FFFFFF; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 3px; cursor: pointer; }
+    .fc-promo-controls { position: absolute; right: 16px; display: flex; align-items: center; gap: 4px; }
+    .fc-promo-arrow { background: none; border: none; color: rgba(255,255,255,0.7); font-size: 16px; cursor: pointer; padding: 2px 6px; }
+    .fc-promo-arrow:hover { color: #FFFFFF; }
+
+    .fc-header {
+      position: sticky; top: 0; z-index: 200;
+      background: var(--fc-header-bg);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--fc-border);
+      transition: background-color 0.3s ease;
     }
-    .brand-title {
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-      color: #111827;
+    .fc-header__main {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px; padding: 0 1.5rem; max-width: 1360px; margin: 0 auto;
     }
-    .brand-title span {
-      color: #C28453;
+    .fc-header__left, .fc-header__right { display: flex; align-items: center; gap: 10px; flex: 1; }
+    .fc-header__right { justify-content: flex-end; }
+    .fc-header__center { display: flex; justify-content: center; }
+
+    .fc-logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; user-select: none; }
+    .fc-logo-emblem-wrap {
+      width: 44px; height: 44px; border-radius: 50%; overflow: hidden;
+      border: 1.5px solid var(--fc-accent);
+      box-shadow: 0 2px 8px rgba(194, 132, 83, 0.25);
+      flex-shrink: 0; background: #FFFFFF;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.2s;
     }
-    .brand-tagline {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: #0A382C;
-      opacity: 0.9;
-      margin-bottom: 1.75rem;
+    .fc-logo:hover .fc-logo-emblem-wrap { transform: scale(1.06) rotate(2deg); }
+    .fc-logo-emblem { width: 100%; height: 100%; object-fit: cover; }
+    .fc-logo-name {
+      font-family: var(--fc-font-display); font-size: 20px; font-weight: 800;
+      letter-spacing: 0.12em; color: var(--fc-text-main); line-height: 1.1;
     }
-    .loader-bar {
-      width: 160px;
-      height: 3px;
-      background: #F3F4F6;
-      border-radius: 99px;
-      overflow: hidden;
-      position: relative;
+    .fc-logo-accent { color: var(--fc-accent); }
+    .fc-logo-motto {
+      font-size: 8px; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--fc-primary); margin-top: 1px; display: block;
     }
-    .loader-progress {
-      position: absolute;
-      top: 0; left: 0; bottom: 0;
-      width: 100%;
-      background: linear-gradient(90deg, #0A382C, #C28453, #0A382C);
-      animation: loading 1.2s ease-in-out infinite;
+
+    .fc-nav-bar { border-top: 1px solid var(--fc-border); background: var(--fc-nav-bar-bg); }
+    .fc-nav-bar__inner {
+      display: flex; align-items: center; justify-content: center;
+      height: 42px; gap: 2rem; max-width: 1360px; margin: 0 auto; padding: 0 1.5rem;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(12px) scale(0.97); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
+    .fc-nav-link {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--fc-text-main); padding: 4px 0; position: relative; transition: color 0.2s;
     }
-    @keyframes pulseGlow {
-      from { box-shadow: 0 10px 25px rgba(0,0,0,0.06), 0 0 15px rgba(194, 132, 83, 0.15); }
-      to { box-shadow: 0 10px 35px rgba(0,0,0,0.12), 0 0 30px rgba(194, 132, 83, 0.4); }
+    .fc-nav-link:hover, .fc-nav-link.is-active { color: var(--fc-accent); }
+    .fc-nav-link--discount { color: var(--fc-discount); font-weight: 700; }
+    .fc-nav-link--sale { color: var(--fc-error); }
+
+    .fc-icon-btn {
+      width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; transition: background 0.2s; color: var(--fc-text-main); position: relative;
     }
-    @keyframes loading {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
+    .fc-icon-btn:hover { background: var(--fc-surface-hover); }
+    .fc-icon-btn svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.75; }
+    .fc-cart-count {
+      position: absolute; top: 2px; right: 2px; min-width: 16px; height: 16px; padding: 0 4px;
+      background: var(--fc-primary); color: #FFFFFF; font-size: 9px; font-weight: 800;
+      border-radius: 99px; display: flex; align-items: center; justify-content: center;
+    }
+
+    .fc-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      font-family: var(--fc-font-display); font-size: 13px; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 28px;
+      border-radius: var(--fc-radius-sm); border: 2px solid transparent;
+      cursor: pointer; transition: all 0.2s ease; text-decoration: none; white-space: nowrap;
+    }
+    .fc-btn--primary { background: var(--fc-primary); color: #FFFFFF; border-color: var(--fc-primary); }
+    .fc-btn--primary:hover { background: var(--fc-primary-hover); transform: translateY(-1px); }
+    .fc-btn--secondary { background: var(--fc-accent); color: #FFFFFF; border-color: var(--fc-accent); }
+    .fc-btn--secondary:hover { background: var(--fc-accent-dark); transform: translateY(-1px); }
+    .fc-btn--outline { background: var(--fc-surface-card); color: var(--fc-text-main); border-color: var(--fc-border); }
+    .fc-btn--outline:hover { border-color: var(--fc-text-main); }
+    .fc-btn--sm { font-size: 11px; padding: 8px 16px; }
+    .fc-btn--full { width: 100%; }
+
+    /* Hero Section */
+    .fc-hero-section {
+      background: linear-gradient(135deg, var(--fc-surface) 0%, var(--fc-bg) 100%);
+      padding: 3.5rem 0 4rem;
+      border-bottom: 1px solid var(--fc-border);
+    }
+    .fc-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .fc-hero-tag-badge {
+      display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px;
+      background: var(--fc-primary-light); border: 1px solid var(--fc-primary);
+      border-radius: 99px; margin-bottom: 1.25rem; font-size: 11px; font-weight: 700;
+      color: var(--fc-accent); letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .fc-hero-h1 {
+      font-family: var(--fc-font-display); font-size: clamp(2.5rem, 5vw, 4.2rem);
+      font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; color: var(--fc-text-main);
+      margin-bottom: 1rem;
+    }
+    .fc-hero-h1 span { color: var(--fc-accent); }
+    .fc-hero-desc {
+      font-size: 1.05rem; color: var(--fc-text-muted); line-height: 1.65; max-width: 480px; margin-bottom: 2rem;
+    }
+    .fc-hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .fc-hero-stats {
+      display: flex; gap: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--fc-border);
+    }
+    .fc-hero-stat-num { font-size: 1.3rem; font-weight: 800; color: var(--fc-accent); }
+    .fc-hero-stat-lbl { font-size: 11px; font-weight: 600; color: var(--fc-text-subtle); text-transform: uppercase; }
+
+    .fc-hero-visual { position: relative; }
+    .fc-hero-visual-card {
+      border-radius: var(--fc-radius-lg); overflow: hidden;
+      box-shadow: var(--fc-card-shadow); border: 1px solid var(--fc-border);
+      position: relative; aspect-ratio: 4/5;
+    }
+    .fc-hero-visual-card img { width: 100%; height: 100%; object-fit: cover; }
+    .fc-hero-float-badge {
+      position: absolute; bottom: 20px; left: 20px; background: var(--fc-surface-card);
+      backdrop-filter: blur(8px); padding: 12px 18px; border-radius: var(--fc-radius-md);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15); border: 1px solid var(--fc-border);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .fc-hero-float-icon {
+      width: 36px; height: 36px; border-radius: 50%; background: var(--fc-discount-bg);
+      color: var(--fc-discount); display: flex; align-items: center; justify-content: center; font-size: 18px;
+    }
+
+    /* 5% Promo Card */
+    .fc-payment-promo-strip {
+      background: linear-gradient(135deg, #0A382C 0%, #06241C 100%);
+      color: #FFFFFF; border-radius: var(--fc-radius-md);
+      padding: 1.75rem 2.5rem; margin: 3rem 0;
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+      box-shadow: 0 10px 30px rgba(10, 56, 44, 0.25);
+    }
+    .fc-promo-strip-left { display: flex; align-items: center; gap: 1.25rem; }
+    .fc-promo-strip-icon {
+      width: 54px; height: 54px; border-radius: 50%; background: rgba(255,255,255,0.12);
+      border: 1.5px solid var(--fc-accent); display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0;
+    }
+    .fc-promo-strip-title { font-size: 1.2rem; font-weight: 800; font-family: var(--fc-font-display); }
+    .fc-promo-strip-subtitle { font-size: 0.875rem; opacity: 0.85; margin-top: 2px; }
+    .fc-gateways { display: flex; gap: 8px; align-items: center; }
+    .fc-gw-badge {
+      background: #FFFFFF; color: #111827; font-size: 10px; font-weight: 800;
+      padding: 4px 8px; border-radius: 4px; letter-spacing: 0.04em;
+    }
+
+    /* Product Grid */
+    .fc-section { padding: 4rem 0; }
+    .fc-section-header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      margin-bottom: 2.5rem; border-bottom: 1px solid var(--fc-border); padding-bottom: 1rem;
+    }
+    .fc-section-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--fc-accent); margin-bottom: 4px; display: block;
+    }
+    .fc-section-title {
+      font-family: var(--fc-font-display); font-size: 1.875rem; font-weight: 800;
+      letter-spacing: -0.02em; color: var(--fc-text-main);
+    }
+    .fc-product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+
+    /* Category Discovery */
+    .fc-category-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .fc-cat-card {
+      position: relative; border-radius: var(--fc-radius-md); overflow: hidden;
+      aspect-ratio: 3/4; border: 1px solid var(--fc-border); box-shadow: var(--fc-card-shadow);
+    }
+    .fc-cat-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+    .fc-cat-card:hover img { transform: scale(1.06); }
+    .fc-cat-overlay {
+      position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,56,44,0.85) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+    }
+    .fc-cat-content { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; color: #FFFFFF; }
+    .fc-cat-name { font-size: 1.3rem; font-weight: 800; font-family: var(--fc-font-display); margin-bottom: 4px; }
+    .fc-cat-link { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #DFA26E; }
+
+    /* Brand Pillars */
+    .fc-pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 3rem 0; }
+    .fc-pillar-card {
+      background: var(--fc-surface-card); border: 1px solid var(--fc-border); border-radius: var(--fc-radius-md);
+      padding: 2rem; box-shadow: var(--fc-card-shadow); position: relative; overflow: hidden;
+    }
+    .fc-pillar-bar { position: absolute; top: 0; left: 0; width: 4px; height: 100%; }
+    .fc-pillar-title { font-size: 1.15rem; font-weight: 800; margin: 8px 0 6px; font-family: var(--fc-font-display); text-transform: uppercase; }
+    .fc-pillar-desc { font-size: 0.875rem; color: var(--fc-text-muted); line-height: 1.6; }
+
+    /* Footer */
+    .fc-footer {
+      background: var(--fc-surface); border-top: 1px solid var(--fc-border); color: var(--fc-text-main);
+      padding: 4rem 0 2rem;
+    }
+    .fc-footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem; }
+    .fc-footer-col-title {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--fc-accent); margin-bottom: 1.25rem; font-family: var(--fc-font-display);
+    }
+    .fc-footer-link { display: block; font-size: 0.875rem; color: var(--fc-text-muted); margin-bottom: 8px; transition: color 0.2s; }
+    .fc-footer-link:hover { color: var(--fc-accent); }
+    .fc-footer-bottom {
+      border-top: 1px solid var(--fc-border); padding-top: 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+      font-size: 12px; color: var(--fc-text-subtle);
+    }
+
+    @media (max-width: 1024px) {
+      .fc-hero-grid { grid-template-columns: 1fr; }
+      .fc-product-grid { grid-template-columns: repeat(3, 1fr); }
+      .fc-category-grid { grid-template-columns: repeat(2, 1fr); }
+      .fc-footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .fc-product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .fc-pillars-grid { grid-template-columns: 1fr; }
+      .fc-payment-promo-strip { flex-direction: column; align-items: flex-start; padding: 1.5rem; }
+      .fc-footer-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <div class="splash-card">
-    <div class="logo-frame">
-      <img src="/assets/images/logo.jpg" alt="FOLDCUT Emblem" />
+
+<!-- SLIDEBAR -->
+<div class="fc-promo-slidebar" role="region" aria-label="Announcement">
+  <div class="fc-promo-track">
+    <div class="fc-promo-slide is-active">
+      <span class="fc-promo-badge">5% OFF</span>
+      <span>ðŸ’³ Pay Online (bKash / Nagad / Cards) & Get <strong>5% Instant Discount</strong> with code <code class="fc-promo-code" onclick="copyPromoCode('ONLINE5')">ONLINE5</code></span>
+      <button class="fc-promo-copy-btn" onclick="copyPromoCode('ONLINE5')">Copy Code</button>
     </div>
-    <h1 class="brand-title">FOLD<span>CUT</span></h1>
-    <p class="brand-tagline">Quality &bull; Comfort &bull; Confidence</p>
-    <div class="loader-bar">
-      <div class="loader-progress"></div>
+    <div class="fc-promo-slide">
+      <span>ðŸšš <strong>FREE NATIONWIDE DELIVERY</strong> on all orders above à§³2,000 across 64 districts</span>
+    </div>
+    <div class="fc-promo-slide">
+      <span>âœ¨ <strong>220+ GSM Heavyweight Combed Cotton</strong> &bull; 7-Day Hassle-Free Exchange</span>
     </div>
   </div>
-  <script>
-    setTimeout(function() {
-      window.location.href = '/preview/index.html';
-    }, 600);
-  </script>
+  <div class="fc-promo-controls">
+    <button class="fc-promo-arrow" onclick="prevSlide()" aria-label="Previous announcement">&#8249;</button>
+    <button class="fc-promo-arrow" onclick="nextSlide()" aria-label="Next announcement">&#8250;</button>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="fc-header" id="fc-header">
+  <div class="fc-header__main">
+    <div class="fc-header__left">
+      <a href="index.html" class="fc-logo" aria-label="FOLDCUT Home">
+        <div class="fc-logo-emblem-wrap">
+          <img src="/assets/images/logo.jpg" alt="FOLDCUT Emblem" class="fc-logo-emblem" />
+        </div>
+        <div class="fc-logo-text-group">
+          <span class="fc-logo-name">FOLD<span class="fc-logo-accent">CUT</span></span>
+          <span class="fc-logo-motto">Quality &bull; Comfort &bull; Confidence</span>
+        </div>
+      </a>
+    </div>
+    <div class="fc-header__right">
+      <button class="fc-theme-toggle-btn" id="fc-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <button class="fc-icon-btn" onclick="openSearchModal()" aria-label="Search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="fc-icon-btn" id="fc-cart-btn" aria-label="Cart">
+        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="fc-cart-count" id="fc-cart-count">0</span>
+      </button>
+    </div>
+  </div>
+  <nav class="fc-nav-bar" aria-label="Main Navigation">
+    <div class="fc-nav-bar__inner">
+      <a href="index.html" class="fc-nav-link is-active">Home</a>
+      <a href="shop.html" class="fc-nav-link">All Products</a>
+      <a href="shop.html?cat=men" class="fc-nav-link">Men</a>
+      <a href="shop.html?cat=women" class="fc-nav-link">Women</a>
+      <a href="shop.html?cat=accessories" class="fc-nav-link">Accessories</a>
+      <a href="shop.html" class="fc-nav-link fc-nav-link--discount">5% Online Pay âš¡</a>
+      <a href="shop.html" class="fc-nav-link fc-nav-link--sale">Sale</a>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO SECTION -->
+<section class="fc-hero-section">
+  <div class="container">
+    <div class="fc-hero-grid">
+      <div class="fc-hero-text">
+        <div class="fc-hero-tag-badge">
+          <span>â˜… Quality &bull; Comfort &bull; Confidence</span>
+        </div>
+        <h1 class="fc-hero-h1">CUT DIFFERENT.<br>WEAR <span>DIFFERENT.</span></h1>
+        <p class="fc-hero-desc">Contemporary luxury apparel engineered with 220+ GSM combed compact cotton. Designed in Dhaka for unmatched all-day comfort and undeniable confidence.</p>
+        <div class="fc-hero-actions">
+          <a href="shop.html" class="fc-btn fc-btn--primary">EXPLORE COLLECTION</a>
+          <a href="shop.html" class="fc-btn fc-btn--secondary">CLAIM 5% ONLINE DISCOUNT</a>
+        </div>
+        <div class="fc-hero-stats">
+          <div><div class="fc-hero-stat-num">220+ GSM</div><div class="fc-hero-stat-lbl">Premium Cotton</div></div>
+          <div><div class="fc-hero-stat-num">64 Districts</div><div class="fc-hero-stat-lbl">Fast Delivery</div></div>
+          <div><div class="fc-hero-stat-num">10,000+</div><div class="fc-hero-stat-lbl">Happy Wearers</div></div>
+        </div>
+      </div>
+      <div class="fc-hero-visual">
+        <div class="fc-hero-visual-card">
+          <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1000&q=85" alt="FOLDCUT Streetwear Fashion" />
+          <div class="fc-hero-float-badge">
+            <div class="fc-hero-float-icon">ðŸ’³</div>
+            <div>
+              <div style="font-size:12px;font-weight:800;color:var(--fc-accent);">5% Instant Off</div>
+              <div style="font-size:11px;color:var(--fc-text-muted);">bKash / Nagad / Online Cards</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5% ONLINE PAYMENT SPOTLIGHT -->
+<div class="container">
+  <div class="fc-payment-promo-strip">
+    <div class="fc-promo-strip-left">
+      <div class="fc-promo-strip-icon">âš¡</div>
+      <div>
+        <div class="fc-promo-strip-title">Pay Online & Get Instant 5% Discount</div>
+        <div class="fc-promo-strip-subtitle">Save automatically when you pay via bKash, Nagad or Visa/Mastercard at checkout. Use code <strong>ONLINE5</strong>.</div>
+      </div>
+    </div>
+    <div class="fc-gateways">
+      <span class="fc-gw-badge">bKash</span>
+      <span class="fc-gw-badge">Nagad</span>
+      <span class="fc-gw-badge">VISA</span>
+      <span class="fc-gw-badge">Mastercard</span>
+      <a href="shop.html" class="fc-btn fc-btn--secondary fc-btn--sm" style="margin-left:8px;">SHOP NOW</a>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: NEW ARRIVALS -->
+<section class="fc-section">
+  <div class="container">
+    <div class="fc-section-header">
+      <div>
+        <span class="fc-section-eyebrow">Hand-Crafted Collection</span>
+        <h2 class="fc-section-title">Featured Drops</h2>
+      </div>
+      <a href="shop.html" class="fc-btn fc-btn--outline fc-btn--sm">VIEW ALL (12+)</a>
+    </div>
+    <div class="fc-product-grid" id="fc-product-grid">
+      <!-- Product 1 -->
+      <article class="fc-product-card">
+        <div class="fc-product-card__image-wrap">
+          <img class="fc-product-card__image" src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80" alt="Oversized Heavyweight Essential Tee" loading="lazy" />
+          <img class="fc-product-card__image--hover" src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=800&q=80" alt="Oversized Essential Tee Back" loading="lazy" />
+          <div class="fc-product-card__badge">
+            <span class="fc-badge fc-badge--new">BESTSELLER</span>
+            <span class="fc-badge fc-badge--discount">5% OFF ONLINE</span>
+          </div>
+          <button class="fc-wishlist-btn" onclick="toggleWishlist(this,1)" aria-label="Add to wishlist">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <button class="fc-quick-add-btn" onclick="addToCart(1,'Oversized Heavyweight Essential Tee',1199)">+ QUICK ADD</button>
+        </div>
+        <div class="fc-product-card__info">
+          <div class="fc-product-card__category">Men &bull; 220 GSM Cotton</div>
+          <div class="fc-product-card__name"><a href="product.html">Oversized Heavyweight Essential Tee</a></div>
+          <div class="fc-product-card__price-row">
+            <span class="fc-price-main">à§³1,199</span>
+            <span class="fc-price-orig">à§³1,499</span>
+          </div>
+          <div class="fc-online-pay-pill">ðŸ’³ à§³1,139 with 5% online pay</div>
+        </div>
+      </article>
+
+      <!-- Product 2 -->
+      <article class="fc-product-card">
+        <div class="fc-product-card__image-wrap">
+          <img class="fc-product-card__image" src="https://images.unsplash.com/photo-1625910513413-5bc6754b2d56?auto=format&fit=crop&w=800&q=80" alt="Executive Pique Cotton Polo" loading="lazy" />
+          <img class="fc-product-card__image--hover" src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=800&q=80" alt="Executive Polo Back" loading="lazy" />
+          <div class="fc-product-card__badge"><span class="fc-badge fc-badge--new">NEW DROP</span></div>
+          <button class="fc-wishlist-btn" onclick="toggleWishlist(this,2)" aria-label="Add to wishlist">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <button class="fc-quick-add-btn" onclick="addToCart(2,'Executive Pique Cotton Polo',1799)">+ QUICK ADD</button>
+        </div>
+        <div class="fc-product-card__info">
+          <div class="fc-product-card__category">Men &bull; Polos</div>
+          <div class="fc-product-card__name"><a href="product.html">Executive Pique Cotton Polo</a></div>
+          <div class="fc-product-card__price-row">
+            <span class="fc-price-main">à§³1,799</span>
+            <span class="fc-price-orig">à§³2,199</span>
+          </div>
+          <div class="fc-online-pay-pill">ðŸ’³ à§³1,709 with 5% online pay</div>
+        </div>
+      </article>
+
+      <!-- Product 3 -->
+      <article class="fc-product-card">
+        <div class="fc-product-card__image-wrap">
+          <img class="fc-product-card__image" src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80" alt="Minimalist Linen Co-Ord Set" loading="lazy" />
+          <img class="fc-product-card__image--hover" src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80" alt="Minimalist Co-Ord Set Back" loading="lazy" />
+          <div class="fc-product-card__badge"><span class="fc-badge fc-badge--sale">LIMITED</span></div>
+          <button class="fc-wishlist-btn" onclick="toggleWishlist(this,3)" aria-label="Add to wishlist">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <button class="fc-quick-add-btn" onclick="addToCart(3,'Minimalist Linen Co-Ord Set',2499)">+ QUICK ADD</button>
+        </div>
+        <div class="fc-product-card__info">
+          <div class="fc-product-card__category">Women &bull; Co-Ords</div>
+          <div class="fc-product-card__name"><a href="product.html">Minimalist Linen Co-Ord Set</a></div>
+          <div class="fc-product-card__price-row">
+            <span class="fc-price-main">à§³2,499</span>
+            <span class="fc-price-orig">à§³2,999</span>
+          </div>
+          <div class="fc-online-pay-pill">ðŸ’³ à§³2,374 with 5% online pay</div>
+        </div>
+      </article>
+
+      <!-- Product 4 -->
+      <article class="fc-product-card">
+        <div class="fc-product-card__image-wrap">
+          <img class="fc-product-card__image" src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=80" alt="Contemporary Everyday Kurti" loading="lazy" />
+          <img class="fc-product-card__image--hover" src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80" alt="Everyday Kurti Back" loading="lazy" />
+          <div class="fc-product-card__badge"><span class="fc-badge fc-badge--sale">-24% OFF</span></div>
+          <button class="fc-wishlist-btn" onclick="toggleWishlist(this,4)" aria-label="Add to wishlist">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <button class="fc-quick-add-btn" onclick="addToCart(4,'Contemporary Everyday Kurti',1450)">+ QUICK ADD</button>
+        </div>
+        <div class="fc-product-card__info">
+          <div class="fc-product-card__category">Women &bull; Ethnic</div>
+          <div class="fc-product-card__name"><a href="product.html">Contemporary Everyday Kurti</a></div>
+          <div class="fc-product-card__price-row">
+            <span class="fc-price-main">à§³1,450</span>
+            <span class="fc-price-orig">à§³1,899</span>
+          </div>
+          <div class="fc-online-pay-pill">ðŸ’³ à§³1,377 with 5% online pay</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORY DISCOVERY -->
+<section class="fc-section" style="background:var(--fc-surface);">
+  <div class="container">
+    <div class="fc-section-header">
+      <div>
+        <span class="fc-section-eyebrow">Discover by Category</span>
+        <h2 class="fc-section-title">Shop The Essentials</h2>
+      </div>
+    </div>
+    <div class="fc-category-grid">
+      <a href="shop.html?cat=men" class="fc-cat-card">
+        <img src="https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=800&q=80" alt="Men's Fashion" />
+        <div class="fc-cat-overlay"></div>
+        <div class="fc-cat-content">
+          <div class="fc-cat-name">Men</div>
+          <div class="fc-cat-link">SHOP NOW &rarr;</div>
+        </div>
+      </a>
+      <a href="shop.html?cat=women" class="fc-cat-card">
+        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80" alt="Women's Collection" />
+        <div class="fc-cat-overlay"></div>
+        <div class="fc-cat-content">
+          <div class="fc-cat-name">Women</div>
+          <div class="fc-cat-link">SHOP NOW &rarr;</div>
+        </div>
+      </a>
+      <a href="shop.html?cat=kids" class="fc-cat-card">
+        <img src="https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=800&q=80" alt="Kids Fashion" />
+        <div class="fc-cat-overlay"></div>
+        <div class="fc-cat-content">
+          <div class="fc-cat-name">Kids</div>
+          <div class="fc-cat-link">SHOP NOW &rarr;</div>
+        </div>
+      </a>
+      <a href="shop.html?cat=accessories" class="fc-cat-card">
+        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80" alt="Accessories" />
+        <div class="fc-cat-overlay"></div>
+        <div class="fc-cat-content">
+          <div class="fc-cat-name">Accessories</div>
+          <div class="fc-cat-link">SHOP NOW &rarr;</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND PILLARS -->
+<section class="fc-section">
+  <div class="container">
+    <div class="fc-section-header">
+      <div>
+        <span class="fc-section-eyebrow">Our Hallmark</span>
+        <h2 class="fc-section-title">The Three Pillars of FOLDCUT</h2>
+      </div>
+    </div>
+    <div class="fc-pillars-grid">
+      <div class="fc-pillar-card">
+        <div class="fc-pillar-bar" style="background:#0A382C;"></div>
+        <div style="font-size:24px;">ðŸ’Ž</div>
+        <div class="fc-pillar-title" style="color:var(--fc-accent);">01. Quality</div>
+        <p class="fc-pillar-desc">Heavyweight 220+ GSM combed compact cotton, anti-pilling wash, and twin-needle lock stitching designed to retain shape and color wash after wash.</p>
+      </div>
+      <div class="fc-pillar-card">
+        <div class="fc-pillar-bar" style="background:#C28453;"></div>
+        <div style="font-size:24px;">ðŸ•Šï¸</div>
+        <div class="fc-pillar-title" style="color:var(--fc-accent);">02. Comfort</div>
+        <p class="fc-pillar-desc">Ergonomic tailoring engineered specifically for breathable ease in any climate. Ultra-soft touch, tagless necklines, and non-restrictive comfort.</p>
+      </div>
+      <div class="fc-pillar-card">
+        <div class="fc-pillar-bar" style="background:#0A382C;"></div>
+        <div style="font-size:24px;">ðŸ¦…</div>
+        <div class="fc-pillar-title" style="color:var(--fc-accent);">03. Confidence</div>
+        <p class="fc-pillar-desc">Bold contemporary silhouettes and refined minimal palettes crafted to make a statement effortlessly wherever you step.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="fc-footer">
+  <div class="container">
+    <div class="fc-footer-grid">
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:1rem;">
+          <div style="width:40px;height:40px;border-radius:50%;overflow:hidden;border:1.5px solid #C28453;background:#FFFFFF;">
+            <img src="/assets/images/logo.jpg" alt="FOLDCUT" style="width:100%;height:100%;object-fit:cover;" />
+          </div>
+          <span style="font-family:var(--fc-font-display);font-size:18px;font-weight:800;color:var(--fc-text-main);">FOLD<span style="color:var(--fc-accent);">CUT</span></span>
+        </div>
+        <p style="font-size:0.875rem;color:var(--fc-text-muted);line-height:1.6;margin-bottom:1rem;">Contemporary luxury apparel engineered for quality, comfort, and confidence. Proudly crafted in Dhaka, Bangladesh.</p>
+        <p style="font-size:0.875rem;color:var(--fc-accent);font-weight:700;">ðŸ“ž Helpline: +880 1700-000000</p>
+      </div>
+      <div>
+        <div class="fc-footer-col-title">Shop</div>
+        <a href="shop.html" class="fc-footer-link">Men Collection</a>
+        <a href="shop.html" class="fc-footer-link">Women Collection</a>
+        <a href="shop.html" class="fc-footer-link">Oversized Tees</a>
+        <a href="shop.html" class="fc-footer-link">Polo Shirts</a>
+        <a href="shop.html" class="fc-footer-link">Accessories</a>
+      </div>
+      <div>
+        <div class="fc-footer-col-title">Customer Care</div>
+        <a href="#" class="fc-footer-link">Track Order</a>
+        <a href="#" class="fc-footer-link">7-Day Return Policy</a>
+        <a href="#" class="fc-footer-link">Shipping & Delivery</a>
+        <a href="#" class="fc-footer-link">Payment Methods</a>
+      </div>
+      <div>
+        <div class="fc-footer-col-title">Online Savings</div>
+        <p style="font-size:0.875rem;color:var(--fc-text-muted);margin-bottom:1rem;">Use code <strong>ONLINE5</strong> at checkout to get 5% discount on all online payments.</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span class="fc-gw-badge">bKash</span>
+          <span class="fc-gw-badge">Nagad</span>
+          <span class="fc-gw-badge">Visa</span>
+          <span class="fc-gw-badge">Mastercard</span>
+        </div>
+      </div>
+    </div>
+    <div class="fc-footer-bottom">
+      <div>&copy; 2025 FOLDCUT. All rights reserved. Quality &bull; Comfort &bull; Confidence.</div>
+      <div>Crafted for Contemporary Bangladesh.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<a href="https://wa.me/8801700000000?text=Hello%20FOLDCUT!%20I%20want%20to%20know%20more%20about%20your%20products." target="_blank" rel="noopener" class="fc-whatsapp-float" aria-label="Chat on WhatsApp">
+  <div class="fc-whatsapp-icon">
+    <svg viewBox="0 0 32 32" width="26" height="26" fill="#FFFFFF">
+      <path d="M16 2C8.28 2 2 8.28 2 16c0 2.62.72 5.08 1.98 7.18L2 30l7.02-1.92C11.06 29.3 13.48 30 16 30c7.72 0 14-6.28 14-14S23.72 2 16 2zm0 25.64c-2.28 0-4.42-.64-6.26-1.76l-.44-.26-4.64 1.28 1.28-4.52-.3-.48C4.5 19.98 3.86 18.04 3.86 16 3.86S28.14 9.3 28.14 16 22.7 27.64 16 27.64zm7.34-8.88c-.4-.2-2.38-1.18-2.76-1.32-.36-.14-.62-.2-.88.2-.26.4-1 1.32-1.24 1.6-.22.26-.46.3-.86.1-.4-.2-1.7-.62-3.24-2-.42-1.24-1.24-2.08-1.46-2.46-.22-.38-.02-.58.18-.78.18-.18.4-.46.6-.7.2-.24.26-.4.4-.66.14-.26.06-.5-.04-.7-.1-.2-.88-2.12-1.2-2.9-.32-.78-.64-.68-.88-.68h-.76c-.26 0-.68.1-1.04.5-.36.4-1.38 1.36-1.38 3.3 0 1.96 1.42 3.84 1.62 4.12.2.26 2.8 4.28 6.78 6 .94.42 1.68.66 2.26.84.96.3 1.82.26 2.5.16.76-.12 2.38-.98 2.72-1.92.34-.94.34-1.74.24-1.92-.1-.18-.36-.3-.76-.5z"/>
+    </svg>
+  </div>
+  <span class="fc-whatsapp-text">Order on WhatsApp</span>
+</a>
+
+<!-- MOBILE BOTTOM DOCK -->
+<nav class="fc-mobile-bottom-nav" aria-label="Mobile quick actions">
+  <a href="index.html" class="fc-mobile-bottom-link is-active">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>Home</span>
+  </a>
+  <a href="shop.html" class="fc-mobile-bottom-link">
+    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    <span>Shop</span>
+  </a>
+  <button class="fc-mobile-bottom-link" onclick="openSearchModal()">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <span>Search</span>
+  </button>
+  <button class="fc-mobile-bottom-link" onclick="document.getElementById('fc-cart-btn').click();">
+    <div style="position:relative;display:inline-block;">
+      <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <span class="fc-mobile-cart-badge" id="fc-mobile-bottom-cart-count">0</span>
+    </div>
+    <span>Bag</span>
+  </button>
+</nav>
+
+<!-- CART DRAWER -->
+<div class="fc-overlay" id="fc-overlay"></div>
+<div class="fc-cart-drawer" id="fc-cart-drawer">
+  <div class="fc-cart-header">
+    <div style="font-weight:800;font-size:1.1rem;font-family:var(--fc-font-display);">Your Bag (<span id="fc-cart-count-title">0</span>)</div>
+    <button id="fc-cart-close" style="font-size:24px;color:var(--fc-text-main);">&times;</button>
+  </div>
+  <div class="fc-cart-body" id="fc-cart-body">
+    <div id="fc-cart-empty" style="text-align:center;padding:3rem 1rem;">
+      <div style="font-size:40px;margin-bottom:1rem;">ðŸ›ï¸</div>
+      <p style="font-weight:700;font-size:1.1rem;">Your bag is empty</p>
+      <p style="color:var(--fc-text-muted);font-size:0.875rem;margin-bottom:1.5rem;">Add some pieces you love.</p>
+      <a href="shop.html" class="fc-btn fc-btn--primary fc-btn--sm">DISCOVER SHOP</a>
+    </div>
+    <div id="fc-cart-items"></div>
+  </div>
+  <div class="fc-cart-footer" id="fc-cart-footer" style="display:none;">
+    <div style="display:flex;justify-content:space-between;font-weight:700;margin-bottom:0.5rem;">
+      <span>Subtotal</span>
+      <span id="fc-cart-subtotal">à§³0</span>
+    </div>
+    <div style="display:flex;justify-content:space-between;color:var(--fc-discount);font-size:12px;font-weight:700;margin-bottom:1rem;">
+      <span>5% Online Pay Savings</span>
+      <span id="fc-cart-discount">-à§³0</span>
+    </div>
+    <a href="checkout.html" class="fc-btn fc-btn--primary fc-btn--full" style="margin-bottom:8px;">CHECKOUT &bull; PAY ONLINE 5% OFF</a>
+  </div>
+</div>
+
+<script>
+  // Theme Detection & Toggle
+  function initTheme() {
+    const saved = localStorage.getItem('fc_theme');
+    if (saved === 'dark' || saved === 'light') {
+      document.documentElement.setAttribute('data-theme', saved);
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+    updateThemeIcon();
+  }
+
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let nextTheme = '';
+    
+    if (!current) {
+      nextTheme = prefersDark ? 'light' : 'dark';
+    } else if (current === 'dark') {
+      nextTheme = 'light';
+    } else {
+      nextTheme = 'dark';
+    }
+    
+    document.documentElement.setAttribute('data-theme', nextTheme);
+    localStorage.setItem('fc_theme', nextTheme);
+    updateThemeIcon();
+  }
+
+  function updateThemeIcon() {
+    const btn = document.getElementById('fc-theme-toggle');
+    if (!btn) return;
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+                   (!document.documentElement.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    btn.innerHTML = isDark ? 
+      '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>' : 
+      '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    btn.setAttribute('aria-label', isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode');
+  }
+
+  initTheme();
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    if (!localStorage.getItem('fc_theme')) {
+      updateThemeIcon();
+    }
+  });
+
+  // Slidebar
+  let currentSlide = 0;
+  function showSlide(index) {
+    const slides = document.querySelectorAll('.fc-promo-slide');
+    if (!slides.length) return;
+    slides.forEach(s => s.classList.remove('is-active'));
+    currentSlide = (index + slides.length) % slides.length;
+    slides[currentSlide].classList.add('is-active');
+  }
+  function nextSlide() { showSlide(currentSlide + 1); }
+  function prevSlide() { showSlide(currentSlide - 1); }
+  setInterval(nextSlide, 4500);
+
+  function copyPromoCode(code) {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(code);
+      alert('Promo code ' + code + ' copied! (5% discount on online payments)');
+    }
+  }
+
+  // Cart & Wishlist
+  let cart = JSON.parse(localStorage.getItem('fc_cart') || '[]');
+  let wishlist = JSON.parse(localStorage.getItem('fc_wishlist') || '[]');
+
+  function updateCartUI() {
+    const totalCount = cart.reduce((s, i) => s + (i.qty || 1), 0);
+    ['fc-cart-count', 'fc-cart-count-title', 'fc-mobile-bottom-cart-count'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = totalCount;
+    });
+
+    const empty = document.getElementById('fc-cart-empty');
+    const footer = document.getElementById('fc-cart-footer');
+    const items = document.getElementById('fc-cart-items');
+
+    if (totalCount === 0) {
+      if (empty) empty.style.display = 'block';
+      if (footer) footer.style.display = 'none';
+      if (items) items.innerHTML = '';
+    } else {
+      if (empty) empty.style.display = 'none';
+      if (footer) footer.style.display = 'block';
+      
+      const subtotal = cart.reduce((s, i) => s + (i.price * (i.qty || 1)), 0);
+      const discount = Math.round(subtotal * 0.05);
+
+      const subElem = document.getElementById('fc-cart-subtotal');
+      const discElem = document.getElementById('fc-cart-discount');
+      if (subElem) subElem.textContent = 'à§³' + subtotal.toLocaleString();
+      if (discElem) discElem.textContent = '-à§³' + discount.toLocaleString();
+
+      if (items) {
+        items.innerHTML = cart.map((item, idx) => `
+          <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--fc-border);align-items:center;">
+            <div style="flex:1;">
+              <div style="font-weight:700;font-size:13px;color:var(--fc-text-main);">${item.name}</div>
+              <div style="font-size:12px;color:var(--fc-text-muted);">à§³${item.price.toLocaleString()} &times; ${item.qty || 1}</div>
+            </div>
+            <button onclick="removeFromCart(${idx})" style="color:var(--fc-error);font-size:12px;font-weight:600;">Remove</button>
+          </div>
+        `).join('');
+      }
+    }
+  }
+
+  function addToCart(id, name, price) {
+    const ex = cart.find(i => i.id === id);
+    if (ex) { ex.qty = (ex.qty || 1) + 1; }
+    else { cart.push({ id, name, price, qty: 1 }); }
+    localStorage.setItem('fc_cart', JSON.stringify(cart));
+    updateCartUI();
+    openCart();
+  }
+
+  function removeFromCart(idx) {
+    cart.splice(idx, 1);
+    localStorage.setItem('fc_cart', JSON.stringify(cart));
+    updateCartUI();
+  }
+
+  function toggleWishlist(btn, id) {
+    if (wishlist.includes(id)) {
+      wishlist = wishlist.filter(i => i !== id);
+      btn.classList.remove('is-active');
+    } else {
+      wishlist.push(id);
+      btn.classList.add('is-active');
+    }
+    localStorage.setItem('fc_wishlist', JSON.stringify(wishlist));
+  }
+
+  const cartDrawer = document.getElementById('fc-cart-drawer');
+  const overlay = document.getElementById('fc-overlay');
+  const cartBtn = document.getElementById('fc-cart-btn');
+  const cartClose = document.getElementById('fc-cart-close');
+
+  function openCart() {
+    if (cartDrawer) cartDrawer.classList.add('is-open');
+    if (overlay) overlay.classList.add('is-visible');
+  }
+  function closeCart() {
+    if (cartDrawer) cartDrawer.classList.remove('is-open');
+    if (overlay) overlay.classList.remove('is-visible');
+  }
+
+  if (cartBtn) cartBtn.addEventListener('click', openCart);
+  if (cartClose) cartClose.addEventListener('click', closeCart);
+  if (overlay) overlay.addEventListener('click', closeCart);
+
+  function openSearchModal() {
+    const q = prompt('Search FOLDCUT Products:');
+    if (q) { window.location.href = 'shop.html?search=' + encodeURIComponent(q); }
+  }
+
+  updateCartUI();
+</script>
 </body>
 </html>
