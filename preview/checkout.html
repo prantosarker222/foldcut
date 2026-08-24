@@ -1,102 +1,138 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <title>Checkout | FOLDCUT</title>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Hind+Siliguri:wght@500;600;700&display=swap" rel="stylesheet"/>
+  
   <style>
-    :root{--fc-bg:#FFFFFF;--fc-surface:#F9FAFB;--fc-border:#E5E7EB;--fc-text:#111827;--fc-muted:#4B5563;--fc-subtle:#9CA3AF;--fc-primary:#0A382C;--fc-accent:#C28453;--fc-discount:#059669;--fc-discount-bg:#ECFDF5;--fc-error:#DC2626;--fc-font-d:'Plus Jakarta Sans',sans-serif;--fc-font-b:'Inter',sans-serif}
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:var(--fc-font-b);color:var(--fc-text);background:#FFF;-webkit-font-smoothing:antialiased;padding-bottom:80px}
-    img{display:block;max-width:100%;height:auto}
-    a{color:inherit;text-decoration:none}
-    button{cursor:pointer;border:none;background:none;font-family:inherit}
+    :root {
+      --fc-bg:             #FFFFFF;
+      --fc-surface:        #F9FAFB;
+      --fc-surface-card:   #FFFFFF;
+      --fc-surface-hover:  #F3F4F6;
+      --fc-border:         #E5E7EB;
+      --fc-border-hover:   #D1D5DB;
+      --fc-text-main:      #111827;
+      --fc-text-muted:     #4B5563;
+      --fc-text-subtle:    #9CA3AF;
+      --fc-primary:        #0A382C;
+      --fc-primary-hover:  #06241C;
+      --fc-primary-light:  #E8F5F1;
+      --fc-accent:         #C28453;
+      --fc-accent-light:   #DFA26E;
+      --fc-accent-dark:    #985B2E;
+      --fc-discount:       #059669;
+      --fc-discount-bg:    #ECFDF5;
+      --fc-error:          #DC2626;
+      --fc-card-shadow:    0 4px 20px rgba(0,0,0,0.06);
+      --fc-header-bg:      rgba(255, 255, 255, 0.95);
+      
+      --fc-font-display:   'Plus Jakarta Sans', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --fc-font-body:      'Inter', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      
+      --fc-radius-sm:      4px;
+      --fc-radius-md:      8px;
+      --fc-radius-lg:      16px;
+    }
 
-        @media (prefers-color-scheme: dark) {
+    @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) {
-        --fc-bg:#0B110F;--fc-surface:#121A17;--fc-border:#243730;--fc-text:#F9FAFB;--fc-muted:#9CA3AF;
+        --fc-bg:#0B110F;--fc-surface:#121A17;--fc-surface-card:#16221E;--fc-border:#243730;
+        --fc-text-main:#F9FAFB;--fc-text-muted:#9CA3AF;--fc-text-subtle:#6B7280;
         --fc-primary:#105946;--fc-accent:#DFA26E;--fc-discount:#10B981;--fc-discount-bg:rgba(16,185,129,0.15);
+        --fc-card-shadow:0 6px 24px rgba(0,0,0,0.45);--fc-header-bg:rgba(11,17,15,0.94);
       }
     }
     [data-theme="dark"] {
-      --fc-bg:#0B110F;--fc-surface:#121A17;--fc-border:#243730;--fc-text:#F9FAFB;--fc-muted:#9CA3AF;
+      --fc-bg:#0B110F;--fc-surface:#121A17;--fc-surface-card:#16221E;--fc-border:#243730;
+      --fc-text-main:#F9FAFB;--fc-text-muted:#9CA3AF;--fc-text-subtle:#6B7280;
       --fc-primary:#105946;--fc-accent:#DFA26E;--fc-discount:#10B981;--fc-discount-bg:rgba(16,185,129,0.15);
+      --fc-card-shadow:0 6px 24px rgba(0,0,0,0.45);--fc-header-bg:rgba(11,17,15,0.94);
     }
-    .fc-theme-toggle-btn{width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:50%;color:var(--fc-text);border:1px solid var(--fc-border);background:var(--fc-surface);cursor:pointer;transition:all 0.2s}
-    .fc-theme-toggle-btn:hover{transform:rotate(15deg)}
-    .fc-form-section, .fc-order-card { background: var(--fc-surface) !important; }
-    .fc-field input, .fc-field select, .fc-field textarea { background: var(--fc-bg) !important; color: var(--fc-text) !important; border-color: var(--fc-border) !important; }
-    .fc-pm-option { background: var(--fc-surface) !important; }
-    .fc-pm-option.is-selected { background: var(--fc-discount-bg) !important; }
-    .fc-pm-name { color: var(--fc-text) !important; }
-    .fc-form-section-title { color: var(--fc-text) !important; }
-    .fc-field label { color: var(--fc-muted) !important; }
-/* Slidebar */
+    [data-theme="light"] {
+      --fc-bg:#FFFFFF;--fc-surface:#F9FAFB;--fc-surface-card:#FFFFFF;--fc-border:#E5E7EB;
+      --fc-text-main:#111827;--fc-text-muted:#4B5563;--fc-text-subtle:#9CA3AF;
+      --fc-primary:#0A382C;--fc-accent:#C28453;--fc-discount:#059669;--fc-discount-bg:#ECFDF5;
+      --fc-card-shadow:0 4px 20px rgba(0,0,0,0.06);--fc-header-bg:rgba(255,255,255,0.95);
+    }
+
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:var(--fc-font-body);color:var(--fc-text-main);background:var(--fc-bg);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;padding-bottom:80px;transition:background-color 0.3s,color 0.3s}
+    h1,h2,h3,h4,h5,h6,.fc-logo-name,.fc-btn{font-family:var(--fc-font-display)}
+    img{display:block;max-width:100%;height:auto}
+    a{color:inherit;text-decoration:none}
+    button{cursor:pointer;border:none;background:none;font-family:inherit}
+    .fc-taka{font-family:'Hind Siliguri','Inter',sans-serif;font-weight:700}
+
+    /* Slidebar */
     .fc-promo-slidebar{background:#0A382C;color:#FFF;height:36px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;border-bottom:1px solid rgba(194,132,83,0.3);overflow:hidden}
 
     /* Header */
-    .fc-header{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--fc-border)}
+    .fc-header{position:sticky;top:0;z-index:200;background:var(--fc-header-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--fc-border)}
     .fc-header__main{display:flex;align-items:center;justify-content:space-between;height:72px;padding:0 1.5rem;max-width:1200px;margin:0 auto}
     .fc-logo{display:inline-flex;align-items:center;gap:10px}
-    .fc-logo-emblem-wrap{width:40px;height:40px;border-radius:50%;overflow:hidden;border:1.5px solid #C28453;background:#FFF}
+    .fc-logo-emblem-wrap{width:40px;height:40px;border-radius:50%;overflow:hidden;border:1.5px solid var(--fc-accent);background:#FFF}
     .fc-logo-emblem{width:100%;height:100%;object-fit:cover}
-    .fc-logo-name{font-family:var(--fc-font-d);font-size:18px;font-weight:800;letter-spacing:0.12em}
-    .fc-logo-accent{color:#C28453}
-    .fc-secure-badge{display:flex;align-items:center;gap:6px;font-size:12px;color:#059669;font-weight:600}
+    .fc-logo-name{font-size:18px;font-weight:800;letter-spacing:0.12em;color:var(--fc-text-main)}
+    .fc-logo-accent{color:var(--fc-accent)}
 
-    /* CHECKOUT LAYOUT */
+    .fc-theme-toggle-btn{width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:50%;color:var(--fc-text-main);border:1px solid var(--fc-border);background:var(--fc-surface);cursor:pointer;transition:all 0.2s}
+    .fc-theme-toggle-btn:hover{transform:rotate(15deg)}
+    .fc-secure-badge{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--fc-discount);font-weight:600}
+
+    /* Layout */
     .fc-checkout-wrap{max-width:1100px;margin:2rem auto;padding:0 1.5rem;display:grid;grid-template-columns:1fr 400px;gap:2.5rem}
     @media(max-width:768px){.fc-checkout-wrap{grid-template-columns:1fr}}
 
     /* Form section */
-    .fc-form-section{background:#FFF;border:1px solid var(--fc-border);border-radius:12px;padding:2rem;margin-bottom:1.5rem}
-    .fc-form-section-title{font-family:var(--fc-font-d);font-size:1rem;font-weight:800;margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:1px solid var(--fc-border);display:flex;align-items:center;gap:8px}
-    .fc-form-section-num{width:24px;height:24px;background:#0A382C;color:#FFF;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0}
+    .fc-form-section{background:var(--fc-surface-card);border:1px solid var(--fc-border);border-radius:12px;padding:2rem;margin-bottom:1.5rem;box-shadow:var(--fc-card-shadow)}
+    .fc-form-section-title{font-size:1rem;font-weight:800;margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:1px solid var(--fc-border);display:flex;align-items:center;gap:8px;color:var(--fc-text-main)}
+    .fc-form-section-num{width:24px;height:24px;background:var(--fc-primary);color:#FFF;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0}
     .fc-field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
     .fc-field-row.full{grid-template-columns:1fr}
-    .fc-field label{display:block;font-size:12px;font-weight:700;color:#374151;margin-bottom:5px;letter-spacing:0.03em;text-transform:uppercase}
-    .fc-field input,.fc-field select,.fc-field textarea{width:100%;padding:10px 14px;border:1.5px solid var(--fc-border);border-radius:6px;font-size:14px;font-family:var(--fc-font-b);color:#111827;transition:border-color 0.2s;background:#FFF}
-    .fc-field input:focus,.fc-field select:focus,.fc-field textarea:focus{outline:none;border-color:#0A382C}
+    .fc-field label{display:block;font-size:12px;font-weight:700;color:var(--fc-text-muted);margin-bottom:5px;letter-spacing:0.03em;text-transform:uppercase}
+    .fc-field input,.fc-field select,.fc-field textarea{width:100%;padding:10px 14px;border:1.5px solid var(--fc-border);border-radius:6px;font-size:14px;font-family:var(--fc-font-body);color:var(--fc-text-main);background:var(--fc-surface);transition:border-color 0.2s}
+    .fc-field input:focus,.fc-field select:focus,.fc-field textarea:focus{outline:none;border-color:var(--fc-primary)}
     .fc-field textarea{min-height:80px;resize:vertical}
 
-    /* PAYMENT METHODS */
+    /* Payment Methods */
     .fc-pm-options{display:flex;flex-direction:column;gap:10px}
-    .fc-pm-option{border:2px solid var(--fc-border);border-radius:8px;overflow:hidden;transition:border-color 0.2s;cursor:pointer}
-    .fc-pm-option:hover{border-color:#0A382C}
-    .fc-pm-option.is-selected{border-color:#059669;background:#ECFDF5}
+    .fc-pm-option{border:2px solid var(--fc-border);border-radius:8px;overflow:hidden;transition:border-color 0.2s;cursor:pointer;background:var(--fc-surface)}
+    .fc-pm-option:hover{border-color:var(--fc-primary)}
+    .fc-pm-option.is-selected{border-color:var(--fc-discount);background:var(--fc-discount-bg)}
     .fc-pm-option-header{display:flex;align-items:center;gap:12px;padding:14px 16px;cursor:pointer}
-    .fc-pm-option-header input[type=radio]{width:16px;height:16px;accent-color:#059669;flex-shrink:0}
-    .fc-pm-icon{font-size:22px;width:32px;text-align:center}
+    .fc-pm-option-header input[type=radio]{width:16px;height:16px;accent-color:var(--fc-discount);flex-shrink:0}
     .fc-pm-label{flex:1}
-    .fc-pm-name{font-weight:700;font-size:14px;color:#111827}
-    .fc-pm-desc{font-size:11px;color:#6B7280}
-    .fc-pm-discount-pill{display:inline-flex;align-items:center;gap:4px;background:#059669;color:#FFF;font-size:10px;font-weight:800;padding:2px 8px;border-radius:99px;margin-left:auto}
+    .fc-pm-name{font-weight:700;font-size:14px;color:var(--fc-text-main)}
+    .fc-pm-desc{font-size:11px;color:var(--fc-text-muted)}
+    .fc-pm-discount-pill{display:inline-flex;align-items:center;gap:4px;background:var(--fc-discount);color:#FFF;font-size:10px;font-weight:800;padding:2px 8px;border-radius:99px;margin-left:auto}
     .fc-pm-details{padding:0 16px 14px;border-top:1px solid var(--fc-border)}
 
-    /* ORDER SUMMARY */
+    /* Order summary */
     .fc-order-summary{position:sticky;top:120px}
-    .fc-order-card{background:#FFF;border:1px solid var(--fc-border);border-radius:12px;overflow:hidden}
+    .fc-order-card{background:var(--fc-surface-card);border:1px solid var(--fc-border);border-radius:12px;overflow:hidden;box-shadow:var(--fc-card-shadow)}
     .fc-order-card-header{background:#0A382C;color:#FFF;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
-    .fc-order-card-title{font-family:var(--fc-font-d);font-size:14px;font-weight:800;letter-spacing:0.06em}
+    .fc-order-card-title{font-size:14px;font-weight:800;letter-spacing:0.06em}
     .fc-order-body{padding:1.5rem}
     .fc-order-item{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--fc-border);align-items:center}
-    .fc-order-item:last-child{border-bottom:none}
     .fc-order-item-img{width:54px;height:54px;border-radius:6px;object-fit:cover;border:1px solid var(--fc-border)}
-    .fc-order-item-name{font-weight:700;font-size:13px;flex:1}
-    .fc-order-item-price{font-weight:700;font-size:13px;text-align:right}
+    .fc-order-item-name{font-weight:700;font-size:13px;flex:1;color:var(--fc-text-main)}
+    .fc-order-item-price{font-weight:700;font-size:13px;text-align:right;color:var(--fc-text-main)}
 
-    .fc-summary-row{display:flex;justify-content:space-between;font-size:14px;font-weight:500;padding:8px 0}
-    .fc-summary-row.discount{color:#059669;font-weight:700}
+    .fc-summary-row{display:flex;justify-content:space-between;font-size:14px;font-weight:500;padding:8px 0;color:var(--fc-text-main)}
+    .fc-summary-row.discount{color:var(--fc-discount);font-weight:700}
     .fc-summary-row.total{font-size:16px;font-weight:800;border-top:2px solid var(--fc-border);margin-top:4px;padding-top:12px}
-    .fc-summary-savings{background:#ECFDF5;border:1px solid #A7F3D0;border-radius:8px;padding:10px 14px;margin:10px 0;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#059669}
+    .fc-summary-savings{background:var(--fc-discount-bg);border:1px solid var(--fc-discount);border-radius:8px;padding:10px 14px;margin:10px 0;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--fc-discount)}
 
-    .fc-place-order-btn{width:100%;padding:16px;background:#0A382C;color:#FFF;border:none;border-radius:8px;font-family:var(--fc-font-d);font-size:14px;font-weight:800;letter-spacing:0.06em;cursor:pointer;margin-top:1rem;transition:background 0.2s,transform 0.15s}
-    .fc-place-order-btn:hover{background:#06241C;transform:translateY(-1px)}
-    .fc-place-order-btn:disabled{background:#9CA3AF;cursor:not-allowed;transform:none}
+    .fc-place-order-btn{width:100%;padding:16px;background:var(--fc-primary);color:#FFF;border:none;border-radius:8px;font-size:14px;font-weight:800;letter-spacing:0.06em;cursor:pointer;margin-top:1rem;transition:all 0.2s}
+    .fc-place-order-btn:hover{background:var(--fc-primary-hover);transform:translateY(-1px)}
 
-    /* WHATSAPP */
-    .fc-whatsapp-float{position:fixed;bottom:24px;right:24px;z-index:290;display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#FFF;padding:8px 16px 8px 10px;border-radius:99px;box-shadow:0 4px 20px rgba(37,211,102,0.4);text-decoration:none;font-size:13px;font-weight:700;font-family:var(--fc-font-d);transition:transform 0.25s}
+    /* WhatsApp Button */
+    .fc-whatsapp-float{position:fixed;bottom:24px;right:24px;z-index:290;display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#FFF;padding:8px 16px 8px 10px;border-radius:99px;box-shadow:0 4px 20px rgba(37,211,102,0.4);text-decoration:none;font-size:13px;font-weight:700;transition:transform 0.25s}
     .fc-whatsapp-float:hover{transform:translateY(-3px)}
     @media(max-width:768px){.fc-whatsapp-float{bottom:16px;right:16px;padding:10px;border-radius:50%}.fc-whatsapp-text{display:none}}
   </style>
@@ -105,30 +141,31 @@
 
 <!-- SLIDEBAR -->
 <div class="fc-promo-slidebar">
-  &#x1F4B3; Pay Online (bKash / Nagad / Cards) &amp; Get <strong>&nbsp;5% Instant Discount&nbsp;</strong> &bull; Use code ONLINE5 &bull; &#x9F3;2,000+ = FREE DELIVERY
+  ðŸ’³ Pay Online (bKash / Nagad / Cards) &amp; Get <strong>&nbsp;5% Instant Discount&nbsp;</strong> &bull; Use code ONLINE5 &bull; <span class="fc-taka">à§³</span>2,000+ = FREE DELIVERY
 </div>
 
 <!-- HEADER -->
 <header class="fc-header">
   <div class="fc-header__main">
-    <a href="/preview/index.html" class="fc-logo">
+    <a href="index.html" class="fc-logo">
       <div class="fc-logo-emblem-wrap">
         <img src="/assets/images/logo.jpg" alt="FOLDCUT" class="fc-logo-emblem"/>
       </div>
       <span class="fc-logo-name">FOLD<span class="fc-logo-accent">CUT</span></span>
     </a>
-    <button class="fc-theme-toggle-btn" id="fc-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode" style="margin-right:12px;"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button><div class="fc-secure-badge">
-      &#x1F512; Secure Checkout
+    <div style="display:flex;align-items:center;gap:12px;">
+      <button class="fc-theme-toggle-btn" id="fc-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <div class="fc-secure-badge">ðŸ”’ Secure Checkout</div>
     </div>
   </div>
 </header>
 
 <!-- CHECKOUT CONTENT -->
 <div class="fc-checkout-wrap">
-  
-  <!-- LEFT: FORM -->
   <div>
-    <!-- Delivery Information -->
+    <!-- Delivery Info -->
     <div class="fc-form-section">
       <div class="fc-form-section-title">
         <span class="fc-form-section-num">1</span> Delivery Information
@@ -157,147 +194,118 @@
       </div>
     </div>
 
-    <!-- PAYMENT METHOD -->
+    <!-- Payment Method -->
     <div class="fc-form-section">
       <div class="fc-form-section-title">
         <span class="fc-form-section-num">2</span> Choose Payment Method
-        <span style="margin-left:auto;background:#ECFDF5;color:#059669;font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;border:1px solid #A7F3D0">Online = 5% OFF</span>
+        <span style="margin-left:auto;background:var(--fc-discount-bg);color:var(--fc-discount);font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;border:1px solid var(--fc-discount)">Online = 5% OFF</span>
       </div>
 
       <div class="fc-pm-options">
-
-        <!-- bKash -->
         <div class="fc-pm-option is-selected" id="pm-bkash">
           <div class="fc-pm-option-header" onclick="selectPM('bkash')">
             <input type="radio" name="payment" value="bkash" checked/>
-            <span class="fc-pm-icon">&#x1F4F1;</span>
+            <span style="font-size:22px;">ðŸ“±</span>
             <div class="fc-pm-label">
               <div class="fc-pm-name">bKash Mobile Banking</div>
               <div class="fc-pm-desc">Fast, secure, instant</div>
             </div>
-            <span class="fc-pm-discount-pill">&#x2605; 5% OFF</span>
+            <span class="fc-pm-discount-pill">â˜… 5% OFF</span>
           </div>
           <div class="fc-pm-details" id="pm-bkash-details">
-            <p style="font-size:12px;color:#374151;margin-bottom:8px;">&#x1F449; Send money to: <strong>01700-000000 (Merchant)</strong></p>
+            <p style="font-size:12px;color:var(--fc-text-muted);margin-bottom:8px;">ðŸ‘‰ Send money to: <strong>01700-000000 (Merchant)</strong></p>
             <div class="fc-field"><label>bKash Transaction ID</label><input type="text" placeholder="TRX ID e.g. 8N7HY3PQ7C"/></div>
           </div>
         </div>
 
-        <!-- Nagad -->
         <div class="fc-pm-option" id="pm-nagad">
           <div class="fc-pm-option-header" onclick="selectPM('nagad')">
             <input type="radio" name="payment" value="nagad"/>
-            <span class="fc-pm-icon">&#x1F4B0;</span>
+            <span style="font-size:22px;">ðŸ’°</span>
             <div class="fc-pm-label">
               <div class="fc-pm-name">Nagad Mobile Banking</div>
               <div class="fc-pm-desc">Fast mobile payment</div>
             </div>
-            <span class="fc-pm-discount-pill">&#x2605; 5% OFF</span>
+            <span class="fc-pm-discount-pill">â˜… 5% OFF</span>
           </div>
           <div class="fc-pm-details" id="pm-nagad-details" style="display:none">
-            <p style="font-size:12px;color:#374151;margin-bottom:8px;">&#x1F449; Send to: <strong>01700-000000 (Nagad Merchant)</strong></p>
+            <p style="font-size:12px;color:var(--fc-text-muted);margin-bottom:8px;">ðŸ‘‰ Send to: <strong>01700-000000 (Nagad Merchant)</strong></p>
             <div class="fc-field"><label>Nagad Transaction ID</label><input type="text" placeholder="Nagad TRX ID"/></div>
           </div>
         </div>
 
-        <!-- Card -->
         <div class="fc-pm-option" id="pm-card">
           <div class="fc-pm-option-header" onclick="selectPM('card')">
             <input type="radio" name="payment" value="card"/>
-            <span class="fc-pm-icon">&#x1F4B3;</span>
+            <span style="font-size:22px;">ðŸ’³</span>
             <div class="fc-pm-label">
               <div class="fc-pm-name">Visa / Mastercard</div>
               <div class="fc-pm-desc">Debit or Credit Card</div>
             </div>
-            <span class="fc-pm-discount-pill">&#x2605; 5% OFF</span>
+            <span class="fc-pm-discount-pill">â˜… 5% OFF</span>
           </div>
           <div class="fc-pm-details" id="pm-card-details" style="display:none">
             <div class="fc-field-row">
               <div class="fc-field"><label>Card Number</label><input type="text" placeholder="XXXX XXXX XXXX XXXX"/></div>
               <div class="fc-field"><label>Expiry</label><input type="text" placeholder="MM/YY"/></div>
             </div>
-            <div class="fc-field-row">
-              <div class="fc-field"><label>CVV</label><input type="text" placeholder="CVV"/></div>
-              <div class="fc-field"><label>Cardholder Name</label><input type="text" placeholder="Name on Card"/></div>
-            </div>
           </div>
         </div>
 
-        <!-- Cash on Delivery -->
         <div class="fc-pm-option" id="pm-cod">
           <div class="fc-pm-option-header" onclick="selectPM('cod')">
             <input type="radio" name="payment" value="cod"/>
-            <span class="fc-pm-icon">&#x1F4E6;</span>
+            <span style="font-size:22px;">ðŸ“¦</span>
             <div class="fc-pm-label">
               <div class="fc-pm-name">Cash on Delivery</div>
               <div class="fc-pm-desc">Pay when your order arrives</div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
 
-  <!-- RIGHT: ORDER SUMMARY -->
+  <!-- Summary -->
   <div class="fc-order-summary">
     <div class="fc-order-card">
       <div class="fc-order-card-header">
         <span class="fc-order-card-title">ORDER SUMMARY</span>
-        <a href="/preview/shop.html" style="font-size:12px;color:#C28453;font-weight:700;">Edit Bag</a>
+        <a href="shop.html" style="font-size:12px;color:var(--fc-accent);font-weight:700;">Edit Bag</a>
       </div>
       <div class="fc-order-body">
-
-        <!-- Cart items -->
         <div id="fc-order-items">
           <div class="fc-order-item">
             <img class="fc-order-item-img" src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=100&q=80" alt="Tee"/>
-            <div class="fc-order-item-name">Oversized Heavyweight Essential Tee<br/><span style="font-size:11px;color:#6B7280;font-weight:400">Size M &bull; Qty 1</span></div>
-            <div class="fc-order-item-price">&#x9F3;1,199</div>
+            <div class="fc-order-item-name">Oversized Heavyweight Essential Tee<br/><span style="font-size:11px;color:var(--fc-text-muted);font-weight:400">Size M &bull; Qty 1</span></div>
+            <div class="fc-order-item-price"><span class="fc-taka">à§³</span>1,199</div>
           </div>
         </div>
 
         <div style="border-top:1px solid var(--fc-border);padding-top:1rem;margin-top:0.5rem;">
-          <div class="fc-summary-row"><span>Subtotal</span><span id="co-subtotal">&#x9F3;1,199</span></div>
-          <div class="fc-summary-row"><span>Delivery</span><span id="co-delivery">&#x9F3;70</span></div>
-          <div class="fc-summary-row discount" id="co-discount-row"><span>&#x26A1; Online Payment (5% Off)</span><span id="co-discount">-&#x9F3;60</span></div>
-          <div class="fc-summary-row total"><span>Total</span><span id="co-total">&#x9F3;1,209</span></div>
+          <div class="fc-summary-row"><span>Subtotal</span><span id="co-subtotal"><span class="fc-taka">à§³</span>1,199</span></div>
+          <div class="fc-summary-row"><span>Delivery</span><span id="co-delivery"><span class="fc-taka">à§³</span>70</span></div>
+          <div class="fc-summary-row discount" id="co-discount-row"><span>âš¡ Online Payment (5% Off)</span><span id="co-discount">-<span class="fc-taka">à§³</span>60</span></div>
+          <div class="fc-summary-row total"><span>Total</span><span id="co-total"><span class="fc-taka">à§³</span>1,209</span></div>
         </div>
 
         <div class="fc-summary-savings" id="co-savings-banner">
-          &#x1F389; You save <strong id="co-savings-amount">&#x9F3;60</strong> with online payment!
+          ðŸŽ‰ You save <strong id="co-savings-amount" style="margin-left:4px;"><span class="fc-taka">à§³</span>60</strong>&nbsp;with online payment!
         </div>
 
         <button class="fc-place-order-btn" onclick="placeOrder()">
-          &#x1F512; PLACE ORDER &bull; SECURE CHECKOUT
+          ðŸ”’ PLACE ORDER &bull; SECURE CHECKOUT
         </button>
 
-        <p style="font-size:11px;color:#9CA3AF;text-align:center;margin-top:10px;">By placing your order, you agree to FOLDCUT's terms &amp; conditions.</p>
-
-        <div style="display:flex;justify-content:center;gap:10px;margin-top:12px;flex-wrap:wrap;">
-          <span style="background:#F9FAFB;border:1px solid var(--fc-border);border-radius:4px;padding:4px 8px;font-size:10px;font-weight:700;">&#x1F4B1; bKash</span>
-          <span style="background:#F9FAFB;border:1px solid var(--fc-border);border-radius:4px;padding:4px 8px;font-size:10px;font-weight:700;">&#x1F4B0; Nagad</span>
-          <span style="background:#F9FAFB;border:1px solid var(--fc-border);border-radius:4px;padding:4px 8px;font-size:10px;font-weight:700;">&#x1F4B3; VISA</span>
-          <span style="background:#F9FAFB;border:1px solid var(--fc-border);border-radius:4px;padding:4px 8px;font-size:10px;font-weight:700;">&#x1F4B3; Mastercard</span>
-        </div>
+        <p style="font-size:11px;color:var(--fc-text-subtle);text-align:center;margin-top:10px;">By placing your order, you agree to FOLDCUT's terms &amp; conditions.</p>
       </div>
-    </div>
-
-    <!-- Promo Code Box -->
-    <div style="margin-top:1rem;border:1.5px dashed #C28453;border-radius:8px;padding:1rem;background:#FDF8F4;">
-      <div style="font-size:12px;font-weight:700;color:#985B2E;margin-bottom:8px;">&#x1F381; Online Payment Promo Code</div>
-      <div style="display:flex;gap:8px;">
-        <input id="promo-input" type="text" value="ONLINE5" style="flex:1;padding:8px 10px;border:1.5px solid #E5E7EB;border-radius:6px;font-size:13px;font-weight:700;font-family:inherit"/>
-        <button onclick="applyPromo()" style="background:#C28453;color:#FFF;padding:8px 14px;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;">APPLY</button>
-      </div>
-      <p id="promo-msg" style="font-size:11px;color:#059669;margin-top:6px;font-weight:600;">&#x2705; ONLINE5 applied â€” 5% discount with online payment!</p>
     </div>
   </div>
 </div>
 
-<!-- WHATSAPP BUTTON -->
+<!-- WhatsApp Floating Button -->
 <a href="https://wa.me/8801700000000?text=I'd%20like%20to%20place%20an%20order%20on%20FOLDCUT!" target="_blank" class="fc-whatsapp-float" aria-label="WhatsApp Order">
-  <svg viewBox="0 0 32 32" width="26" height="26" fill="#FFF"><path d="M16 2C8.28 2 2 8.28 2 16c0 2.62.72 5.08 1.98 7.18L2 30l7.02-1.92C11.06 29.3 13.48 30 16 30c7.72 0 14-6.28 14-14S23.72 2 16 2zm0 25.64c-2.28 0-4.42-.64-6.26-1.76l-.44-.26-4.64 1.28 1.28-4.52-.3-.48C4.5 19.98 3.86 18.04 3.86 16 3.86 9.3 9.3 3.86 16 3.86S28.14 9.3 28.14 16 22.7 27.64 16 27.64zm7.34-8.88c-.4-.2-2.38-1.18-2.76-1.32-.36-.14-.62-.2-.88.2-.26.4-1 1.32-1.24 1.6-.22.26-.46.3-.86.1-.4-.2-1.7-.62-3.24-2-.42-1.24-1.24-2.08-1.46-2.46-.22-.38-.02-.58.18-.78.18-.18.4-.46.6-.7.2-.24.26-.4.4-.66.14-.26.06-.5-.04-.7-.1-.2-.88-2.12-1.2-2.9-.32-.78-.64-.68-.88-.68h-.76c-.26 0-.68.1-1.04.5-.36.4-1.38 1.36-1.38 3.3 0 1.96 1.42 3.84 1.62 4.12.2.26 2.8 4.28 6.78 6 .94.42 1.68.66 2.26.84.96.3 1.82.26 2.5.16.76-.12 2.38-.98 2.72-1.92.34-.94.34-1.74.24-1.92-.1-.18-.36-.3-.76-.5z"/></svg>
+  <svg viewBox="0 0 32 32" width="26" height="26" fill="#FFF"><path d="M16 2C8.28 2 2 8.28 2 16c0 2.62.72 5.08 1.98 7.18L2 30l7.02-1.92C11.06 29.3 13.48 30 16 30c7.72 0 14-6.28 14-14S23.72 2 16 2zm0 25.64c-2.28 0-4.42-.64-6.26-1.76l-.44-.26-4.64 1.28 1.28-4.52-.3-.48C4.5 19.98 3.86 18.04 3.86 16 3.86S28.14 9.3 28.14 16 22.7 27.64 16 27.64zm7.34-8.88c-.4-.2-2.38-1.18-2.76-1.32-.36-.14-.62-.2-.88.2-.26.4-1 1.32-1.24 1.6-.22.26-.46.3-.86.1-.4-.2-1.7-.62-3.24-2-.42-1.24-1.24-2.08-1.46-2.46-.22-.38-.02-.58.18-.78.18-.18.4-.46.6-.7.2-.24.26-.4.4-.66.14-.26.06-.5-.04-.7-.1-.2-.88-2.12-1.2-2.9-.32-.78-.64-.68-.88-.68h-.76c-.26 0-.68.1-1.04.5-.36.4-1.38 1.36-1.38 3.3 0 1.96 1.42 3.84 1.62 4.12.2.26 2.8 4.28 6.78 6 .94.42 1.68.66 2.26.84.96.3 1.82.26 2.5.16.76-.12 2.38-.98 2.72-1.92.34-.94.34-1.74.24-1.92-.1-.18-.36-.3-.76-.5z"/></svg>
   <span class="fc-whatsapp-text">Need help? WhatsApp us!</span>
 </a>
 
@@ -313,37 +321,7 @@ function selectPM(pm) {
   const details = document.getElementById('pm-' + pm + '-details');
   if(details) details.style.display = 'block';
   document.querySelectorAll('[name="payment"]').forEach(r => { r.checked = r.value === pm; });
-    function initTheme() {
-    const saved = localStorage.getItem('fc_theme');
-    if (saved === 'dark' || saved === 'light') { document.documentElement.setAttribute('data-theme', saved); }
-    else { document.documentElement.removeAttribute('data-theme'); }
-    updateThemeIcon();
-  }
-  function toggleTheme() {
-    const current = document.documentElement.getAttribute('data-theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    let nextTheme = '';
-    if (!current) { nextTheme = prefersDark ? 'light' : 'dark'; }
-    else if (current === 'dark') { nextTheme = 'light'; }
-    else { nextTheme = 'dark'; }
-    document.documentElement.setAttribute('data-theme', nextTheme);
-    localStorage.setItem('fc_theme', nextTheme);
-    updateThemeIcon();
-  }
-  function updateThemeIcon() {
-    const btn = document.getElementById('fc-theme-toggle');
-    if (!btn) return;
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
-                   (!document.documentElement.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    btn.innerHTML = isDark ? 
-      '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>' : 
-      '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-  }
-  initTheme();
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-    if (!localStorage.getItem('fc_theme')) updateThemeIcon();
-  });
-updateTotal();
+  updateTotal();
 }
 
 function updateTotal() {
@@ -354,30 +332,18 @@ function updateTotal() {
   const discount = isOnline ? Math.round(subtotal * 0.05) : 0;
   const total = subtotal + delivery - discount;
 
-  document.getElementById('co-subtotal').textContent = 'à§³' + subtotal.toLocaleString();
-  document.getElementById('co-delivery').textContent = delivery === 0 ? 'FREE &#x1F389;' : 'à§³' + delivery;
-  document.getElementById('co-discount').textContent = isOnline ? '-à§³' + discount.toLocaleString() : 'à§³0';
-  document.getElementById('co-total').textContent = 'à§³' + total.toLocaleString();
+  document.getElementById('co-subtotal').innerHTML = '<span class="fc-taka">à§³</span>' + subtotal.toLocaleString();
+  document.getElementById('co-delivery').innerHTML = delivery === 0 ? 'FREE ðŸŽ‰' : '<span class="fc-taka">à§³</span>' + delivery;
+  document.getElementById('co-discount').innerHTML = isOnline ? '-<span class="fc-taka">à§³</span>' + discount.toLocaleString() : '<span class="fc-taka">à§³</span>0';
+  document.getElementById('co-total').innerHTML = '<span class="fc-taka">à§³</span>' + total.toLocaleString();
 
   const savBanner = document.getElementById('co-savings-banner');
   const savAmt = document.getElementById('co-savings-amount');
   if(isOnline) {
     savBanner.style.display = 'flex';
-    savAmt.textContent = 'à§³' + discount.toLocaleString();
+    savAmt.innerHTML = '<span class="fc-taka">à§³</span>' + discount.toLocaleString();
   } else {
     savBanner.style.display = 'none';
-  }
-}
-
-function applyPromo() {
-  const val = document.getElementById('promo-input').value.trim().toUpperCase();
-  const msg = document.getElementById('promo-msg');
-  if(val === 'ONLINE5') {
-    msg.style.color = '#059669';
-    msg.textContent = 'âœ… ONLINE5 applied â€” 5% discount with online payment!';
-  } else {
-    msg.style.color = '#DC2626';
-    msg.textContent = 'âŒ Invalid code. Use ONLINE5 for 5% online payment discount.';
   }
 }
 
@@ -386,39 +352,40 @@ function placeOrder() {
   if(!phone) { alert('Please enter your phone number.'); return; }
   alert('âœ… Order placed successfully! Our team will confirm your order within 30 minutes. Thank you for shopping with FOLDCUT!');
   localStorage.removeItem('fc_cart');
-  setTimeout(()=>{ window.location.href='/preview/index.html'; }, 1500);
+  setTimeout(()=>{ window.location.href='index.html'; }, 1500);
 }
 
-  function initTheme() {
-    const saved = localStorage.getItem('fc_theme');
-    if (saved === 'dark' || saved === 'light') { document.documentElement.setAttribute('data-theme', saved); }
-    else { document.documentElement.removeAttribute('data-theme'); }
-    updateThemeIcon();
-  }
-  function toggleTheme() {
-    const current = document.documentElement.getAttribute('data-theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    let nextTheme = '';
-    if (!current) { nextTheme = prefersDark ? 'light' : 'dark'; }
-    else if (current === 'dark') { nextTheme = 'light'; }
-    else { nextTheme = 'dark'; }
-    document.documentElement.setAttribute('data-theme', nextTheme);
-    localStorage.setItem('fc_theme', nextTheme);
-    updateThemeIcon();
-  }
-  function updateThemeIcon() {
-    const btn = document.getElementById('fc-theme-toggle');
-    if (!btn) return;
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
-                   (!document.documentElement.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    btn.innerHTML = isDark ? 
-      '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>' : 
-      '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-  }
-  initTheme();
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-    if (!localStorage.getItem('fc_theme')) updateThemeIcon();
-  });
+function initTheme() {
+  const saved = localStorage.getItem('fc_theme');
+  if (saved === 'dark' || saved === 'light') { document.documentElement.setAttribute('data-theme', saved); }
+  else { document.documentElement.removeAttribute('data-theme'); }
+  updateThemeIcon();
+}
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  let nextTheme = '';
+  if (!current) { nextTheme = prefersDark ? 'light' : 'dark'; }
+  else if (current === 'dark') { nextTheme = 'light'; }
+  else { nextTheme = 'dark'; }
+  document.documentElement.setAttribute('data-theme', nextTheme);
+  localStorage.setItem('fc_theme', nextTheme);
+  updateThemeIcon();
+}
+function updateThemeIcon() {
+  const btn = document.getElementById('fc-theme-toggle');
+  if (!btn) return;
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+                 (!document.documentElement.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  btn.innerHTML = isDark ? 
+    '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>' : 
+    '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+}
+initTheme();
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+  if (!localStorage.getItem('fc_theme')) updateThemeIcon();
+});
+
 updateTotal();
 </script>
 </body>
