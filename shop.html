@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <title>Shop All Collection | FOLDCUT</title>
-  <meta name="description" content="Explore FOLDCUT's collection of oversized tees, pique polos, linen co-ords, kurtis, and accessories. 5% instant discount on online payments."/>
+  <meta name="description" content="Explore FOLDCUT collection of oversized tees, pique polos, linen co-ords, kurtis, and accessories. 5% instant discount on online payments."/>
   
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -32,7 +32,7 @@
       --fc-discount-bg:    #ECFDF5;
       --fc-error:          #DC2626;
       --fc-card-shadow:    0 4px 20px rgba(0,0,0,0.06);
-      --fc-header-bg:      rgba(255, 255, 255, 0.95);
+      --fc-header-bg:      rgba(255, 255, 255, 0.96);
       --fc-nav-bar-bg:     #FFFFFF;
       --fc-input-bg:       #FFFFFF;
       
@@ -116,7 +116,7 @@
       --fc-discount:       #059669;
       --fc-discount-bg:    #ECFDF5;
       --fc-card-shadow:    0 4px 20px rgba(0,0,0,0.06);
-      --fc-header-bg:      rgba(255, 255, 255, 0.95);
+      --fc-header-bg:      rgba(255, 255, 255, 0.96);
       --fc-nav-bar-bg:     #FFFFFF;
       --fc-input-bg:       #FFFFFF;
     }
@@ -131,19 +131,16 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
-      padding-bottom: 60px;
+      padding-bottom: 65px;
       transition: background-color 0.3s ease, color 0.3s ease;
     }
-    h1, h2, h3, h4, h5, h6, .fc-logo-name, .fc-btn {
-      font-family: var(--fc-font-display);
-    }
+    h1, h2, h3, h4, h5, h6, .fc-logo-name, .fc-btn { font-family: var(--fc-font-display); }
     img { display: block; max-width: 100%; height: auto; }
     a { color: inherit; text-decoration: none; }
     button { cursor: pointer; border: none; background: none; font-family: inherit; }
     ul { list-style: none; }
     .fc-taka { font-family: 'Hind Siliguri', 'Inter', sans-serif; font-weight: 700; }
 
-    /* Top Slidebar */
     .fc-promo-slidebar {
       background: #0A382C;
       color: #FFFFFF;
@@ -171,7 +168,6 @@
     .fc-promo-arrow { background: none; border: none; color: rgba(255,255,255,0.7); font-size: 16px; cursor: pointer; padding: 2px 6px; }
     .fc-promo-arrow:hover { color: #FFFFFF; }
 
-    /* Header */
     .fc-header {
       position: sticky; top: 0; z-index: 200;
       background: var(--fc-header-bg);
@@ -196,14 +192,14 @@
     .fc-logo-motto { font-size: 8px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fc-primary); margin-top: 1px; display: block; }
 
     .fc-theme-toggle-btn {
-      width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
       border-radius: 50%; color: var(--fc-text-main); border: 1px solid var(--fc-border);
       background: var(--fc-surface); cursor: pointer; transition: all 0.2s;
     }
     .fc-theme-toggle-btn:hover { transform: rotate(15deg); }
 
     .fc-icon-btn {
-      width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
       border-radius: 50%; transition: background 0.2s; color: var(--fc-text-main); position: relative;
     }
     .fc-icon-btn:hover { background: var(--fc-surface-hover); }
@@ -221,10 +217,8 @@
     .fc-nav-link--discount { color: var(--fc-discount); font-weight: 700; }
     .fc-nav-link--sale { color: var(--fc-error); }
 
-    /* Page layout */
     .fc-shop-page { max-width: 1360px; margin: 0 auto; padding: 2rem 1.5rem; display: grid; grid-template-columns: 280px 1fr; gap: 2rem; align-items: start; }
 
-    /* Payment Sidebar */
     .fc-payment-sidebar {
       position: sticky; top: 130px; border: 1px solid var(--fc-border);
       border-radius: var(--fc-radius-md); overflow: hidden; box-shadow: var(--fc-card-shadow);
@@ -255,13 +249,11 @@
     .fc-copy-btn { background: var(--fc-accent); color: #FFFFFF; font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: 4px; }
     .fc-sidebar-footer { font-size: 11px; color: var(--fc-text-muted); border-top: 1px solid var(--fc-border); padding: 12px 1.25rem; background: var(--fc-surface-card); }
 
-    /* Filter Bar */
     .fc-filter-bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--fc-border); }
-    .fc-filter-chip { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 6px 12px; border: 1.5px solid var(--fc-border); border-radius: 99px; cursor: pointer; transition: all 0.2s; color: var(--fc-text-main); background: var(--fc-surface-card); }
+    .fc-filter-chip { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 8px 16px; border: 1.5px solid var(--fc-border); border-radius: 99px; cursor: pointer; transition: all 0.2s; color: var(--fc-text-main); background: var(--fc-surface-card); }
     .fc-filter-chip:hover, .fc-filter-chip.is-active { background: var(--fc-primary); color: #FFFFFF; border-color: var(--fc-primary); }
     .fc-shop-count { margin-left: auto; font-size: 12px; color: var(--fc-text-subtle); font-weight: 500; }
 
-    /* Product Grid */
     .fc-product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
     .fc-product-card {
       display: flex; flex-direction: column; background: var(--fc-surface-card);
@@ -309,11 +301,11 @@
     .fc-price-orig { font-size: 0.8rem; color: var(--fc-text-subtle); text-decoration: line-through; }
     .fc-online-pay-pill { display: inline-flex; align-items: center; gap: 4px; font-size: 10.5px; font-weight: 700; color: var(--fc-discount); background: var(--fc-discount-bg); padding: 2px 6px; border-radius: 4px; width: fit-content; }
 
-    /* Mobile Bottom Dock */
     .fc-mobile-bottom-nav {
       display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 190;
       background: var(--fc-surface-card); border-top: 1px solid var(--fc-border);
-      height: 58px; padding: 0 1rem; align-items: stretch;
+      height: 60px; padding: 0 1rem; align-items: stretch;
+      padding-bottom: env(safe-area-inset-bottom);
     }
     .fc-mobile-bottom-link {
       flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -327,18 +319,16 @@
       font-weight: 800; border-radius: 99px; display: flex; align-items: center; justify-content: center;
     }
 
-    /* Floating WhatsApp Button */
     .fc-whatsapp-float {
-      position: fixed; bottom: 24px; right: 24px; z-index: 290;
+      position: fixed; bottom: 24px; right: 24px; z-index: 250;
       display: inline-flex; align-items: center; gap: 8px;
-      background: #25D366; color: #FFFFFF; padding: 8px 16px 8px 10px;
+      background: #25D366; color: #FFFFFF; padding: 10px 18px 10px 12px;
       border-radius: 99px; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
       text-decoration: none; font-size: 13px; font-weight: 700;
       transition: transform 0.25s;
     }
     .fc-whatsapp-float:hover { transform: translateY(-3px); }
 
-    /* Cart Drawer */
     .fc-overlay { position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.6); opacity: 0; visibility: hidden; transition: all 0.3s; }
     .fc-overlay.is-visible { opacity: 1; visibility: visible; }
     .fc-cart-drawer {
@@ -363,31 +353,30 @@
 
     @media (max-width: 1024px) { .fc-shop-page { grid-template-columns: 240px 1fr; } }
     @media (max-width: 768px) {
-      .fc-shop-page { grid-template-columns: 1fr; }
+      .fc-shop-page { grid-template-columns: 1fr; padding: 1.25rem 1rem; }
       .fc-payment-sidebar { display: none; }
       .fc-product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
       .fc-nav-bar { display: none; }
       .fc-mobile-bottom-nav { display: flex; }
-      .fc-whatsapp-float { bottom: 70px; right: 16px; padding: 8px; border-radius: 50%; }
+      .fc-whatsapp-float { bottom: 74px; right: 16px; padding: 10px; border-radius: 50%; }
       .fc-whatsapp-text { display: none; }
     }
   </style>
 </head>
 <body>
 
-<!-- SLIDEBAR -->
 <div class="fc-promo-slidebar">
   <div class="fc-promo-track">
     <div class="fc-promo-slide is-active">
       <span class="fc-promo-badge">5% OFF</span>
-      <span>ðŸ’³ Pay Online (bKash / Nagad / Cards) & Get <strong>5% Instant Discount</strong> with code <code class="fc-promo-code" onclick="copyCode('ONLINE5')">ONLINE5</code></span>
+      <span>&#128179; Pay Online (bKash / Nagad / Cards) & Get <strong>5% Instant Discount</strong> with code <code class="fc-promo-code" onclick="copyCode('ONLINE5')">ONLINE5</code></span>
       <button class="fc-promo-copy-btn" onclick="copyCode('ONLINE5')">Copy Code</button>
     </div>
     <div class="fc-promo-slide">
-      <span>ðŸšš <strong>FREE NATIONWIDE DELIVERY</strong> on all orders above <span class="fc-taka">à§³</span>2,000</span>
+      <span>&#128666; <strong>FREE NATIONWIDE DELIVERY</strong> on all orders above <span class="fc-taka">&#2547;</span>2,000</span>
     </div>
     <div class="fc-promo-slide">
-      <span>âœ¨ 220+ GSM Heavyweight Combed Cotton &bull; 7-Day Hassle-Free Exchange</span>
+      <span>&#10024; 220+ GSM Heavyweight Combed Cotton &bull; 7-Day Hassle-Free Exchange</span>
     </div>
   </div>
   <div class="fc-promo-controls">
@@ -396,7 +385,6 @@
   </div>
 </div>
 
-<!-- HEADER -->
 <header class="fc-header">
   <div class="fc-header__main">
     <div class="fc-header__left">
@@ -430,59 +418,57 @@
       <a href="shop.html?cat=men" class="fc-nav-link">Men</a>
       <a href="shop.html?cat=women" class="fc-nav-link">Women</a>
       <a href="shop.html?cat=accessories" class="fc-nav-link">Accessories</a>
-      <a href="shop.html" class="fc-nav-link fc-nav-link--discount">5% Online Pay âš¡</a>
+      <a href="shop.html?discount=true" class="fc-nav-link fc-nav-link--discount">5% Online Pay &#9889;</a>
       <a href="shop.html" class="fc-nav-link fc-nav-link--sale">Sale</a>
     </div>
   </nav>
 </header>
 
-<!-- SHOP CONTENT -->
 <div class="fc-shop-page">
 
-  <!-- PAYMENT SIDEBAR -->
   <aside class="fc-payment-sidebar">
     <div class="fc-sidebar-header">
-      <div class="fc-sidebar-header-icon">ðŸ’³</div>
+      <div class="fc-sidebar-header-icon">&#128179;</div>
       <div>
         <div class="fc-sidebar-header-title">5% Online Payment Discount</div>
         <div class="fc-sidebar-header-sub">Apply instantly at checkout</div>
       </div>
     </div>
     <div class="fc-sidebar-body">
-      <div class="fc-online-badge">âœ… Auto 5% Savings Unlocked</div>
-      <p style="font-size:12px;color:var(--fc-text-muted);margin-bottom:14px;">Choose any online payment method at checkout and receive your 5% discount automatically â€” no questions asked.</p>
+      <div class="fc-online-badge">&#9989; Auto 5% Savings Unlocked</div>
+      <p style="font-size:12px;color:var(--fc-text-muted);margin-bottom:14px;">Choose any online payment method at checkout and receive your 5% discount automatically &mdash; no questions asked.</p>
 
       <div class="fc-payment-method-list">
         <label class="fc-pm-row is-selected">
           <input type="radio" name="fc-pm" value="bkash" checked/> 
-          <span style="font-size:18px;">ðŸ“±</span>
+          <span style="font-size:18px;">&#128241;</span>
           <div><div class="fc-pm-name">bKash</div><div style="font-size:10px;color:var(--fc-text-subtle);">Mobile Banking</div></div>
           <span class="fc-pm-badge">5% OFF</span>
         </label>
         <label class="fc-pm-row">
           <input type="radio" name="fc-pm" value="nagad"/>
-          <span style="font-size:18px;">ðŸ’°</span>
+          <span style="font-size:18px;">&#128176;</span>
           <div><div class="fc-pm-name">Nagad</div><div style="font-size:10px;color:var(--fc-text-subtle);">Mobile Banking</div></div>
           <span class="fc-pm-badge">5% OFF</span>
         </label>
         <label class="fc-pm-row">
           <input type="radio" name="fc-pm" value="card"/>
-          <span style="font-size:18px;">ðŸ’³</span>
+          <span style="font-size:18px;">&#128179;</span>
           <div><div class="fc-pm-name">Visa / Mastercard</div><div style="font-size:10px;color:var(--fc-text-subtle);">Debit &amp; Credit Cards</div></div>
           <span class="fc-pm-badge">5% OFF</span>
         </label>
         <label class="fc-pm-row">
           <input type="radio" name="fc-pm" value="cod"/>
-          <span style="font-size:18px;">ðŸ“¦</span>
+          <span style="font-size:18px;">&#128230;</span>
           <div><div class="fc-pm-name">Cash on Delivery</div><div style="font-size:10px;color:var(--fc-text-subtle);">Standard Rate</div></div>
         </label>
       </div>
 
       <div class="fc-discount-calc" id="fc-discount-calc">
-        <div class="fc-discount-calc-title">ðŸ“Š Live Savings Preview</div>
-        <div class="fc-dc-row"><span>Cart Total</span><span id="sidebar-subtotal"><span class="fc-taka">à§³</span>2,999</span></div>
-        <div class="fc-dc-row" style="color:var(--fc-discount);"><span>Online Pay Discount (5%)</span><span id="sidebar-discount">-<span class="fc-taka">à§³</span>150</span></div>
-        <div class="fc-dc-total"><span>You Pay</span><span id="sidebar-total"><span class="fc-taka">à§³</span>2,849</span></div>
+        <div class="fc-discount-calc-title">&#128202; Live Savings Preview</div>
+        <div class="fc-dc-row"><span>Cart Total</span><span id="sidebar-subtotal"><span class="fc-taka">&#2547;</span>2,999</span></div>
+        <div class="fc-dc-row" style="color:var(--fc-discount);"><span>Online Pay Discount (5%)</span><span id="sidebar-discount">-<span class="fc-taka">&#2547;</span>150</span></div>
+        <div class="fc-dc-total"><span>You Pay</span><span id="sidebar-total"><span class="fc-taka">&#2547;</span>2,849</span></div>
       </div>
 
       <div class="fc-promo-code-box" onclick="copyCode('ONLINE5')">
@@ -492,15 +478,13 @@
       </div>
     </div>
     <div class="fc-sidebar-footer">
-      ðŸ”’ All transactions are 100% secure &amp; encrypted. SSL protected checkout.
+      &#128274; All transactions are 100% secure &amp; encrypted. SSL protected checkout.
     </div>
   </aside>
 
-  <!-- MAIN PRODUCT AREA -->
   <main>
-    <!-- Filter Bar -->
     <div class="fc-filter-bar">
-      <button class="fc-filter-chip is-active" data-cat="all" onclick="filterProducts('all',this)">All</button>
+      <button class="fc-filter-chip is-active" data-cat="all" onclick="filterProducts('all',this)">All Items</button>
       <button class="fc-filter-chip" data-cat="men" onclick="filterProducts('men',this)">Men</button>
       <button class="fc-filter-chip" data-cat="women" onclick="filterProducts('women',this)">Women</button>
       <button class="fc-filter-chip" data-cat="kids" onclick="filterProducts('kids',this)">Kids</button>
@@ -508,18 +492,15 @@
       <span class="fc-shop-count" id="fc-shop-count">Showing 12 products</span>
     </div>
 
-    <!-- Product Grid -->
     <div class="fc-product-grid" id="fc-product-grid"></div>
   </main>
 </div>
 
-<!-- WHATSAPP BUTTON -->
 <a href="https://wa.me/8801700000000?text=Hello%20FOLDCUT!%20I'd%20like%20to%20order%20a%20product." target="_blank" rel="noopener" class="fc-whatsapp-float" aria-label="Order on WhatsApp">
-  <svg viewBox="0 0 32 32" width="26" height="26" fill="#FFF"><path d="M16 2C8.28 2 2 8.28 2 16c0 2.62.72 5.08 1.98 7.18L2 30l7.02-1.92C11.06 29.3 13.48 30 16 30c7.72 0 14-6.28 14-14S23.72 2 16 2zm0 25.64c-2.28 0-4.42-.64-6.26-1.76l-.44-.26-4.64 1.28 1.28-4.52-.3-.48C4.5 19.98 3.86 18.04 3.86 16 3.86S28.14 9.3 28.14 16 22.7 27.64 16 27.64zm7.34-8.88c-.4-.2-2.38-1.18-2.76-1.32-.36-.14-.62-.2-.88.2-.26.4-1 1.32-1.24 1.6-.22.26-.46.3-.86.1-.4-.2-1.7-.62-3.24-2-.42-1.24-1.24-2.08-1.46-2.46-.22-.38-.02-.58.18-.78.18-.18.4-.46.6-.7.2-.24.26-.4.4-.66.14-.26.06-.5-.04-.7-.1-.2-.88-2.12-1.2-2.9-.32-.78-.64-.68-.88-.68h-.76c-.26 0-.68.1-1.04.5-.36.4-1.38 1.36-1.38 3.3 0 1.96 1.42 3.84 1.62 4.12.2.26 2.8 4.28 6.78 6 .94.42 1.68.66 2.26.84.96.3 1.82.26 2.5.16.76-.12 2.38-.98 2.72-1.92.34-.94.34-1.74.24-1.92-.1-.18-.36-.3-.76-.5z"/></svg>
+  <svg viewBox="0 0 32 32" width="24" height="24" fill="#FFF"><path d="M16 2C8.28 2 2 8.28 2 16c0 2.62.72 5.08 1.98 7.18L2 30l7.02-1.92C11.06 29.3 13.48 30 16 30c7.72 0 14-6.28 14-14S23.72 2 16 2zm0 25.64c-2.28 0-4.42-.64-6.26-1.76l-.44-.26-4.64 1.28 1.28-4.52-.3-.48C4.5 19.98 3.86 18.04 3.86 16 3.86S28.14 9.3 28.14 16 22.7 27.64 16 27.64zm7.34-8.88c-.4-.2-2.38-1.18-2.76-1.32-.36-.14-.62-.2-.88.2-.26.4-1 1.32-1.24 1.6-.22.26-.46.3-.86.1-.4-.2-1.7-.62-3.24-2-.42-1.24-1.24-2.08-1.46-2.46-.22-.38-.02-.58.18-.78.18-.18.4-.46.6-.7.2-.24.26-.4.4-.66.14-.26.06-.5-.04-.7-.1-.2-.88-2.12-1.2-2.9-.32-.78-.64-.68-.88-.68h-.76c-.26 0-.68.1-1.04.5-.36.4-1.38 1.36-1.38 3.3 0 1.96 1.42 3.84 1.62 4.12.2.26 2.8 4.28 6.78 6 .94.42 1.68.66 2.26.84.96.3 1.82.26 2.5.16.76-.12 2.38-.98 2.72-1.92.34-.94.34-1.74.24-1.92-.1-.18-.36-.3-.76-.5z"/></svg>
   <span class="fc-whatsapp-text">Order on WhatsApp</span>
 </a>
 
-<!-- MOBILE BOTTOM NAV -->
 <nav class="fc-mobile-bottom-nav">
   <a href="index.html" class="fc-mobile-bottom-link">
     <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
@@ -542,7 +523,6 @@
   </button>
 </nav>
 
-<!-- CART DRAWER -->
 <div class="fc-overlay" id="fc-overlay"></div>
 <div class="fc-cart-drawer" id="fc-cart-drawer">
   <div class="fc-cart-header">
@@ -551,7 +531,7 @@
   </div>
   <div class="fc-cart-body" id="fc-cart-body">
     <div id="fc-cart-empty" style="text-align:center;padding:3rem 1rem;">
-      <div style="font-size:40px;margin-bottom:1rem;">ðŸ›ï¸</div>
+      <div style="font-size:40px;margin-bottom:1rem;">&#128717;&#65039;</div>
       <p style="font-weight:700;margin-bottom:8px;">Your bag is empty</p>
       <p style="color:var(--fc-text-muted);font-size:13px;margin-bottom:1.5rem;">Add some styles you love!</p>
       <a href="shop.html" class="fc-btn fc-btn--primary fc-btn--sm">DISCOVER SHOP</a>
@@ -559,8 +539,8 @@
     <div id="fc-cart-items"></div>
   </div>
   <div class="fc-cart-footer" id="fc-cart-footer" style="display:none">
-    <div style="display:flex;justify-content:space-between;font-weight:700;margin-bottom:4px;"><span>Subtotal</span><span id="fc-cart-subtotal"><span class="fc-taka">à§³</span>0</span></div>
-    <div style="display:flex;justify-content:space-between;color:var(--fc-discount);font-size:12px;font-weight:700;margin-bottom:1rem;"><span>âš¡ Online Pay 5% Off</span><span id="fc-cart-discount">-<span class="fc-taka">à§³</span>0</span></div>
+    <div style="display:flex;justify-content:space-between;font-weight:700;margin-bottom:4px;"><span>Subtotal</span><span id="fc-cart-subtotal"><span class="fc-taka">&#2547;</span>0</span></div>
+    <div style="display:flex;justify-content:space-between;color:var(--fc-discount);font-size:12px;font-weight:700;margin-bottom:1rem;"><span>&#9889; Online Pay 5% Off</span><span id="fc-cart-discount">-<span class="fc-taka">&#2547;</span>0</span></div>
     <a href="checkout.html" class="fc-btn fc-btn--primary fc-btn--full">CHECKOUT &bull; 5% OFF ONLINE</a>
   </div>
 </div>
@@ -595,8 +575,10 @@ function renderProducts(products) {
     return `
     <article class="fc-product-card" data-id="${p.id}">
       <div class="fc-product-card__image-wrap">
-        <img class="fc-product-card__image" src="${p.img}" alt="${p.name}" loading="lazy"/>
-        <img class="fc-product-card__image--hover" src="${p.imgHover||p.img}" alt="${p.name} back" loading="lazy"/>
+        <a href="product.html">
+          <img class="fc-product-card__image" src="${p.img}" alt="${p.name}" loading="lazy"/>
+          <img class="fc-product-card__image--hover" src="${p.imgHover||p.img}" alt="${p.name} back" loading="lazy"/>
+        </a>
         <div class="fc-product-card__badge">
           ${p.badge?`<span class="fc-badge fc-badge--new">${p.badge}</span>`:''}
           <span class="fc-badge fc-badge--discount">5% ONLINE</span>
@@ -610,10 +592,10 @@ function renderProducts(products) {
         <div class="fc-product-card__category">${p.catLabel}</div>
         <div class="fc-product-card__name"><a href="product.html">${p.name}</a></div>
         <div class="fc-product-card__price-row">
-          <span class="fc-price-main"><span class="fc-taka">à§³</span>${p.price.toLocaleString()}</span>
-          ${p.origPrice?`<span class="fc-price-orig"><span class="fc-taka">à§³</span>${p.origPrice.toLocaleString()}</span>`:''}
+          <span class="fc-price-main"><span class="fc-taka">&#2547;</span>${p.price.toLocaleString()}</span>
+          ${p.origPrice?`<span class="fc-price-orig"><span class="fc-taka">&#2547;</span>${p.origPrice.toLocaleString()}</span>`:''}
         </div>
-        <div class="fc-online-pay-pill">ðŸ’³ <span class="fc-taka">à§³</span>${disc.toLocaleString()} with 5% online pay</div>
+        <div class="fc-online-pay-pill">&#128179; <span class="fc-taka">&#2547;</span>${disc.toLocaleString()} with 5% online pay</div>
       </div>
     </article>`;
   }).join('');
@@ -661,12 +643,12 @@ function updateCartUI() {
   if(empty)empty.style.display='none'; if(footer)footer.style.display='block';
   const subtotal = cart.reduce((s,i)=>s+(i.price*(i.qty||1)),0);
   const disc = Math.round(subtotal*0.05);
-  const sub=document.getElementById('fc-cart-subtotal'); if(sub) sub.innerHTML='<span class="fc-taka">à§³</span>'+subtotal.toLocaleString();
-  const dsc=document.getElementById('fc-cart-discount'); if(dsc) dsc.innerHTML='-<span class="fc-taka">à§³</span>'+disc.toLocaleString();
+  const sub=document.getElementById('fc-cart-subtotal'); if(sub) sub.innerHTML='<span class="fc-taka">&#2547;</span>'+subtotal.toLocaleString();
+  const dsc=document.getElementById('fc-cart-discount'); if(dsc) dsc.innerHTML='-<span class="fc-taka">&#2547;</span>'+disc.toLocaleString();
   if(items) items.innerHTML=cart.map((item,idx)=>`
     <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--fc-border);align-items:center;">
       <div style="flex:1;"><div style="font-weight:700;font-size:13px;color:var(--fc-text-main);">${item.name}</div>
-      <div style="font-size:12px;color:var(--fc-text-muted);"><span class="fc-taka">à§³</span>${item.price.toLocaleString()} &times; ${item.qty||1}</div></div>
+      <div style="font-size:12px;color:var(--fc-text-muted);"><span class="fc-taka">&#2547;</span>${item.price.toLocaleString()} &times; ${item.qty||1}</div></div>
       <button onclick="removeFromCart(${idx})" style="color:var(--fc-error);font-size:12px;font-weight:600;">Remove</button>
     </div>`).join('');
 }
@@ -675,9 +657,9 @@ function updateSidebar() {
   const subtotal = cart.reduce((s,i)=>s+(i.price*(i.qty||1)),0) || 2999;
   const disc = Math.round(subtotal*0.05);
   const net = subtotal - disc;
-  const s=document.getElementById('sidebar-subtotal'); if(s) s.innerHTML='<span class="fc-taka">à§³</span>'+subtotal.toLocaleString();
-  const d=document.getElementById('sidebar-discount'); if(d) d.innerHTML='-<span class="fc-taka">à§³</span>'+disc.toLocaleString();
-  const t=document.getElementById('sidebar-total'); if(t) t.innerHTML='<span class="fc-taka">à§³</span>'+net.toLocaleString();
+  const s=document.getElementById('sidebar-subtotal'); if(s) s.innerHTML='<span class="fc-taka">&#2547;</span>'+subtotal.toLocaleString();
+  const d=document.getElementById('sidebar-discount'); if(d) d.innerHTML='-<span class="fc-taka">&#2547;</span>'+disc.toLocaleString();
+  const t=document.getElementById('sidebar-total'); if(t) t.innerHTML='<span class="fc-taka">&#2547;</span>'+net.toLocaleString();
 }
 
 function openCart() { document.getElementById('fc-cart-drawer').classList.add('is-open'); document.getElementById('fc-overlay').classList.add('is-visible'); }
@@ -704,7 +686,11 @@ function copyCode(code) { if(navigator.clipboard) navigator.clipboard.writeText(
 
 function openSearchModal() {
   const q = prompt('Search FOLDCUT Products:');
-  if (q) { filterProducts('all', null); const matched = allProducts.filter(p=>p.name.toLowerCase().includes(q.toLowerCase()) || p.cat.toLowerCase().includes(q.toLowerCase())); renderProducts(matched); }
+  if (q) {
+    const matched = allProducts.filter(p=>p.name.toLowerCase().includes(q.toLowerCase()) || p.cat.toLowerCase().includes(q.toLowerCase()));
+    document.querySelectorAll('.fc-filter-chip').forEach(c=>c.classList.remove('is-active'));
+    renderProducts(matched);
+  }
 }
 
 function initTheme() {
@@ -738,7 +724,15 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () 
   if (!localStorage.getItem('fc_theme')) updateThemeIcon();
 });
 
-renderProducts(allProducts);
+const urlParams = new URLSearchParams(window.location.search);
+const catParam = urlParams.get('cat');
+if (catParam) {
+  const targetChip = document.querySelector(`.fc-filter-chip[data-cat="${catParam}"]`);
+  filterProducts(catParam, targetChip);
+} else {
+  renderProducts(allProducts);
+}
+
 updateCartUI();
 updateSidebar();
 </script>
