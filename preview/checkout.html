@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8"/>
@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
-    :root{--fc-black:#0A0A0A;--fc-white:#F8F7F5;--fc-gray-100:#F2F1EF;--fc-gray-200:#E5E3DF;--fc-gray-400:#9E9A94;--fc-gray-600:#6B6762;--fc-gray-800:#2C2B29;--fc-accent:#C8A96E;--fc-accent-dark:#A8893E;--fc-error:#CC3333;--fc-success:#2D7A4F;--fc-font-display:'Plus Jakarta Sans',sans-serif;--fc-font-body:'Inter',sans-serif;--fc-transition:250ms ease;--fc-transition-fast:150ms ease;--fc-radius-sm:2px;--fc-radius:4px;--fc-radius-md:8px;--fc-radius-full:9999px;--fc-shadow:0 4px 16px rgba(10,10,10,.12);--fc-shadow-xl:0 16px 48px rgba(10,10,10,.24);}
+    :root{--fc-black:#0C1210;--fc-white:#FAF9F6;--fc-gray-100:#F2F1EF;--fc-gray-200:#E5E3DF;--fc-gray-400:#9E9A94;--fc-gray-600:#6B6762;--fc-gray-800:#2C2B29;--fc-accent:#C28453;--fc-accent-light:#DFA26E;--fc-accent-dark:#985B2E;--fc-primary:#0A382C;--fc-primary-hover:#0F4C3C;--fc-accent-dark:#985B2E;--fc-error:#CC3333;--fc-success:#2D7A4F;--fc-font-display:'Plus Jakarta Sans',sans-serif;--fc-font-body:'Inter',sans-serif;--fc-transition:250ms ease;--fc-transition-fast:150ms ease;--fc-radius-sm:2px;--fc-radius:4px;--fc-radius-md:8px;--fc-radius-full:9999px;--fc-shadow:0 4px 16px rgba(10,10,10,.12);--fc-shadow-xl:0 16px 48px rgba(10,10,10,.24);}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{font-size:16px;scroll-behavior:smooth;}
     body{font-family:var(--fc-font-body);color:var(--fc-black);background:var(--fc-gray-100);line-height:1.6;-webkit-font-smoothing:antialiased;}
@@ -110,6 +110,61 @@
     /* RESPONSIVE */
     @media(max-width:900px){.fc-checkout-layout{grid-template-columns:1fr;}.fc-order-summary{position:static;order:-1;}}
     @media(max-width:600px){.fc-checkout-layout{padding:1rem 1rem 4rem;}.fc-checkout-header{padding:.875rem 1rem;}.fc-form-row{grid-template-columns:1fr;}.fc-checkout-card{padding:1.25rem;}}
+      /* --- BRAND IDENTITY ENHANCEMENTS --- */
+    .fc-logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; user-select: none; }
+    .fc-logo-emblem-wrap {
+      width: 44px; height: 44px; border-radius: 50%; overflow: hidden;
+      border: 1.5px solid var(--fc-accent);
+      box-shadow: 0 2px 10px rgba(194, 132, 83, 0.25);
+      flex-shrink: 0; background: var(--fc-white);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform var(--fc-transition);
+    }
+    .fc-logo:hover .fc-logo-emblem-wrap { transform: scale(1.05) rotate(2deg); }
+    .fc-logo-emblem { width: 100%; height: 100%; object-fit: cover; }
+    .fc-logo-text-group { display: flex; flex-direction: column; align-items: flex-start; }
+    .fc-logo-name {
+      font-family: var(--fc-font-display); font-size: 20px; font-weight: 800;
+      letter-spacing: 0.12em; color: var(--fc-black); line-height: 1.1;
+    }
+    .fc-logo-accent {
+      color: var(--fc-accent);
+      background: linear-gradient(135deg, #dfa26e 0%, #c28453 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .fc-logo-motto {
+      font-size: 8px; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--fc-accent); opacity: 0.95;
+      margin-top: 1px;
+    }
+    .fc-btn--primary {
+      background: #0a382c; color: #faf9f6; border-color: #0a382c;
+    }
+    .fc-btn--primary:hover {
+      background: #0f4c3c; border-color: #0f4c3c;
+    }
+    .fc-btn--secondary {
+      background: linear-gradient(135deg, #dfa26e 0%, #c28453 100%);
+      color: #0c1210; border-color: #c28453;
+      box-shadow: 0 4px 15px rgba(194, 132, 83, 0.25);
+    }
+    .fc-btn--secondary:hover {
+      background: linear-gradient(135deg, #c28453 0%, #985b2e 100%);
+      color: #ffffff;
+    }
+    .fc-announcement {
+      background: linear-gradient(90deg, #06241c 0%, #0a382c 50%, #06241c 100%);
+      border-bottom: 1px solid rgba(194,132,83,0.3);
+    }
+    .fc-badge--new {
+      background: #0a382c; color: #faf9f6;
+    }
+    .fc-badge--sale {
+      background: #c28453; color: #0c1210; font-weight: 800;
+    }
+    .fc-discount-badge {
+      background: rgba(194, 132, 83, 0.15); color: #985b2e; font-weight: 700;
+    }
   </style>
 </head>
 <body>
@@ -134,7 +189,15 @@
 
 <!-- HEADER -->
 <header class="fc-checkout-header">
-  <a href="index.html" class="fc-logo">FOLD<span>CUT</span></a>
+  <a href="index.html" class="fc-logo" aria-label="FOLDCUT home">
+        <div class="fc-logo-emblem-wrap">
+          <img src="/assets/images/logo.jpg" alt="FOLDCUT Emblem" class="fc-logo-emblem" />
+        </div>
+        <div class="fc-logo-text-group">
+          <span class="fc-logo-name">FOLD<span class="fc-logo-accent">CUT</span></span>
+          <span class="fc-logo-motto">Quality â€¢ Comfort â€¢ Confidence</span>
+        </div>
+      </a>
   <div style="display:flex;align-items:center;gap:1rem;">
     <a href="shop.html" style="font-size:.875rem;color:var(--fc-gray-400);display:flex;align-items:center;gap:.375rem;">
       ← Continue Shopping
