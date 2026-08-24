@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout — FOLDCUT | Secure Fashion Shopping Bangladesh</title>
+  <meta name="description" content="Complete your FOLDCUT order. Secure checkout with Cash on Delivery, bKash, Nagad and card payment. Fast delivery across Bangladesh."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--fc-black:#0A0A0A;--fc-white:#F8F7F5;--fc-gray-100:#F2F1EF;--fc-gray-200:#E5E3DF;--fc-gray-400:#9E9A94;--fc-gray-600:#6B6762;--fc-gray-800:#2C2B29;--fc-accent:#C8A96E;--fc-accent-dark:#A8893E;--fc-error:#CC3333;--fc-success:#2D7A4F;--fc-font-display:'Plus Jakarta Sans',sans-serif;--fc-font-body:'Inter',sans-serif;--fc-transition:250ms ease;--fc-transition-fast:150ms ease;--fc-radius-sm:2px;--fc-radius:4px;--fc-radius-md:8px;--fc-radius-full:9999px;--fc-shadow:0 4px 16px rgba(10,10,10,.12);--fc-shadow-xl:0 16px 48px rgba(10,10,10,.24);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{font-size:16px;scroll-behavior:smooth;}
+    body{font-family:var(--fc-font-body);color:var(--fc-black);background:var(--fc-gray-100);line-height:1.6;-webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none;}
+    button{cursor:pointer;border:none;background:none;font-family:inherit;}
+    :focus-visible{outline:2px solid var(--fc-accent);outline-offset:3px;}
+    /* CHECKOUT HEADER */
+    .fc-checkout-header{background:var(--fc-white);border-bottom:1px solid var(--fc-gray-200);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;}
+    .fc-logo{font-family:var(--fc-font-display);font-size:20px;font-weight:800;letter-spacing:.12em;color:var(--fc-black);text-transform:uppercase;}
+    .fc-logo span{color:var(--fc-accent);}
+    .fc-checkout-secure{display:flex;align-items:center;gap:.5rem;font-size:.75rem;color:var(--fc-gray-400);font-weight:600;}
+    .fc-checkout-secure svg{width:14px;height:14px;stroke:var(--fc-success);fill:none;stroke-width:2;}
+    /* PROGRESS */
+    .fc-checkout-progress{background:var(--fc-white);border-bottom:1px solid var(--fc-gray-200);padding:.875rem 2rem;}
+    .fc-progress-steps{display:flex;align-items:center;justify-content:center;gap:0;max-width:480px;margin:0 auto;}
+    .fc-progress-step{display:flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:600;letter-spacing:.04em;color:var(--fc-gray-400);}
+    .fc-progress-step.is-active{color:var(--fc-black);}
+    .fc-progress-step.is-done{color:var(--fc-success);}
+    .fc-progress-step__num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6875rem;font-weight:700;background:var(--fc-gray-200);color:var(--fc-gray-400);flex-shrink:0;}
+    .fc-progress-step.is-active .fc-progress-step__num{background:var(--fc-black);color:var(--fc-white);}
+    .fc-progress-step.is-done .fc-progress-step__num{background:var(--fc-success);color:var(--fc-white);}
+    .fc-progress-sep{width:40px;height:1px;background:var(--fc-gray-200);margin:0 .5rem;flex-shrink:0;}
+    /* LAYOUT */
+    .fc-checkout-layout{display:grid;grid-template-columns:1fr 420px;gap:1.5rem;max-width:1100px;margin:2rem auto;padding:0 2rem 4rem;}
+    /* FORM */
+    .fc-checkout-card{background:var(--fc-white);border-radius:var(--fc-radius-md);padding:1.75rem;margin-bottom:1rem;border:1px solid var(--fc-gray-200);}
+    .fc-section-title{font-family:var(--fc-font-display);font-size:1rem;font-weight:800;letter-spacing:-.01em;margin-bottom:1.25rem;display:flex;align-items:center;gap:.75rem;}
+    .fc-section-num{width:24px;height:24px;border-radius:50%;background:var(--fc-black);color:var(--fc-white);font-size:.6875rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .fc-form-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:.75rem;}
+    .fc-form-row--full{grid-template-columns:1fr;}
+    .fc-form-group{display:flex;flex-direction:column;gap:.375rem;}
+    .fc-form-label{font-size:.75rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--fc-gray-600);}
+    .fc-form-input,.fc-form-select{width:100%;border:1.5px solid var(--fc-gray-200);border-radius:var(--fc-radius-sm);padding:.75rem 1rem;font-size:.9375rem;color:var(--fc-black);background:var(--fc-white);font-family:var(--fc-font-body);transition:border-color var(--fc-transition-fast);outline:none;}
+    .fc-form-input:focus,.fc-form-select:focus{border-color:var(--fc-black);}
+    .fc-form-input.is-error{border-color:var(--fc-error);}
+    .fc-form-error{font-size:.75rem;color:var(--fc-error);font-weight:500;}
+    .fc-form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239E9A94' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;}
+    /* Payment methods */
+    .fc-payment-methods{display:flex;flex-direction:column;gap:.625rem;}
+    .fc-payment-method{border:1.5px solid var(--fc-gray-200);border-radius:var(--fc-radius-sm);padding:1rem 1.25rem;cursor:pointer;transition:all var(--fc-transition-fast);display:flex;align-items:center;gap:1rem;}
+    .fc-payment-method:hover{border-color:var(--fc-gray-400);}
+    .fc-payment-method.is-selected{border-color:var(--fc-black);background:var(--fc-gray-100);}
+    .fc-payment-radio{width:18px;height:18px;border-radius:50%;border:2px solid var(--fc-gray-200);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all var(--fc-transition-fast);}
+    .fc-payment-method.is-selected .fc-payment-radio{border-color:var(--fc-black);}
+    .fc-payment-radio-dot{width:8px;height:8px;border-radius:50%;background:var(--fc-black);opacity:0;transform:scale(0);transition:all var(--fc-transition-fast);}
+    .fc-payment-method.is-selected .fc-payment-radio-dot{opacity:1;transform:scale(1);}
+    .fc-payment-icon-badge{padding:.25rem .625rem;border-radius:var(--fc-radius-sm);font-size:.6875rem;font-weight:800;letter-spacing:.04em;flex-shrink:0;}
+    .fc-payment-icon-badge--cod{background:#F59E0B;color:#000;}
+    .fc-payment-icon-badge--bkash{background:#E2136E;color:#fff;}
+    .fc-payment-icon-badge--nagad{background:#F05A28;color:#fff;}
+    .fc-payment-icon-badge--card{background:#1a1a2e;color:#fff;}
+    .fc-payment-info{flex:1;}
+    .fc-payment-name{font-weight:700;font-size:.875rem;color:var(--fc-black);}
+    .fc-payment-desc{font-size:.75rem;color:var(--fc-gray-400);margin-top:.125rem;}
+    .fc-payment-detail{display:none;margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--fc-gray-200);}
+    .fc-payment-detail.is-visible{display:block;}
+    /* Coupon */
+    .fc-coupon-form{display:flex;gap:.625rem;}
+    .fc-coupon-input{flex:1;border:1.5px solid var(--fc-gray-200);border-radius:var(--fc-radius-sm);padding:.75rem 1rem;font-size:.875rem;font-family:var(--fc-font-body);outline:none;text-transform:uppercase;transition:border-color var(--fc-transition-fast);}
+    .fc-coupon-input:focus{border-color:var(--fc-black);}
+    .fc-coupon-btn{background:var(--fc-black);color:var(--fc-white);border:none;border-radius:var(--fc-radius-sm);padding:.75rem 1.25rem;font-family:var(--fc-font-display);font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background var(--fc-transition-fast);}
+    .fc-coupon-btn:hover{background:var(--fc-gray-800);}
+    .fc-coupon-success{display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--fc-success);font-weight:600;margin-top:.75rem;}
+    /* ORDER SUMMARY */
+    .fc-order-summary{background:var(--fc-white);border-radius:var(--fc-radius-md);padding:1.75rem;border:1px solid var(--fc-gray-200);position:sticky;top:1.5rem;}
+    .fc-order-title{font-family:var(--fc-font-display);font-size:1rem;font-weight:800;margin-bottom:1.25rem;}
+    .fc-order-items{display:flex;flex-direction:column;gap:.875rem;padding-bottom:1.25rem;border-bottom:1px solid var(--fc-gray-200);margin-bottom:1.25rem;}
+    .fc-order-item{display:flex;gap:.875rem;align-items:flex-start;}
+    .fc-order-item__img{width:64px;height:80px;background:var(--fc-gray-100);border-radius:var(--fc-radius-sm);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:24px;position:relative;}
+    .fc-order-item__qty-badge{position:absolute;top:-6px;right:-6px;width:20px;height:20px;background:var(--fc-gray-800);color:var(--fc-white);border-radius:50%;font-size:.625rem;font-weight:700;display:flex;align-items:center;justify-content:center;}
+    .fc-order-item__info{flex:1;}
+    .fc-order-item__name{font-size:.875rem;font-weight:600;line-height:1.3;color:var(--fc-black);}
+    .fc-order-item__meta{font-size:.75rem;color:var(--fc-gray-400);margin-top:.25rem;}
+    .fc-order-item__price{font-family:var(--fc-font-display);font-size:.9375rem;font-weight:700;text-align:right;flex-shrink:0;}
+    .fc-order-totals{display:flex;flex-direction:column;gap:.625rem;margin-bottom:1.25rem;}
+    .fc-order-row{display:flex;justify-content:space-between;font-size:.875rem;}
+    .fc-order-row--label{color:var(--fc-gray-600);}
+    .fc-order-row--total{font-family:var(--fc-font-display);font-size:1.125rem;font-weight:800;border-top:2px solid var(--fc-black);padding-top:.875rem;margin-top:.25rem;}
+    .fc-order-row--discount{color:var(--fc-success);}
+    .fc-place-order-btn{width:100%;background:var(--fc-black);color:var(--fc-white);border:none;border-radius:var(--fc-radius-sm);padding:1.125rem;font-family:var(--fc-font-display);font-size:.9375rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:all var(--fc-transition);margin-bottom:1rem;}
+    .fc-place-order-btn:hover{background:var(--fc-gray-800);}
+    .fc-place-order-btn:disabled{opacity:.5;cursor:not-allowed;}
+    .fc-secure-note{display:flex;align-items:center;justify-content:center;gap:.5rem;font-size:.75rem;color:var(--fc-gray-400);}
+    .fc-secure-note svg{width:12px;height:12px;stroke:var(--fc-gray-400);fill:none;stroke-width:2;}
+    /* Toast */
+    .fc-toast-container{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:500;display:flex;flex-direction:column;gap:.5rem;pointer-events:none;}
+    @keyframes fc-bounce-in{0%{transform:scale(.3);opacity:0}60%{transform:scale(1.1)}80%{transform:scale(.95)}100%{transform:scale(1);opacity:1}}
+    .fc-toast{display:flex;align-items:center;gap:.75rem;padding:.75rem 1.25rem;background:var(--fc-black);color:var(--fc-white);border-radius:var(--fc-radius-md);box-shadow:var(--fc-shadow-xl);font-size:.875rem;font-weight:500;animation:fc-bounce-in .4s ease;white-space:nowrap;pointer-events:all;}
+    .fc-toast--success{border-left:3px solid var(--fc-success);}
+    .fc-toast--error{border-left:3px solid var(--fc-error);}
+    /* Order success overlay */
+    .fc-success-screen{position:fixed;inset:0;background:var(--fc-white);z-index:900;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem;padding:2rem;text-align:center;opacity:0;visibility:hidden;transition:all var(--fc-transition);}
+    .fc-success-screen.is-visible{opacity:1;visibility:visible;}
+    .fc-success-icon{width:80px;height:80px;background:var(--fc-success);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:36px;}
+    .fc-success-title{font-family:var(--fc-font-display);font-size:2rem;font-weight:800;letter-spacing:-.02em;}
+    .fc-success-text{font-size:1rem;color:var(--fc-gray-600);max-width:440px;line-height:1.7;}
+    .fc-success-order{font-family:var(--fc-font-display);font-size:.875rem;font-weight:700;color:var(--fc-accent);letter-spacing:.04em;}
+    /* RESPONSIVE */
+    @media(max-width:900px){.fc-checkout-layout{grid-template-columns:1fr;}.fc-order-summary{position:static;order:-1;}}
+    @media(max-width:600px){.fc-checkout-layout{padding:1rem 1rem 4rem;}.fc-checkout-header{padding:.875rem 1rem;}.fc-form-row{grid-template-columns:1fr;}.fc-checkout-card{padding:1.25rem;}}
+  </style>
+</head>
+<body>
+
+<div class="fc-toast-container" id="fc-toast-container" aria-live="polite"></div>
+
+<!-- Order Success Screen -->
+<div class="fc-success-screen" id="fc-success-screen" role="dialog" aria-modal="true" aria-label="Order confirmed">
+  <div class="fc-success-icon" aria-hidden="true">✓</div>
+  <h1 class="fc-success-title">Order Confirmed!</h1>
+  <p class="fc-success-order" id="fc-order-id">Order #FC-2025-00142</p>
+  <p class="fc-success-text">
+    Thank you for shopping with FOLDCUT! Your order has been received and will be processed shortly.
+    You will receive an SMS confirmation on your mobile number.
+  </p>
+  <div style="display:flex;flex-direction:column;gap:.5rem;padding:1.25rem;background:var(--fc-gray-100);border-radius:var(--fc-radius-md);width:100%;max-width:400px;text-align:left;">
+    <div style="display:flex;justify-content:space-between;font-size:.875rem;"><span style="color:var(--fc-gray-600);">Estimated delivery</span><strong>1–2 business days</strong></div>
+    <div style="display:flex;justify-content:space-between;font-size:.875rem;"><span style="color:var(--fc-gray-600);">Payment</span><strong id="fc-success-payment">Cash on Delivery</strong></div>
+  </div>
+  <a href="shop.html" style="display:inline-flex;align-items:center;justify-content:center;background:var(--fc-black);color:var(--fc-white);font-family:var(--fc-font-display);font-size:.875rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:1rem 2.5rem;border-radius:var(--fc-radius-sm);text-decoration:none;margin-top:.5rem;">CONTINUE SHOPPING</a>
+</div>
+
+<!-- HEADER -->
+<header class="fc-checkout-header">
+  <a href="index.html" class="fc-logo">FOLD<span>CUT</span></a>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <a href="shop.html" style="font-size:.875rem;color:var(--fc-gray-400);display:flex;align-items:center;gap:.375rem;">
+      ← Continue Shopping
+    </a>
+    <div class="fc-checkout-secure">
+      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Secure Checkout
+    </div>
+  </div>
+</header>
+
+<!-- PROGRESS -->
+<div class="fc-checkout-progress" role="navigation" aria-label="Checkout steps">
+  <div class="fc-progress-steps">
+    <div class="fc-progress-step is-done">
+      <div class="fc-progress-step__num">✓</div>
+      <span>Cart</span>
+    </div>
+    <div class="fc-progress-sep"></div>
+    <div class="fc-progress-step is-active">
+      <div class="fc-progress-step__num">2</div>
+      <span>Details</span>
+    </div>
+    <div class="fc-progress-sep"></div>
+    <div class="fc-progress-step">
+      <div class="fc-progress-step__num">3</div>
+      <span>Payment</span>
+    </div>
+    <div class="fc-progress-sep"></div>
+    <div class="fc-progress-step">
+      <div class="fc-progress-step__num">4</div>
+      <span>Confirm</span>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKOUT LAYOUT -->
+<div class="fc-checkout-layout">
+
+  <!-- Left: Form -->
+  <div>
+
+    <!-- Contact Info -->
+    <div class="fc-checkout-card">
+      <h2 class="fc-section-title"><span class="fc-section-num">1</span> Contact Information</h2>
+      <div class="fc-form-row">
+        <div class="fc-form-group">
+          <label class="fc-form-label" for="fc-first-name">First Name *</label>
+          <input class="fc-form-input" id="fc-first-name" type="text" placeholder="Rafsan" autocomplete="given-name" required/>
+        </div>
+        <div class="fc-form-group">
+          <label class="fc-form-label" for="fc-last-name">Last Name *</label>
+          <input class="fc-form-input" id="fc-last-name" type="text" placeholder="Ahmed" autocomplete="family-name" required/>
+        </div>
+      </div>
+      <div class="fc-form-row fc-form-row--full">
+        <div class="fc-form-group">
+          <label class="fc-form-label" for="fc-phone">Mobile Number * <span style="font-size:.7rem;text-transform:none;font-weight:400;color:var(--fc-gray-400);">(for delivery updates)</span></label>
+          <input class="fc-form-input" id="fc-phone" type="tel" placeholder="+880 1XXX-XXXXXX" autocomplete="tel" required pattern="[+0-9\s-]{10,15}"/>
+        </div>
+      </div>
+      <div class="fc-form-row fc-form-row--full">
+        <div class="fc-form-group">
+          <label class="fc-form-label" for="fc-email">Email <span style="font-size:.7rem;text-transform:none;font-weight:400;color:var(--fc-gray-400);">(optional — for order receipt)</span></label>
+          <input class="fc-form-input" id="fc-email" type="email" placeholder="you@email.com" autocomplete="email"/>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shipping Address -->
+    <div class="fc-checkout-card">
+      <h2 class="fc-section-title"><span class="fc-section-num">2</span> Delivery Address</h2>
+      <div class="fc-form-row fc-form-row--full">
+        <div class="fc-form-group">
+          <label class="fc-form-label" for="fc-address">Full Address *</label>
+          <input class="fc-form-input" id="fc-address" type="text" placeholder="House no, Road no, Block, Area" autocomplete="street-address" required/>
+        </div>
+      </div>
+      <div class="fc-form-row">
+        <div class="fc-form-group">
+          <label class="fc-form-label" for="fc-district">District *</label>
+          <select class="fc-form-select" id="fc-district" required onchange="updateDeliveryCharge()">
+            <option value="">Select District</option>
+            <option value="dhaka">Dhaka</option>
+            <option value="chittagong">Chittagong</option>
+            <option value="sylhet">Sylhet</option>
+            <option value="rajshahi">Rajshahi</option>
+            <option value="khulna">Khulna</option>
+            <option value="barishal">Barishal</option>
+            <option value="mymensingh">Mymensingh</option>
+            <option value="rangpur">Rangpur</option>
+            <option value="comilla">Comilla</option>
+            <option value="narayanganj">Narayanganj</option>
+            <option value="gazipur">Gazipur</option>
+            <option value="tangail">Tangail</option>
+            <option value="other">Other District</option>
+          </select>
+        </div>
+        <div class="fc-form-group">
+          <label class="fc-form-label" for="fc-area">Area / Upazila *</label>
+          <input class="fc-form-input" id="fc-area" type="text" placeholder="e.g. Mirpur, Mohammadpur" required/>
+        </div>
+      </div>
+      <div class="fc-form-row fc-form-row--full">
+        <div class="fc-form-group">
+          <label class="fc-form-label" for="fc-notes">Order Notes <span style="font-size:.7rem;text-transform:none;font-weight:400;color:var(--fc-gray-400);">(optional — any special instructions)</span></label>
+          <textarea class="fc-form-input" id="fc-notes" rows="2" placeholder="Landmark, delivery instructions, etc." style="resize:vertical;"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Coupon -->
+    <div class="fc-checkout-card">
+      <h2 class="fc-section-title" style="margin-bottom:.875rem;"><span class="fc-section-num" style="background:var(--fc-accent);">%</span> Discount Code</h2>
+      <div class="fc-coupon-form">
+        <input class="fc-coupon-input" type="text" id="fc-coupon" placeholder="Enter coupon code (e.g. FOLD10)"/>
+        <button class="fc-coupon-btn" onclick="applyCoupon()">APPLY</button>
+      </div>
+      <div class="fc-coupon-success" id="fc-coupon-msg" style="display:none;">
+        <span>✓</span> <span id="fc-coupon-text">Coupon applied!</span>
+      </div>
+    </div>
+
+    <!-- Payment -->
+    <div class="fc-checkout-card">
+      <h2 class="fc-section-title"><span class="fc-section-num">3</span> Payment Method</h2>
+      <div class="fc-payment-methods" role="radiogroup" aria-label="Select payment method">
+
+        <!-- COD -->
+        <div class="fc-payment-method is-selected" onclick="selectPayment(this,'cod')" role="radio" aria-checked="true" tabindex="0">
+          <div class="fc-payment-radio"><div class="fc-payment-radio-dot"></div></div>
+          <span class="fc-payment-icon-badge fc-payment-icon-badge--cod">CASH</span>
+          <div class="fc-payment-info">
+            <p class="fc-payment-name">Cash on Delivery</p>
+            <p class="fc-payment-desc">Pay when your order arrives at your door</p>
+          </div>
+        </div>
+
+        <!-- bKash -->
+        <div class="fc-payment-method" onclick="selectPayment(this,'bkash')" role="radio" aria-checked="false" tabindex="0">
+          <div class="fc-payment-radio"><div class="fc-payment-radio-dot"></div></div>
+          <span class="fc-payment-icon-badge fc-payment-icon-badge--bkash">bKash</span>
+          <div class="fc-payment-info">
+            <p class="fc-payment-name">bKash</p>
+            <p class="fc-payment-desc">Pay instantly with your bKash wallet</p>
+          </div>
+        </div>
+        <div class="fc-payment-detail" id="detail-bkash">
+          <p style="font-size:.875rem;color:var(--fc-gray-600);margin-bottom:.75rem;">Send payment to: <strong>01XXX-XXXXXX</strong> (Merchant)</p>
+          <div class="fc-form-group">
+            <label class="fc-form-label" for="fc-bkash-tx">bKash Transaction ID *</label>
+            <input class="fc-form-input" id="fc-bkash-tx" type="text" placeholder="Transaction ID from bKash"/>
+          </div>
+        </div>
+
+        <!-- Nagad -->
+        <div class="fc-payment-method" onclick="selectPayment(this,'nagad')" role="radio" aria-checked="false" tabindex="0">
+          <div class="fc-payment-radio"><div class="fc-payment-radio-dot"></div></div>
+          <span class="fc-payment-icon-badge fc-payment-icon-badge--nagad">Nagad</span>
+          <div class="fc-payment-info">
+            <p class="fc-payment-name">Nagad</p>
+            <p class="fc-payment-desc">Pay with your Nagad mobile wallet</p>
+          </div>
+        </div>
+        <div class="fc-payment-detail" id="detail-nagad">
+          <p style="font-size:.875rem;color:var(--fc-gray-600);margin-bottom:.75rem;">Send payment to: <strong>01XXX-XXXXXX</strong> (Merchant)</p>
+          <div class="fc-form-group">
+            <label class="fc-form-label" for="fc-nagad-tx">Nagad Transaction ID *</label>
+            <input class="fc-form-input" id="fc-nagad-tx" type="text" placeholder="Transaction ID from Nagad"/>
+          </div>
+        </div>
+
+        <!-- Card -->
+        <div class="fc-payment-method" onclick="selectPayment(this,'card')" role="radio" aria-checked="false" tabindex="0">
+          <div class="fc-payment-radio"><div class="fc-payment-radio-dot"></div></div>
+          <span class="fc-payment-icon-badge fc-payment-icon-badge--card">CARD</span>
+          <div class="fc-payment-info">
+            <p class="fc-payment-name">Credit / Debit Card</p>
+            <p class="fc-payment-desc">Visa, Mastercard, DBBL Nexus — via SSLCommerz</p>
+          </div>
+        </div>
+        <div class="fc-payment-detail" id="detail-card">
+          <p style="font-size:.875rem;color:var(--fc-gray-600);">You will be redirected to the SSLCommerz secure payment gateway to complete your card payment.</p>
+          <div style="display:flex;align-items:center;gap:.5rem;margin-top:.75rem;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--fc-success)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span style="font-size:.75rem;color:var(--fc-gray-400);">SSL encrypted · PCI DSS compliant</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: Order Summary -->
+  <div>
+    <div class="fc-order-summary">
+      <h2 class="fc-order-title">Order Summary</h2>
+
+      <!-- Order items -->
+      <div class="fc-order-items" id="fc-order-items">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Coupon code (mobile) -->
+      <div style="margin-bottom:1.25rem;">
+        <div class="fc-coupon-form" style="display:flex;gap:.5rem;">
+          <input class="fc-coupon-input" type="text" id="fc-coupon-mob" placeholder="Coupon code" style="font-size:.8125rem;padding:.625rem .875rem;"/>
+          <button class="fc-coupon-btn" onclick="applyCoupon()" style="font-size:.6875rem;padding:.625rem .875rem;">APPLY</button>
+        </div>
+      </div>
+
+      <!-- Totals -->
+      <div class="fc-order-totals" id="fc-order-totals">
+        <div class="fc-order-row fc-order-row--label">
+          <span>Subtotal</span><span id="fc-summary-subtotal">৳0</span>
+        </div>
+        <div class="fc-order-row fc-order-row--label">
+          <span>Delivery</span><span id="fc-summary-delivery">Select district</span>
+        </div>
+        <div class="fc-order-row fc-order-row--discount" id="fc-discount-row" style="display:none;">
+          <span>Discount (FOLD10)</span><span id="fc-discount-amount">−৳0</span>
+        </div>
+        <div class="fc-order-row fc-order-row--total">
+          <span>Total</span><span id="fc-summary-total">৳0</span>
+        </div>
+      </div>
+
+      <!-- Place Order -->
+      <button class="fc-place-order-btn" id="fc-place-order" onclick="placeOrder()">
+        PLACE ORDER →
+      </button>
+
+      <p class="fc-secure-note">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Your information is 100% secure and encrypted
+      </p>
+
+      <!-- Payment icons -->
+      <div style="display:flex;align-items:center;justify-content:center;gap:.5rem;margin-top:1rem;flex-wrap:wrap;">
+        <span style="font-size:10px;color:var(--fc-gray-400);margin-right:.25rem;">We accept:</span>
+        <span style="padding:3px 7px;border:1px solid var(--fc-gray-200);border-radius:3px;font-size:9px;font-weight:700;color:var(--fc-gray-600);">CASH</span>
+        <span style="padding:3px 7px;border:1px solid var(--fc-gray-200);border-radius:3px;font-size:9px;font-weight:700;color:var(--fc-gray-600);">bKash</span>
+        <span style="padding:3px 7px;border:1px solid var(--fc-gray-200);border-radius:3px;font-size:9px;font-weight:700;color:var(--fc-gray-600);">Nagad</span>
+        <span style="padding:3px 7px;border:1px solid var(--fc-gray-200);border-radius:3px;font-size:9px;font-weight:700;color:var(--fc-gray-600);">VISA</span>
+        <span style="padding:3px 7px;border:1px solid var(--fc-gray-200);border-radius:3px;font-size:9px;font-weight:700;color:var(--fc-gray-600);">MC</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+'use strict';
+const cur='৳';
+let cartItems=JSON.parse(localStorage.getItem('fc_cart')||'[]');
+let selectedPayment='cod',couponApplied=false,deliveryCharge=0,subtotal=0,discountAmount=0;
+
+// If cart is empty, show demo items
+if(!cartItems.length){
+  cartItems=[
+    {id:'1-M-Black',name:'Oversized Essential Tee',price:1199,qty:1,size:'M',color:'Black',emoji:'🧥'},
+    {id:'3-S-Camel',name:'Minimal Co-Ord Set',price:2499,qty:1,size:'S',color:'Camel',emoji:'👗'}
+  ];
+}
+
+function fmt(n){return cur+n.toLocaleString('en-BD');}
+function showToast(msg,type='success'){const c=document.getElementById('fc-toast-container');const t=document.createElement('div');t.className='fc-toast fc-toast--'+type;t.textContent=(type==='success'?'✓ ':'✕ ')+msg;c.appendChild(t);setTimeout(()=>t.remove(),3500);}
+
+function renderOrderItems(){
+  const el=document.getElementById('fc-order-items');
+  el.innerHTML=cartItems.map(item=>`
+    <div class="fc-order-item">
+      <div class="fc-order-item__img">
+        ${item.emoji||'🧥'}
+        <span class="fc-order-item__qty-badge">${item.qty}</span>
+      </div>
+      <div class="fc-order-item__info">
+        <p class="fc-order-item__name">${item.name}</p>
+        <p class="fc-order-item__meta">${item.size?'Size: '+item.size:''} ${item.color?'· '+item.color:''}</p>
+      </div>
+      <span class="fc-order-item__price">${fmt(item.price*item.qty)}</span>
+    </div>`).join('');
+}
+
+function updateTotals(){
+  subtotal=cartItems.reduce((s,i)=>s+i.price*i.qty,0);
+  const disc=couponApplied?Math.round(subtotal*0.1):0;
+  discountAmount=disc;
+  const total=subtotal+deliveryCharge-disc;
+  document.getElementById('fc-summary-subtotal').textContent=fmt(subtotal);
+  document.getElementById('fc-summary-delivery').textContent=deliveryCharge===0?'Select district':fmt(deliveryCharge);
+  if(disc>0){document.getElementById('fc-discount-row').style.display='flex';document.getElementById('fc-discount-amount').textContent='−'+fmt(disc);}
+  else{document.getElementById('fc-discount-row').style.display='none';}
+  document.getElementById('fc-summary-total').textContent=fmt(total);
+}
+
+function updateDeliveryCharge(){
+  const district=document.getElementById('fc-district').value;
+  if(!district){deliveryCharge=0;updateTotals();return;}
+  if(district==='dhaka'||district==='narayanganj'||district==='gazipur'){
+    deliveryCharge=subtotal>=2000?0:60;
+    document.getElementById('fc-summary-delivery').textContent=deliveryCharge===0?'FREE (!)':fmt(deliveryCharge)+' (Inside Dhaka)';
+  }else{
+    deliveryCharge=120;
+    document.getElementById('fc-summary-delivery').textContent=fmt(deliveryCharge)+' (Outside Dhaka)';
+  }
+  updateTotals();
+}
+
+function selectPayment(el,method){
+  document.querySelectorAll('.fc-payment-method').forEach(m=>m.classList.remove('is-selected'));
+  document.querySelectorAll('.fc-payment-detail').forEach(d=>d.classList.remove('is-visible'));
+  el.classList.add('is-selected');
+  selectedPayment=method;
+  const detail=document.getElementById('detail-'+method);
+  if(detail)detail.classList.add('is-visible');
+}
+
+function applyCoupon(){
+  const code=(document.getElementById('fc-coupon').value||document.getElementById('fc-coupon-mob').value||'').trim().toUpperCase();
+  const validCodes=['FOLD10','WELCOME10','FOLDCUT10'];
+  if(!code){showToast('Enter a coupon code','error');return;}
+  if(validCodes.includes(code)){
+    couponApplied=true;
+    document.getElementById('fc-coupon-msg').style.display='flex';
+    document.getElementById('fc-coupon-text').textContent=code+' applied — 10% discount!';
+    showToast('10% discount applied!','success');
+  }else{
+    showToast('Invalid coupon code','error');
+  }
+  updateTotals();
+}
+
+function validateForm(){
+  let valid=true;
+  const required={
+    'fc-first-name':'First name',
+    'fc-last-name':'Last name',
+    'fc-phone':'Phone number',
+    'fc-address':'Address',
+    'fc-district':'District',
+    'fc-area':'Area'
+  };
+  Object.keys(required).forEach(id=>{
+    const el=document.getElementById(id);
+    if(!el.value.trim()){
+      el.classList.add('is-error');
+      valid=false;
+    }else{
+      el.classList.remove('is-error');
+    }
+  });
+  if(!valid){showToast('Please fill in all required fields','error');return false;}
+  if(selectedPayment==='bkash'&&!document.getElementById('fc-bkash-tx').value.trim()){showToast('Please enter your bKash transaction ID','error');return false;}
+  if(selectedPayment==='nagad'&&!document.getElementById('fc-nagad-tx').value.trim()){showToast('Please enter your Nagad transaction ID','error');return false;}
+  return true;
+}
+
+function placeOrder(){
+  if(!validateForm())return;
+  const btn=document.getElementById('fc-place-order');
+  btn.disabled=true;btn.textContent='Processing…';
+  // Simulate order processing
+  setTimeout(()=>{
+    const orderId='FC-2025-'+String(Math.floor(Math.random()*90000)+10000);
+    document.getElementById('fc-order-id').textContent='Order #'+orderId;
+    document.getElementById('fc-success-payment').textContent=
+      selectedPayment==='cod'?'Cash on Delivery':
+      selectedPayment==='bkash'?'bKash':
+      selectedPayment==='nagad'?'Nagad':'Credit/Debit Card';
+    // Clear cart
+    localStorage.removeItem('fc_cart');
+    // Show success
+    document.getElementById('fc-success-screen').classList.add('is-visible');
+    // WC_INTEGRATION: POST to WooCommerce checkout endpoint
+  },2000);
+}
+
+// Input validation on blur
+document.querySelectorAll('.fc-form-input,.fc-form-select').forEach(input=>{
+  input.addEventListener('blur',()=>{if(input.required&&!input.value.trim())input.classList.add('is-error');else input.classList.remove('is-error');});
+  input.addEventListener('input',()=>input.classList.remove('is-error'));
+});
+
+// Init
+renderOrderItems();
+updateTotals();
+</script>
+</body>
+</html>
