@@ -13,7 +13,26 @@
     a{color:inherit;text-decoration:none}
     button{cursor:pointer;border:none;background:none;font-family:inherit}
 
-    /* Slidebar */
+        @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --fc-bg:#0B110F;--fc-surface:#121A17;--fc-border:#243730;--fc-text:#F9FAFB;--fc-muted:#9CA3AF;
+        --fc-primary:#105946;--fc-accent:#DFA26E;--fc-discount:#10B981;--fc-discount-bg:rgba(16,185,129,0.15);
+      }
+    }
+    [data-theme="dark"] {
+      --fc-bg:#0B110F;--fc-surface:#121A17;--fc-border:#243730;--fc-text:#F9FAFB;--fc-muted:#9CA3AF;
+      --fc-primary:#105946;--fc-accent:#DFA26E;--fc-discount:#10B981;--fc-discount-bg:rgba(16,185,129,0.15);
+    }
+    .fc-theme-toggle-btn{width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:50%;color:var(--fc-text);border:1px solid var(--fc-border);background:var(--fc-surface);cursor:pointer;transition:all 0.2s}
+    .fc-theme-toggle-btn:hover{transform:rotate(15deg)}
+    .fc-form-section, .fc-order-card { background: var(--fc-surface) !important; }
+    .fc-field input, .fc-field select, .fc-field textarea { background: var(--fc-bg) !important; color: var(--fc-text) !important; border-color: var(--fc-border) !important; }
+    .fc-pm-option { background: var(--fc-surface) !important; }
+    .fc-pm-option.is-selected { background: var(--fc-discount-bg) !important; }
+    .fc-pm-name { color: var(--fc-text) !important; }
+    .fc-form-section-title { color: var(--fc-text) !important; }
+    .fc-field label { color: var(--fc-muted) !important; }
+/* Slidebar */
     .fc-promo-slidebar{background:#0A382C;color:#FFF;height:36px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;border-bottom:1px solid rgba(194,132,83,0.3);overflow:hidden}
 
     /* Header */
@@ -98,7 +117,7 @@
       </div>
       <span class="fc-logo-name">FOLD<span class="fc-logo-accent">CUT</span></span>
     </a>
-    <div class="fc-secure-badge">
+    <button class="fc-theme-toggle-btn" id="fc-theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode" style="margin-right:12px;"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button><div class="fc-secure-badge">
       &#x1F512; Secure Checkout
     </div>
   </div>
@@ -294,7 +313,37 @@ function selectPM(pm) {
   const details = document.getElementById('pm-' + pm + '-details');
   if(details) details.style.display = 'block';
   document.querySelectorAll('[name="payment"]').forEach(r => { r.checked = r.value === pm; });
-  updateTotal();
+    function initTheme() {
+    const saved = localStorage.getItem('fc_theme');
+    if (saved === 'dark' || saved === 'light') { document.documentElement.setAttribute('data-theme', saved); }
+    else { document.documentElement.removeAttribute('data-theme'); }
+    updateThemeIcon();
+  }
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let nextTheme = '';
+    if (!current) { nextTheme = prefersDark ? 'light' : 'dark'; }
+    else if (current === 'dark') { nextTheme = 'light'; }
+    else { nextTheme = 'dark'; }
+    document.documentElement.setAttribute('data-theme', nextTheme);
+    localStorage.setItem('fc_theme', nextTheme);
+    updateThemeIcon();
+  }
+  function updateThemeIcon() {
+    const btn = document.getElementById('fc-theme-toggle');
+    if (!btn) return;
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+                   (!document.documentElement.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    btn.innerHTML = isDark ? 
+      '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>' : 
+      '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  }
+  initTheme();
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    if (!localStorage.getItem('fc_theme')) updateThemeIcon();
+  });
+updateTotal();
 }
 
 function updateTotal() {
@@ -340,6 +389,36 @@ function placeOrder() {
   setTimeout(()=>{ window.location.href='/preview/index.html'; }, 1500);
 }
 
+  function initTheme() {
+    const saved = localStorage.getItem('fc_theme');
+    if (saved === 'dark' || saved === 'light') { document.documentElement.setAttribute('data-theme', saved); }
+    else { document.documentElement.removeAttribute('data-theme'); }
+    updateThemeIcon();
+  }
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let nextTheme = '';
+    if (!current) { nextTheme = prefersDark ? 'light' : 'dark'; }
+    else if (current === 'dark') { nextTheme = 'light'; }
+    else { nextTheme = 'dark'; }
+    document.documentElement.setAttribute('data-theme', nextTheme);
+    localStorage.setItem('fc_theme', nextTheme);
+    updateThemeIcon();
+  }
+  function updateThemeIcon() {
+    const btn = document.getElementById('fc-theme-toggle');
+    if (!btn) return;
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+                   (!document.documentElement.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    btn.innerHTML = isDark ? 
+      '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>' : 
+      '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  }
+  initTheme();
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    if (!localStorage.getItem('fc_theme')) updateThemeIcon();
+  });
 updateTotal();
 </script>
 </body>
