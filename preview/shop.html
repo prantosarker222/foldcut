@@ -1,944 +1,500 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Shop — FOLDCUT | Contemporary Fashion Bangladesh</title>
-  <meta name="description" content="Browse FOLDCUT's complete collection. Men, women, kids clothing, accessories, jewelry and more. Filter by size, color, price. Fast delivery across Bangladesh." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+  <title>Shop All | FOLDCUT</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
-    /* --- TOKENS --- */
-    :root{--fc-black:#0C1210;--fc-white:#FAF9F6;--fc-gray-100:#F2F1EF;--fc-gray-200:#E5E3DF;--fc-gray-400:#9E9A94;--fc-gray-600:#6B6762;--fc-gray-800:#2C2B29;--fc-accent:#C28453;--fc-accent-light:#DFA26E;--fc-accent-dark:#985B2E;--fc-primary:#0A382C;--fc-primary-hover:#0F4C3C;--fc-accent-dark:#985B2E;--fc-error:#CC3333;--fc-success:#2D7A4F;--fc-font-display:'Plus Jakarta Sans',sans-serif;--fc-font-body:'Inter',sans-serif;--fc-transition:250ms ease;--fc-transition-fast:150ms ease;--fc-transition-slow:400ms ease;--fc-radius-sm:2px;--fc-radius:4px;--fc-radius-md:8px;--fc-radius-lg:16px;--fc-radius-full:9999px;--fc-shadow:0 4px 16px rgba(10,10,10,.12);--fc-shadow-xl:0 16px 48px rgba(10,10,10,.24);--fc-z-dropdown:100;--fc-z-sticky:200;--fc-z-overlay:300;--fc-z-modal:400;--fc-z-toast:500;--fc-header-height:116px;}
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{font-size:16px;scroll-behavior:smooth;}
-    body{font-family:var(--fc-font-body);color:var(--fc-black);background:var(--fc-white);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
-    img,video{display:block;max-width:100%;height:auto;}
-    a{color:inherit;text-decoration:none;}
-    button{cursor:pointer;border:none;background:none;font-family:inherit;}
-    ul,ol{list-style:none;}
-    :focus-visible{outline:2px solid var(--fc-accent);outline-offset:3px;}
-    ::selection{background:var(--fc-accent);color:var(--fc-black);}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
-    .container{width:100%;max-width:1440px;margin:0 auto;padding:0 2rem;}
-
-    /* --- HEADER (reused from index) --- */
-    .fc-header{position:fixed;top:0;left:0;right:0;z-index:var(--fc-z-sticky);background:var(--fc-white);border-bottom:1px solid var(--fc-gray-200);transition:all var(--fc-transition);}
-    .fc-header--scrolled{box-shadow:0 4px 16px rgba(10,10,10,.12);}
-    .fc-header__bar{display:flex;align-items:center;justify-content:space-between;height:72px;padding:0 2rem;max-width:1440px;margin:0 auto;}
-    .fc-header__left,.fc-header__right{display:flex;align-items:center;gap:.5rem;flex:1;}
-    .fc-header__right{justify-content:flex-end;}
-    .fc-header__center{display:flex;justify-content:center;}
-    .fc-logo{font-family:var(--fc-font-display);font-size:22px;font-weight:800;letter-spacing:.12em;color:var(--fc-black);text-transform:uppercase;user-select:none;}
-    .fc-logo span{color:var(--fc-accent);}
-    .fc-hamburger{display:flex;flex-direction:column;justify-content:center;align-items:center;width:40px;height:40px;gap:5px;padding:8px;border-radius:var(--fc-radius-sm);transition:background var(--fc-transition-fast);}
-    .fc-hamburger:hover{background:var(--fc-gray-100);}
-    .fc-hamburger__line{display:block;width:22px;height:1.5px;background:var(--fc-black);transition:all var(--fc-transition);transform-origin:center;}
-    .fc-hamburger.is-open .fc-hamburger__line:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
-    .fc-hamburger.is-open .fc-hamburger__line:nth-child(2){opacity:0;transform:scaleX(0);}
-    .fc-hamburger.is-open .fc-hamburger__line:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
-    .fc-icon-btn{position:relative;display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:var(--fc-radius-sm);transition:background var(--fc-transition-fast);color:var(--fc-black);}
-    .fc-icon-btn:hover{background:var(--fc-gray-100);}
-    .fc-icon-btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.75;}
-    .fc-cart-count{position:absolute;top:4px;right:4px;min-width:16px;height:16px;padding:0 4px;background:var(--fc-black);color:var(--fc-white);font-size:9px;font-weight:700;border-radius:var(--fc-radius-full);display:flex;align-items:center;justify-content:center;}
-    .fc-nav-bar{border-top:1px solid var(--fc-gray-200);background:var(--fc-white);}
-    .fc-nav-bar__inner{display:flex;align-items:center;justify-content:center;height:44px;gap:2rem;max-width:1440px;margin:0 auto;padding:0 2rem;}
-    .fc-nav-link{font-size:11px;font-weight:600;letter-spacing:.10em;text-transform:uppercase;color:var(--fc-black);padding:.25rem 0;position:relative;transition:color var(--fc-transition-fast);white-space:nowrap;}
-    .fc-nav-link::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1.5px;background:var(--fc-accent);transform:scaleX(0);transform-origin:left;transition:transform var(--fc-transition);}
-    .fc-nav-link:hover{color:var(--fc-accent);}
-    .fc-nav-link:hover::after{transform:scaleX(1);}
-    .fc-nav-link--sale{color:var(--fc-error);}
-    .fc-nav-link--active::after{transform:scaleX(1);}
-
-    /* --- BUTTONS --- */
-    .fc-btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:var(--fc-font-display);font-size:.875rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:1rem 2rem;border:2px solid transparent;border-radius:var(--fc-radius-sm);cursor:pointer;transition:all var(--fc-transition);white-space:nowrap;text-decoration:none;}
-    .fc-btn--primary{background:var(--fc-black);color:var(--fc-white);border-color:var(--fc-black);}
-    .fc-btn--primary:hover{background:var(--fc-gray-800);}
-    .fc-btn--outline{background:transparent;color:var(--fc-black);border-color:var(--fc-gray-200);}
-    .fc-btn--outline:hover{border-color:var(--fc-black);}
-    .fc-btn--sm{font-size:11px;padding:.75rem 1.5rem;}
-    .fc-btn--full{width:100%;}
-    .fc-btn--secondary{background:var(--fc-accent);color:var(--fc-black);border-color:var(--fc-accent);}
-
-    /* --- OVERLAYS / DRAWERS --- */
-    .fc-overlay{position:fixed;inset:0;z-index:var(--fc-z-overlay);background:rgba(10,10,10,.85);opacity:0;visibility:hidden;transition:all var(--fc-transition);}
-    .fc-overlay.is-visible{opacity:1;visibility:visible;}
-    .fc-drawer{position:fixed;top:0;left:0;bottom:0;width:min(340px,85vw);background:var(--fc-black);color:var(--fc-white);z-index:var(--fc-z-modal);transform:translateX(-100%);transition:transform var(--fc-transition-slow);display:flex;flex-direction:column;overflow-y:auto;}
-    .fc-drawer.is-open{transform:translateX(0);}
-    .fc-drawer__header{display:flex;align-items:center;justify-content:space-between;padding:1.5rem;border-bottom:1px solid rgba(255,255,255,.08);}
-    .fc-drawer__logo{font-family:var(--fc-font-display);font-size:18px;font-weight:800;letter-spacing:.12em;}
-    .fc-drawer__close{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.15);border-radius:var(--fc-radius-sm);color:var(--fc-white);cursor:pointer;transition:all var(--fc-transition-fast);}
-    .fc-drawer__close:hover{background:rgba(255,255,255,.08);}
-    .fc-drawer__nav-item a{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;font-family:var(--fc-font-display);font-size:1.125rem;font-weight:600;color:var(--fc-white);border-bottom:1px solid rgba(255,255,255,.06);transition:color var(--fc-transition-fast);}
-    .fc-drawer__nav-item a:hover{color:var(--fc-accent);}
-    .fc-drawer__footer{padding:1.5rem;border-top:1px solid rgba(255,255,255,.08);}
-    .fc-cart-drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100vw);background:var(--fc-white);z-index:var(--fc-z-modal);transform:translateX(100%);transition:transform var(--fc-transition-slow);display:flex;flex-direction:column;box-shadow:var(--fc-shadow-xl);}
-    .fc-cart-drawer.is-open{transform:translateX(0);}
-    .fc-cart-drawer__header{display:flex;align-items:center;justify-content:space-between;padding:1.5rem;border-bottom:1px solid var(--fc-gray-200);}
-    .fc-cart-drawer__title{font-family:var(--fc-font-display);font-size:1.125rem;font-weight:700;}
-    .fc-cart-drawer__close{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid var(--fc-gray-200);border-radius:var(--fc-radius-sm);cursor:pointer;}
-    .fc-cart-drawer__close:hover{background:var(--fc-gray-100);}
-    .fc-cart-drawer__close svg{width:16px;height:16px;stroke:var(--fc-black);stroke-width:2;fill:none;}
-    .fc-cart-drawer__body{flex:1;overflow-y:auto;padding:1rem 1.5rem;}
-    .fc-cart-drawer__footer{padding:1.5rem;border-top:1px solid var(--fc-gray-200);}
-    .fc-cart-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:1rem;padding:3rem 2rem;text-align:center;}
-    .fc-cart-empty__icon{font-size:48px;opacity:.2;}
-    .fc-cart-empty__title{font-family:var(--fc-font-display);font-size:1.25rem;font-weight:700;}
-    .fc-cart-empty__text{font-size:.875rem;color:var(--fc-gray-400);}
-    .fc-cart-summary{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem;}
-    .fc-cart-summary-row{display:flex;justify-content:space-between;font-size:.875rem;}
-    .fc-cart-summary-row--total{font-weight:700;font-size:1rem;border-top:1px solid var(--fc-gray-200);padding-top:.75rem;margin-top:.25rem;}
-    .fc-cart-ctas{display:flex;flex-direction:column;gap:.75rem;}
-    .fc-cart-item{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--fc-gray-200);}
-    .fc-cart-item__img{width:72px;height:90px;object-fit:cover;border-radius:var(--fc-radius-sm);background:var(--fc-gray-100);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:28px;}
-    .fc-cart-item__details{flex:1;display:flex;flex-direction:column;gap:4px;}
-    .fc-cart-item__name{font-size:.875rem;font-weight:600;line-height:1.3;}
-    .fc-cart-item__meta{font-size:.75rem;color:var(--fc-gray-400);}
-    .fc-cart-item__price-row{display:flex;align-items:center;justify-content:space-between;margin-top:auto;}
-    .fc-cart-item__qty{display:flex;align-items:center;border:1px solid var(--fc-gray-200);border-radius:var(--fc-radius-sm);overflow:hidden;}
-    .fc-qty-btn{width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:background var(--fc-transition-fast);}
-    .fc-qty-btn:hover{background:var(--fc-gray-100);}
-    .fc-qty-val{width:36px;text-align:center;font-size:.875rem;font-weight:600;}
-    .fc-cart-item__remove{font-size:.75rem;color:var(--fc-gray-400);text-decoration:underline;cursor:pointer;background:none;border:none;transition:color var(--fc-transition-fast);}
-    .fc-cart-item__remove:hover{color:var(--fc-error);}
-    .fc-price{font-weight:700;color:var(--fc-black);font-family:var(--fc-font-display);}
-    .fc-price-original{text-decoration:line-through;color:var(--fc-gray-400);font-weight:400;}
-    .fc-price-sale{color:var(--fc-error);font-weight:700;}
-    .fc-discount-badge{display:inline-flex;align-items:center;justify-content:center;background:var(--fc-error);color:#fff;font-size:10px;font-weight:700;letter-spacing:.04em;padding:2px 6px;border-radius:var(--fc-radius-sm);}
-    .fc-toast-container{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:var(--fc-z-toast);display:flex;flex-direction:column;gap:.5rem;pointer-events:none;}
-    .fc-toast{display:flex;align-items:center;gap:.75rem;padding:.75rem 1.25rem;background:var(--fc-black);color:var(--fc-white);border-radius:var(--fc-radius-md);box-shadow:var(--fc-shadow-xl);font-size:.875rem;font-weight:500;white-space:nowrap;pointer-events:all;}
-    @keyframes fc-bounce-in{0%{transform:scale(.3);opacity:0}60%{transform:scale(1.1)}80%{transform:scale(.95)}100%{transform:scale(1);opacity:1}}
-    .fc-toast{animation:fc-bounce-in .4s ease;}
-
-    /* --- PAGE LAYOUT --- */
-    .fc-page-body{padding-top:var(--fc-header-height);}
-    .fc-breadcrumb{display:flex;align-items:center;gap:.5rem;font-size:.75rem;color:var(--fc-gray-400);padding:1.5rem 0;}
-    .fc-breadcrumb a{color:var(--fc-gray-400);transition:color var(--fc-transition-fast);}
-    .fc-breadcrumb a:hover{color:var(--fc-black);}
-    .fc-breadcrumb__sep{opacity:.4;}
-
-    /* --- SHOP LAYOUT --- */
-    .fc-shop-header{padding:2rem 0;border-bottom:1px solid var(--fc-gray-200);}
-    .fc-shop-header__title{font-family:var(--fc-font-display);font-size:clamp(1.75rem,3vw,2.5rem);font-weight:800;letter-spacing:-.03em;}
-    .fc-shop-header__count{font-size:.875rem;color:var(--fc-gray-400);margin-top:.25rem;}
-    .fc-shop-layout{display:grid;grid-template-columns:260px 1fr;gap:2.5rem;padding:2rem 0 5rem;}
-
-    /* --- FILTER SIDEBAR --- */
-    .fc-filter-sidebar{position:sticky;top:calc(var(--fc-header-height) + 2rem);align-self:start;max-height:calc(100vh - var(--fc-header-height) - 4rem);overflow-y:auto;scrollbar-width:thin;}
-    .fc-filter-sidebar::-webkit-scrollbar{width:4px;}
-    .fc-filter-sidebar::-webkit-scrollbar-thumb{background:var(--fc-gray-200);}
-    .fc-filter-sidebar__header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;}
-    .fc-filter-sidebar__title{font-family:var(--fc-font-display);font-size:.875rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;}
-    .fc-filter-clear{font-size:.75rem;color:var(--fc-accent);font-weight:600;cursor:pointer;background:none;border:none;text-decoration:underline;}
-    .fc-filter-group{border-bottom:1px solid var(--fc-gray-200);padding:.25rem 0;}
-    .fc-filter-group-title{display:flex;align-items:center;justify-content:space-between;width:100%;padding:.875rem 0;font-size:.8125rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;background:none;border:none;font-family:var(--fc-font-display);}
-    .fc-filter-group-title svg{width:14px;height:14px;stroke:var(--fc-gray-400);stroke-width:2;fill:none;flex-shrink:0;transition:transform var(--fc-transition-fast);}
-    .fc-filter-group.is-open .fc-filter-group-title svg{transform:rotate(180deg);}
-    .fc-filter-group-body{overflow:hidden;max-height:0;transition:max-height var(--fc-transition-slow);}
-    .fc-filter-group.is-open .fc-filter-group-body{max-height:400px;}
-    .fc-filter-group-body-inner{padding-bottom:1rem;}
-    .fc-filter-option{display:flex;align-items:center;gap:.75rem;padding:.375rem 0;cursor:pointer;font-size:.875rem;color:var(--fc-gray-600);transition:color var(--fc-transition-fast);}
-    .fc-filter-option:hover{color:var(--fc-black);}
-    .fc-filter-option input{width:16px;height:16px;accent-color:var(--fc-black);cursor:pointer;flex-shrink:0;}
-    .fc-filter-option__count{margin-left:auto;font-size:.75rem;color:var(--fc-gray-400);}
-    .fc-color-swatches{display:flex;flex-wrap:wrap;gap:.5rem;padding:.25rem 0 .75rem;}
-    .fc-swatch{width:28px;height:28px;border-radius:50%;border:2px solid var(--fc-gray-200);cursor:pointer;transition:all var(--fc-transition-fast);position:relative;}
-    .fc-swatch:hover,.fc-swatch.is-selected{outline:2px solid var(--fc-black);outline-offset:2px;}
-    .fc-price-range{display:flex;gap:.5rem;align-items:center;padding:.5rem 0 .75rem;}
-    .fc-price-input{flex:1;border:1px solid var(--fc-gray-200);border-radius:var(--fc-radius-sm);padding:.5rem .625rem;font-size:.8125rem;color:var(--fc-black);background:var(--fc-white);font-family:var(--fc-font-body);outline:none;}
-    .fc-price-input:focus{border-color:var(--fc-black);}
-
-    /* Active filter chips */
-    .fc-active-filters{display:flex;flex-wrap:wrap;gap:.5rem;padding:1rem 0;border-bottom:1px solid var(--fc-gray-200);margin-bottom:1rem;}
-    .fc-filter-chip{display:inline-flex;align-items:center;gap:.375rem;padding:.25rem .625rem .25rem .75rem;background:var(--fc-black);color:var(--fc-white);border-radius:var(--fc-radius-full);font-size:.75rem;font-weight:600;}
-    .fc-filter-chip button{display:flex;align-items:center;justify-content:center;width:16px;height:16px;background:rgba(255,255,255,.2);border-radius:50%;font-size:10px;cursor:pointer;border:none;color:var(--fc-white);}
-    .fc-filter-chip button:hover{background:rgba(255,255,255,.3);}
-
-    /* --- SORT BAR --- */
-    .fc-sort-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;gap:1rem;}
-    .fc-sort-left{display:flex;align-items:center;gap:1rem;}
-    .fc-results-count{font-size:.875rem;color:var(--fc-gray-600);}
-    .fc-sort-right{display:flex;align-items:center;gap:.75rem;}
-    .fc-sort-select{border:1px solid var(--fc-gray-200);border-radius:var(--fc-radius-sm);padding:.5rem .875rem;font-size:.8125rem;font-family:var(--fc-font-body);color:var(--fc-black);background:var(--fc-white);cursor:pointer;outline:none;appearance:none;padding-right:2rem;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239E9A94' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .75rem center;}
-    .fc-sort-select:focus{border-color:var(--fc-black);}
-    .fc-view-toggle{display:flex;border:1px solid var(--fc-gray-200);border-radius:var(--fc-radius-sm);overflow:hidden;}
-    .fc-view-btn{width:34px;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:none;border:none;transition:background var(--fc-transition-fast);}
-    .fc-view-btn svg{width:16px;height:16px;stroke:var(--fc-gray-400);stroke-width:1.75;fill:none;transition:stroke var(--fc-transition-fast);}
-    .fc-view-btn.is-active{background:var(--fc-black);}
-    .fc-view-btn.is-active svg{stroke:var(--fc-white);}
-
-    /* --- PRODUCT GRID --- */
-    .fc-product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
-    .fc-product-card{display:flex;flex-direction:column;}
-    .fc-product-card__image-wrap{position:relative;overflow:hidden;aspect-ratio:3/4;border-radius:var(--fc-radius-sm);background:var(--fc-gray-100);cursor:pointer;}
-    .fc-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3rem;background:linear-gradient(135deg,var(--fc-gray-100),var(--fc-gray-200));}
-    .fc-product-card__image,.fc-product-card__image--hover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity var(--fc-transition-slow);}
-    .fc-product-card__image--hover{opacity:0;}
-    .fc-product-card:hover .fc-product-card__image{opacity:0;}
-    .fc-product-card:hover .fc-product-card__image--hover{opacity:1;}
-    .fc-product-card__badge{position:absolute;top:.75rem;left:.75rem;z-index:1;display:flex;flex-direction:column;gap:.25rem;}
-    .fc-badge{display:inline-flex;align-items:center;padding:3px 8px;font-size:10px;font-weight:700;letter-spacing:.05em;border-radius:var(--fc-radius-sm);}
-    .fc-badge--new{background:var(--fc-black);color:var(--fc-white);}
-    .fc-badge--sale{background:var(--fc-error);color:#fff;}
-    .fc-wishlist-btn{position:absolute;top:.75rem;right:.75rem;z-index:1;width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:var(--fc-white);border-radius:50%;box-shadow:0 2px 8px rgba(10,10,10,.12);border:none;cursor:pointer;transition:all var(--fc-transition-fast);opacity:0;transform:scale(.8);}
-    .fc-product-card:hover .fc-wishlist-btn,.fc-wishlist-btn.is-active{opacity:1;transform:scale(1);}
-    .fc-wishlist-btn svg{width:16px;height:16px;stroke:var(--fc-black);stroke-width:1.75;fill:none;transition:all var(--fc-transition-fast);}
-    .fc-wishlist-btn.is-active svg{fill:#e0463e;stroke:#e0463e;}
-    .fc-wishlist-btn:hover{background:var(--fc-black);}
-    .fc-wishlist-btn:hover svg{stroke:var(--fc-white);}
-    .fc-quick-add-btn{position:absolute;bottom:0;left:0;right:0;background:var(--fc-black);color:var(--fc-white);font-family:var(--fc-font-display);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.75rem;border:none;cursor:pointer;transform:translateY(100%);transition:transform var(--fc-transition);}
-    .fc-product-card:hover .fc-quick-add-btn{transform:translateY(0);}
-    .fc-product-card__info{padding:.75rem 0 0;flex:1;}
-    .fc-product-card__category{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--fc-gray-400);margin-bottom:.25rem;}
-    .fc-product-card__name{font-family:var(--fc-font-display);font-size:.875rem;font-weight:600;color:var(--fc-black);line-height:1.3;margin-bottom:.5rem;}
-    .fc-product-card__name a:hover{color:var(--fc-accent);}
-    .fc-product-card__price-row{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;}
-    .fc-product-card__rating{display:flex;align-items:center;gap:.25rem;margin-top:.25rem;}
-    .fc-stars{display:flex;gap:2px;}
-    .fc-star{color:var(--fc-accent);font-size:12px;}
-    .fc-star--empty{color:var(--fc-gray-200);}
-    .fc-rating-count{font-size:11px;color:var(--fc-gray-400);}
-    .fc-color-dots{display:flex;gap:5px;margin-top:.5rem;}
-    .fc-color-dot{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--fc-gray-200);cursor:pointer;transition:transform var(--fc-transition-fast);}
-    .fc-color-dot:hover{transform:scale(1.2);}
-    .fc-color-dot.is-selected{outline:2px solid var(--fc-black);outline-offset:2px;}
-
-    /* Pagination */
-    .fc-pagination{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:3rem 0 2rem;}
-    .fc-page-btn{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border:1px solid var(--fc-gray-200);border-radius:var(--fc-radius-sm);font-size:.875rem;font-weight:600;cursor:pointer;transition:all var(--fc-transition-fast);background:var(--fc-white);}
-    .fc-page-btn:hover,.fc-page-btn.is-active{background:var(--fc-black);color:var(--fc-white);border-color:var(--fc-black);}
-    .fc-page-btn.is-nav{border:none;background:none;color:var(--fc-black);}
-    .fc-page-btn.is-nav:hover{color:var(--fc-accent);}
-
-    /* Quick Add Modal */
-    .fc-quick-add-modal{position:fixed;inset:0;z-index:var(--fc-z-modal);display:flex;align-items:flex-end;justify-content:center;opacity:0;visibility:hidden;pointer-events:none;transition:all var(--fc-transition);}
-    .fc-quick-add-modal.is-open{opacity:1;visibility:visible;pointer-events:all;}
-    .fc-quick-add-modal__panel{width:min(520px,100vw);background:var(--fc-white);border-radius:1rem 1rem 0 0;padding:2rem 1.5rem;transform:translateY(100%);transition:transform var(--fc-transition-slow);box-shadow:var(--fc-shadow-xl);}
-    .fc-quick-add-modal.is-open .fc-quick-add-modal__panel{transform:translateY(0);}
-    .fc-modal-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.5rem;}
-    .fc-modal-product-name{font-family:var(--fc-font-display);font-size:1.125rem;font-weight:700;}
-    .fc-modal-product-price{font-size:.875rem;color:var(--fc-gray-600);margin-top:.25rem;}
-    .fc-modal-close{width:32px;height:32px;display:flex;align-items:center;justify-content:center;border:1px solid var(--fc-gray-200);border-radius:var(--fc-radius-sm);cursor:pointer;flex-shrink:0;}
-    .fc-modal-close:hover{background:var(--fc-gray-100);}
-    .fc-variant-section{margin-bottom:1.5rem;}
-    .fc-variant-label{font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--fc-gray-600);margin-bottom:.75rem;}
-    .fc-size-btns{display:flex;flex-wrap:wrap;gap:.5rem;}
-    .fc-size-btn{min-width:48px;height:40px;padding:0 .75rem;border:1.5px solid var(--fc-gray-200);border-radius:var(--fc-radius-sm);font-size:.875rem;font-weight:600;cursor:pointer;transition:all var(--fc-transition-fast);background:var(--fc-white);color:var(--fc-black);}
-    .fc-size-btn:hover{border-color:var(--fc-black);}
-    .fc-size-btn.is-selected{background:var(--fc-black);color:var(--fc-white);border-color:var(--fc-black);}
-    .fc-size-btn.is-disabled{opacity:.3;text-decoration:line-through;cursor:not-allowed;}
-    .fc-color-btns{display:flex;gap:.75rem;flex-wrap:wrap;}
-    .fc-color-btn{width:32px;height:32px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:all var(--fc-transition-fast);}
-    .fc-color-btn.is-selected{outline:2px solid var(--fc-black);outline-offset:3px;}
-
-    /* Mobile filter panel */
-    .fc-mobile-filter{display:none;}
-    .fc-mobile-filter-btn{display:none;align-items:center;gap:.5rem;font-size:.875rem;font-weight:600;}
-
-    /* --- FOOTER --- */
-    .fc-footer{background:var(--fc-black);color:var(--fc-white);}
-    .fc-footer__top{padding:5rem 0 4rem;}
-    .fc-footer__grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:2.5rem;}
-    .fc-footer__brand-logo{font-family:var(--fc-font-display);font-size:20px;font-weight:800;letter-spacing:.12em;margin-bottom:1rem;}
-    .fc-footer__tagline{font-size:.875rem;color:var(--fc-gray-400);line-height:1.7;margin-bottom:1.5rem;}
-    .fc-footer__col-title{font-family:var(--fc-font-display);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--fc-accent);margin-bottom:1.25rem;}
-    .fc-footer__links{display:flex;flex-direction:column;gap:.75rem;}
-    .fc-footer__link{font-size:.875rem;color:var(--fc-gray-400);transition:color var(--fc-transition-fast);}
-    .fc-footer__link:hover{color:var(--fc-white);}
-    .fc-footer__bottom{border-top:1px solid rgba(255,255,255,.08);padding:1.5rem 0;}
-    .fc-footer__bottom-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
-    .fc-footer__copyright{font-size:.75rem;color:rgba(255,255,255,.35);}
-    .fc-footer__payment{display:flex;gap:.75rem;}
-    .fc-payment-icon{padding:4px 8px;border:1px solid rgba(255,255,255,.12);border-radius:4px;font-size:10px;font-weight:700;color:rgba(255,255,255,.4);}
-
-    /* Search overlay */
-    .fc-search-overlay{position:fixed;inset:0;z-index:var(--fc-z-modal);background:var(--fc-white);display:flex;flex-direction:column;opacity:0;visibility:hidden;pointer-events:none;transition:all var(--fc-transition);}
-    .fc-search-overlay.is-open{opacity:1;visibility:visible;pointer-events:all;}
-    .fc-search-overlay__header{display:flex;align-items:center;gap:1rem;padding:1.5rem 2rem;border-bottom:1px solid var(--fc-gray-200);}
-    .fc-search-input-wrap{flex:1;display:flex;align-items:center;gap:.75rem;}
-    .fc-search-input-wrap svg{width:20px;height:20px;stroke:var(--fc-gray-400);fill:none;flex-shrink:0;}
-    .fc-search-input{flex:1;border:none;outline:none;font-family:var(--fc-font-display);font-size:1.5rem;font-weight:500;color:var(--fc-black);background:transparent;}
-    .fc-search-input::placeholder{color:var(--fc-gray-200);}
-    .fc-search-close{font-size:.875rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--fc-gray-600);cursor:pointer;padding:.5rem 1rem;border:1px solid var(--fc-gray-200);border-radius:var(--fc-radius-sm);transition:all var(--fc-transition-fast);}
-    .fc-search-close:hover{border-color:var(--fc-black);color:var(--fc-black);}
-    .fc-search-overlay__body{flex:1;overflow-y:auto;padding:2rem;}
-    .fc-search-popular__label{font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--fc-gray-400);margin-bottom:1rem;}
-    .fc-search-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem;}
-    .fc-search-tag{padding:.5rem 1rem;border:1px solid var(--fc-gray-200);border-radius:var(--fc-radius-full);font-size:.875rem;color:var(--fc-gray-600);cursor:pointer;transition:all var(--fc-transition-fast);}
-    .fc-search-tag:hover{border-color:var(--fc-black);color:var(--fc-black);}
-    .fc-search-result-item{display:flex;align-items:center;gap:1rem;padding:.75rem 1rem;border-radius:var(--fc-radius-md);cursor:pointer;transition:background var(--fc-transition-fast);text-decoration:none;color:inherit;}
-    .fc-search-result-item:hover{background:var(--fc-gray-100);}
-    .fc-search-result-item__img{width:56px;height:72px;background:var(--fc-gray-200);border-radius:var(--fc-radius-sm);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:24px;}
-    .fc-search-result-item__name{font-weight:600;font-size:.875rem;}
-    .fc-search-result-item__category{font-size:.75rem;color:var(--fc-gray-400);margin-bottom:2px;}
-    .fc-search-result-item__price{font-weight:700;font-size:.875rem;font-family:var(--fc-font-display);margin-left:auto;}
-
-    /* --- RESPONSIVE --- */
-    @media(max-width:1024px){.fc-shop-layout{grid-template-columns:220px 1fr;gap:2rem;}.fc-product-grid{grid-template-columns:repeat(2,1fr);}}
-    @media(max-width:768px){:root{--fc-header-height:60px;}.fc-nav-bar{display:none;}.fc-header__bar{height:60px;padding:0 1rem;}.fc-shop-layout{grid-template-columns:1fr;}.fc-filter-sidebar{display:none;}.fc-mobile-filter-btn{display:flex;}.fc-footer__grid{grid-template-columns:1fr 1fr;}.fc-footer__brand{grid-column:span 2;}.container{padding:0 1rem;}}
-    @media(max-width:480px){.fc-product-grid{grid-template-columns:repeat(2,1fr);gap:.75rem;}}
-      /* --- BRAND IDENTITY ENHANCEMENTS --- */
-    .fc-logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; user-select: none; }
-    .fc-logo-emblem-wrap {
-      width: 44px; height: 44px; border-radius: 50%; overflow: hidden;
-      border: 1.5px solid var(--fc-accent);
-      box-shadow: 0 2px 10px rgba(194, 132, 83, 0.25);
-      flex-shrink: 0; background: var(--fc-white);
-      display: flex; align-items: center; justify-content: center;
-      transition: transform var(--fc-transition);
+    :root{
+      --fc-bg:#FFFFFF;--fc-surface:#F9FAFB;--fc-border:#E5E7EB;--fc-border-dark:#D1D5DB;
+      --fc-text:#111827;--fc-muted:#4B5563;--fc-subtle:#9CA3AF;
+      --fc-primary:#0A382C;--fc-primary-light:#E8F5F1;
+      --fc-accent:#C28453;--fc-accent-light:#DFA26E;--fc-accent-dark:#985B2E;
+      --fc-discount:#059669;--fc-discount-bg:#ECFDF5;--fc-error:#DC2626;
+      --fc-font-d:'Plus Jakarta Sans',sans-serif;--fc-font-b:'Inter',sans-serif;
+      --fc-radius:8px;--fc-shadow:0 4px 20px rgba(0,0,0,0.06);
     }
-    .fc-logo:hover .fc-logo-emblem-wrap { transform: scale(1.05) rotate(2deg); }
-    .fc-logo-emblem { width: 100%; height: 100%; object-fit: cover; }
-    .fc-logo-text-group { display: flex; flex-direction: column; align-items: flex-start; }
-    .fc-logo-name {
-      font-family: var(--fc-font-display); font-size: 20px; font-weight: 800;
-      letter-spacing: 0.12em; color: var(--fc-black); line-height: 1.1;
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:16px;scroll-behavior:smooth}
+    body{font-family:var(--fc-font-b);color:var(--fc-text);background:#FFFFFF;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:60px}
+    img{display:block;max-width:100%;height:auto}
+    a{color:inherit;text-decoration:none}
+    button{cursor:pointer;border:none;background:none;font-family:inherit}
+    ul{list-style:none}
+
+    /* SLIDEBAR */
+    .fc-promo-slidebar{background:#0A382C;color:#FFF;height:38px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;position:relative;overflow:hidden;border-bottom:1px solid rgba(194,132,83,0.4)}
+    .fc-promo-track{width:100%;max-width:1360px;position:relative;height:100%;display:flex;align-items:center;justify-content:center}
+    .fc-promo-slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:10px;opacity:0;transform:translateY(8px);transition:opacity 0.4s,transform 0.4s;pointer-events:none;padding:0 40px;text-align:center}
+    .fc-promo-slide.is-active{opacity:1;transform:translateY(0);pointer-events:all}
+    .fc-promo-badge{background:#C28453;color:#FFF;font-size:10px;font-weight:800;padding:2px 6px;border-radius:4px}
+    .fc-promo-code{background:rgba(255,255,255,0.15);border:1px dashed rgba(255,255,255,0.5);padding:1px 6px;border-radius:3px;font-weight:800;cursor:pointer;color:#DFA26E}
+    .fc-promo-copy-btn{background:#C28453;border:none;color:#FFF;font-size:10px;font-weight:700;padding:3px 8px;border-radius:3px;cursor:pointer}
+    .fc-promo-controls{position:absolute;right:16px;display:flex;align-items:center;gap:4px}
+    .fc-promo-arrow{background:none;border:none;color:rgba(255,255,255,0.7);font-size:16px;cursor:pointer;padding:2px 6px}
+    .fc-promo-arrow:hover{color:#FFF}
+
+    /* HEADER */
+    .fc-header{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--fc-border)}
+    .fc-header__main{display:flex;align-items:center;justify-content:space-between;height:72px;padding:0 1.5rem;max-width:1360px;margin:0 auto}
+    .fc-header__left,.fc-header__right{display:flex;align-items:center;gap:8px;flex:1}
+    .fc-header__right{justify-content:flex-end}
+    .fc-header__center{display:flex;justify-content:center}
+    .fc-logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none}
+    .fc-logo-emblem-wrap{width:44px;height:44px;border-radius:50%;overflow:hidden;border:1.5px solid #C28453;box-shadow:0 2px 8px rgba(194,132,83,0.25);background:#FFF}
+    .fc-logo-emblem{width:100%;height:100%;object-fit:cover}
+    .fc-logo-name{font-family:var(--fc-font-d);font-size:20px;font-weight:800;letter-spacing:0.12em;color:#111827;line-height:1.1}
+    .fc-logo-accent{color:#C28453}
+    .fc-logo-motto{font-size:8px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#0A382C;margin-top:1px;display:block}
+    .fc-icon-btn{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:9999px;transition:background 0.2s;color:#111827;position:relative}
+    .fc-icon-btn:hover{background:#F3F4F6}
+    .fc-icon-btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.75}
+    .fc-cart-count{position:absolute;top:4px;right:4px;min-width:16px;height:16px;padding:0 4px;background:#0A382C;color:#FFF;font-size:9px;font-weight:800;border-radius:9999px;display:flex;align-items:center;justify-content:center}
+    .fc-nav-bar{border-top:1px solid var(--fc-border);background:#FFF}
+    .fc-nav-bar__inner{display:flex;align-items:center;justify-content:center;height:42px;gap:2rem;max-width:1360px;margin:0 auto;padding:0 1.5rem}
+    .fc-nav-link{font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#111827;padding:4px 0;position:relative;transition:color 0.2s}
+    .fc-nav-link:hover,.fc-nav-link.is-active{color:#0A382C}
+    .fc-nav-link::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:#0A382C;transform:scaleX(0);transition:transform 0.2s}
+    .fc-nav-link.is-active::after,.fc-nav-link:hover::after{transform:scaleX(1)}
+    .fc-nav-link--discount{color:#059669;font-weight:700}
+    .fc-nav-link--sale{color:#DC2626}
+
+    /* PAGE LAYOUT */
+    .fc-shop-page{max-width:1360px;margin:0 auto;padding:2rem 1.5rem;display:grid;grid-template-columns:260px 1fr;gap:2rem;align-items:start}
+
+    /* PAYMENT SIDEBAR */
+    .fc-payment-sidebar{
+      position:sticky;top:130px;
+      border:1px solid var(--fc-border);border-radius:var(--fc-radius);overflow:hidden;
+      box-shadow:var(--fc-shadow);
     }
-    .fc-logo-accent {
-      color: var(--fc-accent);
-      background: linear-gradient(135deg, #dfa26e 0%, #c28453 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .fc-logo-motto {
-      font-size: 8px; font-weight: 700; letter-spacing: 0.16em;
-      text-transform: uppercase; color: var(--fc-accent); opacity: 0.95;
-      margin-top: 1px;
-    }
-    .fc-btn--primary {
-      background: #0a382c; color: #faf9f6; border-color: #0a382c;
-    }
-    .fc-btn--primary:hover {
-      background: #0f4c3c; border-color: #0f4c3c;
-    }
-    .fc-btn--secondary {
-      background: linear-gradient(135deg, #dfa26e 0%, #c28453 100%);
-      color: #0c1210; border-color: #c28453;
-      box-shadow: 0 4px 15px rgba(194, 132, 83, 0.25);
-    }
-    .fc-btn--secondary:hover {
-      background: linear-gradient(135deg, #c28453 0%, #985b2e 100%);
-      color: #ffffff;
-    }
-    .fc-announcement {
-      background: linear-gradient(90deg, #06241c 0%, #0a382c 50%, #06241c 100%);
-      border-bottom: 1px solid rgba(194,132,83,0.3);
-    }
-    .fc-badge--new {
-      background: #0a382c; color: #faf9f6;
-    }
-    .fc-badge--sale {
-      background: #c28453; color: #0c1210; font-weight: 800;
-    }
-    .fc-discount-badge {
-      background: rgba(194, 132, 83, 0.15); color: #985b2e; font-weight: 700;
-    }
+    .fc-sidebar-header{background:#0A382C;color:#FFF;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:10px}
+    .fc-sidebar-header-icon{width:38px;height:38px;background:rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+    .fc-sidebar-header-title{font-family:var(--fc-font-d);font-size:14px;font-weight:800;line-height:1.3}
+    .fc-sidebar-header-sub{font-size:11px;opacity:0.8;margin-top:2px}
+    .fc-sidebar-body{background:#FFF;padding:1.25rem}
+
+    .fc-online-badge{display:inline-flex;align-items:center;gap:6px;background:#ECFDF5;color:#059669;font-size:11px;font-weight:800;padding:6px 12px;border-radius:99px;border:1px solid #A7F3D0;margin-bottom:1rem}
+    .fc-payment-method-list{display:flex;flex-direction:column;gap:8px;margin-bottom:1.25rem}
+    .fc-pm-row{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#F9FAFB;border:1.5px solid var(--fc-border);border-radius:6px;cursor:pointer;transition:all 0.2s}
+    .fc-pm-row:hover,.fc-pm-row.is-selected{border-color:#059669;background:#ECFDF5}
+    .fc-pm-row input{accent-color:#059669}
+    .fc-pm-icon{font-size:20px}
+    .fc-pm-name{font-weight:700;font-size:13px}
+    .fc-pm-badge{margin-left:auto;background:#059669;color:#FFF;font-size:10px;font-weight:800;padding:2px 6px;border-radius:3px}
+
+    .fc-discount-calc{background:#F0FDF4;border:1px solid #A7F3D0;border-radius:6px;padding:1rem;margin-bottom:1.25rem}
+    .fc-discount-calc-title{font-size:11px;font-weight:700;color:#059669;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px}
+    .fc-dc-row{display:flex;justify-content:space-between;font-size:12px;font-weight:600;margin-bottom:4px}
+    .fc-dc-total{display:flex;justify-content:space-between;font-size:14px;font-weight:800;color:#059669;padding-top:6px;border-top:1px solid #A7F3D0;margin-top:6px}
+
+    .fc-promo-code-box{background:#FFF;border:1.5px dashed #C28453;border-radius:6px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer}
+    .fc-promo-code-label{font-size:12px;font-weight:700;color:#985B2E}
+    .fc-promo-code-val{font-size:13px;font-weight:900;color:#C28453;letter-spacing:0.06em}
+    .fc-copy-btn{background:#C28453;color:#FFF;font-size:10px;font-weight:700;padding:4px 8px;border-radius:4px}
+    .fc-sidebar-footer{font-size:11px;color:#6B7280;border-top:1px solid var(--fc-border);padding:12px 1.25rem}
+
+    /* FILTER BAR */
+    .fc-filter-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--fc-border)}
+    .fc-filter-chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 12px;border:1.5px solid var(--fc-border);border-radius:99px;cursor:pointer;transition:all 0.2s;color:var(--fc-text)}
+    .fc-filter-chip:hover,.fc-filter-chip.is-active{background:#0A382C;color:#FFF;border-color:#0A382C}
+    .fc-shop-count{margin-left:auto;font-size:12px;color:var(--fc-subtle);font-weight:500}
+
+    /* PRODUCT GRID */
+    .fc-product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+    .fc-product-card{display:flex;flex-direction:column;background:#FFF;border:1px solid var(--fc-border);border-radius:var(--fc-radius);overflow:hidden;transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;position:relative}
+    .fc-product-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.07);border-color:var(--fc-border-dark)}
+    .fc-product-card__image-wrap{position:relative;aspect-ratio:3/4;overflow:hidden;background:#F3F4F6}
+    .fc-product-card__image,.fc-product-card__image--hover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity 0.35s,transform 0.4s}
+    .fc-product-card__image--hover{opacity:0}
+    .fc-product-card:hover .fc-product-card__image--hover{opacity:1;transform:scale(1.04)}
+    .fc-product-card:hover .fc-product-card__image{transform:scale(1.04)}
+    .fc-product-card__badge{position:absolute;top:10px;left:10px;z-index:2;display:flex;flex-direction:column;gap:4px}
+    .fc-badge{display:inline-flex;align-items:center;padding:3px 8px;font-size:10px;font-weight:800;letter-spacing:0.05em;border-radius:4px}
+    .fc-badge--new{background:#0A382C;color:#FFF}
+    .fc-badge--sale{background:#C28453;color:#FFF}
+    .fc-badge--discount{background:#059669;color:#FFF}
+    .fc-wishlist-btn{position:absolute;top:10px;right:10px;z-index:2;width:34px;height:34px;background:rgba(255,255,255,0.9);border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.1);display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+    .fc-wishlist-btn:hover{background:#FFF;transform:scale(1.1)}
+    .fc-wishlist-btn svg{width:16px;height:16px;stroke:#111827;fill:none;stroke-width:2}
+    .fc-wishlist-btn.is-active svg{fill:#DC2626;stroke:#DC2626}
+    .fc-quick-add-btn{position:absolute;bottom:0;left:0;right:0;z-index:2;background:#0A382C;color:#FFF;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:10px;text-align:center;transform:translateY(100%);transition:transform 0.25s}
+    .fc-product-card:hover .fc-quick-add-btn{transform:translateY(0)}
+    .fc-product-card__info{padding:0.875rem;display:flex;flex-direction:column}
+    .fc-product-card__category{font-size:11px;font-weight:600;color:var(--fc-subtle);text-transform:uppercase;margin-bottom:2px}
+    .fc-product-card__name{font-size:0.9rem;font-weight:700;color:var(--fc-text);margin-bottom:6px;line-height:1.35}
+    .fc-product-card__price-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:3px}
+    .fc-price-main{font-size:0.95rem;font-weight:800;color:var(--fc-text)}
+    .fc-price-orig{font-size:0.8rem;color:var(--fc-subtle);text-decoration:line-through}
+    .fc-online-pay-pill{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:700;color:#059669;background:#ECFDF5;padding:2px 6px;border-radius:4px;width:fit-content}
+
+    /* MOBILE NAV */
+    .fc-mobile-bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:190;background:#FFF;border-top:1px solid var(--fc-border);height:58px;padding:0 1rem;gap:0;align-items:stretch}
+    @media(max-width:768px){.fc-mobile-bottom-nav{display:flex}}
+    .fc-mobile-bottom-link{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:10px;font-weight:600;color:#6B7280;transition:color 0.2s;cursor:pointer}
+    .fc-mobile-bottom-link svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.75}
+    .fc-mobile-bottom-link.is-active,.fc-mobile-bottom-link:hover{color:#0A382C}
+    .fc-mobile-cart-badge{position:absolute;top:-4px;right:-4px;min-width:14px;height:14px;padding:0 3px;background:#0A382C;color:#FFF;font-size:8px;font-weight:800;border-radius:99px;display:flex;align-items:center;justify-content:center}
+
+    /* WHATSAPP */
+    .fc-whatsapp-float{position:fixed;bottom:24px;right:24px;z-index:290;display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#FFF;padding:8px 16px 8px 10px;border-radius:99px;box-shadow:0 4px 20px rgba(37,211,102,0.4);text-decoration:none;font-size:13px;font-weight:700;font-family:var(--fc-font-d);transition:transform 0.25s,box-shadow 0.25s}
+    .fc-whatsapp-float:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(37,211,102,0.55)}
+    @media(max-width:768px){.fc-whatsapp-float{bottom:70px;right:16px;padding:8px;border-radius:50%}.fc-whatsapp-text{display:none}}
+
+    /* CART DRAWER */
+    .fc-overlay{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,0.5);opacity:0;visibility:hidden;transition:all 0.3s}
+    .fc-overlay.is-visible{opacity:1;visibility:visible}
+    .fc-cart-drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,92vw);background:#FFF;z-index:400;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.16,1,0.3,1);display:flex;flex-direction:column;box-shadow:-10px 0 30px rgba(0,0,0,0.1)}
+    .fc-cart-drawer.is-open{transform:translateX(0)}
+    .fc-cart-header{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;border-bottom:1px solid var(--fc-border)}
+    .fc-cart-body{flex:1;overflow-y:auto;padding:1.25rem 1.5rem}
+    .fc-cart-footer{padding:1.5rem;border-top:1px solid var(--fc-border);background:#F9FAFB}
+    .fc-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--fc-font-d);font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:14px 24px;border-radius:4px;border:2px solid transparent;cursor:pointer;transition:all 0.2s}
+    .fc-btn--primary{background:#0A382C;color:#FFF;border-color:#0A382C}
+    .fc-btn--primary:hover{background:#06241C;transform:translateY(-1px)}
+    .fc-btn--sm{font-size:11px;padding:8px 14px}
+    .fc-btn--full{width:100%}
+
+    @media(max-width:1024px){.fc-shop-page{grid-template-columns:220px 1fr}}
+    @media(max-width:768px){.fc-shop-page{grid-template-columns:1fr}.fc-payment-sidebar{display:none}.fc-product-grid{grid-template-columns:repeat(2,1fr)}.fc-nav-bar{display:none}}
   </style>
 </head>
 <body>
 
-<div class="fc-toast-container" id="fc-toast-container" aria-live="polite"></div>
-
-<!-- Search Overlay -->
-<div class="fc-search-overlay" id="fc-search-overlay">
-  <div class="fc-search-overlay__header">
-    <div class="fc-search-input-wrap">
-      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input class="fc-search-input" id="fc-search-input" type="text" placeholder="Search products…" autocomplete="off" />
+<!-- SLIDEBAR -->
+<div class="fc-promo-slidebar">
+  <div class="fc-promo-track">
+    <div class="fc-promo-slide is-active">
+      <span class="fc-promo-badge">5% OFF</span>
+      <span>&#x1F4B3; Pay Online (bKash / Nagad / Cards) &amp; Get <strong>5% Instant Discount</strong> with code <code class="fc-promo-code" onclick="copyCode('ONLINE5')">ONLINE5</code></span>
+      <button class="fc-promo-copy-btn" onclick="copyCode('ONLINE5')">Copy Code</button>
     </div>
-    <button class="fc-search-close" id="fc-search-close">ESC</button>
-  </div>
-  <div class="fc-search-overlay__body">
-    <p class="fc-search-popular__label">Popular searches</p>
-    <div class="fc-search-tags">
-      <span class="fc-search-tag">Oversized Tee</span><span class="fc-search-tag">Kurti</span><span class="fc-search-tag">Cargo</span><span class="fc-search-tag">Bag</span><span class="fc-search-tag">Jewelry</span>
+    <div class="fc-promo-slide">
+      <span>&#x1F69A; <strong>FREE NATIONWIDE DELIVERY</strong> on all orders above &#x9F3;2,000</span>
     </div>
-    <div id="fc-search-results"></div>
-  </div>
-</div>
-
-<!-- Mobile Drawer -->
-<nav class="fc-drawer" id="fc-mobile-drawer">
-  <div class="fc-drawer__header"><div style="display:flex;align-items:center;gap:10px;">
-      <div style="width:36px;height:36px;border-radius:50%;overflow:hidden;border:1.5px solid #C28453;flex-shrink:0;background:#FAF9F6;">
-        <img src="/assets/images/logo.jpg" alt="FOLDCUT" style="width:100%;height:100%;object-fit:cover;" />
-      </div>
-      <div>
-        <span class="fc-drawer__logo" style="display:block;line-height:1.1;">FOLD<span style="color:#C28453;">CUT</span></span>
-        <span style="font-size:7.5px;color:#C28453;letter-spacing:0.12em;text-transform:uppercase;display:block;">Quality &bull; Comfort &bull; Confidence</span>
-      </div>
-    </div><button class="fc-drawer__close" id="fc-drawer-close">✕</button></div>
-  <div style="padding:.5rem 0;">
-    <ul>
-      <li class="fc-drawer__nav-item"><a href="shop.html">Men <span>→</span></a></li>
-      <li class="fc-drawer__nav-item"><a href="shop.html">Women <span>→</span></a></li>
-      <li class="fc-drawer__nav-item"><a href="shop.html">Kids <span>→</span></a></li>
-      <li class="fc-drawer__nav-item"><a href="shop.html">Accessories <span>→</span></a></li>
-      <li class="fc-drawer__nav-item"><a href="shop.html">Jewelry <span>→</span></a></li>
-      <li class="fc-drawer__nav-item"><a href="shop.html">New Arrivals <span>→</span></a></li>
-      <li class="fc-drawer__nav-item"><a href="shop.html">Sale <span>→</span></a></li>
-    </ul>
-  </div>
-  <div class="fc-drawer__footer"><p style="font-size:11px;color:var(--fc-gray-400);letter-spacing:.08em;text-transform:uppercase;font-weight:600;margin-bottom:.75rem;">Follow Us</p><div style="display:flex;gap:1rem;"><a href="#" style="font-size:.875rem;color:var(--fc-gray-400);">Facebook</a><a href="#" style="font-size:.875rem;color:var(--fc-gray-400);">Instagram</a><a href="#" style="font-size:.875rem;color:var(--fc-gray-400);">TikTok</a></div></div>
-</nav>
-
-<!-- Cart Drawer -->
-<div class="fc-cart-drawer" id="fc-cart-drawer">
-  <div class="fc-cart-drawer__header">
-    <div><span class="fc-cart-drawer__title">Cart</span><span id="fc-cart-count-text" style="font-size:.75rem;color:var(--fc-gray-400);margin-left:.5rem;">(0 items)</span></div>
-    <button class="fc-cart-drawer__close" id="fc-cart-close"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-  </div>
-  <div class="fc-cart-drawer__body" id="fc-cart-body">
-    <div class="fc-cart-empty" id="fc-cart-empty">
-      <div class="fc-cart-empty__icon">🛍️</div>
-      <p class="fc-cart-empty__title">Your cart is empty</p>
-      <p class="fc-cart-empty__text">Add something you love.</p>
+    <div class="fc-promo-slide">
+      <span>&#x2728; 220+ GSM Heavyweight Combed Cotton &bull; 7-Day Hassle-Free Exchange</span>
     </div>
-    <div id="fc-cart-items"></div>
   </div>
-  <div class="fc-cart-drawer__footer" id="fc-cart-footer" style="display:none;">
-    <div class="fc-cart-summary">
-      <div class="fc-cart-summary-row"><span>Subtotal</span><span id="fc-cart-subtotal">৳0</span></div>
-      <div class="fc-cart-summary-row fc-cart-summary-row--total"><span>Total</span><span id="fc-cart-total">৳0</span></div>
-    </div>
-    <div class="fc-cart-ctas">
-      <a href="checkout.html" class="fc-btn fc-btn--primary fc-btn--full">CHECKOUT</a>
-      <button class="fc-btn fc-btn--outline fc-btn--full" onclick="closeAll()">CONTINUE SHOPPING</button>
-    </div>
+  <div class="fc-promo-controls">
+    <button class="fc-promo-arrow" onclick="prevSlide()">&#8249;</button>
+    <button class="fc-promo-arrow" onclick="nextSlide()">&#8250;</button>
   </div>
 </div>
-
-<!-- Quick Add Modal -->
-<div class="fc-quick-add-modal" id="fc-quick-add-modal">
-  <div class="fc-quick-add-modal__panel">
-    <div class="fc-modal-header">
-      <div><p class="fc-modal-product-name" id="fc-modal-name"></p><p class="fc-modal-product-price" id="fc-modal-price"></p></div>
-      <button class="fc-modal-close" id="fc-modal-close">✕</button>
-    </div>
-    <div class="fc-variant-section">
-      <p class="fc-variant-label">Color</p>
-      <div class="fc-color-btns" id="fc-modal-colors">
-        <button class="fc-color-btn is-selected" style="background:#0A0A0A;" title="Black"></button>
-        <button class="fc-color-btn" style="background:#E5E3DF;border-color:#ccc;" title="White"></button>
-        <button class="fc-color-btn" style="background:#8B7355;" title="Camel"></button>
-      </div>
-    </div>
-    <div class="fc-variant-section">
-      <p class="fc-variant-label">Size</p>
-      <div class="fc-size-btns">
-        <button class="fc-size-btn">XS</button><button class="fc-size-btn">S</button><button class="fc-size-btn is-selected">M</button><button class="fc-size-btn">L</button><button class="fc-size-btn">XL</button>
-      </div>
-    </div>
-    <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;">
-      <p class="fc-variant-label" style="margin-bottom:0;">Qty</p>
-      <div class="fc-cart-item__qty" style="margin-left:auto;">
-        <button class="fc-qty-btn" onclick="changeModalQty(-1)">−</button>
-        <span class="fc-qty-val" id="fc-modal-qty">1</span>
-        <button class="fc-qty-btn" onclick="changeModalQty(1)">+</button>
-      </div>
-    </div>
-    <button class="fc-btn fc-btn--primary fc-btn--full" onclick="addToCartFromModal()">ADD TO CART</button>
-  </div>
-</div>
-
-<div class="fc-overlay" id="fc-overlay"></div>
 
 <!-- HEADER -->
-<header class="fc-header" id="fc-header">
-  <div class="fc-header__bar">
+<header class="fc-header">
+  <div class="fc-header__main">
     <div class="fc-header__left">
-      <button class="fc-hamburger" id="fc-hamburger" aria-label="Open menu">
-        <span class="fc-hamburger__line"></span><span class="fc-hamburger__line"></span><span class="fc-hamburger__line"></span>
+      <button class="fc-icon-btn" aria-label="Menu">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
-    <div class="fc-header__center"><a href="index.html" class="fc-logo" aria-label="FOLDCUT home">
+    <div class="fc-header__center">
+      <a href="/preview/index.html" class="fc-logo">
         <div class="fc-logo-emblem-wrap">
-          <img src="/assets/images/logo.jpg" alt="FOLDCUT Emblem" class="fc-logo-emblem" />
+          <img src="/assets/images/logo.jpg" alt="FOLDCUT" class="fc-logo-emblem"/>
         </div>
-        <div class="fc-logo-text-group">
-          <span class="fc-logo-name">FOLD<span class="fc-logo-accent">CUT</span></span>
+        <div>
+          <div class="fc-logo-name">FOLD<span class="fc-logo-accent">CUT</span></div>
           <span class="fc-logo-motto">Quality &bull; Comfort &bull; Confidence</span>
         </div>
-      </a></div>
+      </a>
+    </div>
     <div class="fc-header__right">
-      <button class="fc-icon-btn" id="fc-search-btn" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
-      <a href="#" class="fc-icon-btn" aria-label="Wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></a>
-      <button class="fc-icon-btn" id="fc-cart-btn" aria-label="Cart"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span class="fc-cart-count" id="fc-cart-count">0</span></button>
+      <button class="fc-icon-btn" aria-label="Search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <button class="fc-icon-btn" id="fc-cart-btn" aria-label="Cart">
+        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="fc-cart-count" id="fc-cart-count">0</span>
+      </button>
     </div>
   </div>
   <nav class="fc-nav-bar">
     <div class="fc-nav-bar__inner">
-      <a href="shop.html" class="fc-nav-link fc-nav-link--active">Men</a>
-      <a href="shop.html" class="fc-nav-link">Women</a>
-      <a href="shop.html" class="fc-nav-link">Kids</a>
-      <a href="shop.html" class="fc-nav-link">Accessories</a>
-      <a href="shop.html" class="fc-nav-link">Jewelry</a>
-      <a href="shop.html" class="fc-nav-link">New Arrivals</a>
-      <a href="shop.html" class="fc-nav-link">Best Sellers</a>
-      <a href="shop.html" class="fc-nav-link fc-nav-link--sale">Sale</a>
+      <a href="/preview/index.html" class="fc-nav-link">Home</a>
+      <a href="/preview/shop.html" class="fc-nav-link is-active">All Products</a>
+      <a href="/preview/shop.html?cat=men" class="fc-nav-link">Men</a>
+      <a href="/preview/shop.html?cat=women" class="fc-nav-link">Women</a>
+      <a href="/preview/shop.html?cat=accessories" class="fc-nav-link">Accessories</a>
+      <a href="/preview/shop.html" class="fc-nav-link fc-nav-link--discount">5% Online Pay &#x26A1;</a>
+      <a href="/preview/shop.html" class="fc-nav-link fc-nav-link--sale">Sale</a>
     </div>
   </nav>
 </header>
 
-<!-- MAIN -->
-<main class="fc-page-body">
-  <div class="container">
-    <!-- Breadcrumb -->
-    <nav class="fc-breadcrumb" aria-label="Breadcrumb">
-      <a href="index.html">Home</a>
-      <span class="fc-breadcrumb__sep" aria-hidden="true">›</span>
-      <span aria-current="page">Shop</span>
-    </nav>
+<!-- SHOP CONTENT -->
+<div class="fc-shop-page">
 
-    <!-- Shop Header -->
-    <div class="fc-shop-header">
-      <h1 class="fc-shop-header__title">All Products</h1>
-      <p class="fc-shop-header__count" id="fc-results-count">Showing 20 products</p>
-    </div>
-
-    <!-- Active Filters (shown when filters applied) -->
-    <div class="fc-active-filters" id="fc-active-filters" style="display:none;"></div>
-
-    <!-- Mobile Filter Button -->
-    <div style="display:flex;gap:.75rem;padding:1rem 0;" class="fc-mobile-filter-btn" id="fc-mobile-filter-btn" style="display:none;">
-      <button onclick="toggleMobileFilter()" class="fc-btn fc-btn--outline fc-btn--sm" style="gap:.5rem;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
-        FILTERS
-      </button>
-      <select class="fc-sort-select" onchange="sortProducts(this.value)">
-        <option value="featured">Featured</option>
-        <option value="newest">Newest First</option>
-        <option value="price-low">Price: Low to High</option>
-        <option value="price-high">Price: High to Low</option>
-        <option value="rating">Best Rated</option>
-      </select>
-    </div>
-
-    <!-- Shop Layout -->
-    <div class="fc-shop-layout">
-      <!-- Sidebar Filters -->
-      <aside class="fc-filter-sidebar" id="fc-filter-sidebar" aria-label="Product filters">
-        <div class="fc-filter-sidebar__header">
-          <span class="fc-filter-sidebar__title">Filters</span>
-          <button class="fc-filter-clear" onclick="clearAllFilters()">Clear All</button>
-        </div>
-
-        <!-- Category -->
-        <div class="fc-filter-group is-open" id="fg-category">
-          <button class="fc-filter-group-title" onclick="toggleFilterGroup('fg-category')">
-            Category
-            <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
-          </button>
-          <div class="fc-filter-group-body">
-            <div class="fc-filter-group-body-inner">
-              <label class="fc-filter-option"><input type="checkbox" value="men" onchange="applyFilter('category','men',this.checked)"><span>Men</span><span class="fc-filter-option__count">84</span></label>
-              <label class="fc-filter-option"><input type="checkbox" value="women" onchange="applyFilter('category','women',this.checked)"><span>Women</span><span class="fc-filter-option__count">96</span></label>
-              <label class="fc-filter-option"><input type="checkbox" value="kids" onchange="applyFilter('category','kids',this.checked)"><span>Kids</span><span class="fc-filter-option__count">32</span></label>
-              <label class="fc-filter-option"><input type="checkbox" value="accessories" onchange="applyFilter('category','accessories',this.checked)"><span>Accessories</span><span class="fc-filter-option__count">45</span></label>
-              <label class="fc-filter-option"><input type="checkbox" value="jewelry" onchange="applyFilter('category','jewelry',this.checked)"><span>Jewelry</span><span class="fc-filter-option__count">28</span></label>
-            </div>
-          </div>
-        </div>
-
-        <!-- Size -->
-        <div class="fc-filter-group is-open" id="fg-size">
-          <button class="fc-filter-group-title" onclick="toggleFilterGroup('fg-size')">
-            Size
-            <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
-          </button>
-          <div class="fc-filter-group-body">
-            <div class="fc-filter-group-body-inner" style="display:flex;flex-wrap:wrap;gap:.5rem;">
-              <button class="fc-size-btn fc-size-btn--filter" onclick="toggleSizeFilter(this,'XS')">XS</button>
-              <button class="fc-size-btn fc-size-btn--filter" onclick="toggleSizeFilter(this,'S')">S</button>
-              <button class="fc-size-btn fc-size-btn--filter" onclick="toggleSizeFilter(this,'M')">M</button>
-              <button class="fc-size-btn fc-size-btn--filter" onclick="toggleSizeFilter(this,'L')">L</button>
-              <button class="fc-size-btn fc-size-btn--filter" onclick="toggleSizeFilter(this,'XL')">XL</button>
-              <button class="fc-size-btn fc-size-btn--filter" onclick="toggleSizeFilter(this,'XXL')">XXL</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Color -->
-        <div class="fc-filter-group is-open" id="fg-color">
-          <button class="fc-filter-group-title" onclick="toggleFilterGroup('fg-color')">
-            Color
-            <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
-          </button>
-          <div class="fc-filter-group-body">
-            <div class="fc-filter-group-body-inner">
-              <div class="fc-color-swatches">
-                <button class="fc-swatch" style="background:#0A0A0A;" title="Black" onclick="toggleColorFilter(this,'Black')"></button>
-                <button class="fc-swatch" style="background:#F8F7F5;border-color:#ccc;" title="White" onclick="toggleColorFilter(this,'White')"></button>
-                <button class="fc-swatch" style="background:#C28453;" title="Camel" onclick="toggleColorFilter(this,'Camel')"></button>
-                <button class="fc-swatch" style="background:#8B3A3A;" title="Maroon" onclick="toggleColorFilter(this,'Maroon')"></button>
-                <button class="fc-swatch" style="background:#2C4A6A;" title="Navy" onclick="toggleColorFilter(this,'Navy')"></button>
-                <button class="fc-swatch" style="background:#3A5A3A;" title="Olive" onclick="toggleColorFilter(this,'Olive')"></button>
-                <button class="fc-swatch" style="background:#2a2a2a;" title="Charcoal" onclick="toggleColorFilter(this,'Charcoal')"></button>
-                <button class="fc-swatch" style="background:#C0A080;" title="Beige" onclick="toggleColorFilter(this,'Beige')"></button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Price -->
-        <div class="fc-filter-group is-open" id="fg-price">
-          <button class="fc-filter-group-title" onclick="toggleFilterGroup('fg-price')">
-            Price (BDT)
-            <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
-          </button>
-          <div class="fc-filter-group-body">
-            <div class="fc-filter-group-body-inner">
-              <div class="fc-price-range">
-                <input class="fc-price-input" type="number" placeholder="Min ৳" id="fc-price-min" min="0" />
-                <span style="color:var(--fc-gray-400);font-size:.875rem;">–</span>
-                <input class="fc-price-input" type="number" placeholder="Max ৳" id="fc-price-max" min="0" />
-              </div>
-              <button class="fc-btn fc-btn--outline fc-btn--sm fc-btn--full" onclick="applyPriceFilter()">Apply</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Availability -->
-        <div class="fc-filter-group is-open" id="fg-availability">
-          <button class="fc-filter-group-title" onclick="toggleFilterGroup('fg-availability')">
-            Availability
-            <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
-          </button>
-          <div class="fc-filter-group-body">
-            <div class="fc-filter-group-body-inner">
-              <label class="fc-filter-option"><input type="checkbox" value="instock" onchange="applyFilter('availability','instock',this.checked)"><span>In Stock</span><span class="fc-filter-option__count">243</span></label>
-              <label class="fc-filter-option"><input type="checkbox" value="sale" onchange="applyFilter('availability','sale',this.checked)"><span>On Sale</span><span class="fc-filter-option__count">67</span></label>
-            </div>
-          </div>
-        </div>
-
-        <!-- Rating -->
-        <div class="fc-filter-group" id="fg-rating">
-          <button class="fc-filter-group-title" onclick="toggleFilterGroup('fg-rating')">
-            Rating
-            <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
-          </button>
-          <div class="fc-filter-group-body">
-            <div class="fc-filter-group-body-inner">
-              <label class="fc-filter-option"><input type="radio" name="rating" value="4"><span>★★★★★ & up</span></label>
-              <label class="fc-filter-option"><input type="radio" name="rating" value="3"><span>★★★★ & up</span></label>
-              <label class="fc-filter-option"><input type="radio" name="rating" value="2"><span>★★★ & up</span></label>
-            </div>
-          </div>
-        </div>
-      </aside>
-
-      <!-- Product Content -->
+  <!-- PAYMENT SIDEBAR -->
+  <aside class="fc-payment-sidebar">
+    <div class="fc-sidebar-header">
+      <div class="fc-sidebar-header-icon">&#x1F4B3;</div>
       <div>
-        <!-- Sort Bar -->
-        <div class="fc-sort-bar">
-          <div class="fc-sort-left">
-            <p class="fc-results-count" id="fc-results-text">Showing <strong>20</strong> products</p>
-          </div>
-          <div class="fc-sort-right">
-            <select class="fc-sort-select" onchange="sortProducts(this.value)" aria-label="Sort products">
-              <option value="featured">Featured</option>
-              <option value="newest">Newest First</option>
-              <option value="price-low">Price: Low to High</option>
-              <option value="price-high">Price: High to Low</option>
-              <option value="bestselling">Best Selling</option>
-              <option value="rating">Best Rated</option>
-            </select>
-            <div class="fc-view-toggle" role="group" aria-label="View mode">
-              <button class="fc-view-btn is-active" id="view-grid" onclick="setView('grid')" title="Grid view">
-                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-              </button>
-              <button class="fc-view-btn" id="view-list" onclick="setView('list')" title="List view">
-                <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Product Grid -->
-        <div class="fc-product-grid" id="fc-product-grid">
-          <!-- Products rendered by JS -->
-        </div>
-
-        <!-- Pagination -->
-        <nav class="fc-pagination" aria-label="Product pagination">
-          <button class="fc-page-btn is-nav" aria-label="Previous page">←</button>
-          <button class="fc-page-btn is-active" aria-current="page">1</button>
-          <button class="fc-page-btn">2</button>
-          <button class="fc-page-btn">3</button>
-          <span style="color:var(--fc-gray-400);padding:0 .25rem;">…</span>
-          <button class="fc-page-btn">8</button>
-          <button class="fc-page-btn is-nav" aria-label="Next page">→</button>
-        </nav>
+        <div class="fc-sidebar-header-title">5% Online Payment Discount</div>
+        <div class="fc-sidebar-header-sub">Apply instantly at checkout</div>
       </div>
     </div>
-  </div>
-</main>
+    <div class="fc-sidebar-body">
+      <div class="fc-online-badge">&#x2705; Auto 5% Savings Unlocked</div>
+      <p style="font-size:12px;color:#4B5563;margin-bottom:14px;">Choose any online payment method at checkout and receive your 5% discount automatically â€” no questions asked.</p>
 
-<!-- FOOTER -->
-<footer class="fc-footer">
-  <div class="fc-footer__top"><div class="container"><div class="fc-footer__grid">
-    <div class="fc-footer__brand"><div class="fc-footer__brand-logo">FOLDCUT</div><p class="fc-footer__tagline">Cut Different. Wear Different.</p></div>
-    <div><p class="fc-footer__col-title">Shop</p><nav class="fc-footer__links"><a href="shop.html" class="fc-footer__link">Men</a><a href="shop.html" class="fc-footer__link">Women</a><a href="shop.html" class="fc-footer__link">Kids</a><a href="shop.html" class="fc-footer__link">Accessories</a><a href="shop.html" class="fc-footer__link">Jewelry</a></nav></div>
-    <div><p class="fc-footer__col-title">Help</p><nav class="fc-footer__links"><a href="#" class="fc-footer__link">Contact</a><a href="#" class="fc-footer__link">FAQ</a><a href="#" class="fc-footer__link">Shipping</a><a href="#" class="fc-footer__link">Returns</a></nav></div>
-    <div><p class="fc-footer__col-title">About</p><nav class="fc-footer__links"><a href="about.html" class="fc-footer__link">Our Story</a><a href="#" class="fc-footer__link">Privacy Policy</a><a href="#" class="fc-footer__link">Terms</a></nav></div>
-    <div><p class="fc-footer__col-title">Follow</p><div style="display:flex;flex-direction:column;gap:.75rem;"><a href="#" style="font-size:.875rem;color:var(--fc-gray-400);">Facebook</a><a href="#" style="font-size:.875rem;color:var(--fc-gray-400);">Instagram</a><a href="#" style="font-size:.875rem;color:var(--fc-gray-400);">TikTok</a></div></div>
-  </div></div></div>
-  <div class="fc-footer__bottom"><div class="container"><div class="fc-footer__bottom-inner">
-    <p class="fc-footer__copyright">© 2025 FOLDCUT. All rights reserved.</p>
-    <div class="fc-footer__payment"><span class="fc-payment-icon">CASH</span><span class="fc-payment-icon">bKash</span><span class="fc-payment-icon">Nagad</span><span class="fc-payment-icon">CARD</span></div>
-  </div></div></div>
-</footer>
+      <div class="fc-payment-method-list">
+        <label class="fc-pm-row is-selected">
+          <input type="radio" name="fc-pm" value="bkash" checked/> 
+          <span class="fc-pm-icon">&#x1F4F1;</span>
+          <div><div class="fc-pm-name">bKash</div><div style="font-size:10px;color:#6B7280;">Mobile Banking</div></div>
+          <span class="fc-pm-badge">5% OFF</span>
+        </label>
+        <label class="fc-pm-row">
+          <input type="radio" name="fc-pm" value="nagad"/>
+          <span class="fc-pm-icon">&#x1F4B0;</span>
+          <div><div class="fc-pm-name">Nagad</div><div style="font-size:10px;color:#6B7280;">Mobile Banking</div></div>
+          <span class="fc-pm-badge">5% OFF</span>
+        </label>
+        <label class="fc-pm-row">
+          <input type="radio" name="fc-pm" value="card"/>
+          <span class="fc-pm-icon">&#x1F4B3;</span>
+          <div><div class="fc-pm-name">Visa / Mastercard</div><div style="font-size:10px;color:#6B7280;">Debit &amp; Credit Cards</div></div>
+          <span class="fc-pm-badge">5% OFF</span>
+        </label>
+        <label class="fc-pm-row">
+          <input type="radio" name="fc-pm" value="cod"/>
+          <span class="fc-pm-icon">&#x1F4E6;</span>
+          <div><div class="fc-pm-name">Cash on Delivery</div><div style="font-size:10px;color:#6B7280;">Standard Rate</div></div>
+        </label>
+      </div>
+
+      <div class="fc-discount-calc" id="fc-discount-calc">
+        <div class="fc-discount-calc-title">&#x1F4CA; Live Savings Preview</div>
+        <div class="fc-dc-row"><span>Cart Total</span><span id="sidebar-subtotal">&#x9F3;2,999</span></div>
+        <div class="fc-dc-row" style="color:#059669;"><span>Online Pay Discount (5%)</span><span id="sidebar-discount" style="color:#059669;">-&#x9F3;150</span></div>
+        <div class="fc-dc-total"><span>You Pay</span><span id="sidebar-total">&#x9F3;2,849</span></div>
+      </div>
+
+      <div class="fc-promo-code-box" onclick="copyCode('ONLINE5')">
+        <span class="fc-promo-code-label">Promo Code</span>
+        <span class="fc-promo-code-val">ONLINE5</span>
+        <button class="fc-copy-btn">COPY</button>
+      </div>
+    </div>
+    <div class="fc-sidebar-footer">
+      &#x1F512; All transactions are 100% secure &amp; encrypted. SSL protected checkout.
+    </div>
+  </aside>
+
+  <!-- MAIN PRODUCT AREA -->
+  <main>
+    <!-- Filter Bar -->
+    <div class="fc-filter-bar">
+      <button class="fc-filter-chip is-active" data-cat="all" onclick="filterProducts('all',this)">All</button>
+      <button class="fc-filter-chip" data-cat="men" onclick="filterProducts('men',this)">Men</button>
+      <button class="fc-filter-chip" data-cat="women" onclick="filterProducts('women',this)">Women</button>
+      <button class="fc-filter-chip" data-cat="kids" onclick="filterProducts('kids',this)">Kids</button>
+      <button class="fc-filter-chip" data-cat="accessories" onclick="filterProducts('accessories',this)">Accessories</button>
+      <span class="fc-shop-count" id="fc-shop-count">Showing 12 products</span>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="fc-product-grid" id="fc-product-grid"></div>
+  </main>
+</div>
+
+<!-- WHATSAPP BUTTON -->
+<a href="https://wa.me/8801700000000?text=Hello%20FOLDCUT!%20I'd%20like%20to%20order%20a%20product." target="_blank" rel="noopener" class="fc-whatsapp-float" aria-label="Order on WhatsApp">
+  <svg viewBox="0 0 32 32" width="26" height="26" fill="#FFF"><path d="M16 2C8.28 2 2 8.28 2 16c0 2.62.72 5.08 1.98 7.18L2 30l7.02-1.92C11.06 29.3 13.48 30 16 30c7.72 0 14-6.28 14-14S23.72 2 16 2zm0 25.64c-2.28 0-4.42-.64-6.26-1.76l-.44-.26-4.64 1.28 1.28-4.52-.3-.48C4.5 19.98 3.86 18.04 3.86 16 3.86 9.3 9.3 3.86 16 3.86S28.14 9.3 28.14 16 22.7 27.64 16 27.64zm7.34-8.88c-.4-.2-2.38-1.18-2.76-1.32-.36-.14-.62-.2-.88.2-.26.4-1 1.32-1.24 1.6-.22.26-.46.3-.86.1-.4-.2-1.7-.62-3.24-2-.42-1.24-1.24-2.08-1.46-2.46-.22-.38-.02-.58.18-.78.18-.18.4-.46.6-.7.2-.24.26-.4.4-.66.14-.26.06-.5-.04-.7-.1-.2-.88-2.12-1.2-2.9-.32-.78-.64-.68-.88-.68h-.76c-.26 0-.68.1-1.04.5-.36.4-1.38 1.36-1.38 3.3 0 1.96 1.42 3.84 1.62 4.12.2.26 2.8 4.28 6.78 6 .94.42 1.68.66 2.26.84.96.3 1.82.26 2.5.16.76-.12 2.38-.98 2.72-1.92.34-.94.34-1.74.24-1.92-.1-.18-.36-.3-.76-.5z"/></svg>
+  <span class="fc-whatsapp-text">Order on WhatsApp</span>
+</a>
+
+<!-- MOBILE BOTTOM NAV -->
+<nav class="fc-mobile-bottom-nav">
+  <a href="/preview/index.html" class="fc-mobile-bottom-link">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>Home</span>
+  </a>
+  <a href="/preview/shop.html" class="fc-mobile-bottom-link is-active">
+    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    <span>Shop</span>
+  </a>
+  <button class="fc-mobile-bottom-link">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <span>Search</span>
+  </button>
+  <button class="fc-mobile-bottom-link" onclick="document.getElementById('fc-cart-btn').click()">
+    <div style="position:relative;display:inline-block;">
+      <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      <span class="fc-mobile-cart-badge" id="fc-mobile-bottom-cart">0</span>
+    </div>
+    <span>Bag</span>
+  </button>
+</nav>
+
+<!-- CART DRAWER -->
+<div class="fc-overlay" id="fc-overlay"></div>
+<div class="fc-cart-drawer" id="fc-cart-drawer">
+  <div class="fc-cart-header">
+    <div style="font-weight:800;font-size:1.1rem;font-family:var(--fc-font-d)">Your Bag (<span id="fc-cart-count-title">0</span>)</div>
+    <button id="fc-cart-close" style="font-size:24px;">&times;</button>
+  </div>
+  <div class="fc-cart-body" id="fc-cart-body">
+    <div id="fc-cart-empty" style="text-align:center;padding:3rem 1rem;">
+      <div style="font-size:40px;margin-bottom:1rem;">&#x1F6CD;&#xFE0F;</div>
+      <p style="font-weight:700;margin-bottom:8px;">Your bag is empty</p>
+      <p style="color:#6B7280;font-size:13px;margin-bottom:1.5rem;">Add some styles you love!</p>
+      <a href="/preview/shop.html" class="fc-btn fc-btn--primary fc-btn--sm">DISCOVER SHOP</a>
+    </div>
+    <div id="fc-cart-items"></div>
+  </div>
+  <div class="fc-cart-footer" id="fc-cart-footer" style="display:none">
+    <div style="display:flex;justify-content:space-between;font-weight:700;margin-bottom:4px;"><span>Subtotal</span><span id="fc-cart-subtotal">&#x9F3;0</span></div>
+    <div style="display:flex;justify-content:space-between;color:#059669;font-size:12px;font-weight:700;margin-bottom:1rem;"><span>&#x26A1; Online Pay 5% Off</span><span id="fc-cart-discount">-&#x9F3;0</span></div>
+    <a href="/preview/checkout.html" class="fc-btn fc-btn--primary fc-btn--full">CHECKOUT &bull; 5% OFF ONLINE</a>
+  </div>
+</div>
 
 <script>
-'use strict';
-const fcConfig={currency:'৳',freeShippingThreshold:2000};
-let cartItems=JSON.parse(localStorage.getItem('fc_cart')||'[]');
-let wishlistItems=JSON.parse(localStorage.getItem('fc_wishlist')||'[]');
-let quickAddProductId=null,modalQty=1;
-let activeFilters={category:[],size:[],color:[],availability:[]};
-
-// All products data
 const allProducts = [
-  {id:1,name:'Oversized Essential Tee',cat:'men',catLabel:'Men · Tops',price:1199,origPrice:1499,sale:true,emoji:'🧥',rating:4.5,reviews:128,colors:['#0A0A0A','#E5E3DF','#5C4B3A'],badge:'NEW'},
-  {id:2,name:'Premium Casual Shirt',cat:'men',catLabel:'Men · Shirts',price:1799,sale:false,emoji:'👕',rating:5,reviews:84,colors:['#8B7355','#2C4A3E','#0A0A0A']},
-  {id:3,name:'Minimal Co-Ord Set',cat:'women',catLabel:'Women · Co-Ords',price:2499,origPrice:2999,sale:true,emoji:'👗',rating:4,reviews:67,colors:['#C28453','#0A0A0A'],badge:'NEW'},
-  {id:4,name:'Everyday Kurti',cat:'women',catLabel:'Women · Kurtis',price:1349,origPrice:1799,sale:true,emoji:'🩱',rating:4.5,reviews:156,colors:['#8B3A3A','#2C4A6A','#E5E3DF','#3A5A3A']},
-  {id:5,name:'Relaxed Fit Cargo',cat:'men',catLabel:'Men · Bottoms',price:2199,sale:false,emoji:'👖',rating:4,reviews:92,colors:['#3A3A2A','#0A0A0A']},
-  {id:6,name:'Minimal Gold Necklace',cat:'jewelry',catLabel:'Jewelry · Necklaces',price:899,sale:false,emoji:'💍',rating:5,reviews:203,colors:['#C28453'],badge:'NEW'},
-  {id:7,name:'Classic Polo Shirt',cat:'men',catLabel:'Men · Tops',price:1399,sale:false,emoji:'👔',rating:4.5,reviews:341,colors:['#0A0A0A','#2C4A6A','#E5E3DF']},
-  {id:8,name:'Everyday Tote Bag',cat:'accessories',catLabel:'Accessories · Bags',price:2299,origPrice:2799,sale:true,emoji:'👜',rating:5,reviews:278,colors:['#0A0A0A','#8B7355']},
-  {id:9,name:'Statement Earrings',cat:'jewelry',catLabel:'Jewelry · Earrings',price:699,sale:false,emoji:'💎',rating:4.5,reviews:189,colors:['#C28453']},
-  {id:10,name:'Premium Leather Belt',cat:'accessories',catLabel:'Accessories · Belts',price:1099,sale:false,emoji:'👝',rating:4,reviews:145,colors:['#0A0A0A','#8B7355']},
-  {id:11,name:'Oversized Shirt',cat:'women',catLabel:'Women · Tops',price:1599,sale:false,emoji:'🧣',rating:4.5,reviews:112,colors:['#E5E3DF','#0A0A0A','#3A5A3A']},
-  {id:12,name:'Kids Essential Tee',cat:'kids',catLabel:'Kids · Tops',price:749,sale:false,emoji:'🎽',rating:4.5,reviews:89,colors:['#E5E3DF','#2C4A6A','#8B3A3A']},
-  {id:13,name:'Oxidized Earrings',cat:'jewelry',catLabel:'Jewelry · Earrings',price:549,sale:false,emoji:'✨',rating:4,reviews:76,colors:['#C28453']},
-  {id:14,name:'Fashion Sunglasses',cat:'accessories',catLabel:'Accessories · Eyewear',price:1299,sale:false,emoji:'🕶️',rating:4.5,reviews:134,colors:['#0A0A0A','#8B7355']},
-  {id:15,name:'Essential Kids Set',cat:'kids',catLabel:'Kids · Sets',price:1499,sale:false,emoji:'🧒',rating:5,reviews:56,colors:['#2C4A6A','#8B3A3A']},
-  {id:16,name:'Woven Shoulder Bag',cat:'accessories',catLabel:'Accessories · Bags',price:1899,origPrice:2299,sale:true,emoji:'👛',rating:4,reviews:98,colors:['#C0A080','#0A0A0A']},
-  {id:17,name:'Elegant Silk Top',cat:'women',catLabel:'Women · Tops',price:2099,sale:false,emoji:'👚',rating:4.5,reviews:143,colors:['#E5E3DF','#8B3A3A','#C28453']},
-  {id:18,name:'Slim Fit Trouser',cat:'men',catLabel:'Men · Bottoms',price:1899,origPrice:2199,sale:true,emoji:'👔',rating:4,reviews:167,colors:['#0A0A0A','#2C2B29','#8B7355']},
-  {id:19,name:'Minimal Pendant',cat:'jewelry',catLabel:'Jewelry · Pendants',price:649,sale:false,emoji:'🔮',rating:4.5,reviews:88,colors:['#C28453']},
-  {id:20,name:'Canvas Backpack',cat:'accessories',catLabel:'Accessories · Bags',price:2499,sale:false,emoji:'🎒',rating:4,reviews:112,colors:['#0A0A0A','#3A3A2A']}
+  {id:1,name:'Oversized Heavyweight Essential Tee',cat:'men',catLabel:'Men &bull; 220 GSM Cotton',price:1199,origPrice:1499,img:'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80',imgHover:'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=800&q=80',badge:'BESTSELLER'},
+  {id:2,name:'Executive Pique Cotton Polo',cat:'men',catLabel:'Men &bull; Polos',price:1799,origPrice:2199,img:'https://images.unsplash.com/photo-1625910513413-5bc6754b2d56?auto=format&fit=crop&w=800&q=80',imgHover:'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=800&q=80',badge:'NEW DROP'},
+  {id:3,name:'Minimalist Linen Co-Ord Set',cat:'women',catLabel:'Women &bull; Co-Ords',price:2499,origPrice:2999,img:'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80',imgHover:'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80',badge:'LIMITED'},
+  {id:4,name:'Contemporary Everyday Kurti',cat:'women',catLabel:'Women &bull; Ethnic',price:1450,origPrice:1899,img:'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=80',imgHover:'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80',badge:'SALE'},
+  {id:5,name:'Relaxed Tapered Cargo Pants',cat:'men',catLabel:'Men &bull; Bottoms',price:2199,origPrice:2650,img:'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=80',imgHover:'https://images.unsplash.com/photo-1517445312882-bc9910d016b7?auto=format&fit=crop&w=800&q=80',badge:'TRENDING'},
+  {id:6,name:'Heavyweight Oversized Hoodie',cat:'men',catLabel:'Men &bull; Hoodies',price:2350,origPrice:2850,img:'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80',imgHover:'https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=800&q=80',badge:'HOT'},
+  {id:7,name:'Structured Minimal Canvas Tote',cat:'accessories',catLabel:'Accessories &bull; Bags',price:899,origPrice:1200,img:'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80',imgHover:'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=800&q=80',badge:'ECO'},
+  {id:8,name:'Signature Falcon Leather Wallet',cat:'accessories',catLabel:'Accessories &bull; Leather',price:1250,origPrice:1650,img:'https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=800&q=80',imgHover:'https://images.unsplash.com/photo-1606503829058-299f18a5e84f?auto=format&fit=crop&w=800&q=80',badge:'PREMIUM'},
+  {id:9,name:'Minimal Steel Curb Chain',cat:'accessories',catLabel:'Accessories &bull; Jewelry',price:799,origPrice:999,img:'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80',imgHover:'https://images.unsplash.com/photo-1611591475168-7c8742b78b0e?auto=format&fit=crop&w=800&q=80',badge:'NEW'},
+  {id:10,name:'Vintage Washed Graphic Tee',cat:'men',catLabel:'Men &bull; Streetwear',price:1299,origPrice:1599,img:'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80',imgHover:'https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=800&q=80',badge:'TOP SELLER'},
+  {id:11,name:'Breathable Linen Relaxed Shirt',cat:'women',catLabel:'Women &bull; Shirts',price:1650,origPrice:2100,img:'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',imgHover:'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=800&q=80',badge:'SUMMER'},
+  {id:12,name:'Junior Comfort Cotton Set',cat:'kids',catLabel:'Kids &bull; Essentials',price:850,origPrice:1150,img:'https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=800&q=80',imgHover:'https://images.unsplash.com/photo-1508807526345-15e9b5f4eaff?auto=format&fit=crop&w=800&q=80',badge:'KIDS'}
 ];
 
-let filteredProducts=[...allProducts];
+let cart = JSON.parse(localStorage.getItem('fc_cart')||'[]');
+let wishlist = JSON.parse(localStorage.getItem('fc_wishlist')||'[]');
+let filtered = [...allProducts];
 
-function renderProducts(products){
-  const grid=document.getElementById('fc-product-grid');
-  if(!grid) return;
-  if(!products.length){grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:5rem 2rem;"><p style="font-size:1.125rem;font-weight:700;margin-bottom:.5rem;">No products found</p><p style="color:var(--fc-gray-400);">Try adjusting your filters</p></div>';return;}
-  grid.innerHTML=products.map(p=>`
+function renderProducts(products) {
+  const grid = document.getElementById('fc-product-grid');
+  const count = document.getElementById('fc-shop-count');
+  if (count) count.textContent = 'Showing ' + products.length + ' products';
+  if (!grid) return;
+  grid.innerHTML = products.map(p => {
+    const disc = Math.round(p.price * 0.95);
+    return `
     <article class="fc-product-card" data-id="${p.id}">
       <div class="fc-product-card__image-wrap">
-        <img class="fc-product-card__image" src="${p.img}" alt="${p.name}" loading="lazy" />
-        <img class="fc-product-card__image--hover" src="${p.imgHover || p.img}" alt="${p.name} Back View" loading="lazy" />
-        <div class="fc-product-card__badge">${p.badge?`<span class="fc-badge fc-badge--new">${p.badge}</span>`:''}${p.sale?'<span class="fc-badge fc-badge--sale">SALE</span>':''}</div>
-        <button class="fc-wishlist-btn ${wishlistItems.includes(p.id)?'is-active':''}" onclick="toggleWishlist(this,${p.id})" aria-label="Add to wishlist">
+        <img class="fc-product-card__image" src="${p.img}" alt="${p.name}" loading="lazy"/>
+        <img class="fc-product-card__image--hover" src="${p.imgHover||p.img}" alt="${p.name} back" loading="lazy"/>
+        <div class="fc-product-card__badge">
+          ${p.badge?`<span class="fc-badge fc-badge--new">${p.badge}</span>`:''}
+          <span class="fc-badge fc-badge--discount">5% ONLINE</span>
+        </div>
+        <button class="fc-wishlist-btn ${wishlist.includes(p.id)?'is-active':''}" onclick="toggleWishlist(this,${p.id})" aria-label="Wishlist">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </button>
-        <button class="fc-quick-add-btn" onclick="openQuickAdd(${p.id},'${p.name}','${fcConfig.currency}${p.price.toLocaleString()}')" aria-label="Quick add ${p.name}">+ QUICK ADD</button>
+        <button class="fc-quick-add-btn" onclick="addToCart(${p.id},'${p.name.replace(/'/g,'&#39;')}',${p.price})">+ QUICK ADD</button>
       </div>
       <div class="fc-product-card__info">
-        <p class="fc-product-card__category">${p.catLabel}</p>
-        <h2 class="fc-product-card__name"><a href="product.html">${p.name}</a></h2>
+        <div class="fc-product-card__category">${p.catLabel}</div>
+        <div class="fc-product-card__name"><a href="/preview/product.html">${p.name}</a></div>
         <div class="fc-product-card__price-row">
-          ${p.sale?`<span class="fc-price fc-price-sale">${fcConfig.currency}${p.price.toLocaleString()}</span><span class="fc-price fc-price-original">${fcConfig.currency}${p.origPrice.toLocaleString()}</span><span class="fc-discount-badge">-${Math.round((1-p.price/p.origPrice)*100)}%</span>`:`<span class="fc-price">${fcConfig.currency}${p.price.toLocaleString()}</span>`}
+          <span class="fc-price-main">&#x9F3;${p.price.toLocaleString()}</span>
+          ${p.origPrice?`<span class="fc-price-orig">&#x9F3;${p.origPrice.toLocaleString()}</span>`:''}
         </div>
-        <div class="fc-product-card__rating">
-          <div class="fc-stars">${[1,2,3,4,5].map(s=>`<span class="fc-star${s<=Math.floor(p.rating)?'':' fc-star--empty'}">★</span>`).join('')}</div>
-          <span class="fc-rating-count">(${p.reviews})</span>
-        </div>
-        <div class="fc-color-dots">${p.colors.map((c,i)=>`<span class="fc-color-dot${i===0?' is-selected':''}" style="background:${c};" title="Color"></span>`).join('')}</div>
+        <div class="fc-online-pay-pill">&#x1F4B3; &#x9F3;${disc.toLocaleString()} with 5% online pay</div>
       </div>
-    </article>`).join('');
-  document.getElementById('fc-results-text').innerHTML=`Showing <strong>${products.length}</strong> products`;
+    </article>`;
+  }).join('');
 }
 
-function sortProducts(val){
-  let sorted=[...filteredProducts];
-  if(val==='price-low')sorted.sort((a,b)=>a.price-b.price);
-  else if(val==='price-high')sorted.sort((a,b)=>b.price-a.price);
-  else if(val==='rating')sorted.sort((a,b)=>b.rating-a.rating);
-  else if(val==='newest')sorted.sort((a,b)=>b.id-a.id);
-  renderProducts(sorted);
+function filterProducts(cat, btn) {
+  document.querySelectorAll('.fc-filter-chip').forEach(c=>c.classList.remove('is-active'));
+  if(btn) btn.classList.add('is-active');
+  filtered = cat==='all' ? [...allProducts] : allProducts.filter(p=>p.cat===cat);
+  renderProducts(filtered);
 }
 
-function applyFilter(type,val,checked){
-  if(checked){if(!activeFilters[type].includes(val))activeFilters[type].push(val);}
-  else{activeFilters[type]=activeFilters[type].filter(v=>v!==val);}
-  filterAndRender();
-  renderChips();
+function addToCart(id, name, price) {
+  const ex = cart.find(i=>i.id===id);
+  if(ex) { ex.qty = (ex.qty||1)+1; }
+  else { cart.push({id,name,price,qty:1}); }
+  localStorage.setItem('fc_cart', JSON.stringify(cart));
+  updateCartUI();
+  openCart();
+  updateSidebar();
 }
 
-function toggleSizeFilter(btn,size){
-  btn.classList.toggle('is-selected');
-  const checked=btn.classList.contains('is-selected');
-  applyFilter('size',size,checked);
+function removeFromCart(idx) {
+  cart.splice(idx,1);
+  localStorage.setItem('fc_cart', JSON.stringify(cart));
+  updateCartUI();
+  updateSidebar();
 }
 
-function toggleColorFilter(swatch,color){
-  swatch.classList.toggle('is-selected');
-  const checked=swatch.classList.contains('is-selected');
-  applyFilter('color',color,checked);
+function toggleWishlist(btn, id) {
+  if(wishlist.includes(id)){ wishlist=wishlist.filter(i=>i!==id); btn.classList.remove('is-active'); }
+  else { wishlist.push(id); btn.classList.add('is-active'); }
+  localStorage.setItem('fc_wishlist', JSON.stringify(wishlist));
 }
 
-function applyPriceFilter(){
-  const min=parseFloat(document.getElementById('fc-price-min').value)||0;
-  const max=parseFloat(document.getElementById('fc-price-max').value)||Infinity;
-  activeFilters.priceMin=min;activeFilters.priceMax=max;
-  filterAndRender();
-}
-
-function filterAndRender(){
-  filteredProducts=allProducts.filter(p=>{
-    if(activeFilters.category.length&&!activeFilters.category.includes(p.cat))return false;
-    if(activeFilters.availability.includes('sale')&&!p.sale)return false;
-    if(activeFilters.priceMin&&p.price<activeFilters.priceMin)return false;
-    if(activeFilters.priceMax&&p.price>activeFilters.priceMax)return false;
-    return true;
+function updateCartUI() {
+  const total = cart.reduce((s,i)=>s+(i.qty||1),0);
+  ['fc-cart-count','fc-cart-count-title','fc-mobile-bottom-cart'].forEach(id=>{
+    const el = document.getElementById(id); if(el) el.textContent = total;
   });
-  renderProducts(filteredProducts);
+  const empty = document.getElementById('fc-cart-empty');
+  const footer = document.getElementById('fc-cart-footer');
+  const items = document.getElementById('fc-cart-items');
+  if(total===0){ if(empty)empty.style.display='block'; if(footer)footer.style.display='none'; if(items)items.innerHTML=''; return; }
+  if(empty)empty.style.display='none'; if(footer)footer.style.display='block';
+  const subtotal = cart.reduce((s,i)=>s+(i.price*(i.qty||1)),0);
+  const disc = Math.round(subtotal*0.05);
+  const sub=document.getElementById('fc-cart-subtotal'); if(sub) sub.textContent='à§³'+subtotal.toLocaleString();
+  const dsc=document.getElementById('fc-cart-discount'); if(dsc) dsc.textContent='-à§³'+disc.toLocaleString();
+  if(items) items.innerHTML=cart.map((item,idx)=>`
+    <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #E5E7EB;align-items:center;">
+      <div style="flex:1;"><div style="font-weight:700;font-size:13px;">${item.name}</div>
+      <div style="font-size:12px;color:#6B7280;">à§³${item.price.toLocaleString()} &times; ${item.qty||1}</div></div>
+      <button onclick="removeFromCart(${idx})" style="color:#DC2626;font-size:12px;">Remove</button>
+    </div>`).join('');
 }
 
-function renderChips(){
-  const container=document.getElementById('fc-active-filters');
-  const all=[...activeFilters.category.map(v=>({type:'category',val:v})),...activeFilters.size.map(v=>({type:'size',val:v})),...activeFilters.color.map(v=>({type:'color',val:v}))];
-  if(!all.length){container.style.display='none';return;}
-  container.style.display='flex';
-  container.innerHTML=all.map(f=>`<span class="fc-filter-chip">${f.val}<button onclick="removeChip('${f.type}','${f.val}')">✕</button></span>`).join('');
+function updateSidebar() {
+  const subtotal = cart.reduce((s,i)=>s+(i.price*(i.qty||1)),0) || 2999;
+  const disc = Math.round(subtotal*0.05);
+  const net = subtotal - disc;
+  const s=document.getElementById('sidebar-subtotal'); if(s) s.textContent='à§³'+subtotal.toLocaleString();
+  const d=document.getElementById('sidebar-discount'); if(d) d.textContent='-à§³'+disc.toLocaleString();
+  const t=document.getElementById('sidebar-total'); if(t) t.textContent='à§³'+net.toLocaleString();
 }
 
-function removeChip(type,val){
-  activeFilters[type]=activeFilters[type].filter(v=>v!==val);
-  document.querySelectorAll(`input[value="${val}"]`).forEach(i=>i.checked=false);
-  document.querySelectorAll('.fc-size-btn').forEach(b=>{if(b.textContent===val)b.classList.remove('is-selected');});
-  filterAndRender();renderChips();
-}
+function openCart() { document.getElementById('fc-cart-drawer').classList.add('is-open'); document.getElementById('fc-overlay').classList.add('is-visible'); }
+function closeCart() { document.getElementById('fc-cart-drawer').classList.remove('is-open'); document.getElementById('fc-overlay').classList.remove('is-visible'); }
 
-function clearAllFilters(){
-  activeFilters={category:[],size:[],color:[],availability:[]};
-  delete activeFilters.priceMin;delete activeFilters.priceMax;
-  document.querySelectorAll('.fc-filter-sidebar input[type=checkbox]').forEach(i=>i.checked=false);
-  document.querySelectorAll('.fc-size-btn.is-selected').forEach(b=>b.classList.remove('is-selected'));
-  document.querySelectorAll('.fc-swatch.is-selected').forEach(s=>s.classList.remove('is-selected'));
-  filteredProducts=[...allProducts];
-  renderProducts(filteredProducts);renderChips();
-}
+document.getElementById('fc-cart-btn').addEventListener('click', openCart);
+document.getElementById('fc-cart-close').addEventListener('click', closeCart);
+document.getElementById('fc-overlay').addEventListener('click', closeCart);
 
-function toggleFilterGroup(id){
-  document.getElementById(id).classList.toggle('is-open');
-}
-
-function setView(v){
-  const grid=document.getElementById('fc-product-grid');
-  document.getElementById('view-grid').classList.toggle('is-active',v==='grid');
-  document.getElementById('view-list').classList.toggle('is-active',v==='list');
-  if(v==='list'){grid.style.gridTemplateColumns='1fr';}
-  else{grid.style.gridTemplateColumns='';}
-}
-
-// Cart
-function formatPrice(n){return fcConfig.currency+n.toLocaleString('en-BD');}
-function saveCart(){localStorage.setItem('fc_cart',JSON.stringify(cartItems));updateCartUI();}
-function saveWishlist(){localStorage.setItem('fc_wishlist',JSON.stringify(wishlistItems));}
-function showToast(msg,type='success'){const c=document.getElementById('fc-toast-container');const t=document.createElement('div');t.className='fc-toast';t.textContent=(type==='success'?'✓ ':'✕ ')+msg;c.appendChild(t);setTimeout(()=>t.remove(),3500);}
-function updateCartUI(){
-  const count=cartItems.reduce((s,i)=>s+i.qty,0);
-  document.getElementById('fc-cart-count').textContent=count;
-  document.getElementById('fc-cart-count-text').textContent=`(${count} item${count!==1?'s':''})`;
-  const sub=cartItems.reduce((s,i)=>s+i.price*i.qty,0);
-  document.getElementById('fc-cart-subtotal').textContent=formatPrice(sub);
-  document.getElementById('fc-cart-total').textContent=formatPrice(sub);
-  const bodyEl=document.getElementById('fc-cart-items');
-  const emptyEl=document.getElementById('fc-cart-empty');
-  const footerEl=document.getElementById('fc-cart-footer');
-  if(!cartItems.length){emptyEl.style.display='flex';bodyEl.innerHTML='';footerEl.style.display='none';}
-  else{
-    emptyEl.style.display='none';footerEl.style.display='block';
-    bodyEl.innerHTML=cartItems.map(item=>`<div class="fc-cart-item"><div class="fc-cart-item__img">${item.emoji||'🧥'}</div><div class="fc-cart-item__details"><p class="fc-cart-item__name">${item.name}</p><p class="fc-cart-item__meta">${item.size?'Size: '+item.size:''}</p><div class="fc-cart-item__price-row"><div class="fc-cart-item__qty"><button class="fc-qty-btn" onclick="changeItemQty('${item.id}',-1)">−</button><span class="fc-qty-val">${item.qty}</span><button class="fc-qty-btn" onclick="changeItemQty('${item.id}',1)">+</button></div><span class="fc-price">${formatPrice(item.price*item.qty)}</span></div><button class="fc-cart-item__remove" onclick="removeCartItem('${item.id}')">Remove</button></div></div>`).join('');
-  }
-}
-function changeItemQty(id,d){const item=cartItems.find(i=>i.id===id);if(item){item.qty=Math.max(1,item.qty+d);saveCart();}}
-function removeCartItem(id){cartItems=cartItems.filter(i=>i.id!==id);saveCart();}
-
-// Drawers
-const overlay=document.getElementById('fc-overlay');
-const drawer=document.getElementById('fc-mobile-drawer');
-const hamburger=document.getElementById('fc-hamburger');
-function closeAll(){
-  drawer.classList.remove('is-open');
-  overlay.classList.remove('is-visible');
-  hamburger.classList.remove('is-open');
-  document.getElementById('fc-cart-drawer').classList.remove('is-open');
-  document.getElementById('fc-search-overlay').classList.remove('is-open');
-  document.getElementById('fc-quick-add-modal').classList.remove('is-open');
-  document.body.style.overflow='';
-}
-function openCart(){document.getElementById('fc-cart-drawer').classList.add('is-open');overlay.classList.add('is-visible');overlay.onclick=closeAll;document.body.style.overflow='hidden';}
-hamburger.addEventListener('click',()=>{drawer.classList.toggle('is-open');overlay.classList.toggle('is-visible');hamburger.classList.toggle('is-open');document.body.style.overflow=drawer.classList.contains('is-open')?'hidden':'';if(drawer.classList.contains('is-open'))overlay.onclick=closeAll;});
-document.getElementById('fc-drawer-close').addEventListener('click',closeAll);
-document.getElementById('fc-cart-btn').addEventListener('click',openCart);
-document.getElementById('fc-cart-close').addEventListener('click',closeAll);
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll();});
-
-// Quick Add
-function openQuickAdd(id,name,price){
-  quickAddProductId=id;modalQty=1;
-  document.getElementById('fc-modal-name').textContent=name;
-  document.getElementById('fc-modal-price').textContent=price;
-  document.getElementById('fc-modal-qty').textContent=1;
-  document.querySelectorAll('.fc-size-btn').forEach(b=>b.classList.remove('is-selected'));
-  const modal=document.getElementById('fc-quick-add-modal');
-  modal.classList.add('is-open');overlay.classList.add('is-visible');
-  document.body.style.overflow='hidden';overlay.onclick=closeAll;
-}
-document.getElementById('fc-modal-close').addEventListener('click',closeAll);
-document.querySelectorAll('.fc-size-btn').forEach(b=>b.addEventListener('click',()=>{if(b.classList.contains('is-disabled'))return;document.querySelectorAll('.fc-size-btn').forEach(x=>x.classList.remove('is-selected'));b.classList.add('is-selected');}));
-document.querySelectorAll('#fc-modal-colors .fc-color-btn').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('#fc-modal-colors .fc-color-btn').forEach(x=>x.classList.remove('is-selected'));b.classList.add('is-selected');}));
-function changeModalQty(d){modalQty=Math.max(1,modalQty+d);document.getElementById('fc-modal-qty').textContent=modalQty;}
-function addToCartFromModal(){
-  const sb=document.querySelector('.fc-size-btn.is-selected');
-  if(!sb){showToast('Please select a size','error');return;}
-  const p=allProducts.find(x=>x.id===quickAddProductId)||{name:'Product',price:1199,emoji:'🧥'};
-  const id=String(p.id)+'-'+sb.textContent;
-  const existing=cartItems.find(i=>i.id===id);
-  if(existing)existing.qty+=modalQty;
-  else cartItems.push({id,name:p.name,price:p.price,qty:modalQty,size:sb.textContent,emoji:p.emoji});
-  saveCart();closeAll();showToast(p.name+' added to cart!');openCart();
-}
-
-// Wishlist
-function toggleWishlist(btn,id){
-  const idx=wishlistItems.indexOf(id);
-  if(idx>-1){wishlistItems.splice(idx,1);btn.classList.remove('is-active');showToast('Removed from wishlist');}
-  else{wishlistItems.push(id);btn.classList.add('is-active');showToast('Added to wishlist ♥');}
-  saveWishlist();
-}
-
-// Search
-const searchOverlay=document.getElementById('fc-search-overlay');
-const searchInput=document.getElementById('fc-search-input');
-document.getElementById('fc-search-btn').addEventListener('click',()=>{searchOverlay.classList.add('is-open');document.body.style.overflow='hidden';setTimeout(()=>searchInput.focus(),100);});
-document.getElementById('fc-search-close').addEventListener('click',()=>{searchOverlay.classList.remove('is-open');document.body.style.overflow='';searchInput.value='';document.getElementById('fc-search-results').innerHTML='';});
-let st;
-searchInput.addEventListener('input',()=>{
-  clearTimeout(st);st=setTimeout(()=>{
-    const q=searchInput.value.trim().toLowerCase();
-    const res=document.getElementById('fc-search-results');
-    if(!q){res.innerHTML='';return;}
-    const matches=allProducts.filter(p=>p.name.toLowerCase().includes(q)||p.catLabel.toLowerCase().includes(q));
-    res.innerHTML=matches.length?matches.map(p=>`<a href="product.html" class="fc-search-result-item"><div class="fc-search-result-item__img">${p.emoji}</div><div class="fc-search-result-item__info"><p class="fc-search-result-item__category">${p.catLabel}</p><p class="fc-search-result-item__name">${p.name}</p></div><span class="fc-search-result-item__price">${fcConfig.currency}${p.price.toLocaleString()}</span></a>`).join(''):'<p style="color:var(--fc-gray-400);text-align:center;padding:2rem;">No results found</p>';
-  },280);
+document.querySelectorAll('.fc-pm-row').forEach(row => {
+  row.addEventListener('click', () => {
+    document.querySelectorAll('.fc-pm-row').forEach(r=>r.classList.remove('is-selected'));
+    row.classList.add('is-selected');
+  });
 });
 
-// Header scroll
-const hdr=document.getElementById('fc-header');
-window.addEventListener('scroll',()=>{if(window.scrollY>60)hdr.classList.add('fc-header--scrolled');else hdr.classList.remove('fc-header--scrolled');},{passive:true});
+let promoIdx=0;
+function showSlide(i){ const slides=document.querySelectorAll('.fc-promo-slide'); slides.forEach(s=>s.classList.remove('is-active')); promoIdx=(i+slides.length)%slides.length; slides[promoIdx].classList.add('is-active'); }
+function nextSlide(){ showSlide(promoIdx+1); }
+function prevSlide(){ showSlide(promoIdx-1); }
+setInterval(nextSlide,4500);
 
-// Init
-updateCartUI();
+function copyCode(code) { if(navigator.clipboard) navigator.clipboard.writeText(code); alert('Code ' + code + ' copied! Get 5% off with online payments.'); }
+
 renderProducts(allProducts);
+updateCartUI();
+updateSidebar();
 </script>
 </body>
 </html>
