@@ -261,7 +261,7 @@
       overflow: hidden; transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s; position: relative;
     }
     .fc-product-card:hover { transform: translateY(-4px); box-shadow: var(--fc-card-shadow); border-color: var(--fc-border-hover); }
-    .fc-product-card__image-wrap { position: relative; aspect-ratio: 3/4; overflow: hidden; background: var(--fc-surface); }
+    .fc-product-card__image-wrap { position: relative; aspect-ratio: 1 / 1; overflow: hidden; background: var(--fc-surface); }
     .fc-product-card__image, .fc-product-card__image--hover {
       position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
       transition: opacity 0.35s, transform 0.4s;
@@ -361,6 +361,14 @@
       .fc-whatsapp-float { bottom: 74px; right: 16px; padding: 10px; border-radius: 50%; }
       .fc-whatsapp-text { display: none; }
     }
+  
+    .fc-code-badge {
+      display: inline-flex; align-items: center; padding: 2px 6px;
+      font-size: 10px; font-weight: 700; font-family: monospace;
+      background: var(--fc-surface-hover); color: var(--fc-text-muted);
+      border: 1px solid var(--fc-border); border-radius: 4px;
+    }
+
   </style>
 </head>
 <body>
@@ -420,6 +428,7 @@
       <a href="shop.html?cat=accessories" class="fc-nav-link">Accessories</a>
       <a href="shop.html?discount=true" class="fc-nav-link fc-nav-link--discount">5% Online Pay &#9889;</a>
       <a href="shop.html" class="fc-nav-link fc-nav-link--sale">Sale</a>
+      <a href="cpanel.html" class="fc-nav-link" style="color:var(--fc-accent);font-weight:700;">&#9881;&#65039; CPanel</a>
     </div>
   </nav>
 </header>
@@ -546,21 +555,7 @@
 </div>
 
 <script>
-const allProducts = [
-  {id:1,name:'Oversized Heavyweight Essential Tee',cat:'men',catLabel:'Men &bull; 220 GSM Cotton',price:1199,origPrice:1499,img:'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80',imgHover:'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=800&q=80',badge:'BESTSELLER'},
-  {id:2,name:'Executive Pique Cotton Polo',cat:'men',catLabel:'Men &bull; Polos',price:1799,origPrice:2199,img:'https://images.unsplash.com/photo-1625910513413-5bc6754b2d56?auto=format&fit=crop&w=800&q=80',imgHover:'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=800&q=80',badge:'NEW DROP'},
-  {id:3,name:'Minimalist Linen Co-Ord Set',cat:'women',catLabel:'Women &bull; Co-Ords',price:2499,origPrice:2999,img:'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80',imgHover:'https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80',badge:'LIMITED'},
-  {id:4,name:'Contemporary Everyday Kurti',cat:'women',catLabel:'Women &bull; Ethnic',price:1450,origPrice:1899,img:'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=80',imgHover:'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80',badge:'SALE'},
-  {id:5,name:'Relaxed Tapered Cargo Pants',cat:'men',catLabel:'Men &bull; Bottoms',price:2199,origPrice:2650,img:'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=80',imgHover:'https://images.unsplash.com/photo-1517445312882-bc9910d016b7?auto=format&fit=crop&w=800&q=80',badge:'TRENDING'},
-  {id:6,name:'Heavyweight Oversized Hoodie',cat:'men',catLabel:'Men &bull; Hoodies',price:2350,origPrice:2850,img:'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80',imgHover:'https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=800&q=80',badge:'HOT'},
-  {id:7,name:'Structured Minimal Canvas Tote',cat:'accessories',catLabel:'Accessories &bull; Bags',price:899,origPrice:1200,img:'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80',imgHover:'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=800&q=80',badge:'ECO'},
-  {id:8,name:'Signature Falcon Leather Wallet',cat:'accessories',catLabel:'Accessories &bull; Leather',price:1250,origPrice:1650,img:'https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=800&q=80',imgHover:'https://images.unsplash.com/photo-1606503829058-299f18a5e84f?auto=format&fit=crop&w=800&q=80',badge:'PREMIUM'},
-  {id:9,name:'Minimal Steel Curb Chain',cat:'accessories',catLabel:'Accessories &bull; Jewelry',price:799,origPrice:999,img:'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80',imgHover:'https://images.unsplash.com/photo-1611591475168-7c8742b78b0e?auto=format&fit=crop&w=800&q=80',badge:'NEW'},
-  {id:10,name:'Vintage Washed Graphic Tee',cat:'men',catLabel:'Men &bull; Streetwear',price:1299,origPrice:1599,img:'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80',imgHover:'https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=800&q=80',badge:'TOP SELLER'},
-  {id:11,name:'Breathable Linen Relaxed Shirt',cat:'women',catLabel:'Women &bull; Shirts',price:1650,origPrice:2100,img:'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',imgHover:'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?auto=format&fit=crop&w=800&q=80',badge:'SUMMER'},
-  {id:12,name:'Junior Comfort Cotton Set',cat:'kids',catLabel:'Kids &bull; Essentials',price:850,origPrice:1150,img:'https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=800&q=80',imgHover:'https://images.unsplash.com/photo-1508807526345-15e9b5f4eaff?auto=format&fit=crop&w=800&q=80',badge:'KIDS'}
-];
-
+const allProducts = JSON.parse(localStorage.getItem('fc_products') || '[]');
 let cart = JSON.parse(localStorage.getItem('fc_cart')||'[]');
 let wishlist = JSON.parse(localStorage.getItem('fc_wishlist')||'[]');
 let filtered = [...allProducts];
@@ -608,7 +603,8 @@ function filterProducts(cat, btn) {
   renderProducts(filtered);
 }
 
-function addToCart(id, name, price) {
+function addToCart(id, name, price, code) {
+  code = code || ('FC-' + id);
   const ex = cart.find(i=>i.id===id);
   if(ex) { ex.qty = (ex.qty||1)+1; }
   else { cart.push({id,name,price,qty:1}); }

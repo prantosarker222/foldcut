@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('fc_theme');
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = saved ? saved : (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {}
+    })();
+  </script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>FOLDCUT &bull; Admin Control Panel (CPanel)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Hind+Siliguri:wght@500;600;700&display=swap" rel="stylesheet"/>
+  
+  <style>
+    :root {
+      --fc-bg:             #FFFFFF;
+      --fc-surface:        #F9FAFB;
+      --fc-surface-card:   #FFFFFF;
+      --fc-surface-hover:  #F3F4F6;
+      --fc-border:         #E5E7EB;
+      --fc-border-hover:   #D1D5DB;
+      --fc-text-main:      #111827;
+      --fc-text-muted:     #4B5563;
+      --fc-text-subtle:    #9CA3AF;
+      --fc-primary:        #0A382C;
+      --fc-primary-hover:  #06241C;
+      --fc-primary-light:  #E8F5F1;
+      --fc-accent:         #C28453;
+      --fc-accent-light:   #DFA26E;
+      --fc-accent-dark:    #985B2E;
+      --fc-accent-bg:      #FDF8F4;
+      --fc-discount:       #059669;
+      --fc-discount-bg:    #ECFDF5;
+      --fc-error:          #DC2626;
+      --fc-card-shadow:    0 4px 20px rgba(0,0,0,0.06);
+      --fc-header-bg:      rgba(255, 255, 255, 0.96);
+      --fc-nav-bar-bg:     #FFFFFF;
+      --fc-input-bg:       #FFFFFF;
+      --fc-font-display:   'Plus Jakarta Sans', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --fc-font-body:      'Inter', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --fc-radius-sm:      6px;
+      --fc-radius-md:      10px;
+      --fc-radius-lg:      16px;
+    }
+
+    [data-theme="dark"] {
+      --fc-bg:             #0B110F;
+      --fc-surface:        #121A17;
+      --fc-surface-card:   #16221E;
+      --fc-surface-hover:  #1E2E28;
+      --fc-border:         #243730;
+      --fc-border-hover:   #344F45;
+      --fc-text-main:      #F9FAFB;
+      --fc-text-muted:     #9CA3AF;
+      --fc-text-subtle:    #6B7280;
+      --fc-primary:        #105946;
+      --fc-primary-hover:  #146D55;
+      --fc-primary-light:  rgba(16, 89, 70, 0.28);
+      --fc-accent:         #DFA26E;
+      --fc-accent-light:   #E8B991;
+      --fc-accent-dark:    #C28453;
+      --fc-accent-bg:      rgba(223, 162, 110, 0.12);
+      --fc-discount:       #10B981;
+      --fc-discount-bg:    rgba(16, 185, 129, 0.15);
+      --fc-card-shadow:    0 6px 24px rgba(0,0,0,0.45);
+      --fc-header-bg:      rgba(11, 17, 15, 0.94);
+      --fc-nav-bar-bg:     #121A17;
+      --fc-input-bg:       #16221E;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--fc-font-body);
+      color: var(--fc-text-main);
+      background: var(--fc-bg);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    h1, h2, h3, h4, .fc-brand-name { font-family: var(--fc-font-display); }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    .fc-taka { font-family: 'Hind Siliguri', 'Inter', sans-serif; font-weight: 700; }
+
+    /* Header */
+    .fc-cpanel-header {
+      background: var(--fc-header-bg);
+      border-bottom: 1px solid var(--fc-border);
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+    .fc-header-inner {
+      max-width: 1400px; margin: 0 auto; padding: 0.875rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .fc-brand { display: flex; align-items: center; gap: 10px; }
+    .fc-brand-badge {
+      background: var(--fc-primary); color: #FFF; font-size: 10px; font-weight: 800;
+      padding: 3px 8px; border-radius: 4px; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .fc-brand-name { font-size: 1.25rem; font-weight: 800; letter-spacing: 0.1em; }
+    .fc-brand-accent { color: var(--fc-accent); }
+
+    .fc-header-actions { display: flex; align-items: center; gap: 10px; }
+    .fc-btn-head {
+      display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px;
+      font-size: 12px; font-weight: 700; border-radius: var(--fc-radius-sm);
+      border: 1px solid var(--fc-border); background: var(--fc-surface);
+      color: var(--fc-text-main); transition: all 0.2s;
+    }
+    .fc-btn-head:hover { background: var(--fc-surface-hover); border-color: var(--fc-accent); }
+    .fc-btn-head.primary { background: var(--fc-primary); color: #FFF; border-color: var(--fc-primary); }
+    .fc-btn-head.primary:hover { background: var(--fc-primary-hover); }
+
+    .fc-theme-toggle-btn {
+      width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; color: var(--fc-text-main); border: 1px solid var(--fc-border);
+      background: var(--fc-surface); cursor: pointer; transition: all 0.2s;
+    }
+    .fc-theme-toggle-btn:hover { background: var(--fc-surface-hover); transform: rotate(15deg); }
+
+    /* Layout */
+    .fc-cpanel-container {
+      max-width: 1400px; width: 100%; margin: 1.5rem auto; padding: 0 1.5rem; flex: 1;
+    }
+
+    /* Stat Cards */
+    .fc-stats-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;
+    }
+    .fc-stat-card {
+      background: var(--fc-surface-card); border: 1px solid var(--fc-border);
+      border-radius: var(--fc-radius-md); padding: 1.25rem; box-shadow: var(--fc-card-shadow);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .fc-stat-val { font-size: 1.75rem; font-weight: 800; color: var(--fc-text-main); line-height: 1.1; margin-top: 4px; font-family: var(--fc-font-display); }
+    .fc-stat-lbl { font-size: 12px; font-weight: 600; color: var(--fc-text-subtle); text-transform: uppercase; letter-spacing: 0.05em; }
+    .fc-stat-icon {
+      width: 44px; height: 44px; border-radius: 10px; background: var(--fc-primary-light);
+      display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--fc-primary);
+    }
+
+    /* Tabs */
+    .fc-tabs-bar {
+      display: flex; gap: 8px; border-bottom: 2px solid var(--fc-border); margin-bottom: 1.5rem; overflow-x: auto;
+    }
+    .fc-tab-btn {
+      padding: 10px 18px; font-size: 13px; font-weight: 700; color: var(--fc-text-muted);
+      border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s; white-space: nowrap;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .fc-tab-btn:hover { color: var(--fc-accent); }
+    .fc-tab-btn.is-active {
+      color: var(--fc-primary); border-bottom-color: var(--fc-primary);
+    }
+    [data-theme="dark"] .fc-tab-btn.is-active {
+      color: var(--fc-accent); border-bottom-color: var(--fc-accent);
+    }
+
+    /* Section Content */
+    .fc-tab-content { display: none; }
+    .fc-tab-content.is-active { display: block; }
+
+    /* Control Bar */
+    .fc-control-bar {
+      background: var(--fc-surface-card); border: 1px solid var(--fc-border);
+      border-radius: var(--fc-radius-md); padding: 1rem; margin-bottom: 1.25rem;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    .fc-search-box {
+      display: flex; align-items: center; gap: 8px; background: var(--fc-surface);
+      border: 1.5px solid var(--fc-border); border-radius: var(--fc-radius-sm); padding: 8px 12px; flex: 1; max-width: 360px;
+    }
+    .fc-search-box input {
+      border: none; background: transparent; outline: none; font-size: 13px;
+      color: var(--fc-text-main); width: 100%; font-family: inherit;
+    }
+    .fc-filter-select {
+      padding: 8px 12px; border-radius: var(--fc-radius-sm); border: 1.5px solid var(--fc-border);
+      background: var(--fc-surface); color: var(--fc-text-main); font-size: 13px; outline: none; font-family: inherit;
+    }
+
+    /* Table & Grid */
+    .fc-table-card {
+      background: var(--fc-surface-card); border: 1px solid var(--fc-border);
+      border-radius: var(--fc-radius-md); overflow: hidden; box-shadow: var(--fc-card-shadow);
+    }
+    .fc-table {
+      width: 100%; border-collapse: collapse; text-align: left; font-size: 13px;
+    }
+    .fc-table th {
+      background: var(--fc-surface); padding: 12px 16px; font-weight: 700;
+      color: var(--fc-text-muted); text-transform: uppercase; font-size: 11px; letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--fc-border);
+    }
+    .fc-table td {
+      padding: 14px 16px; border-bottom: 1px solid var(--fc-border); vertical-align: middle;
+    }
+    .fc-table tr:hover td { background: var(--fc-surface-hover); }
+
+    /* 1:1 Aspect Ratio Preview Thumb */
+    .fc-prod-thumb-1x1 {
+      width: 56px; height: 56px; aspect-ratio: 1 / 1; border-radius: 6px;
+      overflow: hidden; border: 1px solid var(--fc-border); background: var(--fc-surface);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .fc-prod-thumb-1x1 img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+
+    .fc-code-badge {
+      display: inline-flex; align-items: center; gap: 4px; padding: 2px 7px;
+      border-radius: 4px; font-family: monospace; font-size: 11px; font-weight: 700;
+      background: var(--fc-primary-light); color: var(--fc-primary); border: 1px solid rgba(10,56,44,0.15);
+      cursor: pointer;
+    }
+    [data-theme="dark"] .fc-code-badge {
+      background: rgba(223, 162, 110, 0.15); color: var(--fc-accent); border-color: rgba(223, 162, 110, 0.3);
+    }
+
+    .fc-badge-pill {
+      display: inline-block; padding: 2px 8px; border-radius: 99px; font-size: 10px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .fc-badge-pill.new { background: var(--fc-primary); color: #FFF; }
+    .fc-badge-pill.sale { background: var(--fc-accent); color: #FFF; }
+    .fc-badge-pill.discount { background: var(--fc-discount); color: #FFF; }
+
+    /* Action Buttons */
+    .fc-action-btn {
+      padding: 6px 10px; border-radius: 4px; font-size: 12px; font-weight: 600;
+      border: 1px solid var(--fc-border); background: var(--fc-surface);
+      color: var(--fc-text-main); display: inline-flex; align-items: center; gap: 4px;
+      transition: all 0.2s;
+    }
+    .fc-action-btn:hover { border-color: var(--fc-accent); background: var(--fc-surface-hover); }
+    .fc-action-btn.delete { color: var(--fc-error); border-color: rgba(220, 38, 38, 0.2); }
+    .fc-action-btn.delete:hover { background: rgba(220, 38, 38, 0.1); }
+
+    /* Empty state */
+    .fc-empty-box {
+      text-align: center; padding: 4rem 1.5rem;
+    }
+    .fc-empty-icon { font-size: 48px; margin-bottom: 1rem; opacity: 0.7; }
+    .fc-empty-title { font-size: 1.25rem; font-weight: 800; margin-bottom: 6px; }
+    .fc-empty-sub { font-size: 13px; color: var(--fc-text-muted); margin-bottom: 1.5rem; max-width: 440px; margin-left: auto; margin-right: auto; }
+
+    /* Modal / Form */
+    .fc-modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 500;
+      display: none; align-items: center; justify-content: center; padding: 1rem;
+      backdrop-filter: blur(4px);
+    }
+    .fc-modal-overlay.is-active { display: flex; }
+    .fc-modal-box {
+      background: var(--fc-surface-card); border: 1px solid var(--fc-border);
+      border-radius: var(--fc-radius-lg); width: 100%; max-width: 680px; max-height: 90vh;
+      overflow-y: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.3); display: flex; flex-direction: column;
+    }
+    .fc-modal-head {
+      padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--fc-border);
+      display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0;
+      background: var(--fc-surface-card); z-index: 10;
+    }
+    .fc-modal-title { font-size: 1.15rem; font-weight: 800; }
+    .fc-modal-close { font-size: 24px; color: var(--fc-text-subtle); line-height: 1; cursor: pointer; }
+    .fc-modal-close:hover { color: var(--fc-text-main); }
+    .fc-modal-body { padding: 1.5rem; }
+    .fc-modal-foot {
+      padding: 1rem 1.5rem; border-top: 1px solid var(--fc-border);
+      display: flex; align-items: center; justify-content: flex-end; gap: 10px;
+      position: sticky; bottom: 0; background: var(--fc-surface-card); z-index: 10;
+    }
+
+    .fc-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .fc-form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 1rem; }
+    .fc-form-group.full { grid-column: span 2; }
+    .fc-form-label { font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--fc-text-muted); letter-spacing: 0.04em; }
+    .fc-input, .fc-select, .fc-textarea {
+      width: 100%; padding: 10px 12px; border-radius: var(--fc-radius-sm);
+      border: 1.5px solid var(--fc-border); background: var(--fc-surface);
+      color: var(--fc-text-main); font-size: 14px; font-family: inherit; outline: none;
+      transition: border-color 0.2s;
+    }
+    .fc-input:focus, .fc-select:focus, .fc-textarea:focus { border-color: var(--fc-accent); }
+    .fc-textarea { min-height: 80px; resize: vertical; }
+
+    .fc-code-input-wrap { display: flex; gap: 8px; }
+    .fc-gen-btn {
+      padding: 0 12px; background: var(--fc-primary-light); color: var(--fc-primary);
+      border: 1px solid var(--fc-border); border-radius: var(--fc-radius-sm); font-size: 11px;
+      font-weight: 700; white-space: nowrap;
+    }
+    [data-theme="dark"] .fc-gen-btn { background: var(--fc-surface-hover); color: var(--fc-accent); }
+
+    /* 1:1 Image Preview in Form */
+    .fc-img-preview-box {
+      width: 120px; height: 120px; aspect-ratio: 1 / 1; border-radius: 8px;
+      border: 2px dashed var(--fc-border); background: var(--fc-surface);
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+      margin-top: 6px; position: relative;
+    }
+    .fc-img-preview-box img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Size pills selector */
+    .fc-size-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .fc-size-pill {
+      display: flex; align-items: center; gap: 6px; padding: 6px 12px;
+      border-radius: var(--fc-radius-sm); border: 1.5px solid var(--fc-border);
+      background: var(--fc-surface); cursor: pointer; font-size: 12px; font-weight: 700;
+    }
+    .fc-size-pill input { accent-color: var(--fc-primary); }
+
+    /* Toast Notification */
+    .fc-toast {
+      position: fixed; bottom: 24px; right: 24px; z-index: 1000;
+      background: #111827; color: #FFF; padding: 12px 20px; border-radius: 8px;
+      font-size: 13px; font-weight: 600; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      display: none; align-items: center; gap: 10px; border: 1px solid rgba(255,255,255,0.1);
+      animation: slideIn 0.3s ease;
+    }
+    [data-theme="dark"] .fc-toast { background: var(--fc-surface-card); border-color: var(--fc-border); }
+    @keyframes slideIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    @media (max-width: 768px) {
+      .fc-form-grid { grid-template-columns: 1fr; }
+      .fc-form-group.full { grid-column: span 1; }
+      .fc-stats-grid { grid-template-columns: 1fr 1fr; }
+      .fc-table th:nth-child(3), .fc-table td:nth-child(3) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="fc-cpanel-header">
+  <div class="fc-header-inner">
+    <div class="fc-brand">
+      <a href="index.html" class="fc-brand-name">FOLD<span class="fc-brand-accent">CUT</span></a>
+      <span class="fc-brand-badge">CPanel v2.0</span>
+    </div>
+    <div class="fc-header-actions">
+      <a href="shop.html" class="fc-btn-head" target="_blank">&#128717;&#65039; View Shop</a>
+      <a href="index.html" class="fc-btn-head" target="_blank">&#127760; Live Site</a>
+      <button class="fc-btn-head primary" onclick="openProductModal()">+ Add Product</button>
+      <button class="fc-theme-toggle-btn" id="fc-theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="fc-cpanel-container">
+  <!-- Top Stat Cards -->
+  <div class="fc-stats-grid">
+    <div class="fc-stat-card">
+      <div>
+        <div class="fc-stat-lbl">Total Products</div>
+        <div class="fc-stat-val" id="stat-total-prods">0</div>
+      </div>
+      <div class="fc-stat-icon">&#128085;</div>
+    </div>
+    <div class="fc-stat-card">
+      <div>
+        <div class="fc-stat-lbl">In Stock Items</div>
+        <div class="fc-stat-val" id="stat-in-stock">0</div>
+      </div>
+      <div class="fc-stat-icon">&#9989;</div>
+    </div>
+    <div class="fc-stat-card">
+      <div>
+        <div class="fc-stat-lbl">Customer Orders</div>
+        <div class="fc-stat-val" id="stat-total-orders">0</div>
+      </div>
+      <div class="fc-stat-icon">&#128230;</div>
+    </div>
+    <div class="fc-stat-card">
+      <div>
+        <div class="fc-stat-lbl">Catalog Value</div>
+        <div class="fc-stat-val" id="stat-total-val"><span class="fc-taka">&#2547;</span>0</div>
+      </div>
+      <div class="fc-stat-icon">&#128176;</div>
+    </div>
+  </div>
+
+  <!-- Navigation Tabs -->
+  <div class="fc-tabs-bar">
+    <button class="fc-tab-btn is-active" onclick="switchTab('products', this)">
+      &#128085; Products Catalog (<span id="tab-count-prods">0</span>)
+    </button>
+    <button class="fc-tab-btn" onclick="switchTab('orders', this)">
+      &#128230; Orders &amp; Leads (<span id="tab-count-orders">0</span>)
+    </button>
+    <button class="fc-tab-btn" onclick="switchTab('settings', this)">
+      &#9881;&#65039; Store Settings
+    </button>
+    <button class="fc-tab-btn" onclick="switchTab('backup', this)">
+      &#128190; Backup / JSON Import &amp; Export
+    </button>
+  </div>
+
+  <!-- Tab 1: Products Catalog -->
+  <section id="tab-products" class="fc-tab-content is-active">
+    <div class="fc-control-bar">
+      <div class="fc-search-box">
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="prod-search" placeholder="Search by name, code (e.g. FC-101)..." oninput="filterProductList()"/>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <select class="fc-filter-select" id="prod-filter-cat" onchange="filterProductList()">
+          <option value="all">All Categories</option>
+          <option value="men">Men</option>
+          <option value="women">Women</option>
+          <option value="kids">Kids</option>
+          <option value="accessories">Accessories</option>
+        </select>
+        <button class="fc-btn-head primary" onclick="openProductModal()">+ Add New Product</button>
+      </div>
+    </div>
+
+    <div class="fc-table-card">
+      <table class="fc-table" id="prods-table">
+        <thead>
+          <tr>
+            <th style="width:70px;">1:1 Ratio</th>
+            <th>Product &amp; Unique Code</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th style="text-align:right;">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="prods-table-body">
+          <!-- Dynamically populated -->
+        </tbody>
+      </table>
+      <div id="prods-empty" class="fc-empty-box" style="display:none;">
+        <div class="fc-empty-icon">&#128085;</div>
+        <h3 class="fc-empty-title">No products in catalog</h3>
+        <p class="fc-empty-sub">All previous products have been removed. You can now add all your products manually with custom unique codes and 1:1 image ratios.</p>
+        <button class="fc-btn-head primary" onclick="openProductModal()">+ Add Your First Product</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tab 2: Orders -->
+  <section id="tab-orders" class="fc-tab-content">
+    <div class="fc-control-bar">
+      <div style="font-weight:700;font-size:14px;">Customer Orders &amp; Checkout Submissions</div>
+      <button class="fc-action-btn" onclick="clearOrders()">&#128465; Clear Orders Log</button>
+    </div>
+    <div class="fc-table-card">
+      <table class="fc-table">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Customer &amp; Phone</th>
+            <th>Delivery Address</th>
+            <th>Items</th>
+            <th>Payment</th>
+            <th>Total</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody id="orders-table-body">
+          <!-- Dynamically populated -->
+        </tbody>
+      </table>
+      <div id="orders-empty" class="fc-empty-box" style="display:none;">
+        <div class="fc-empty-icon">&#128230;</div>
+        <h3 class="fc-empty-title">No orders received yet</h3>
+        <p class="fc-empty-sub">When customers checkout on FOLDCUT, their order inquiries will appear here automatically.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tab 3: Store Settings -->
+  <section id="tab-settings" class="fc-tab-content">
+    <div class="fc-table-card" style="padding:2rem;max-width:720px;">
+      <h3 style="margin-bottom:1.25rem;">Store &amp; WhatsApp Configuration</h3>
+      <div class="fc-form-group">
+        <label class="fc-form-label">WhatsApp Number for 1-Click Orders</label>
+        <input type="text" id="cfg-whatsapp" class="fc-input" placeholder="8801700000000"/>
+        <span style="font-size:11px;color:var(--fc-text-subtle);">Include country code without '+' (e.g. 8801712345678)</span>
+      </div>
+      <div class="fc-form-group">
+        <label class="fc-form-label">Promo Code for 5% Online Payment Discount</label>
+        <input type="text" id="cfg-promo" class="fc-input" placeholder="ONLINE5"/>
+      </div>
+      <div class="fc-form-group">
+        <label class="fc-form-label">Free Delivery Threshold Amount (৳)</label>
+        <input type="number" id="cfg-free-del" class="fc-input" placeholder="2000"/>
+      </div>
+      <div class="fc-form-group">
+        <label class="fc-form-label">Announcement Bar Text</label>
+        <input type="text" id="cfg-announcement" class="fc-input" placeholder="Pay Online & Get 5% Instant Discount • Free Delivery over ৳2,000"/>
+      </div>
+      <button class="fc-btn-head primary" style="margin-top:1rem;padding:12px 24px;" onclick="saveStoreSettings()">&#128190; Save Store Settings</button>
+    </div>
+  </section>
+
+  <!-- Tab 4: Backup & JSON -->
+  <section id="tab-backup" class="fc-tab-content">
+    <div class="fc-table-card" style="padding:2rem;max-width:800px;">
+      <h3 style="margin-bottom:1rem;">Catalog Backup, Export &amp; JSON Import</h3>
+      <p style="font-size:13px;color:var(--fc-text-muted);margin-bottom:1.5rem;">
+        Export your product catalog to JSON file for safekeeping, or paste / import products in bulk anytime.
+      </p>
+
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem;">
+        <button class="fc-btn-head primary" onclick="exportProductsJSON()">&#128190; Download products.json</button>
+        <button class="fc-btn-head" onclick="copyCatalogJSON()">&#128203; Copy Catalog JSON to Clipboard</button>
+        <button class="fc-btn-head" style="color:var(--fc-error);border-color:rgba(220,38,38,0.3);" onclick="confirmWipeAll()">&#128465; Wipe All Products</button>
+      </div>
+
+      <div class="fc-form-group">
+        <label class="fc-form-label">Import / Paste JSON Catalog Data</label>
+        <textarea id="import-json-area" class="fc-textarea" style="min-height:160px;font-family:monospace;font-size:12px;" placeholder='[{"id":1,"code":"FC-101","name":"...","price":1200}]'></textarea>
+      </div>
+      <button class="fc-btn-head primary" onclick="importProductsJSON()">&#10549; Import JSON Data</button>
+    </div>
+  </section>
+</main>
+
+<!-- Product Add / Edit Modal -->
+<div class="fc-modal-overlay" id="product-modal">
+  <div class="fc-modal-box">
+    <div class="fc-modal-head">
+      <div class="fc-modal-title" id="modal-title">+ Add New Product</div>
+      <div class="fc-modal-close" onclick="closeProductModal()">&times;</div>
+    </div>
+    <div class="fc-modal-body">
+      <form id="product-form" onsubmit="handleProductSubmit(event)">
+        <input type="hidden" id="prod-id"/>
+        
+        <div class="fc-form-grid">
+          <!-- Product Name -->
+          <div class="fc-form-group full">
+            <label class="fc-form-label">Product Name *</label>
+            <input type="text" id="f-name" class="fc-input" placeholder="e.g. Heavyweight 220 GSM Drop-Shoulder Tee" required/>
+          </div>
+
+          <!-- Unique Product Code / SKU -->
+          <div class="fc-form-group">
+            <label class="fc-form-label">Unique Product Code / SKU *</label>
+            <div class="fc-code-input-wrap">
+              <input type="text" id="f-code" class="fc-input" placeholder="e.g. FC-101" required/>
+              <button type="button" class="fc-gen-btn" onclick="generateAutoCode()">Auto Code</button>
+            </div>
+            <span style="font-size:10px;color:var(--fc-text-subtle);">Used for customer tracking &amp; WhatsApp orders</span>
+          </div>
+
+          <!-- Category -->
+          <div class="fc-form-group">
+            <label class="fc-form-label">Category *</label>
+            <select id="f-cat" class="fc-select" onchange="updateCatLabelSuggestion()">
+              <option value="men">Men</option>
+              <option value="women">Women</option>
+              <option value="kids">Kids</option>
+              <option value="accessories">Accessories</option>
+            </select>
+          </div>
+
+          <!-- Category Sub-Label -->
+          <div class="fc-form-group">
+            <label class="fc-form-label">Category Sub-Label</label>
+            <input type="text" id="f-catlabel" class="fc-input" placeholder="e.g. Men • 220 GSM Cotton"/>
+          </div>
+
+          <!-- Badge -->
+          <div class="fc-form-group">
+            <label class="fc-form-label">Display Badge (Optional)</label>
+            <select id="f-badge" class="fc-select">
+              <option value="">None</option>
+              <option value="NEW DROP">NEW DROP</option>
+              <option value="BESTSELLER">BESTSELLER</option>
+              <option value="LIMITED">LIMITED</option>
+              <option value="SALE">SALE</option>
+              <option value="HOT">HOT</option>
+              <option value="TRENDING">TRENDING</option>
+              <option value="PREMIUM">PREMIUM</option>
+            </select>
+          </div>
+
+          <!-- Price -->
+          <div class="fc-form-group">
+            <label class="fc-form-label">Selling Price (৳) *</label>
+            <input type="number" id="f-price" class="fc-input" placeholder="1199" required min="1"/>
+          </div>
+
+          <!-- Original Price -->
+          <div class="fc-form-group">
+            <label class="fc-form-label">Regular / Original Price (৳, optional)</label>
+            <input type="number" id="f-origprice" class="fc-input" placeholder="1499" min="0"/>
+          </div>
+
+          <!-- Main Image URL (1:1 Ratio) -->
+          <div class="fc-form-group full">
+            <label class="fc-form-label">Main Image URL (1:1 Aspect Ratio) *</label>
+            <input type="url" id="f-img" class="fc-input" placeholder="https://images.unsplash.com/photo-..." required oninput="previewImg('f-img','img-prev-1')"/>
+            <div style="display:flex;align-items:center;gap:12px;margin-top:6px;">
+              <div class="fc-img-preview-box" id="img-prev-1">
+                <span style="font-size:10px;color:var(--fc-text-subtle);text-align:center;">1:1 Preview</span>
+              </div>
+              <span style="font-size:11px;color:var(--fc-text-muted);">Will be displayed in high-definition square (1:1) ratio.</span>
+            </div>
+          </div>
+
+          <!-- Hover / Secondary Image URL -->
+          <div class="fc-form-group full">
+            <label class="fc-form-label">Hover / Back Image URL (Optional, 1:1)</label>
+            <input type="url" id="f-imghover" class="fc-input" placeholder="https://images.unsplash.com/photo-..." oninput="previewImg('f-imghover','img-prev-2')"/>
+            <div style="display:flex;align-items:center;gap:12px;margin-top:6px;">
+              <div class="fc-img-preview-box" id="img-prev-2">
+                <span style="font-size:10px;color:var(--fc-text-subtle);text-align:center;">1:1 Hover</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="fc-form-group full">
+            <label class="fc-form-label">Description / Material Details</label>
+            <textarea id="f-desc" class="fc-textarea" placeholder="Premium 220+ GSM combed compact cotton. Pre-shrunk fabric, bio-washed, tailored for supreme comfort."></textarea>
+          </div>
+
+          <!-- Available Sizes -->
+          <div class="fc-form-group full">
+            <label class="fc-form-label">Available Sizes</label>
+            <div class="fc-size-pills">
+              <label class="fc-size-pill"><input type="checkbox" name="sizes" value="S" checked/> S</label>
+              <label class="fc-size-pill"><input type="checkbox" name="sizes" value="M" checked/> M</label>
+              <label class="fc-size-pill"><input type="checkbox" name="sizes" value="L" checked/> L</label>
+              <label class="fc-size-pill"><input type="checkbox" name="sizes" value="XL" checked/> XL</label>
+              <label class="fc-size-pill"><input type="checkbox" name="sizes" value="XXL"/> XXL</label>
+              <label class="fc-size-pill"><input type="checkbox" name="sizes" value="Free Size"/> Free Size</label>
+            </div>
+          </div>
+
+          <!-- Stock & Featured -->
+          <div class="fc-form-group">
+            <label class="fc-form-label">Stock Status</label>
+            <select id="f-stock" class="fc-select">
+              <option value="true">In Stock</option>
+              <option value="false">Out of Stock</option>
+            </select>
+          </div>
+
+          <div class="fc-form-group">
+            <label class="fc-form-label">Feature on Homepage</label>
+            <select id="f-featured" class="fc-select">
+              <option value="true">Yes (Show on Homepage)</option>
+              <option value="false">No (Shop Only)</option>
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="fc-modal-foot">
+      <button type="button" class="fc-btn-head" onclick="closeProductModal()">Cancel</button>
+      <button type="button" class="fc-btn-head primary" onclick="document.getElementById('product-form').requestSubmit()">Save Product</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div class="fc-toast" id="fc-toast">
+  <span id="fc-toast-msg">Saved!</span>
+</div>
+
+<script>
+// Data Store Management
+function getProducts() {
+  return JSON.parse(localStorage.getItem('fc_products') || '[]');
+}
+
+function saveProducts(products) {
+  localStorage.setItem('fc_products', JSON.stringify(products));
+  renderAll();
+}
+
+function getOrders() {
+  return JSON.parse(localStorage.getItem('fc_orders') || '[]');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('fc-toast');
+  document.getElementById('fc-toast-msg').textContent = msg;
+  t.style.display = 'flex';
+  setTimeout(() => { t.style.display = 'none'; }, 3000);
+}
+
+// Generate Unique Code
+function generateAutoCode(cat) {
+  cat = cat || document.getElementById('f-cat').value || 'men';
+  const prefixMap = { men: 'MEN', women: 'WMN', kids: 'KID', accessories: 'ACC' };
+  const prefix = prefixMap[cat] || 'FC';
+  const num = Math.floor(1000 + Math.random() * 9000);
+  const code = `FC-${prefix}-${num}`;
+  document.getElementById('f-code').value = code;
+  return code;
+}
+
+function updateCatLabelSuggestion() {
+  const cat = document.getElementById('f-cat').value;
+  const labelInput = document.getElementById('f-catlabel');
+  if (!labelInput.value || labelInput.value.includes('•')) {
+    const map = {
+      men: 'Men • Apparel',
+      women: 'Women • Fashion',
+      kids: 'Kids • Essentials',
+      accessories: 'Accessories • Lifestyle'
+    };
+    labelInput.value = map[cat] || 'Apparel';
+  }
+}
+
+// Render Dashboard
+function renderAll() {
+  const products = getProducts();
+  const orders = getOrders();
+
+  // Update Stats
+  document.getElementById('stat-total-prods').textContent = products.length;
+  document.getElementById('tab-count-prods').textContent = products.length;
+  document.getElementById('stat-in-stock').textContent = products.filter(p => p.stock !== false).length;
+  document.getElementById('stat-total-orders').textContent = orders.length;
+  document.getElementById('tab-count-orders').textContent = orders.length;
+
+  const totalVal = products.reduce((acc, p) => acc + (Number(p.price) || 0), 0);
+  document.getElementById('stat-total-val').innerHTML = '<span class="fc-taka">&#2547;</span>' + totalVal.toLocaleString();
+
+  // Render Table
+  renderProductTable(products);
+  renderOrdersTable(orders);
+}
+
+function renderProductTable(products) {
+  const tbody = document.getElementById('prods-table-body');
+  const emptyBox = document.getElementById('prods-empty');
+  const table = document.getElementById('prods-table');
+
+  if (products.length === 0) {
+    tbody.innerHTML = '';
+    table.style.display = 'none';
+    emptyBox.style.display = 'block';
+    return;
+  }
+
+  table.style.display = 'table';
+  emptyBox.style.display = 'none';
+
+  tbody.innerHTML = products.map((p, idx) => {
+    const isStock = p.stock !== false;
+    return `
+      <tr>
+        <td>
+          <div class="fc-prod-thumb-1x1">
+            <img src="${p.img || 'https://via.placeholder.com/150'}" alt="${p.name}"/>
+          </div>
+        </td>
+        <td>
+          <div style="font-weight:700;font-size:14px;color:var(--fc-text-main);">${p.name}</div>
+          <div style="display:flex;align-items:center;gap:6px;margin-top:4px;">
+            <span class="fc-code-badge" title="Click to copy" onclick="copyText('${p.code}')">${p.code || 'FC-' + p.id} &#128203;</span>
+            ${p.badge ? `<span class="fc-badge-pill ${p.badge.toLowerCase().includes('new')?'new':p.badge.toLowerCase().includes('sale')?'sale':'discount'}">${p.badge}</span>` : ''}
+          </div>
+        </td>
+        <td>
+          <div style="font-weight:600;text-transform:capitalize;">${p.cat}</div>
+          <div style="font-size:11px;color:var(--fc-text-subtle);">${p.catLabel || ''}</div>
+        </td>
+        <td>
+          <div style="font-weight:800;color:var(--fc-text-main);"><span class="fc-taka">&#2547;</span>${Number(p.price).toLocaleString()}</div>
+          ${p.origPrice ? `<div style="font-size:11px;color:var(--fc-text-subtle);text-decoration:line-through;"><span class="fc-taka">&#2547;</span>${Number(p.origPrice).toLocaleString()}</div>` : ''}
+        </td>
+        <td>
+          ${isStock ? '<span style="color:var(--fc-discount);font-weight:700;font-size:12px;">&#9679; In Stock</span>' : '<span style="color:var(--fc-error);font-weight:700;font-size:12px;">&#9679; Out of Stock</span>'}
+        </td>
+        <td style="text-align:right;">
+          <div style="display:inline-flex;gap:6px;">
+            <a href="product.html?id=${p.id}" target="_blank" class="fc-action-btn" title="View product page">&#128065;</a>
+            <button class="fc-action-btn" onclick="editProduct(${p.id})" title="Edit product">&#9998; Edit</button>
+            <button class="fc-action-btn" onclick="duplicateProduct(${p.id})" title="Duplicate">&#128203;</button>
+            <button class="fc-action-btn delete" onclick="deleteProduct(${p.id})" title="Delete">&#128465;</button>
+          </div>
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+function renderOrdersTable(orders) {
+  const tbody = document.getElementById('orders-table-body');
+  const emptyBox = document.getElementById('orders-empty');
+
+  if (orders.length === 0) {
+    tbody.innerHTML = '';
+    emptyBox.style.display = 'block';
+    return;
+  }
+
+  emptyBox.style.display = 'none';
+  tbody.innerHTML = orders.map(o => `
+    <tr>
+      <td style="font-family:monospace;font-weight:700;color:var(--fc-primary);">${o.id || 'ORD'}</td>
+      <td>
+        <div style="font-weight:700;">${o.name || 'Customer'}</div>
+        <div style="font-size:12px;color:var(--fc-text-muted);">${o.phone || 'N/A'}</div>
+      </td>
+      <td style="font-size:12px;max-width:200px;">${o.address || 'N/A'}, ${o.city || 'Dhaka'}</td>
+      <td style="font-size:12px;">${(o.items || []).map(i => `${i.name} (x${i.qty||1}) [${i.code||'FC'}]`).join('<br/>') || 'Items'}</td>
+      <td><span style="font-weight:700;text-transform:uppercase;font-size:11px;">${o.payment || 'COD'}</span></td>
+      <td style="font-weight:800;"><span class="fc-taka">&#2547;</span>${Number(o.total || 0).toLocaleString()}</td>
+      <td style="font-size:11px;color:var(--fc-text-subtle);">${new Date(o.createdAt || Date.now()).toLocaleDateString()}</td>
+    </tr>
+  `).join('');
+}
+
+// Filter
+function filterProductList() {
+  const query = document.getElementById('prod-search').value.toLowerCase();
+  const cat = document.getElementById('prod-filter-cat').value;
+  let products = getProducts();
+
+  if (cat !== 'all') {
+    products = products.filter(p => p.cat === cat);
+  }
+  if (query) {
+    products = products.filter(p => 
+      (p.name && p.name.toLowerCase().includes(query)) ||
+      (p.code && p.code.toLowerCase().includes(query)) ||
+      (p.cat && p.cat.toLowerCase().includes(query))
+    );
+  }
+  renderProductTable(products);
+}
+
+// Modal Handlers
+function openProductModal(isEdit) {
+  if (!isEdit) {
+    document.getElementById('modal-title').textContent = '+ Add New Product';
+    document.getElementById('prod-id').value = '';
+    document.getElementById('product-form').reset();
+    generateAutoCode('men');
+    updateCatLabelSuggestion();
+    document.getElementById('img-prev-1').innerHTML = '<span style="font-size:10px;color:var(--fc-text-subtle);">1:1 Preview</span>';
+    document.getElementById('img-prev-2').innerHTML = '<span style="font-size:10px;color:var(--fc-text-subtle);">1:1 Hover</span>';
+  }
+  document.getElementById('product-modal').classList.add('is-active');
+}
+
+function closeProductModal() {
+  document.getElementById('product-modal').classList.remove('is-active');
+}
+
+function previewImg(inputId, previewBoxId) {
+  const url = document.getElementById(inputId).value.trim();
+  const box = document.getElementById(previewBoxId);
+  if (url) {
+    box.innerHTML = `<img src="${url}" alt="Preview" onerror="this.src='https://via.placeholder.com/150?text=Invalid+Image+URL'"/>`;
+  } else {
+    box.innerHTML = '<span style="font-size:10px;color:var(--fc-text-subtle);">1:1 Preview</span>';
+  }
+}
+
+function handleProductSubmit(e) {
+  e.preventDefault();
+  const idVal = document.getElementById('prod-id').value;
+  const products = getProducts();
+
+  const selectedSizes = Array.from(document.querySelectorAll('input[name="sizes"]:checked')).map(cb => cb.value);
+
+  const productData = {
+    id: idVal ? Number(idVal) : Date.now(),
+    code: document.getElementById('f-code').value.trim() || generateAutoCode(),
+    name: document.getElementById('f-name').value.trim(),
+    cat: document.getElementById('f-cat').value,
+    catLabel: document.getElementById('f-catlabel').value.trim(),
+    badge: document.getElementById('f-badge').value,
+    price: Number(document.getElementById('f-price').value),
+    origPrice: document.getElementById('f-origprice').value ? Number(document.getElementById('f-origprice').value) : null,
+    img: document.getElementById('f-img').value.trim(),
+    imgHover: document.getElementById('f-imghover').value.trim() || document.getElementById('f-img').value.trim(),
+    desc: document.getElementById('f-desc').value.trim(),
+    sizes: selectedSizes.length ? selectedSizes : ['M', 'L', 'XL'],
+    stock: document.getElementById('f-stock').value === 'true',
+    featured: document.getElementById('f-featured').value === 'true',
+    updatedAt: Date.now()
+  };
+
+  if (idVal) {
+    const idx = products.findIndex(p => p.id === Number(idVal));
+    if (idx !== -1) products[idx] = productData;
+    showToast('Product updated successfully!');
+  } else {
+    products.unshift(productData);
+    showToast('Product added successfully!');
+  }
+
+  saveProducts(products);
+  closeProductModal();
+}
+
+function editProduct(id) {
+  const products = getProducts();
+  const p = products.find(i => i.id === id);
+  if (!p) return;
+
+  document.getElementById('modal-title').textContent = 'Edit Product: ' + (p.code || p.name);
+  document.getElementById('prod-id').value = p.id;
+  document.getElementById('f-name').value = p.name || '';
+  document.getElementById('f-code').value = p.code || 'FC-' + p.id;
+  document.getElementById('f-cat').value = p.cat || 'men';
+  document.getElementById('f-catlabel').value = p.catLabel || '';
+  document.getElementById('f-badge').value = p.badge || '';
+  document.getElementById('f-price').value = p.price || '';
+  document.getElementById('f-origprice').value = p.origPrice || '';
+  document.getElementById('f-img').value = p.img || '';
+  document.getElementById('f-imghover').value = p.imgHover || '';
+  document.getElementById('f-desc').value = p.desc || '';
+  document.getElementById('f-stock').value = p.stock !== false ? 'true' : 'false';
+  document.getElementById('f-featured').value = p.featured !== false ? 'true' : 'false';
+
+  document.querySelectorAll('input[name="sizes"]').forEach(cb => {
+    cb.checked = (p.sizes || []).includes(cb.value);
+  });
+
+  previewImg('f-img', 'img-prev-1');
+  previewImg('f-imghover', 'img-prev-2');
+
+  openProductModal(true);
+}
+
+function duplicateProduct(id) {
+  const products = getProducts();
+  const p = products.find(i => i.id === id);
+  if (!p) return;
+
+  const clone = JSON.parse(JSON.stringify(p));
+  clone.id = Date.now();
+  clone.name = clone.name + ' (Copy)';
+  clone.code = 'FC-' + Math.floor(1000 + Math.random() * 9000);
+  products.unshift(clone);
+  saveProducts(products);
+  showToast('Product duplicated as ' + clone.code);
+}
+
+function deleteProduct(id) {
+  if (!confirm('Are you sure you want to delete this product?')) return;
+  let products = getProducts();
+  products = products.filter(p => p.id !== id);
+  saveProducts(products);
+  showToast('Product deleted.');
+}
+
+function clearOrders() {
+  if (!confirm('Clear all stored order history?')) return;
+  localStorage.removeItem('fc_orders');
+  renderAll();
+  showToast('Order history cleared.');
+}
+
+function copyText(text) {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text);
+    showToast('Copied: ' + text);
+  }
+}
+
+// Backup & JSON
+function exportProductsJSON() {
+  const prods = getProducts();
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(prods, null, 2));
+  const downloadAnchor = document.createElement('a');
+  downloadAnchor.setAttribute("href", dataStr);
+  downloadAnchor.setAttribute("download", "foldcut-products.json");
+  document.body.appendChild(downloadAnchor);
+  downloadAnchor.click();
+  downloadAnchor.remove();
+  showToast('products.json downloaded!');
+}
+
+function copyCatalogJSON() {
+  const prods = getProducts();
+  copyText(JSON.stringify(prods, null, 2));
+}
+
+function importProductsJSON() {
+  const raw = document.getElementById('import-json-area').value.trim();
+  if (!raw) { alert('Please paste JSON data into the box.'); return; }
+  try {
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) throw new Error('Data must be an array of products');
+    saveProducts(parsed);
+    showToast(`Successfully imported ${parsed.length} products!`);
+    document.getElementById('import-json-area').value = '';
+    switchTab('products', document.querySelector('.fc-tab-btn'));
+  } catch (err) {
+    alert('Invalid JSON format: ' + err.message);
+  }
+}
+
+function confirmWipeAll() {
+  if (confirm('Are you ABSOLUTELY sure you want to remove ALL products from your store?')) {
+    saveProducts([]);
+    showToast('All products removed. Store is now empty.');
+  }
+}
+
+// Store Settings
+function saveStoreSettings() {
+  const settings = {
+    whatsapp: document.getElementById('cfg-whatsapp').value.trim() || '8801700000000',
+    promo: document.getElementById('cfg-promo').value.trim() || 'ONLINE5',
+    freeDelivery: Number(document.getElementById('cfg-free-del').value) || 2000,
+    announcement: document.getElementById('cfg-announcement').value.trim()
+  };
+  localStorage.setItem('fc_settings', JSON.stringify(settings));
+  showToast('Settings saved and active across store!');
+}
+
+function loadStoreSettings() {
+  const s = JSON.parse(localStorage.getItem('fc_settings') || '{}');
+  if (s.whatsapp) document.getElementById('cfg-whatsapp').value = s.whatsapp;
+  if (s.promo) document.getElementById('cfg-promo').value = s.promo;
+  if (s.freeDelivery) document.getElementById('cfg-free-del').value = s.freeDelivery;
+  if (s.announcement) document.getElementById('cfg-announcement').value = s.announcement;
+}
+
+// Tab Switching
+function switchTab(tabName, btn) {
+  document.querySelectorAll('.fc-tab-content').forEach(el => el.classList.remove('is-active'));
+  document.querySelectorAll('.fc-tab-btn').forEach(el => el.classList.remove('is-active'));
+  const target = document.getElementById('tab-' + tabName);
+  if (target) target.classList.add('is-active');
+  if (btn) btn.classList.add('is-active');
+}
+
+// Theme Handling
+function getActiveTheme() {
+  return document.documentElement.getAttribute('data-theme') || 
+         (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+}
+
+function updateThemeIcon() {
+  const isDark = getActiveTheme() === 'dark';
+  const btn = document.getElementById('fc-theme-toggle');
+  if (!btn) return;
+  btn.innerHTML = isDark ? 
+    '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>' : 
+    '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+}
+
+function toggleTheme() {
+  const current = getActiveTheme();
+  const nextTheme = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', nextTheme);
+  localStorage.setItem('fc_theme', nextTheme);
+  updateThemeIcon();
+}
+
+// Init
+renderAll();
+loadStoreSettings();
+updateThemeIcon();
+</script>
+</body>
+</html>

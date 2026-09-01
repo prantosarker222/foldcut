@@ -342,7 +342,7 @@
     .fc-product-card:hover {
       transform: translateY(-4px); box-shadow: var(--fc-card-shadow); border-color: var(--fc-border-hover);
     }
-    .fc-product-card__image-wrap { position: relative; aspect-ratio: 3/4; overflow: hidden; background: var(--fc-surface); }
+    .fc-product-card__image-wrap { position: relative; aspect-ratio: 1 / 1; overflow: hidden; background: var(--fc-surface); }
     .fc-product-card__image, .fc-product-card__image--hover {
       position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
       transition: opacity 0.35s, transform 0.4s;
@@ -498,6 +498,14 @@
       .fc-logo-name { font-size: 17px; }
       .fc-hero-actions .fc-btn { width: 100%; }
     }
+  
+    .fc-code-badge {
+      display: inline-flex; align-items: center; padding: 2px 6px;
+      font-size: 10px; font-weight: 700; font-family: monospace;
+      background: var(--fc-surface-hover); color: var(--fc-text-muted);
+      border: 1px solid var(--fc-border); border-radius: 4px;
+    }
+
   </style>
 </head>
 <body>
@@ -557,6 +565,7 @@
       <a href="shop.html?cat=accessories" class="fc-nav-link">Accessories</a>
       <a href="shop.html?discount=true" class="fc-nav-link fc-nav-link--discount">5% Online Pay &#9889;</a>
       <a href="shop.html" class="fc-nav-link fc-nav-link--sale">Sale</a>
+      <a href="cpanel.html" class="fc-nav-link" style="color:var(--fc-accent);font-weight:700;">&#9881;&#65039; CPanel</a>
     </div>
   </nav>
 </header>
@@ -1007,12 +1016,72 @@
     }
   }
 
-  function addToCart(id, name, price) {
+  function addToCart(id, name, price, code) {
+    code = code || ('FC-' + id);
     const ex = cart.find(i => i.id === id);
     if (ex) { ex.qty = (ex.qty || 1) + 1; }
-    else { cart.push({ id, name, price, qty: 1 }); }
+    else { cart.push({ id, name, price, code, qty: 1 }); }
     localStorage.setItem('fc_cart', JSON.stringify(cart));
     updateCartUI();
+
+  function renderHomeProducts() {
+    const prods = JSON.parse(localStorage.getItem('fc_products') || '[]');
+    const grid = document.getElementById('fc-home-products-grid');
+    if (!grid) return;
+    
+    if (prods.length === 0) {
+      grid.innerHTML = `
+        <div style="grid-column:1/-1;text-align:center;padding:3.5rem 1.5rem;background:var(--fc-surface-card);border:1px solid var(--fc-border);border-radius:12px;">
+          <div style="font-size:40px;margin-bottom:1rem;">&#128085;</div>
+          <h3 style="font-size:1.2rem;font-weight:800;margin-bottom:8px;font-family:var(--fc-font-display);">No Products in Store Yet</h3>
+          <p style="color:var(--fc-text-muted);font-size:13px;margin-bottom:1.5rem;max-width:400px;margin-left:auto;margin-right:auto;">
+            All sample items have been cleared. You can now add your own products with custom unique codes and 1:1 square photos.
+          </p>
+          <a href="cpanel.html" class="fc-btn fc-btn--primary fc-btn--sm">+ OPEN CPANEL TO ADD PRODUCTS</a>
+        </div>
+      `;
+      return;
+    }
+
+    const featured = prods.filter(p => p.featured !== false).slice(0, 8);
+    const displayList = featured.length ? featured : prods.slice(0, 8);
+
+    grid.innerHTML = displayList.map(p => {
+      const disc = Math.round(p.price * 0.95);
+      const code = p.code || ('FC-' + p.id);
+      return `
+      <article class="fc-product-card" data-id="${p.id}">
+        <div class="fc-product-card__image-wrap">
+          <a href="product.html?id=${p.id}">
+            <img class="fc-product-card__image" src="${p.img || 'https://via.placeholder.com/600'}" alt="${p.name}" loading="lazy" />
+            <img class="fc-product-card__image--hover" src="${p.imgHover || p.img || 'https://via.placeholder.com/600'}" alt="${p.name} back" loading="lazy" />
+          </a>
+          <div class="fc-product-card__badge">
+            ${p.badge ? `<span class="fc-badge fc-badge--new">${p.badge}</span>` : ''}
+            <span class="fc-badge fc-badge--discount">5% ONLINE</span>
+          </div>
+          <button class="fc-wishlist-btn" onclick="toggleWishlist(this,${p.id})" aria-label="Add to wishlist">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <button class="fc-quick-add-btn" onclick="addToCart(${p.id},'${p.name.replace(/'/g, "\'")}',${p.price},'${code}')">+ QUICK ADD</button>
+        </div>
+        <div class="fc-product-card__info">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:4px;">
+            <div class="fc-product-card__category">${p.catLabel || p.cat || 'Apparel'}</div>
+            <span class="fc-code-badge">${code}</span>
+          </div>
+          <div class="fc-product-card__name"><a href="product.html?id=${p.id}">${p.name}</a></div>
+          <div class="fc-product-card__price-row">
+            <span class="fc-price-main"><span class="fc-taka">&#2547;</span>${Number(p.price).toLocaleString()}</span>
+            ${p.origPrice ? `<span class="fc-price-orig"><span class="fc-taka">&#2547;</span>${Number(p.origPrice).toLocaleString()}</span>` : ''}
+          </div>
+          <div class="fc-online-pay-pill">&#128179; <span class="fc-taka">&#2547;</span>${disc.toLocaleString()} with 5% online pay</div>
+        </div>
+      </article>`;
+    }).join('');
+  }
+  renderHomeProducts();
+
     openCart();
   }
 
@@ -1020,6 +1089,65 @@
     cart.splice(idx, 1);
     localStorage.setItem('fc_cart', JSON.stringify(cart));
     updateCartUI();
+
+  function renderHomeProducts() {
+    const prods = JSON.parse(localStorage.getItem('fc_products') || '[]');
+    const grid = document.getElementById('fc-home-products-grid');
+    if (!grid) return;
+    
+    if (prods.length === 0) {
+      grid.innerHTML = `
+        <div style="grid-column:1/-1;text-align:center;padding:3.5rem 1.5rem;background:var(--fc-surface-card);border:1px solid var(--fc-border);border-radius:12px;">
+          <div style="font-size:40px;margin-bottom:1rem;">&#128085;</div>
+          <h3 style="font-size:1.2rem;font-weight:800;margin-bottom:8px;font-family:var(--fc-font-display);">No Products in Store Yet</h3>
+          <p style="color:var(--fc-text-muted);font-size:13px;margin-bottom:1.5rem;max-width:400px;margin-left:auto;margin-right:auto;">
+            All sample items have been cleared. You can now add your own products with custom unique codes and 1:1 square photos.
+          </p>
+          <a href="cpanel.html" class="fc-btn fc-btn--primary fc-btn--sm">+ OPEN CPANEL TO ADD PRODUCTS</a>
+        </div>
+      `;
+      return;
+    }
+
+    const featured = prods.filter(p => p.featured !== false).slice(0, 8);
+    const displayList = featured.length ? featured : prods.slice(0, 8);
+
+    grid.innerHTML = displayList.map(p => {
+      const disc = Math.round(p.price * 0.95);
+      const code = p.code || ('FC-' + p.id);
+      return `
+      <article class="fc-product-card" data-id="${p.id}">
+        <div class="fc-product-card__image-wrap">
+          <a href="product.html?id=${p.id}">
+            <img class="fc-product-card__image" src="${p.img || 'https://via.placeholder.com/600'}" alt="${p.name}" loading="lazy" />
+            <img class="fc-product-card__image--hover" src="${p.imgHover || p.img || 'https://via.placeholder.com/600'}" alt="${p.name} back" loading="lazy" />
+          </a>
+          <div class="fc-product-card__badge">
+            ${p.badge ? `<span class="fc-badge fc-badge--new">${p.badge}</span>` : ''}
+            <span class="fc-badge fc-badge--discount">5% ONLINE</span>
+          </div>
+          <button class="fc-wishlist-btn" onclick="toggleWishlist(this,${p.id})" aria-label="Add to wishlist">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <button class="fc-quick-add-btn" onclick="addToCart(${p.id},'${p.name.replace(/'/g, "\'")}',${p.price},'${code}')">+ QUICK ADD</button>
+        </div>
+        <div class="fc-product-card__info">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:4px;">
+            <div class="fc-product-card__category">${p.catLabel || p.cat || 'Apparel'}</div>
+            <span class="fc-code-badge">${code}</span>
+          </div>
+          <div class="fc-product-card__name"><a href="product.html?id=${p.id}">${p.name}</a></div>
+          <div class="fc-product-card__price-row">
+            <span class="fc-price-main"><span class="fc-taka">&#2547;</span>${Number(p.price).toLocaleString()}</span>
+            ${p.origPrice ? `<span class="fc-price-orig"><span class="fc-taka">&#2547;</span>${Number(p.origPrice).toLocaleString()}</span>` : ''}
+          </div>
+          <div class="fc-online-pay-pill">&#128179; <span class="fc-taka">&#2547;</span>${disc.toLocaleString()} with 5% online pay</div>
+        </div>
+      </article>`;
+    }).join('');
+  }
+  renderHomeProducts();
+
   }
 
   function toggleWishlist(btn, id) {
@@ -1057,6 +1185,65 @@
   }
 
   updateCartUI();
+
+  function renderHomeProducts() {
+    const prods = JSON.parse(localStorage.getItem('fc_products') || '[]');
+    const grid = document.getElementById('fc-home-products-grid');
+    if (!grid) return;
+    
+    if (prods.length === 0) {
+      grid.innerHTML = `
+        <div style="grid-column:1/-1;text-align:center;padding:3.5rem 1.5rem;background:var(--fc-surface-card);border:1px solid var(--fc-border);border-radius:12px;">
+          <div style="font-size:40px;margin-bottom:1rem;">&#128085;</div>
+          <h3 style="font-size:1.2rem;font-weight:800;margin-bottom:8px;font-family:var(--fc-font-display);">No Products in Store Yet</h3>
+          <p style="color:var(--fc-text-muted);font-size:13px;margin-bottom:1.5rem;max-width:400px;margin-left:auto;margin-right:auto;">
+            All sample items have been cleared. You can now add your own products with custom unique codes and 1:1 square photos.
+          </p>
+          <a href="cpanel.html" class="fc-btn fc-btn--primary fc-btn--sm">+ OPEN CPANEL TO ADD PRODUCTS</a>
+        </div>
+      `;
+      return;
+    }
+
+    const featured = prods.filter(p => p.featured !== false).slice(0, 8);
+    const displayList = featured.length ? featured : prods.slice(0, 8);
+
+    grid.innerHTML = displayList.map(p => {
+      const disc = Math.round(p.price * 0.95);
+      const code = p.code || ('FC-' + p.id);
+      return `
+      <article class="fc-product-card" data-id="${p.id}">
+        <div class="fc-product-card__image-wrap">
+          <a href="product.html?id=${p.id}">
+            <img class="fc-product-card__image" src="${p.img || 'https://via.placeholder.com/600'}" alt="${p.name}" loading="lazy" />
+            <img class="fc-product-card__image--hover" src="${p.imgHover || p.img || 'https://via.placeholder.com/600'}" alt="${p.name} back" loading="lazy" />
+          </a>
+          <div class="fc-product-card__badge">
+            ${p.badge ? `<span class="fc-badge fc-badge--new">${p.badge}</span>` : ''}
+            <span class="fc-badge fc-badge--discount">5% ONLINE</span>
+          </div>
+          <button class="fc-wishlist-btn" onclick="toggleWishlist(this,${p.id})" aria-label="Add to wishlist">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+          <button class="fc-quick-add-btn" onclick="addToCart(${p.id},'${p.name.replace(/'/g, "\'")}',${p.price},'${code}')">+ QUICK ADD</button>
+        </div>
+        <div class="fc-product-card__info">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:4px;">
+            <div class="fc-product-card__category">${p.catLabel || p.cat || 'Apparel'}</div>
+            <span class="fc-code-badge">${code}</span>
+          </div>
+          <div class="fc-product-card__name"><a href="product.html?id=${p.id}">${p.name}</a></div>
+          <div class="fc-product-card__price-row">
+            <span class="fc-price-main"><span class="fc-taka">&#2547;</span>${Number(p.price).toLocaleString()}</span>
+            ${p.origPrice ? `<span class="fc-price-orig"><span class="fc-taka">&#2547;</span>${Number(p.origPrice).toLocaleString()}</span>` : ''}
+          </div>
+          <div class="fc-online-pay-pill">&#128179; <span class="fc-taka">&#2547;</span>${disc.toLocaleString()} with 5% online pay</div>
+        </div>
+      </article>`;
+    }).join('');
+  }
+  renderHomeProducts();
+
 </script>
 </body>
 </html>

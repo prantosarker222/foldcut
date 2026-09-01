@@ -221,14 +221,14 @@
     }
     .fc-pdp-gallery { position: sticky; top: 130px; display: flex; flex-direction: column; gap: 1rem; }
     .fc-pdp-main-img-box {
-      aspect-ratio: 3/4; border-radius: var(--fc-radius-md); overflow: hidden;
+      aspect-ratio: 1 / 1; border-radius: var(--fc-radius-md); overflow: hidden;
       border: 1px solid var(--fc-border); background: var(--fc-surface); box-shadow: var(--fc-card-shadow);
       position: relative;
     }
     .fc-pdp-main-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
     .fc-pdp-thumbs { display: flex; gap: 10px; }
     .fc-pdp-thumb {
-      width: 80px; aspect-ratio: 3/4; border-radius: 6px; overflow: hidden;
+      width: 80px; aspect-ratio: 1 / 1; border-radius: 6px; overflow: hidden;
       border: 2px solid var(--fc-border); cursor: pointer; transition: all 0.2s;
     }
     .fc-pdp-thumb.is-active, .fc-pdp-thumb:hover { border-color: var(--fc-accent); transform: scale(1.04); }
@@ -352,6 +352,14 @@
       .fc-whatsapp-text { display: none; }
       .fc-pdp-btn-row { flex-direction: column; }
     }
+  
+    .fc-code-badge {
+      display: inline-flex; align-items: center; padding: 2px 6px;
+      font-size: 11px; font-weight: 700; font-family: monospace;
+      background: var(--fc-surface-hover); color: var(--fc-text-muted);
+      border: 1px solid var(--fc-border); border-radius: 4px;
+    }
+
   </style>
 </head>
 <body>
@@ -391,6 +399,7 @@
       <a href="shop.html?cat=women" class="fc-nav-link">Women</a>
       <a href="shop.html?cat=accessories" class="fc-nav-link">Accessories</a>
       <a href="shop.html?discount=true" class="fc-nav-link" style="color:var(--fc-discount);font-weight:700;">5% Online Pay &#9889;</a>
+      <a href="cpanel.html" class="fc-nav-link" style="color:var(--fc-accent);font-weight:700;">&#9881;&#65039; CPanel</a>
     </div>
   </nav>
 </header>
@@ -626,17 +635,123 @@
     }
   }
 
-  function addToCart(id, name, price) {
+  function addToCart(id, name, price, code) {
+    code = code || ('FC-' + id);
     const ex = cart.find(i => i.id === id);
     if (ex) { ex.qty = (ex.qty || 1) + 1; }
-    else { cart.push({ id, name, price, qty: 1 }); }
+    else { cart.push({ id, name, price, code, qty: 1 }); }
     localStorage.setItem('fc_cart', JSON.stringify(cart));
     updateCartUI();
+
+  let currentProduct = null;
+  function loadDynamicProduct() {
+    const prods = JSON.parse(localStorage.getItem('fc_products') || '[]');
+    const urlParams = new URLSearchParams(window.location.search);
+    const prodId = urlParams.get('id');
+    const prodCode = urlParams.get('code');
+
+    if (prods.length === 0) {
+      document.querySelector('.fc-pdp-layout').innerHTML = `
+        <div style="grid-column:1/-1;text-align:center;padding:4rem 1.5rem;background:var(--fc-surface-card);border:1px solid var(--fc-border);border-radius:12px;">
+          <div style="font-size:44px;margin-bottom:1rem;">&#128085;</div>
+          <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:8px;font-family:var(--fc-font-display);">No Products Found</h2>
+          <p style="color:var(--fc-text-muted);font-size:14px;margin-bottom:1.5rem;">All sample products have been cleared. Add products in CPanel to view them here.</p>
+          <a href="cpanel.html" class="fc-btn fc-btn--primary">+ ADD PRODUCTS IN CPANEL</a>
+        </div>
+      `;
+      return;
+    }
+
+    let p = null;
+    if (prodId) p = prods.find(i => String(i.id) === String(prodId));
+    if (!p && prodCode) p = prods.find(i => i.code === prodCode);
+    if (!p) p = prods[0];
+
+    currentProduct = p;
+    const disc = Math.round(p.price * 0.95);
+    const code = p.code || ('FC-' + p.id);
+
+    // Update images
+    const mainImg = document.getElementById('main-product-image');
+    if (mainImg) mainImg.src = p.img || 'https://via.placeholder.com/800';
+
+    const thumbsBox = document.querySelector('.fc-pdp-thumbs');
+    if (thumbsBox) {
+      const thumbs = [p.img, p.imgHover].filter(Boolean);
+      thumbsBox.innerHTML = thumbs.map((src, i) => `
+        <div class="fc-pdp-thumb ${i===0?'is-active':''}" onclick="changeImage('${src}', this)">
+          <img src="${src}" alt="Thumb ${i+1}"/>
+        </div>
+      `).join('');
+    }
+
+    // Update Text info
+    const titleEl = document.querySelector('.fc-pdp-title');
+    if (titleEl) {
+      titleEl.innerHTML = `${p.name} <div style="margin-top:6px;"><span class="fc-code-badge">${code}</span></div>`;
+    }
+
+    const priceEl = document.querySelector('.fc-pdp-price');
+    if (priceEl) priceEl.innerHTML = `<span class="fc-taka">&#2547;</span>${Number(p.price).toLocaleString()}`;
+
+    const origPriceEl = document.querySelector('.fc-pdp-orig-price');
+    if (origPriceEl) {
+      origPriceEl.innerHTML = p.origPrice ? `<span class="fc-taka">&#2547;</span>${Number(p.origPrice).toLocaleString()}` : '';
+    }
+
+    const savePill = document.querySelector('.fc-pdp-save-pill');
+    if (savePill) {
+      if (p.origPrice && p.origPrice > p.price) {
+        savePill.innerHTML = `SAVE <span class="fc-taka">&#2547;</span>${(p.origPrice - p.price).toLocaleString()}`;
+        savePill.style.display = 'inline-block';
+      } else {
+        savePill.style.display = 'none';
+      }
+    }
+
+    const callout = document.querySelector('.fc-pdp-callout-title');
+    if (callout) callout.innerHTML = `&#128179; Pay Online: <span class="fc-taka">&#2547;</span>${disc.toLocaleString()} (Save 5%)`;
+
+    // Sizes
+    const sizeOptions = document.querySelector('.fc-size-options');
+    if (sizeOptions && p.sizes && p.sizes.length) {
+      sizeOptions.innerHTML = p.sizes.map((s, i) => `
+        <button class="fc-size-btn ${i===0?'is-selected':''}" onclick="selectSize('${s}', this)">${s}</button>
+      `).join('');
+      document.getElementById('selected-size-label').textContent = p.sizes[0];
+    }
+
+    // Buttons
+    const buyRow = document.querySelector('.fc-pdp-btn-row');
+    if (buyRow) {
+      buyRow.innerHTML = `
+        <button class="fc-btn fc-btn--outline fc-btn--buy" onclick="addToCart(${p.id}, '${p.name.replace(/'/g, "\'")}', ${p.price}, '${code}')">+ ADD TO BAG</button>
+        <button class="fc-btn fc-btn--primary fc-btn--buy" onclick="buyNow(${p.id}, '${p.name.replace(/'/g, "\'")}', ${p.price}, '${code}')">BUY NOW &bull; 5% OFF</button>
+      `;
+    }
+  }
+
+  function orderProductOnWhatsApp() {
+    if (!currentProduct) return;
+    const size = document.getElementById('selected-size-label').textContent || 'M';
+    const code = currentProduct.code || ('FC-' + currentProduct.id);
+    const msg = encodeURIComponent(`Hello FOLDCUT! I want to order:
+- Product Code: ${code}
+- Name: ${currentProduct.name}
+- Size: ${size}
+- Price: ৳${currentProduct.price}
+
+Please confirm my order!`);
+    window.open('https://wa.me/8801700000000?text=' + msg, '_blank');
+  }
+
+  loadDynamicProduct();
     openCart();
   }
 
-  function buyNow(id, name, price) {
-    addToCart(id, name, price);
+  function buyNow(id, name, price, code) {
+    code = code || ('FC-' + id);
+    addToCart(id, name, price, code);
     window.location.href = 'checkout.html';
   }
 
@@ -644,6 +759,110 @@
     cart.splice(idx, 1);
     localStorage.setItem('fc_cart', JSON.stringify(cart));
     updateCartUI();
+
+  let currentProduct = null;
+  function loadDynamicProduct() {
+    const prods = JSON.parse(localStorage.getItem('fc_products') || '[]');
+    const urlParams = new URLSearchParams(window.location.search);
+    const prodId = urlParams.get('id');
+    const prodCode = urlParams.get('code');
+
+    if (prods.length === 0) {
+      document.querySelector('.fc-pdp-layout').innerHTML = `
+        <div style="grid-column:1/-1;text-align:center;padding:4rem 1.5rem;background:var(--fc-surface-card);border:1px solid var(--fc-border);border-radius:12px;">
+          <div style="font-size:44px;margin-bottom:1rem;">&#128085;</div>
+          <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:8px;font-family:var(--fc-font-display);">No Products Found</h2>
+          <p style="color:var(--fc-text-muted);font-size:14px;margin-bottom:1.5rem;">All sample products have been cleared. Add products in CPanel to view them here.</p>
+          <a href="cpanel.html" class="fc-btn fc-btn--primary">+ ADD PRODUCTS IN CPANEL</a>
+        </div>
+      `;
+      return;
+    }
+
+    let p = null;
+    if (prodId) p = prods.find(i => String(i.id) === String(prodId));
+    if (!p && prodCode) p = prods.find(i => i.code === prodCode);
+    if (!p) p = prods[0];
+
+    currentProduct = p;
+    const disc = Math.round(p.price * 0.95);
+    const code = p.code || ('FC-' + p.id);
+
+    // Update images
+    const mainImg = document.getElementById('main-product-image');
+    if (mainImg) mainImg.src = p.img || 'https://via.placeholder.com/800';
+
+    const thumbsBox = document.querySelector('.fc-pdp-thumbs');
+    if (thumbsBox) {
+      const thumbs = [p.img, p.imgHover].filter(Boolean);
+      thumbsBox.innerHTML = thumbs.map((src, i) => `
+        <div class="fc-pdp-thumb ${i===0?'is-active':''}" onclick="changeImage('${src}', this)">
+          <img src="${src}" alt="Thumb ${i+1}"/>
+        </div>
+      `).join('');
+    }
+
+    // Update Text info
+    const titleEl = document.querySelector('.fc-pdp-title');
+    if (titleEl) {
+      titleEl.innerHTML = `${p.name} <div style="margin-top:6px;"><span class="fc-code-badge">${code}</span></div>`;
+    }
+
+    const priceEl = document.querySelector('.fc-pdp-price');
+    if (priceEl) priceEl.innerHTML = `<span class="fc-taka">&#2547;</span>${Number(p.price).toLocaleString()}`;
+
+    const origPriceEl = document.querySelector('.fc-pdp-orig-price');
+    if (origPriceEl) {
+      origPriceEl.innerHTML = p.origPrice ? `<span class="fc-taka">&#2547;</span>${Number(p.origPrice).toLocaleString()}` : '';
+    }
+
+    const savePill = document.querySelector('.fc-pdp-save-pill');
+    if (savePill) {
+      if (p.origPrice && p.origPrice > p.price) {
+        savePill.innerHTML = `SAVE <span class="fc-taka">&#2547;</span>${(p.origPrice - p.price).toLocaleString()}`;
+        savePill.style.display = 'inline-block';
+      } else {
+        savePill.style.display = 'none';
+      }
+    }
+
+    const callout = document.querySelector('.fc-pdp-callout-title');
+    if (callout) callout.innerHTML = `&#128179; Pay Online: <span class="fc-taka">&#2547;</span>${disc.toLocaleString()} (Save 5%)`;
+
+    // Sizes
+    const sizeOptions = document.querySelector('.fc-size-options');
+    if (sizeOptions && p.sizes && p.sizes.length) {
+      sizeOptions.innerHTML = p.sizes.map((s, i) => `
+        <button class="fc-size-btn ${i===0?'is-selected':''}" onclick="selectSize('${s}', this)">${s}</button>
+      `).join('');
+      document.getElementById('selected-size-label').textContent = p.sizes[0];
+    }
+
+    // Buttons
+    const buyRow = document.querySelector('.fc-pdp-btn-row');
+    if (buyRow) {
+      buyRow.innerHTML = `
+        <button class="fc-btn fc-btn--outline fc-btn--buy" onclick="addToCart(${p.id}, '${p.name.replace(/'/g, "\'")}', ${p.price}, '${code}')">+ ADD TO BAG</button>
+        <button class="fc-btn fc-btn--primary fc-btn--buy" onclick="buyNow(${p.id}, '${p.name.replace(/'/g, "\'")}', ${p.price}, '${code}')">BUY NOW &bull; 5% OFF</button>
+      `;
+    }
+  }
+
+  function orderProductOnWhatsApp() {
+    if (!currentProduct) return;
+    const size = document.getElementById('selected-size-label').textContent || 'M';
+    const code = currentProduct.code || ('FC-' + currentProduct.id);
+    const msg = encodeURIComponent(`Hello FOLDCUT! I want to order:
+- Product Code: ${code}
+- Name: ${currentProduct.name}
+- Size: ${size}
+- Price: ৳${currentProduct.price}
+
+Please confirm my order!`);
+    window.open('https://wa.me/8801700000000?text=' + msg, '_blank');
+  }
+
+  loadDynamicProduct();
   }
 
   const cartDrawer = document.getElementById('fc-cart-drawer');
@@ -665,6 +884,110 @@
   if (overlay) overlay.addEventListener('click', closeCart);
 
   updateCartUI();
+
+  let currentProduct = null;
+  function loadDynamicProduct() {
+    const prods = JSON.parse(localStorage.getItem('fc_products') || '[]');
+    const urlParams = new URLSearchParams(window.location.search);
+    const prodId = urlParams.get('id');
+    const prodCode = urlParams.get('code');
+
+    if (prods.length === 0) {
+      document.querySelector('.fc-pdp-layout').innerHTML = `
+        <div style="grid-column:1/-1;text-align:center;padding:4rem 1.5rem;background:var(--fc-surface-card);border:1px solid var(--fc-border);border-radius:12px;">
+          <div style="font-size:44px;margin-bottom:1rem;">&#128085;</div>
+          <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:8px;font-family:var(--fc-font-display);">No Products Found</h2>
+          <p style="color:var(--fc-text-muted);font-size:14px;margin-bottom:1.5rem;">All sample products have been cleared. Add products in CPanel to view them here.</p>
+          <a href="cpanel.html" class="fc-btn fc-btn--primary">+ ADD PRODUCTS IN CPANEL</a>
+        </div>
+      `;
+      return;
+    }
+
+    let p = null;
+    if (prodId) p = prods.find(i => String(i.id) === String(prodId));
+    if (!p && prodCode) p = prods.find(i => i.code === prodCode);
+    if (!p) p = prods[0];
+
+    currentProduct = p;
+    const disc = Math.round(p.price * 0.95);
+    const code = p.code || ('FC-' + p.id);
+
+    // Update images
+    const mainImg = document.getElementById('main-product-image');
+    if (mainImg) mainImg.src = p.img || 'https://via.placeholder.com/800';
+
+    const thumbsBox = document.querySelector('.fc-pdp-thumbs');
+    if (thumbsBox) {
+      const thumbs = [p.img, p.imgHover].filter(Boolean);
+      thumbsBox.innerHTML = thumbs.map((src, i) => `
+        <div class="fc-pdp-thumb ${i===0?'is-active':''}" onclick="changeImage('${src}', this)">
+          <img src="${src}" alt="Thumb ${i+1}"/>
+        </div>
+      `).join('');
+    }
+
+    // Update Text info
+    const titleEl = document.querySelector('.fc-pdp-title');
+    if (titleEl) {
+      titleEl.innerHTML = `${p.name} <div style="margin-top:6px;"><span class="fc-code-badge">${code}</span></div>`;
+    }
+
+    const priceEl = document.querySelector('.fc-pdp-price');
+    if (priceEl) priceEl.innerHTML = `<span class="fc-taka">&#2547;</span>${Number(p.price).toLocaleString()}`;
+
+    const origPriceEl = document.querySelector('.fc-pdp-orig-price');
+    if (origPriceEl) {
+      origPriceEl.innerHTML = p.origPrice ? `<span class="fc-taka">&#2547;</span>${Number(p.origPrice).toLocaleString()}` : '';
+    }
+
+    const savePill = document.querySelector('.fc-pdp-save-pill');
+    if (savePill) {
+      if (p.origPrice && p.origPrice > p.price) {
+        savePill.innerHTML = `SAVE <span class="fc-taka">&#2547;</span>${(p.origPrice - p.price).toLocaleString()}`;
+        savePill.style.display = 'inline-block';
+      } else {
+        savePill.style.display = 'none';
+      }
+    }
+
+    const callout = document.querySelector('.fc-pdp-callout-title');
+    if (callout) callout.innerHTML = `&#128179; Pay Online: <span class="fc-taka">&#2547;</span>${disc.toLocaleString()} (Save 5%)`;
+
+    // Sizes
+    const sizeOptions = document.querySelector('.fc-size-options');
+    if (sizeOptions && p.sizes && p.sizes.length) {
+      sizeOptions.innerHTML = p.sizes.map((s, i) => `
+        <button class="fc-size-btn ${i===0?'is-selected':''}" onclick="selectSize('${s}', this)">${s}</button>
+      `).join('');
+      document.getElementById('selected-size-label').textContent = p.sizes[0];
+    }
+
+    // Buttons
+    const buyRow = document.querySelector('.fc-pdp-btn-row');
+    if (buyRow) {
+      buyRow.innerHTML = `
+        <button class="fc-btn fc-btn--outline fc-btn--buy" onclick="addToCart(${p.id}, '${p.name.replace(/'/g, "\'")}', ${p.price}, '${code}')">+ ADD TO BAG</button>
+        <button class="fc-btn fc-btn--primary fc-btn--buy" onclick="buyNow(${p.id}, '${p.name.replace(/'/g, "\'")}', ${p.price}, '${code}')">BUY NOW &bull; 5% OFF</button>
+      `;
+    }
+  }
+
+  function orderProductOnWhatsApp() {
+    if (!currentProduct) return;
+    const size = document.getElementById('selected-size-label').textContent || 'M';
+    const code = currentProduct.code || ('FC-' + currentProduct.id);
+    const msg = encodeURIComponent(`Hello FOLDCUT! I want to order:
+- Product Code: ${code}
+- Name: ${currentProduct.name}
+- Size: ${size}
+- Price: ৳${currentProduct.price}
+
+Please confirm my order!`);
+    window.open('https://wa.me/8801700000000?text=' + msg, '_blank');
+  }
+
+  loadDynamicProduct();
 </script>
 </body>
 </html>

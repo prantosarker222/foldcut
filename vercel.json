@@ -2,6 +2,10 @@
   "version": 2,
   "name": "foldcut",
   "rewrites": [
+    { "source": "/cpanel", "destination": "/cpanel.html" },
+    { "source": "/cpanel/", "destination": "/cpanel.html" },
+    { "source": "/admin", "destination": "/cpanel.html" },
+    { "source": "/admin/", "destination": "/cpanel.html" },
     { "source": "/shop", "destination": "/shop.html" },
     { "source": "/shop/", "destination": "/shop.html" },
     { "source": "/product", "destination": "/product.html" },

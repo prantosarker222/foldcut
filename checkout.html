@@ -307,7 +307,31 @@ function selectPM(pm) {
   const details = document.getElementById('pm-' + pm + '-details');
   if(details) details.style.display = 'block';
   document.querySelectorAll('[name="payment"]').forEach(r => { r.checked = r.value === pm; });
-  updateTotal();
+  renderOrderItems();
+updateTotal();
+function renderOrderItems() {
+  const cart = JSON.parse(localStorage.getItem('fc_cart') || '[]');
+  const itemsContainer = document.getElementById('fc-order-items');
+  if (!itemsContainer) return;
+
+  if (cart.length === 0) {
+    itemsContainer.innerHTML = '<div style="padding:1rem 0;color:var(--fc-text-muted);font-size:13px;">Your bag is currently empty. <a href="shop.html" style="color:var(--fc-accent);font-weight:700;">Shop Now &rarr;</a></div>';
+    return;
+  }
+
+  itemsContainer.innerHTML = cart.map(item => `
+    <div class="fc-order-item">
+      <div style="flex:1;">
+        <div class="fc-order-item-name">${item.name}</div>
+        <div style="font-size:11px;color:var(--fc-text-muted);margin-top:2px;">
+          Code: <strong style="font-family:monospace;">${item.code || 'FC-' + item.id}</strong> &bull; Qty: ${item.qty || 1}
+        </div>
+      </div>
+      <div class="fc-order-item-price"><span class="fc-taka">&#2547;</span>${(item.price * (item.qty || 1)).toLocaleString()}</div>
+    </div>
+  `).join('');
+}
+
 }
 
 function updateTotal() {
@@ -334,11 +358,43 @@ function updateTotal() {
 }
 
 function placeOrder() {
-  const phone = document.querySelector('input[type=tel]').value.trim();
+  const name = (document.querySelector('input[placeholder*="Rahim"]') || {}).value || 'Customer';
+  const phoneInput = document.querySelector('input[type=tel]');
+  const phone = phoneInput ? phoneInput.value.trim() : '';
+  const address = (document.querySelector('textarea') || {}).value || 'Dhaka';
+  const city = (document.querySelector('select') || {}).value || 'Dhaka';
+
   if(!phone) { alert('Please enter your phone number.'); return; }
-  alert('Order placed successfully! Our team will confirm your order within 30 minutes. Thank you for shopping with FOLDCUT!');
+
+  const cart = JSON.parse(localStorage.getItem('fc_cart')||'[]');
+  const subtotal = cart.reduce((s,i)=>s+(i.price*(i.qty||1)),0);
+  const delivery = subtotal >= 2000 ? 0 : 70;
+  const isOnline = onlinePMs.includes(selectedPM);
+  const discount = isOnline ? Math.round(subtotal * 0.05) : 0;
+  const total = subtotal + delivery - discount;
+
+  const newOrder = {
+    id: 'ORD-' + Math.floor(100000 + Math.random() * 900000),
+    name: name,
+    phone: phone,
+    address: address,
+    city: city,
+    items: cart,
+    payment: selectedPM,
+    subtotal: subtotal,
+    delivery: delivery,
+    discount: discount,
+    total: total,
+    createdAt: Date.now()
+  };
+
+  const orders = JSON.parse(localStorage.getItem('fc_orders') || '[]');
+  orders.unshift(newOrder);
+  localStorage.setItem('fc_orders', JSON.stringify(orders));
+
+  alert('🎉 Order placed successfully! Order ID: ' + newOrder.id + '\nOur team will contact you shortly to confirm delivery.');
   localStorage.removeItem('fc_cart');
-  setTimeout(()=>{ window.location.href='index.html'; }, 1500);
+  setTimeout(()=>{ window.location.href='index.html'; }, 1200);
 }
 
 function initTheme() {
@@ -372,7 +428,31 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () 
   if (!localStorage.getItem('fc_theme')) updateThemeIcon();
 });
 
+renderOrderItems();
 updateTotal();
+function renderOrderItems() {
+  const cart = JSON.parse(localStorage.getItem('fc_cart') || '[]');
+  const itemsContainer = document.getElementById('fc-order-items');
+  if (!itemsContainer) return;
+
+  if (cart.length === 0) {
+    itemsContainer.innerHTML = '<div style="padding:1rem 0;color:var(--fc-text-muted);font-size:13px;">Your bag is currently empty. <a href="shop.html" style="color:var(--fc-accent);font-weight:700;">Shop Now &rarr;</a></div>';
+    return;
+  }
+
+  itemsContainer.innerHTML = cart.map(item => `
+    <div class="fc-order-item">
+      <div style="flex:1;">
+        <div class="fc-order-item-name">${item.name}</div>
+        <div style="font-size:11px;color:var(--fc-text-muted);margin-top:2px;">
+          Code: <strong style="font-family:monospace;">${item.code || 'FC-' + item.id}</strong> &bull; Qty: ${item.qty || 1}
+        </div>
+      </div>
+      <div class="fc-order-item-price"><span class="fc-taka">&#2547;</span>${(item.price * (item.qty || 1)).toLocaleString()}</div>
+    </div>
+  `).join('');
+}
+
 </script>
 </body>
 </html>
