@@ -1024,131 +1024,67 @@
     localStorage.setItem('fc_cart', JSON.stringify(cart));
     updateCartUI();
 
-  function renderHomeProducts() {
-    const prods = JSON.parse(localStorage.getItem('fc_products') || '[]');
-    const grid = document.getElementById('fc-home-products-grid');
-    if (!grid) return;
-    
-    if (prods.length === 0) {
-      grid.innerHTML = `
-        <div style="grid-column:1/-1;text-align:center;padding:3.5rem 1.5rem;background:var(--fc-surface-card);border:1px solid var(--fc-border);border-radius:12px;">
-          <div style="font-size:40px;margin-bottom:1rem;">&#128085;</div>
-          <h3 style="font-size:1.2rem;font-weight:800;margin-bottom:8px;font-family:var(--fc-font-display);">No Products in Store Yet</h3>
-          <p style="color:var(--fc-text-muted);font-size:13px;margin-bottom:1.5rem;max-width:400px;margin-left:auto;margin-right:auto;">
-            All sample items have been cleared. You can now add your own products with custom unique codes and 1:1 square photos.
-          </p>
-          <a href="cpanel.html" class="fc-btn fc-btn--primary fc-btn--sm">+ OPEN CPANEL TO ADD PRODUCTS</a>
-        </div>
-      `;
-      return;
+  const DEFAULT_PRODUCTS = [{"id": "ds-01", "code": "FC-DS-01", "name": "Liberty Walk LBWK Countach Drop Shoulder T-Shirt", "category": "Drop Shoulder", "price": 650, "oldPrice": 950, "image": "/assets/images/products/drop-shoulder/drop-shoulder-01.jpg", "badge": "HOT DROP", "featured": true, "inStock": true, "sizes": ["M", "L", "XL", "XXL"], "description": "Premium 220+ GSM 100% combed compact cotton drop shoulder oversized t-shirt. High-density Liberty Walk LBWK motorsport back print with chest statement typography. Relaxed street silhouette.", "img": "/assets/images/products/drop-shoulder/drop-shoulder-01.jpg", "origPrice": 950, "catLabel": "Drop Shoulder"}, {"id": "ds-02", "code": "FC-DS-02", "name": "Cyberpunk Velocity Graphic Drop Shoulder T-Shirt", "category": "Drop Shoulder", "price": 650, "oldPrice": 950, "image": "/assets/images/products/drop-shoulder/drop-shoulder-02.jpg", "badge": "TRENDING", "featured": true, "inStock": true, "sizes": ["M", "L", "XL", "XXL"], "description": "Heavyweight premium cotton oversized drop shoulder tee featuring high-definition streetwear graphics. Breathable, durable, and crafted for maximum comfort and style.", "img": "/assets/images/products/drop-shoulder/drop-shoulder-02.jpg", "origPrice": 950, "catLabel": "Drop Shoulder"}, {"id": "ds-03", "code": "FC-DS-03", "name": "Vintage Tokyo Racing Drop Shoulder Tee", "category": "Drop Shoulder", "price": 650, "oldPrice": 950, "image": "/assets/images/products/drop-shoulder/drop-shoulder-03.jpg", "badge": "BESTSELLER", "featured": true, "inStock": true, "sizes": ["M", "L", "XL", "XXL"], "description": "Signature vintage-inspired Tokyo racing graphic print on 220 GSM combed organic cotton. Reinforced rib collar, dropped shoulders, and relaxed boxy cut.", "img": "/assets/images/products/drop-shoulder/drop-shoulder-03.jpg", "origPrice": 950, "catLabel": "Drop Shoulder"}, {"id": "ds-04", "code": "FC-DS-04", "name": "Signature Oversized Heavyweight Streetwear Tee", "category": "Drop Shoulder", "price": 650, "oldPrice": 900, "image": "/assets/images/products/drop-shoulder/drop-shoulder-04.jpg", "badge": "NEW DROP", "featured": true, "inStock": true, "sizes": ["M", "L", "XL", "XXL"], "description": "Modern urban minimalism in an ultra-comfortable heavyweight drop shoulder design. Double-stitched hems with reactive dye colorfast treatment.", "img": "/assets/images/products/drop-shoulder/drop-shoulder-04.jpg", "origPrice": 900, "catLabel": "Drop Shoulder"}, {"id": "ds-05", "code": "FC-DS-05", "name": "Urban Velocity Motorsport Drop Shoulder Tee", "category": "Drop Shoulder", "price": 650, "oldPrice": 950, "image": "/assets/images/products/drop-shoulder/drop-shoulder-05.jpg", "badge": "LIMITED", "featured": false, "inStock": true, "sizes": ["M", "L", "XL", "XXL"], "description": "Motorsport aesthetic drop shoulder t-shirt. Crafted from 100% compact cotton with custom typography and long-lasting screen printing.", "img": "/assets/images/products/drop-shoulder/drop-shoulder-05.jpg", "origPrice": 950, "catLabel": "Drop Shoulder"}, {"id": "ds-06", "code": "FC-DS-06", "name": "Retro Arcade Edition Drop Shoulder T-Shirt", "category": "Drop Shoulder", "price": 650, "oldPrice": 950, "image": "/assets/images/products/drop-shoulder/drop-shoulder-06.jpg", "badge": "POPULAR", "featured": false, "inStock": true, "sizes": ["M", "L", "XL", "XXL"], "description": "Retro gaming vibe graphic drop shoulder tee. Soft hand-feel fabric with oversized comfort fit, perfect for everyday casual and street outfits.", "img": "/assets/images/products/drop-shoulder/drop-shoulder-06.jpg", "origPrice": 950, "catLabel": "Drop Shoulder"}, {"id": "ds-07", "code": "FC-DS-07", "name": "Midnight Drift Graphic Drop Shoulder Tee", "category": "Drop Shoulder", "price": 650, "oldPrice": 950, "image": "/assets/images/products/drop-shoulder/drop-shoulder-07.jpg", "badge": "HOT DROP", "featured": false, "inStock": true, "sizes": ["M", "L", "XL", "XXL"], "description": "Striking back print graphic celebrating night street culture. Cut in FOLDCUT's signature relaxed drop shoulder pattern from 220 GSM cotton.", "img": "/assets/images/products/drop-shoulder/drop-shoulder-07.jpg", "origPrice": 950, "catLabel": "Drop Shoulder"}, {"id": "ds-08", "code": "FC-DS-08", "name": "Minimalist Typo Statement Drop Shoulder T-Shirt", "category": "Drop Shoulder", "price": 650, "oldPrice": 900, "image": "/assets/images/products/drop-shoulder/drop-shoulder-08.jpg", "badge": "NEW", "featured": false, "inStock": true, "sizes": ["M", "L", "XL", "XXL"], "description": "Clean, elevated typographic drop shoulder t-shirt. Combines subtle front brand accents with bold aesthetic rear graphics.", "img": "/assets/images/products/drop-shoulder/drop-shoulder-08.jpg", "origPrice": 900, "catLabel": "Drop Shoulder"}, {"id": "ds-09", "code": "FC-DS-09", "name": "Neo-Tokyo Cyber Drop Shoulder T-Shirt", "category": "Drop Shoulder", "price": 650, "oldPrice": 950, "image": "/assets/images/products/drop-shoulder/drop-shoulder-09.jpg", "badge": "TRENDING", "featured": false, "inStock": true, "sizes": ["M", "L", "XL", "XXL"], "description": "Futuristic neon-inspired cyber graphics printed on premium heavyweight cotton jersey. Drop shoulder sleeves with reinforced neckband.", "img": "/assets/images/products/drop-shoulder/drop-shoulder-09.jpg", "origPrice": 950, "catLabel": "Drop Shoulder"}, {"id": "ds-10", "code": "FC-DS-10", "name": "Aesthetic Abstract Art Drop Shoulder Tee", "category": "Drop Shoulder", "price": 650, "oldPrice": 950, "image": "/assets/images/products/drop-shoulder/drop-shoulder-10.jpg", "badge": "EXCLUSIVE", "featured": false, "inStock": true, "sizes": ["M", "L", "XL", "XXL"], "description": "Contemporary art graphic print on ultra-soft breathable compact combed cotton. Designed for a distinct, effortless streetwear look.", "img": "/assets/images/products/drop-shoulder/drop-shoulder-10.jpg", "origPrice": 950, "catLabel": "Drop Shoulder"}, {"id": "ds-11", "code": "FC-DS-11", "name": "Speed & Power Edition Drop Shoulder T-Shirt", "category": "Drop Shoulder", "price": 650, "oldPrice": 950, "image": "/assets/images/products/drop-shoulder/drop-shoulder-11.jpg", "badge": "HOT", "featured": false, "inStock": true, "sizes": ["M", "L", "XL", "XXL"], "description": "High performance sports car graphics on 100% premium cotton. Drop shoulder cut engineered for maximum comfort and durability.", "img": "/assets/images/products/drop-shoulder/drop-shoulder-11.jpg", "origPrice": 950, "catLabel": "Drop Shoulder"}, {"id": "ds-12", "code": "FC-DS-12", "name": "Night Rider Streetwear Drop Shoulder Tee", "category": "Drop Shoulder", "price": 650, "oldPrice": 950, "image": "/assets/images/products/drop-shoulder/drop-shoulder-12.jpg", "badge": "NEW DROP", "featured": false, "inStock": true, "sizes": ["M", "L", "XL", "XXL"], "description": "Bold night rider graphic artwork printed with eco-friendly silk screen inks on heavy 220 GSM combed cotton.", "img": "/assets/images/products/drop-shoulder/drop-shoulder-12.jpg", "origPrice": 950, "catLabel": "Drop Shoulder"}, {"id": "ds-13", "code": "FC-DS-13", "name": "Hyperdrive Racing Series Drop Shoulder T-Shirt", "category": "Drop Shoulder", "price": 650, "oldPrice": 950, "image": "/assets/images/products/drop-shoulder/drop-shoulder-13.jpg", "badge": "BESTSELLER", "featured": false, "inStock": true, "sizes": ["M", "L", "XL", "XXL"], "description": "Racing heritage artwork with precision chest and back details. Roomy drop shoulder fit, soft bio-washed fabric.", "img": "/assets/images/products/drop-shoulder/drop-shoulder-13.jpg", "origPrice": 950, "catLabel": "Drop Shoulder"}, {"id": "ds-14", "code": "FC-DS-14", "name": "FOLDCUT Heritage Drop Shoulder Heavyweight Tee", "category": "Drop Shoulder", "price": 650, "oldPrice": 950, "image": "/assets/images/products/drop-shoulder/drop-shoulder-14.jpg", "badge": "SIGNATURE", "featured": true, "inStock": true, "sizes": ["M", "L", "XL", "XXL"], "description": "The quintessential FOLDCUT heavyweight drop shoulder t-shirt. Premium tailored construction with luxury brand aesthetics.", "img": "/assets/images/products/drop-shoulder/drop-shoulder-14.jpg", "origPrice": 950, "catLabel": "Drop Shoulder"}, {"id": "pl-01", "code": "FC-PL-01", "name": "US Polo Tri-Color Mustard Gold Polo T-Shirt", "category": "Polo T-Shirt", "price": 750, "oldPrice": 1150, "image": "/assets/images/products/polo-tshirt/polo-tshirt-01.jpg", "badge": "BESTSELLER", "featured": true, "inStock": true, "sizes": ["M", "L", "XL", "XXL"], "description": "Premium 100% pique cotton polo with iconic mustard, white & black tri-panel colorblocking. High-definition embroidered chest insignia and ribbed collar.", "img": "/assets/images/products/polo-tshirt/polo-tshirt-01.jpg", "origPrice": 1150, "catLabel": "Polo T-Shirt"}, {"id": "pl-02", "code": "FC-PL-02", "name": "Classic Royal Navy Striped Collar Polo T-Shirt", "category": "Polo T-Shirt", "price": 750, "oldPrice": 1150, "image": "/assets/images/products/polo-tshirt/polo-tshirt-02.jpg", "badge": "PREMIUM", "featured": true, "inStock": true, "sizes": ["M", "L", "XL", "XXL"], "description": "Sophisticated navy pique cotton polo with twin-tipped contrast collar and sleeve cuffs. Premium mother-of-pearl buttons and tailored regular fit.", "img": "/assets/images/products/polo-tshirt/polo-tshirt-02.jpg", "origPrice": 1150, "catLabel": "Polo T-Shirt"}, {"id": "pl-03", "code": "FC-PL-03", "name": "Emerald Green & White Contrast Polo T-Shirt", "category": "Polo T-Shirt", "price": 750, "oldPrice": 1150, "image": "/assets/images/products/polo-tshirt/polo-tshirt-03.jpg", "badge": "SIGNATURE", "featured": true, "inStock": true, "sizes": ["M", "L", "XL", "XXL"], "description": "Rich emerald green pique cotton polo with crisp white horizontal chest band. Embroidered crest and breathable honeycomb cotton weave.", "img": "/assets/images/products/polo-tshirt/polo-tshirt-03.jpg", "origPrice": 1150, "catLabel": "Polo T-Shirt"}, {"id": "pl-04", "code": "FC-PL-04", "name": "Executive Jet Black Pique Cotton Polo", "category": "Polo T-Shirt", "price": 750, "oldPrice": 1100, "image": "/assets/images/products/polo-tshirt/polo-tshirt-04.jpg", "badge": "EXCLUSIVE", "featured": true, "inStock": true, "sizes": ["M", "L", "XL", "XXL"], "description": "Timeless jet black luxury polo crafted from 240 GSM organic pique cotton. Features anti-curl collar and subtle tonal embroidery.", "img": "/assets/images/products/polo-tshirt/polo-tshirt-04.jpg", "origPrice": 1100, "catLabel": "Polo T-Shirt"}, {"id": "pl-05", "code": "FC-PL-05", "name": "Burgundy Wine Embroidered Luxury Polo", "category": "Polo T-Shirt", "price": 750, "oldPrice": 1150, "image": "/assets/images/products/polo-tshirt/polo-tshirt-05.jpg", "badge": "POPULAR", "featured": false, "inStock": true, "sizes": ["M", "L", "XL", "XXL"], "description": "Deep burgundy polo t-shirt with tailored slim-regular fit. Breathable double-pique cotton with reinforced side vents.", "img": "/assets/images/products/polo-tshirt/polo-tshirt-05.jpg", "origPrice": 1150, "catLabel": "Polo T-Shirt"}, {"id": "pl-06", "code": "FC-PL-06", "name": "Steel Grey & Black Colorblock Polo T-Shirt", "category": "Polo T-Shirt", "price": 750, "oldPrice": 1150, "image": "/assets/images/products/polo-tshirt/polo-tshirt-06.jpg", "badge": "TRENDING", "featured": false, "inStock": true, "sizes": ["M", "L", "XL", "XXL"], "description": "Modern two-tone colorblock polo in charcoal steel grey and onyx black. Soft bio-washed pique cotton for all-day comfort.", "img": "/assets/images/products/polo-tshirt/polo-tshirt-06.jpg", "origPrice": 1150, "catLabel": "Polo T-Shirt"}, {"id": "pl-07", "code": "FC-PL-07", "name": "Pure White Premium Pique Polo T-Shirt", "category": "Polo T-Shirt", "price": 750, "oldPrice": 1100, "image": "/assets/images/products/polo-tshirt/polo-tshirt-07.jpg", "badge": "ESSENTIAL", "featured": false, "inStock": true, "sizes": ["M", "L", "XL", "XXL"], "description": "Crisp optic white pique polo with contrast chest embroidery. Classic 3-button placket and shape-retaining knitted collar.", "img": "/assets/images/products/polo-tshirt/polo-tshirt-07.jpg", "origPrice": 1100, "catLabel": "Polo T-Shirt"}, {"id": "pl-08", "code": "FC-PL-08", "name": "Ocean Blue Dual-Tone Sports Polo", "category": "Polo T-Shirt", "price": 750, "oldPrice": 1150, "image": "/assets/images/products/polo-tshirt/polo-tshirt-08.jpg", "badge": "NEW", "featured": false, "inStock": true, "sizes": ["M", "L", "XL", "XXL"], "description": "Vibrant ocean blue polo t-shirt with contrasting trim on collar and sleeves. High breathability for tropical weather.", "img": "/assets/images/products/polo-tshirt/polo-tshirt-08.jpg", "origPrice": 1150, "catLabel": "Polo T-Shirt"}, {"id": "pl-09", "code": "FC-PL-09", "name": "Olive Green Military Heritage Polo T-Shirt", "category": "Polo T-Shirt", "price": 750, "oldPrice": 1150, "image": "/assets/images/products/polo-tshirt/polo-tshirt-09.jpg", "badge": "LIMITED", "featured": false, "inStock": true, "sizes": ["M", "L", "XL", "XXL"], "description": "Military-inspired olive green pique cotton polo with premium branded hardware and textured ribbed cuffs.", "img": "/assets/images/products/polo-tshirt/polo-tshirt-09.jpg", "origPrice": 1150, "catLabel": "Polo T-Shirt"}, {"id": "pl-10", "code": "FC-PL-10", "name": "Crimson Red Contrast Edge Polo T-Shirt", "category": "Polo T-Shirt", "price": 750, "oldPrice": 1150, "image": "/assets/images/products/polo-tshirt/polo-tshirt-10.jpg", "badge": "HOT", "featured": false, "inStock": true, "sizes": ["M", "L", "XL", "XXL"], "description": "Striking crimson red polo with navy-accented collar tips. Bio-polished 100% cotton for an exceptionally smooth texture.", "img": "/assets/images/products/polo-tshirt/polo-tshirt-10.jpg", "origPrice": 1150, "catLabel": "Polo T-Shirt"}, {"id": "pl-11", "code": "FC-PL-11", "name": "Slate Charcoal Textured Cotton Polo", "category": "Polo T-Shirt", "price": 750, "oldPrice": 1100, "image": "/assets/images/products/polo-tshirt/polo-tshirt-11.jpg", "badge": "POPULAR", "featured": false, "inStock": true, "sizes": ["M", "L", "XL", "XXL"], "description": "Subtle heathered charcoal polo with minimalist chest crest. Versatile design suitable for smart casual and office wear.", "img": "/assets/images/products/polo-tshirt/polo-tshirt-11.jpg", "origPrice": 1100, "catLabel": "Polo T-Shirt"}, {"id": "pl-12", "code": "FC-PL-12", "name": "Golden Amber Signature Club Polo", "category": "Polo T-Shirt", "price": 750, "oldPrice": 1150, "image": "/assets/images/products/polo-tshirt/polo-tshirt-12.jpg", "badge": "SIGNATURE", "featured": false, "inStock": true, "sizes": ["M", "L", "XL", "XXL"], "description": "Warm golden amber luxury club polo with dark forest green contrast trims matching the FOLDCUT brand aesthetic.", "img": "/assets/images/products/polo-tshirt/polo-tshirt-12.jpg", "origPrice": 1150, "catLabel": "Polo T-Shirt"}];
+
+function getStoredProducts() {
+  try {
+    const stored = localStorage.getItem('fc_products');
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      if (Array.isArray(parsed) && parsed.length > 0) return parsed;
     }
+  } catch(e) {}
+  localStorage.setItem('fc_products', JSON.stringify(DEFAULT_PRODUCTS));
+  return DEFAULT_PRODUCTS;
+}
 
-    const featured = prods.filter(p => p.featured !== false).slice(0, 8);
-    const displayList = featured.length ? featured : prods.slice(0, 8);
+function renderHomeProducts() {
+  const products = getStoredProducts();
+  const grid = document.getElementById('fc-home-products-grid');
+  if (!grid) return;
 
-    grid.innerHTML = displayList.map(p => {
-      const disc = Math.round(p.price * 0.95);
-      const code = p.code || ('FC-' + p.id);
-      return `
-      <article class="fc-product-card" data-id="${p.id}">
-        <div class="fc-product-card__image-wrap">
-          <a href="product.html?id=${p.id}">
-            <img class="fc-product-card__image" src="${p.img || 'https://via.placeholder.com/600'}" alt="${p.name}" loading="lazy" />
-            <img class="fc-product-card__image--hover" src="${p.imgHover || p.img || 'https://via.placeholder.com/600'}" alt="${p.name} back" loading="lazy" />
-          </a>
-          <div class="fc-product-card__badge">
-            ${p.badge ? `<span class="fc-badge fc-badge--new">${p.badge}</span>` : ''}
-            <span class="fc-badge fc-badge--discount">5% ONLINE</span>
-          </div>
-          <button class="fc-wishlist-btn" onclick="toggleWishlist(this,${p.id})" aria-label="Add to wishlist">
-            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </button>
-          <button class="fc-quick-add-btn" onclick="addToCart(${p.id},'${p.name.replace(/'/g, "\'")}',${p.price},'${code}')">+ QUICK ADD</button>
+  const displayProducts = products.slice(0, 8);
+
+  grid.innerHTML = displayProducts.map(p => {
+    const disc = Math.round(p.price * 0.95);
+    const code = p.code || ('FC-' + p.id);
+    const imgSrc = p.image || p.img;
+    const origPrice = p.oldPrice || p.origPrice;
+    const cat = p.category || 'Collection';
+    const link = `product.html?id=${p.id}&code=${code}`;
+
+    return `
+    <article class="fc-product-card">
+      <div class="fc-product-card__image-wrap">
+        <a href="${link}">
+          <img class="fc-product-card__image" src="${imgSrc}" alt="${p.name}" loading="lazy"/>
+        </a>
+        <div class="fc-product-card__badge">
+          ${p.badge?`<span class="fc-badge fc-badge--new">${p.badge}</span>`:''}
+          <span class="fc-badge fc-badge--discount">5% ONLINE</span>
         </div>
-        <div class="fc-product-card__info">
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:4px;">
-            <div class="fc-product-card__category">${p.catLabel || p.cat || 'Apparel'}</div>
-            <span class="fc-code-badge">${code}</span>
-          </div>
-          <div class="fc-product-card__name"><a href="product.html?id=${p.id}">${p.name}</a></div>
-          <div class="fc-product-card__price-row">
-            <span class="fc-price-main"><span class="fc-taka">&#2547;</span>${Number(p.price).toLocaleString()}</span>
-            ${p.origPrice ? `<span class="fc-price-orig"><span class="fc-taka">&#2547;</span>${Number(p.origPrice).toLocaleString()}</span>` : ''}
-          </div>
-          <div class="fc-online-pay-pill">&#128179; <span class="fc-taka">&#2547;</span>${disc.toLocaleString()} with 5% online pay</div>
+        <button class="fc-quick-add-btn" onclick="addToCart('${p.id}','${p.name.replace(/'/g,'&#39;')}',${p.price},'${code}')">+ QUICK ADD</button>
+      </div>
+      <div class="fc-product-card__info">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+          <span class="fc-product-card__category">${cat}</span>
+          <span class="fc-code-badge">${code}</span>
         </div>
-      </article>`;
-    }).join('');
-  }
+        <div class="fc-product-card__name"><a href="${link}">${p.name}</a></div>
+        <div class="fc-product-card__price-row">
+          <span class="fc-price-main"><span class="fc-taka">&#2547;</span>${p.price.toLocaleString()}</span>
+          ${origPrice?`<span class="fc-price-orig"><span class="fc-taka">&#2547;</span>${origPrice.toLocaleString()}</span>`:''}
+        </div>
+        <div class="fc-online-pay-pill">&#128179; <span class="fc-taka">&#2547;</span>${disc.toLocaleString()} with 5% online pay</div>
+      </div>
+    </article>`;
+  }).join('');
+}
+
+document.addEventListener('DOMContentLoaded', renderHomeProducts);
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
   renderHomeProducts();
-
-    openCart();
-  }
-
-  function removeFromCart(idx) {
-    cart.splice(idx, 1);
-    localStorage.setItem('fc_cart', JSON.stringify(cart));
-    updateCartUI();
-
-  function renderHomeProducts() {
-    const prods = JSON.parse(localStorage.getItem('fc_products') || '[]');
-    const grid = document.getElementById('fc-home-products-grid');
-    if (!grid) return;
-    
-    if (prods.length === 0) {
-      grid.innerHTML = `
-        <div style="grid-column:1/-1;text-align:center;padding:3.5rem 1.5rem;background:var(--fc-surface-card);border:1px solid var(--fc-border);border-radius:12px;">
-          <div style="font-size:40px;margin-bottom:1rem;">&#128085;</div>
-          <h3 style="font-size:1.2rem;font-weight:800;margin-bottom:8px;font-family:var(--fc-font-display);">No Products in Store Yet</h3>
-          <p style="color:var(--fc-text-muted);font-size:13px;margin-bottom:1.5rem;max-width:400px;margin-left:auto;margin-right:auto;">
-            All sample items have been cleared. You can now add your own products with custom unique codes and 1:1 square photos.
-          </p>
-          <a href="cpanel.html" class="fc-btn fc-btn--primary fc-btn--sm">+ OPEN CPANEL TO ADD PRODUCTS</a>
-        </div>
-      `;
-      return;
-    }
-
-    const featured = prods.filter(p => p.featured !== false).slice(0, 8);
-    const displayList = featured.length ? featured : prods.slice(0, 8);
-
-    grid.innerHTML = displayList.map(p => {
-      const disc = Math.round(p.price * 0.95);
-      const code = p.code || ('FC-' + p.id);
-      return `
-      <article class="fc-product-card" data-id="${p.id}">
-        <div class="fc-product-card__image-wrap">
-          <a href="product.html?id=${p.id}">
-            <img class="fc-product-card__image" src="${p.img || 'https://via.placeholder.com/600'}" alt="${p.name}" loading="lazy" />
-            <img class="fc-product-card__image--hover" src="${p.imgHover || p.img || 'https://via.placeholder.com/600'}" alt="${p.name} back" loading="lazy" />
-          </a>
-          <div class="fc-product-card__badge">
-            ${p.badge ? `<span class="fc-badge fc-badge--new">${p.badge}</span>` : ''}
-            <span class="fc-badge fc-badge--discount">5% ONLINE</span>
-          </div>
-          <button class="fc-wishlist-btn" onclick="toggleWishlist(this,${p.id})" aria-label="Add to wishlist">
-            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </button>
-          <button class="fc-quick-add-btn" onclick="addToCart(${p.id},'${p.name.replace(/'/g, "\'")}',${p.price},'${code}')">+ QUICK ADD</button>
-        </div>
-        <div class="fc-product-card__info">
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:4px;">
-            <div class="fc-product-card__category">${p.catLabel || p.cat || 'Apparel'}</div>
-            <span class="fc-code-badge">${code}</span>
-          </div>
-          <div class="fc-product-card__name"><a href="product.html?id=${p.id}">${p.name}</a></div>
-          <div class="fc-product-card__price-row">
-            <span class="fc-price-main"><span class="fc-taka">&#2547;</span>${Number(p.price).toLocaleString()}</span>
-            ${p.origPrice ? `<span class="fc-price-orig"><span class="fc-taka">&#2547;</span>${Number(p.origPrice).toLocaleString()}</span>` : ''}
-          </div>
-          <div class="fc-online-pay-pill">&#128179; <span class="fc-taka">&#2547;</span>${disc.toLocaleString()} with 5% online pay</div>
-        </div>
-      </article>`;
-    }).join('');
-  }
-  renderHomeProducts();
-
-  }
+}
 
   function toggleWishlist(btn, id) {
     if (wishlist.includes(id)) {
